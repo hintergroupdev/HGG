@@ -1,0 +1,18 @@
+HGG WEBSITE DEVELOPER PACKAGE — FINAL FOR SHAIR
+
+Start here:
+01 Developer Handover/HGG_Website_Developer_Handover_Cover_and_Package_Index.docx
+
+Then review:
+03 Developer Implementation Guide/HGG_Developer_Implementation_Guide.docx
+02 Public Website Copy/HGG_Public_Website_Copy.docx
+
+Brand assets:
+04 Brand Guide/
+05 Logos & Favicon/
+
+Visual benchmark:
+06 Visual Reference/HGG_Website_Visual_Reference.png
+
+Pending/follow-up items:
+07 Pending Items - Read Me/READ_ME_FIRST.txt
