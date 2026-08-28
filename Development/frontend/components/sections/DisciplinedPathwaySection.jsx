@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Compass,
   FileCheck,
@@ -20,6 +20,7 @@ import {
   MoveRight,
   MoveLeft,
   ChevronsDown,
+  ChevronDown,
 } from "lucide-react";
 
 import Image from "next/image";
@@ -110,6 +111,7 @@ function StepCard({ step, isHovered, onHover, onLeave }) {
 
 export default function DisciplinedPathwaySection() {
   const [hoveredIdx, setHoveredIdx] = useState(null);
+  const [showAllSteps, setShowAllSteps] = useState(false);
 
   /* Snake rows: Row1 L→R, Row2 R→L, Row3 L→R */
   const row1 = [steps[0], steps[1], steps[2]];
@@ -121,14 +123,14 @@ export default function DisciplinedPathwaySection() {
       id="pathway"
       className="py-14 lg:py-18 relative overflow-hidden border-b border-slate-200/80 bg-[#F8FAFC]"
     >
-      {/* ── Ground-Level Perspective Road Background (Taken from Road Itself) ── */}
-      <div className="absolute left-0 top-0 bottom-0 w-full lg:w-[60%] pointer-events-none z-0 overflow-hidden">
+      {/* ── Ground-Level Perspective Road Background (Fixed height to prevent stretch on expand) ── */}
+      <div className="absolute left-0 top-0 w-full lg:w-[60%] h-[1500px] pointer-events-none z-0 overflow-hidden">
         <div className="relative w-full h-full">
           <Image
             src="/images/ground-road-bg.jpg"
             alt="Ground-level perspective photograph looking down the center of an asphalt road towards sunset"
             fill
-            className="object-cover object-bottom brightness-[1.02] contrast-[1.05]"
+            className="object-cover object-top lg:object-left-top brightness-[1.02] contrast-[1.05]"
             priority={true}
           />
           {/* Smooth Fade Out from Left to Right + Top/Bottom edges */}
@@ -251,59 +253,130 @@ export default function DisciplinedPathwaySection() {
         </div>
 
         {/* ══════════ MOBILE VERTICAL TIMELINE ══════════ */}
-        <div className="md:hidden relative pl-10">
-          <div className="absolute left-[18px] top-0 bottom-0 w-[3.5px] bg-[#C49838] rounded-full" />
+        <div className="md:hidden">
+          <div className="relative pl-10">
+            <div className="absolute left-[18px] top-0 bottom-0 w-[3.5px] bg-[#C49838] rounded-full" />
 
-          {steps.map((step, idx) => {
-            const Icon = step.icon;
-            const isFinal = step.number === "09";
+            {/* First 5 Steps (Always Visible) */}
+            {steps.slice(0, 5).map((step, idx) => {
+              const Icon = step.icon;
 
-            return (
-              <motion.div
-                key={step.number}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ delay: idx * 0.08 }}
-                className="relative mb-5 last:mb-0"
-              >
-                <div
-                  style={{ borderColor: step.color }}
-                  className="absolute -left-[28px] top-5 w-[22px] h-[22px] rounded-full bg-white border-[3px] shadow-md flex items-center justify-center z-10"
+              return (
+                <motion.div
+                  key={step.number}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ delay: idx * 0.08 }}
+                  className="relative mb-5"
                 >
-                  <span style={{ backgroundColor: step.color }} className="w-2 h-2 rounded-full" />
-                </div>
+                  <div
+                    style={{ borderColor: step.color }}
+                    className="absolute -left-[28px] top-5 w-[22px] h-[22px] rounded-full bg-white border-[3px] shadow-md flex items-center justify-center z-10"
+                  >
+                    <span style={{ backgroundColor: step.color }} className="w-2 h-2 rounded-full" />
+                  </div>
 
-                <div
-                  className={`bg-white rounded-2xl p-4 border shadow-sm ${
-                    isFinal
-                      ? "border-[#10B981] ring-2 ring-emerald-400/15"
-                      : "border-slate-200 hover:border-slate-300 hover:shadow-md"
-                  } transition-all duration-200`}
-                >
-                  <div className="flex items-center justify-between mb-2">
-                    <div className="flex items-center gap-2">
+                  <div className="bg-white rounded-2xl p-4 border border-slate-200 hover:border-slate-300 hover:shadow-md shadow-sm transition-all duration-200">
+                    <div className="flex items-center justify-between mb-2">
                       <span
                         style={{ backgroundColor: step.color }}
                         className="text-[10px] font-mono font-bold text-white px-2 py-0.5 rounded-full"
                       >
                         {step.number}
                       </span>
-                      {isFinal && <Flag className="w-3 h-3 text-[#10B981]" />}
+                      <Icon className="w-4 h-4 text-slate-400" />
                     </div>
-                    <Icon className="w-4 h-4 text-slate-400" />
-                  </div>
 
-                  <h4 className="font-heading text-sm font-bold text-[#061739] mb-0.5">
-                    {step.title}
-                  </h4>
-                  <p className="text-xs text-slate-500 leading-relaxed">
-                    {step.scope}
-                  </p>
-                </div>
-              </motion.div>
-            );
-          })}
+                    <h4 className="font-heading text-sm font-bold text-[#061739] mb-0.5">
+                      {step.title}
+                    </h4>
+                    <p className="text-xs text-slate-500 leading-relaxed">
+                      {step.scope}
+                    </p>
+                  </div>
+                </motion.div>
+              );
+            })}
+
+            {/* Remaining Steps 06-09 (Smooth Accordion Height & Fade Transition) */}
+            <AnimatePresence initial={false}>
+              {showAllSteps && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                  className="overflow-hidden"
+                >
+                  {steps.slice(5).map((step, idx) => {
+                    const Icon = step.icon;
+                    const isFinal = step.number === "09";
+
+                    return (
+                      <motion.div
+                        key={step.number}
+                        initial={{ opacity: 0, y: 12 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: idx * 0.06, duration: 0.35 }}
+                        className="relative mb-5 last:mb-0"
+                      >
+                        <div
+                          style={{ borderColor: step.color }}
+                          className="absolute -left-[28px] top-5 w-[22px] h-[22px] rounded-full bg-white border-[3px] shadow-md flex items-center justify-center z-10"
+                        >
+                          <span style={{ backgroundColor: step.color }} className="w-2 h-2 rounded-full" />
+                        </div>
+
+                        <div
+                          className={`bg-white rounded-2xl p-4 border shadow-sm ${
+                            isFinal
+                              ? "border-[#10B981] ring-2 ring-emerald-400/15"
+                              : "border-slate-200 hover:border-slate-300 hover:shadow-md"
+                          } transition-all duration-200`}
+                        >
+                          <div className="flex items-center justify-between mb-2">
+                            <div className="flex items-center gap-2">
+                              <span
+                                style={{ backgroundColor: step.color }}
+                                className="text-[10px] font-mono font-bold text-white px-2 py-0.5 rounded-full"
+                              >
+                                {step.number}
+                              </span>
+                              {isFinal && <Flag className="w-3 h-3 text-[#10B981]" />}
+                            </div>
+                            <Icon className="w-4 h-4 text-slate-400" />
+                          </div>
+
+                          <h4 className="font-heading text-sm font-bold text-[#061739] mb-0.5">
+                            {step.title}
+                          </h4>
+                          <p className="text-xs text-slate-500 leading-relaxed">
+                            {step.scope}
+                          </p>
+                        </div>
+                      </motion.div>
+                    );
+                  })}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+          {/* Read More / Read Less Toggle Button for Mobile */}
+          <div className="mt-6 flex justify-center">
+            <button
+              onClick={() => setShowAllSteps(!showAllSteps)}
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-bold tracking-wider text-[#061739] bg-white border border-slate-200 shadow-sm hover:text-[#C49838] hover:border-[#DFB758] transition-all active:scale-95"
+            >
+              <span>{showAllSteps ? "SEE LESS" : "SEE MORE (4 MORE STEPS)"}</span>
+              <ChevronDown
+                className={`w-4 h-4 transition-transform duration-300 ${
+                  showAllSteps ? "rotate-180" : "rotate-0"
+                }`}
+              />
+            </button>
+          </div>
         </div>
 
         {/* ── Bottom CTA ── */}

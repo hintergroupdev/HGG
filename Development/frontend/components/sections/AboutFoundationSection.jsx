@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -17,6 +18,7 @@ import {
   Puzzle,
   Settings,
   TrendingUp,
+  ChevronDown,
 } from "lucide-react";
 
 /* ── 6 Core Values verbatim from HGG_Public_Website_Copy.docx ── */
@@ -103,11 +105,13 @@ function SpiralLoopArrow({ className = "" }) {
 }
 
 export default function AboutFoundationSection() {
+  const [showFoundation, setShowFoundation] = useState(false);
+
   return (
     <section className="py-20 lg:py-24 bg-white relative overflow-hidden border-b border-slate-200/80">
       
-      {/* ── 1. RIGHT BACKGROUND: GHANA INDEPENDENCE ARCH (More Visible & Crisp) ── */}
-      <div className="absolute right-0 top-0 bottom-0 w-full lg:w-3/5 pointer-events-none overflow-hidden select-none z-0">
+      {/* ── 1. RIGHT BACKGROUND: GHANA INDEPENDENCE ARCH (Fixed height to prevent stretch on expand) ── */}
+      <div className="absolute right-0 top-0 w-full lg:w-3/5 h-[1600px] pointer-events-none overflow-hidden select-none z-0">
         <Image
           src="/assets/images/arch.jpg"
           alt="Ghana Independence Arch Watermark"
@@ -116,28 +120,24 @@ export default function AboutFoundationSection() {
           loading="eager"
           unoptimized
           sizes="60vw"
-          className="object-cover object-right opacity-[0.22] filter contrast-110"
+          className="object-cover object-top lg:object-right-top opacity-[0.12] lg:opacity-[0.22] filter contrast-110"
         />
         {/* Subtle gradient masks for smooth transition without washing out the image */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/50 to-white/10" />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-transparent to-white/90" />
+        <div className="absolute inset-0 bg-gradient-to-b lg:bg-gradient-to-r from-white via-white/70 lg:via-white/50 to-white/10 lg:to-white/10" />
+        <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-b from-white/90 via-transparent to-white/90" />
       </div>
 
-      {/* ── 2. BACKGROUND SPIRAL LOOP ARROW (Positioned at Right Bottom) ── */}
+      {/* ── 2. BACKGROUND SPIRAL LOOP ARROW (Positioned at Right Bottom with smooth transition) ── */}
       <div className="absolute inset-0 z-[1] pointer-events-none overflow-hidden select-none">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.85, y: 20 }}
-          whileInView={{ opacity: 1, scale: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="absolute -bottom-10 -right-6 sm:bottom-0 sm:right-6 lg:bottom-2 lg:right-10 w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 opacity-70 lg:opacity-85 filter drop-shadow-[0_6px_20px_rgba(223,183,88,0.3)]"
+        <div
+          className="absolute -bottom-10 -right-6 sm:bottom-0 sm:right-6 lg:bottom-2 lg:right-10 w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 opacity-70 lg:opacity-85 filter drop-shadow-[0_6px_20px_rgba(223,183,88,0.3)] transition-all duration-700 ease-in-out"
         >
           <SpiralLoopArrow className="w-full h-full" />
-        </motion.div>
+        </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
 
           {/* ── LEFT COLUMN: WHO WE ARE (With Right Dividing Border on Desktop) ── */}
           <motion.div
@@ -214,8 +214,8 @@ export default function AboutFoundationSection() {
               contribute to long-term growth and positive impact.
             </motion.p>
 
-            {/* CTA Button (Matching Explore HGG Gold Gradient Button) */}
-            <motion.div variants={fadeUp} custom={0.22} className="pt-2">
+            {/* CTA Button (Matching Explore HGG Gold Gradient Button) - DESKTOP ONLY */}
+            <motion.div variants={fadeUp} custom={0.22} className="pt-2 hidden lg:block">
               <Link
                 href="/about-us"
                 className="inline-flex items-center gap-2.5 px-7 py-3.5 text-xs font-bold tracking-wider text-[#061739] bg-gradient-to-r from-[#C49838] via-[#DFB758] to-[#C49838] bg-[length:200%_auto] hover:bg-right rounded-md shadow-[0_2px_16px_rgba(196,152,56,0.28)] hover:shadow-[0_4px_24px_rgba(223,183,88,0.45)] transition-all duration-300 hover:-translate-y-0.5 group"
@@ -229,7 +229,7 @@ export default function AboutFoundationSection() {
             <motion.div
               variants={fadeUp}
               custom={0.26}
-              className="pt-5 flex items-center gap-3 border-t border-slate-200/80"
+              className="pt-5 mt-2 lg:mt-0 flex items-center gap-3 border-t border-slate-200/80"
             >
               <div className="relative w-6 h-6 flex-shrink-0 opacity-40">
                 <Image
@@ -245,82 +245,10 @@ export default function AboutFoundationSection() {
             </motion.div>
           </motion.div>
 
-          {/* ── RIGHT COLUMN: OUR FOUNDATION + OUR STRATEGIC APPROACH ── */}
-          <div className="lg:col-span-7 space-y-12">
+          {/* ── RIGHT COLUMN: OUR STRATEGIC APPROACH + OUR FOUNDATION ── */}
+          <div className="lg:col-span-7 space-y-10 lg:space-y-12">
 
-            {/* 1. OUR FOUNDATION (Verbatim from docx: Mission, Vision, Values) */}
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-60px" }}
-              variants={stagger}
-              className="space-y-6"
-            >
-              {/* Header with Gold Rule */}
-              <motion.div variants={fadeUp} className="flex items-center gap-4">
-                <h3 className="text-xs font-mono font-bold tracking-[0.22em] text-[#C49838] uppercase whitespace-nowrap">
-                  OUR FOUNDATION
-                </h3>
-                <span className="h-[1px] w-full bg-[#DFB758]/50" />
-              </motion.div>
-
-              {/* 3 Columns Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-7">
-                
-                {/* Mission (Verbatim docx) */}
-                <motion.div variants={fadeUp} className="space-y-2.5">
-                  <div className="w-9 h-9 rounded-full bg-[#061739]/5 flex items-center justify-center text-[#061739] mb-3">
-                    <Target className="w-5 h-5 text-[#061739]" />
-                  </div>
-                  <h4 className="font-heading text-sm sm:text-base font-bold text-[#061739]">
-                    Our Mission
-                  </h4>
-                  <p className="text-xs text-slate-600 leading-relaxed font-normal">
-                    To connect strategic opportunities with the right people,
-                    organizations, technologies, and investments while delivering
-                    innovative consulting, venture development, and brokerage
-                    solutions that create lasting economic and social value.
-                  </p>
-                </motion.div>
-
-                {/* Vision (Verbatim docx) */}
-                <motion.div variants={fadeUp} className="space-y-2.5">
-                  <div className="w-9 h-9 rounded-full bg-[#C49838]/10 flex items-center justify-center text-[#C49838] mb-3">
-                    <Eye className="w-5 h-5 text-[#C49838]" />
-                  </div>
-                  <h4 className="font-heading text-sm sm:text-base font-bold text-[#061739]">
-                    Our Vision
-                  </h4>
-                  <p className="text-xs text-slate-600 leading-relaxed font-normal">
-                    To become one of Africa&apos;s most trusted consulting,
-                    ventures, and brokerage companies, recognized internationally
-                    for facilitating transformative partnerships, responsible
-                    investments, and sustainable development initiatives.
-                  </p>
-                </motion.div>
-
-                {/* Core Values (Verbatim 6 Values from docx) */}
-                <motion.div variants={fadeUp} className="space-y-2.5">
-                  <div className="w-9 h-9 rounded-full bg-[#14588B]/10 flex items-center justify-center text-[#14588B] mb-3">
-                    <ShieldCheck className="w-5 h-5 text-[#14588B]" />
-                  </div>
-                  <h4 className="font-heading text-sm sm:text-base font-bold text-[#061739]">
-                    Our Core Values
-                  </h4>
-                  <ul className="text-xs text-slate-600 space-y-1.5 font-normal">
-                    {values.map((v, i) => (
-                      <li key={i} className="flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#C49838] flex-shrink-0" />
-                        <span className="font-medium text-slate-700">{v}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
-
-              </div>
-            </motion.div>
-
-            {/* 2. OUR STRATEGIC APPROACH (4 Connected Steps) */}
+            {/* 1. OUR STRATEGIC APPROACH (4 Connected Steps) */}
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -385,9 +313,127 @@ export default function AboutFoundationSection() {
               </div>
             </motion.div>
 
+            {/* 2. OUR FOUNDATION (Verbatim from docx: Mission, Vision, Values) */}
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-60px" }}
+              variants={stagger}
+              className="space-y-6"
+            >
+              {/* Header with Gold Rule */}
+              <motion.div variants={fadeUp} className="flex items-center gap-4">
+                <h3 className="text-xs font-mono font-bold tracking-[0.22em] text-[#C49838] uppercase whitespace-nowrap">
+                  OUR FOUNDATION
+                </h3>
+                <span className="h-[1px] w-full bg-[#DFB758]/50" />
+              </motion.div>
+
+              {/* 3 Columns Grid - FADE OUT "READ MORE" STYLE */}
+              <div
+                className={`relative overflow-hidden transition-all duration-700 ease-in-out ${
+                  showFoundation ? "max-h-[1500px]" : "max-h-[180px]"
+                }`}
+              >
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-7 pt-2 pb-2">
+                  
+                  {/* Mission (Verbatim docx) */}
+                  <motion.div variants={fadeUp} className="space-y-2.5">
+                    <div className="w-9 h-9 rounded-full bg-[#061739]/5 flex items-center justify-center text-[#061739] mb-3">
+                      <Target className="w-5 h-5 text-[#061739]" />
+                    </div>
+                    <h4 className="font-heading text-sm sm:text-base font-bold text-[#061739]">
+                      Our Mission
+                    </h4>
+                    <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                      To connect strategic opportunities with the right people,
+                      organizations, technologies, and investments while delivering
+                      innovative consulting, venture development, and brokerage
+                      solutions that create lasting economic and social value.
+                    </p>
+                  </motion.div>
+
+                  {/* Vision (Verbatim docx) */}
+                  <motion.div variants={fadeUp} className="space-y-2.5">
+                    <div className="w-9 h-9 rounded-full bg-[#C49838]/10 flex items-center justify-center text-[#C49838] mb-3">
+                      <Eye className="w-5 h-5 text-[#C49838]" />
+                    </div>
+                    <h4 className="font-heading text-sm sm:text-base font-bold text-[#061739]">
+                      Our Vision
+                    </h4>
+                    <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                      To become one of Africa&apos;s most trusted consulting,
+                      ventures, and brokerage companies, recognized internationally
+                      for facilitating transformative partnerships, responsible
+                      investments, and sustainable development initiatives.
+                    </p>
+                  </motion.div>
+
+                  {/* Core Values (Verbatim 6 Values from docx) */}
+                  <motion.div variants={fadeUp} className="space-y-2.5">
+                    <div className="w-9 h-9 rounded-full bg-[#14588B]/10 flex items-center justify-center text-[#14588B] mb-3">
+                      <ShieldCheck className="w-5 h-5 text-[#14588B]" />
+                    </div>
+                    <h4 className="font-heading text-sm sm:text-base font-bold text-[#061739]">
+                      Our Core Values
+                    </h4>
+                    <ul className="grid grid-cols-2 sm:grid-cols-1 gap-x-2 gap-y-1.5 text-xs text-slate-600 font-normal">
+                      {values.map((v, i) => (
+                        <li key={i} className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#C49838] flex-shrink-0" />
+                          <span className="font-medium text-slate-700">{v}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </motion.div>
+
+                </div>
+
+                {/* Gradient Fade Overlay when hidden */}
+                <div
+                  className={`absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent pointer-events-none transition-opacity duration-500 ${
+                    showFoundation ? "opacity-0" : "opacity-100"
+                  }`}
+                />
+              </div>
+
+              {/* Read More / Read Less Toggle Button */}
+              <div className="mt-4 flex justify-center sm:justify-start">
+                <button
+                  onClick={() => setShowFoundation(!showFoundation)}
+                  className="inline-flex items-center gap-1.5 text-xs font-bold tracking-wider text-[#061739] hover:text-[#C49838] transition-colors"
+                >
+                  {showFoundation ? "SEE LESS" : "SEE MORE"}
+                  <ChevronDown
+                    className={`w-4 h-4 transition-transform duration-300 ${
+                      showFoundation ? "rotate-180" : "rotate-0"
+                    }`}
+                  />
+                </button>
+              </div>
+            </motion.div>
+
           </div>
 
         </div>
+
+        {/* ── MOBILE CTA BUTTON (AT THE BOTTOM) ── */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={fadeUp}
+          className="lg:hidden flex justify-center w-full mt-10 pt-8 border-t border-slate-200/60"
+        >
+          <Link
+            href="/about-us"
+            className="w-full sm:w-auto text-center inline-flex justify-center items-center gap-2.5 px-7 py-4 text-[13px] font-bold tracking-wider text-[#061739] bg-gradient-to-r from-[#C49838] via-[#DFB758] to-[#C49838] bg-[length:200%_auto] hover:bg-right rounded-md shadow-[0_2px_16px_rgba(196,152,56,0.28)] transition-all duration-300 group"
+          >
+            <span>DISCOVER OUR STORY</span>
+            <ArrowRight className="w-4 h-4 text-[#061739] transition-transform group-hover:translate-x-1 duration-300" />
+          </Link>
+        </motion.div>
+
       </div>
     </section>
   );

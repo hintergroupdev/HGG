@@ -386,10 +386,11 @@ export default function IndustrySectorsSection() {
           </div>
         </div>
 
-        {/* ── MOBILE & TABLET RESPONSIVE VIEW ── */}
+        {/* ── MOBILE & TABLET RESPONSIVE VIEW (3x3 Grid Ecosystem) ── */}
         <div className="lg:hidden space-y-6">
-          <div className="flex items-center gap-3 overflow-x-auto pb-4 pt-2 no-scrollbar px-2">
-            {sectors.map((sector, idx) => {
+          {/* 3x3 Grid */}
+          <div className="grid grid-cols-3 gap-2 sm:gap-3.5">
+            {sectors.map((sector) => {
               const Icon = sector.icon;
 
               return (
@@ -397,26 +398,31 @@ export default function IndustrySectorsSection() {
                   key={sector.id}
                   href={`/industries#${sector.id}`}
                   style={{
-                    borderColor: `${sector.color}40`,
+                    borderColor: `${sector.color}35`,
                   }}
-                  className="flex-shrink-0 flex flex-col items-center gap-1.5 p-3 rounded-2xl transition-all cursor-pointer bg-white border shadow-sm hover:scale-105"
+                  className="flex flex-col items-center justify-center text-center p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl transition-all cursor-pointer bg-white border shadow-sm hover:shadow-md hover:-translate-y-0.5 active:scale-95 group relative overflow-hidden min-h-[110px] sm:min-h-[125px]"
                 >
+                  {/* Icon */}
                   <div
                     style={{
                       backgroundColor: `${sector.color}15`,
                       color: sector.color,
                     }}
-                    className="w-10 h-10 rounded-xl flex items-center justify-center"
+                    className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center mb-1.5 transition-transform group-hover:scale-110"
                   >
-                    <Icon className="w-5 h-5" />
+                    <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
                   </div>
+
+                  {/* Sector Number */}
                   <span
                     style={{ backgroundColor: sector.color, color: "#fff" }}
-                    className="text-[9px] font-mono font-bold px-1.5 rounded-full"
+                    className="text-[8px] sm:text-[9px] font-mono font-bold px-1.5 py-0.2 rounded-full mb-1"
                   >
                     {sector.number}
                   </span>
-                  <span className="text-[11px] font-bold text-center leading-tight max-w-[100px] text-slate-800">
+
+                  {/* Sector Name */}
+                  <span className="text-[9.5px] sm:text-xs font-bold text-center leading-tight line-clamp-2 text-slate-800 group-hover:text-[#061739]">
                     {sector.fullName}
                   </span>
                 </Link>
@@ -440,7 +446,7 @@ export default function IndustrySectorsSection() {
 
             <Link
               href="/industries"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold text-[#061739] bg-gradient-to-r from-[#C49838] via-[#DFB758] to-[#C49838] shadow-sm"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold text-[#061739] bg-gradient-to-r from-[#C49838] via-[#DFB758] to-[#C49838] shadow-sm hover:shadow-md transition-all active:scale-95"
             >
               <span>See Details</span>
               <ArrowRight className="w-3.5 h-3.5" />
