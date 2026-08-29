@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   Users2,
@@ -86,6 +87,17 @@ export default function SolutionsSection() {
       
       {/* Background architectural dot pattern */}
       <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:32px_32px] opacity-60 pointer-events-none" />
+
+      {/* Subtle HGG Emblem Branding Watermark */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none opacity-[0.035] select-none z-0">
+        <Image
+          src="/assets/logos/Logo/Logo_Logo.svg"
+          alt="HGG Brand Watermark"
+          fill
+          unoptimized
+          className="object-contain"
+        />
+      </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         

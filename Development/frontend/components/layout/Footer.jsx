@@ -10,6 +10,17 @@ export default function Footer() {
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#14588B]/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#57A3C0]/5 rounded-full blur-3xl pointer-events-none" />
 
+      {/* Subtle HGG Emblem Branding Watermark */}
+      <div className="absolute -bottom-16 -right-16 w-80 h-80 pointer-events-none opacity-[0.03] select-none z-0">
+        <Image
+          src="/assets/logos/Logo/Logo_Logo_White.svg"
+          alt="HGG Brand Watermark"
+          fill
+          unoptimized
+          className="object-contain"
+        />
+      </div>
+
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10 lg:gap-8">

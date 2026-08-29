@@ -113,14 +113,14 @@ export default function AboutFoundationSection() {
       {/* ── 1. RIGHT BACKGROUND: GHANA INDEPENDENCE ARCH (Fixed height to prevent stretch on expand) ── */}
       <div className="absolute right-0 top-0 w-full lg:w-3/5 h-[1600px] pointer-events-none overflow-hidden select-none z-0">
         <Image
-          src="/assets/images/arch.jpg"
+          src="/images/img_new_2.PNG"
           alt="Ghana Independence Arch Watermark"
           fill
           priority
           loading="eager"
           unoptimized
           sizes="60vw"
-          className="object-cover object-top lg:object-right-top opacity-[0.12] lg:opacity-[0.22] filter contrast-110"
+          className="object-cover object-top lg:object-right-top opacity-[0.14] lg:opacity-[0.20] filter contrast-[1.08] saturate-110"
         />
         {/* Subtle gradient masks for smooth transition without washing out the image */}
         <div className="absolute inset-0 bg-gradient-to-b lg:bg-gradient-to-r from-white via-white/70 lg:via-white/50 to-white/10 lg:to-white/10" />

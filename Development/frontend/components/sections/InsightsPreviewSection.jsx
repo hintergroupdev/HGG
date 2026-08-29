@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, Calendar, Clock, ArrowUpRight } from "lucide-react";
 
@@ -67,8 +68,23 @@ const headerVariants = {
 
 export default function InsightsPreviewSection() {
   return (
-    <section className="py-24 bg-white border-b border-slate-200/80 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 bg-white border-b border-slate-200/80 relative overflow-hidden">
+      
+      {/* Subtle Black Star Square Landmark Watermark (Low opacity & smooth gradient masks) */}
+      <div className="absolute right-0 top-0 bottom-0 w-full lg:w-1/2 pointer-events-none overflow-hidden select-none z-0">
+        <Image
+          src="/images/img_new_1.PNG"
+          alt="Black Star Square Landmark Watermark"
+          fill
+          unoptimized
+          sizes="50vw"
+          className="object-cover object-center lg:object-right-top opacity-[0.09] lg:opacity-[0.14] filter contrast-[1.05] saturate-110"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/85 to-white/20 lg:to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-transparent to-white/90" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <motion.div
           variants={headerVariants}
