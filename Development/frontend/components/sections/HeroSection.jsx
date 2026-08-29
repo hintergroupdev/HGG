@@ -60,17 +60,6 @@ export default function HeroSection() {
         {/* Deep Ambient Lighting Glows */}
         <div className="absolute -top-20 -left-20 w-[450px] h-[450px] bg-[#14588B]/20 rounded-full blur-[130px]" />
         <div className="absolute bottom-0 left-1/3 w-[400px] h-[400px] bg-[#DFB758]/10 rounded-full blur-[130px]" />
-
-        {/* Subtle HGG Emblem Branding Watermark */}
-        <div className="hidden sm:block absolute top-1/2 right-10 lg:right-24 -translate-y-1/2 w-[350px] h-[350px] lg:w-[450px] lg:h-[450px] pointer-events-none opacity-[0.035] select-none z-0">
-          <Image
-            src="/assets/logos/Logo/Logo_Logo_White.svg"
-            alt="HGG Brand Emblem Watermark"
-            fill
-            unoptimized
-            className="object-contain"
-          />
-        </div>
       </div>
 
       {/* ── 2. HERO CONTENT CONTAINER ── */}
