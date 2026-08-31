@@ -1,0 +1,604 @@
+\documentclass[11pt,a4paper]{article}
+
+% ── Essential Packages ──
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=2.2cm,top=2.4cm,bottom=2.4cm,headheight=22pt]{geometry}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{inconsolata} % Clean monospace font
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[most]{tcolorbox}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning,calc}
+
+% ── HGG Official Corporate Color Palette ──
+\definecolor{HGGNavy}{RGB}{6, 23, 57}        % #061739 - Deep Corporate Navy
+\definecolor{HGGBlue}{RGB}{10, 36, 87}       % #0A2457 - Primary Navy
+\definecolor{HGGAccentBlue}{RGB}{20, 88, 139}% #14588B - Strategic Blue
+\definecolor{HGGCyan}{RGB}{87, 163, 192}     % #57A3C0 - Ice Blue
+\definecolor{HGGGold}{RGB}{196, 152, 56}     % #C49838 - Deep Antique Gold
+\definecolor{HGGGoldLight}{RGB}{223, 183, 88}% #DFB758 - Bright Gold Highlight
+\definecolor{HGGCanvas}{RGB}{248, 250, 252}  % #F8FAFC - Executive Off-White Canvas
+\definecolor{HGGDarkText}{RGB}{15, 23, 42}   % #0F172A - Body Text
+\definecolor{HGGMutedText}{RGB}{100, 116, 139}% #64748B - Muted Text
+\definecolor{HGGBorder}{RGB}{226, 232, 240}  % #E2E8F0 - Clean Border
+\definecolor{HGGGreen}{RGB}{16, 185, 129}    % #10B981 - Success Green
+\definecolor{HGGRuleGold}{RGB}{196, 152, 56}
+\definecolor{HGGSlateLight}{RGB}{241, 245, 249}
+\definecolor{HGGSlate}{RGB}{203, 213, 225}
+
+% ── Clickable Hyperlinks & PDF Metadata ──
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=HGGAccentBlue,
+    filecolor=HGGGold,
+    urlcolor=HGGAccentBlue,
+    citecolor=HGGGold,
+    pdftitle={THE HINTER GROUP GHANA LTD — Administrative & CMS User Guide},
+    pdfauthor={HGG Development Team},
+    pdfsubject={Website Administration, CMS Studio Guide & SMTP Email Configuration},
+    pdfkeywords={HGG, Sanity CMS, Next.js, Website Handover, Admin Guide, Ghana},
+    pdfpagemode=UseOutlines,
+    bookmarksopen=true
+}
+
+% ── Section Heading Styling ──
+\titleformat{\section}
+  {\color{HGGNavy}\normalfont\Large\bfseries}
+  {\color{HGGGold}\thesection}{1em}{}[\color{HGGRuleGold}\titlerule]
+
+\titleformat{\subsection}
+  {\color{HGGNavy}\normalfont\large\bfseries}
+  {\color{HGGAccentBlue}\thesubsection}{0.8em}{}
+
+\titleformat{\subsubsection}
+  {\color{HGGAccentBlue}\normalfont\normalsize\bfseries}
+  {\thesubsubsection}{0.6em}{}
+
+% ── Header & Footer Styling ──
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.6pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{HGGRuleGold}\leaders\hrule height \headrulewidth\hfill}}
+\fancyhead[L]{\small\textbf{\color{HGGNavy}THE HINTER GROUP GHANA LTD} \textcolor{HGGMutedText}{|} \footnotesize\color{HGGMutedText}Admin \& CMS Guide}
+\fancyhead[R]{\small\color{HGGGold}\textbf{CONFIDENTIAL}}
+\fancyfoot[L]{\footnotesize\color{HGGMutedText}Consulting + Ventures \textbar\ Brokerage}
+\fancyfoot[C]{\footnotesize\color{HGGMutedText}\today}
+\fancyfoot[R]{\small\textbf{\color{HGGNavy}\thepage}}
+
+% ── Interactive Callout Boxes ──
+\newtcolorbox{ActionBox}[1]{
+    colback=HGGGold!8,
+    colframe=HGGGold,
+    coltitle=HGGNavy,
+    fonttitle=\bfseries\normalsize,
+    title={\textbf{ACTION REQUIRED:} #1},
+    sharp corners,
+    rounded corners=southeast,
+    arc=4mm,
+    boxrule=1.2pt,
+    left=4mm,right=4mm,top=3mm,bottom=3mm,
+    before skip=10pt,after skip=10pt,
+    breakable
+}
+
+\newtcolorbox{NoticeBox}[1]{
+    colback=HGGNavy!5,
+    colframe=HGGNavy,
+    coltitle=white,
+    fonttitle=\bfseries\normalsize,
+    title={#1},
+    sharp corners,
+    rounded corners=southeast,
+    arc=4mm,
+    boxrule=1.2pt,
+    left=4mm,right=4mm,top=3mm,bottom=3mm,
+    before skip=10pt,after skip=10pt,
+    breakable
+}
+
+\newtcolorbox{TipBox}[1]{
+    colback=HGGCyan!8,
+    colframe=HGGAccentBlue,
+    coltitle=HGGNavy,
+    fonttitle=\bfseries\normalsize,
+    title={\textbf{PRO-TIP / BEST PRACTICE:} #1},
+    sharp corners,
+    rounded corners=southeast,
+    arc=3mm,
+    boxrule=1pt,
+    left=4mm,right=4mm,top=3mm,bottom=3mm,
+    before skip=8pt,after skip=8pt,
+    breakable
+}
+
+\newtcolorbox{StepBox}[1]{
+    colback=white,
+    colframe=HGGBorder,
+    coltitle=HGGNavy,
+    fonttitle=\bfseries\normalsize,
+    title={\textcolor{HGGGold}{\large\textbullet}\ \textbf{#1}},
+    boxrule=0.8pt,
+    sharp corners,
+    rounded corners,
+    arc=2mm,
+    left=4mm,right=4mm,top=3mm,bottom=3mm,
+    before skip=6pt,after skip=6pt,
+    breakable
+}
+
+% ── List Spacing ──
+\setlist[itemize]{leftmargin=*,itemsep=3pt,topsep=3pt}
+\setlist[enumerate]{leftmargin=*,itemsep=3pt,topsep=3pt}
+
+\begin{document}
+\pagenumbering{alph}
+
+% ══════════════════════════════════════════════════════════════════
+% COVER PAGE
+% ══════════════════════════════════════════════════════════════════
+\begin{titlepage}
+\pagecolor{HGGNavy}
+\color{white}
+\vspace*{0.8cm}
+
+\begin{center}
+    % Decorative Gold Rule
+    \begin{tikzpicture}
+        \draw[HGGGoldLight, line width=2pt] (0,0) -- (12,0);
+        \fill[HGGGoldLight] (6,0) circle (3pt);
+    \end{tikzpicture}
+    \vspace{0.6cm}
+
+    % Official HGG Corporate Logo
+    \begin{tcolorbox}[
+        colback=white,
+        colframe=HGGGoldLight,
+        boxrule=1.5pt,
+        arc=4mm,
+        width=3.2cm,
+        height=3.2cm,
+        valign=center,
+        halign=center,
+        top=2mm,bottom=2mm,left=2mm,right=2mm
+    ]
+        \centering
+        \includegraphics[width=2.7cm,height=2.7cm,keepaspectratio]{hgg_logo.png}
+    \end{tcolorbox}
+    \vspace{0.4cm}
+
+    {\huge \textbf{THE HINTER GROUP GHANA LTD}}\\[0.25cm]
+    {\normalsize \textbf{\color{HGGCyan}CONSULTING + VENTURES \textbar\ BROKERAGE}}\\[0.15cm]
+    {\footnotesize \color{HGGGoldLight}\textit{Committed to Excellence \textbullet\ Accra, Ghana \textbullet\ West Africa}}\\[1.0cm]
+
+    % Document Title Card
+    \begin{tcolorbox}[
+        colback=HGGBlue!95,
+        colframe=HGGGold,
+        boxrule=1.5pt,
+        arc=4mm,
+        width=0.96\textwidth,
+        halign=center,
+        top=6mm,bottom=6mm
+    ]
+        {\LARGE \textbf{\color{white}WEBSITE ADMINISTRATION}}\\[0.2cm]
+        {\LARGE \textbf{\color{HGGGoldLight}\& CONTENT STUDIO GUIDE}}\\[0.35cm]
+        {\color{HGGSlate}\rule{0.6\textwidth}{0.5pt}}\\[0.35cm]
+        {\normalsize \color{HGGSlateLight}Comprehensive Operations Manual for Client Testing, Content Management,}\\[0.1cm]
+        {\normalsize \color{HGGSlateLight}Static vs. CMS Data Architecture, Sanity Access, and SMTP Email Setup}
+    \end{tcolorbox}
+
+    \vfill
+
+    % Meta Information Card (Clean Multi-Row Layout)
+    \begin{tcolorbox}[
+        colback=white,
+        colframe=HGGGoldLight,
+        boxrule=1.2pt,
+        arc=3mm,
+        width=0.96\textwidth,
+        left=6mm,right=6mm,top=4mm,bottom=4mm
+    ]
+    \small\color{HGGDarkText}
+    \begin{tabularx}{\textwidth}{@{}lX@{}}
+        \textbf{\color{HGGNavy}Target Audience:} & Charles N. Hammond, Chairman \& Executive Leadership Team \\
+        \addlinespace[2pt]
+        \textbf{\color{HGGNavy}Technology Stack:} & Next.js 16 (App Router / Turbopack) + Sanity.io Headless CMS \\
+        \addlinespace[2pt]
+        \textbf{\color{HGGNavy}Active Website URL:} & \href{https://hintergroup.netlify.app/}{\textbf{\color{HGGAccentBlue}https://hintergroup.netlify.app/}} \\
+        \addlinespace[2pt]
+        \textbf{\color{HGGNavy}Content Studio URL:} & \href{https://hintergroup.netlify.app/studio}{\textbf{\color{HGGAccentBlue}https://hintergroup.netlify.app/studio}} \\
+        \addlinespace[2pt]
+        \textbf{\color{HGGNavy}Document Version:} & Production Release 1.0 \textbar\ Client Handover \& Testing Phase \\
+        \addlinespace[2pt]
+        \textbf{\color{HGGNavy}Publication Date:} & September 2026 \\
+    \end{tabularx}
+    \end{tcolorbox}
+
+    \vspace{0.4cm}
+    \begin{tikzpicture}
+        \draw[HGGGoldLight, line width=2pt] (0,0) -- (12,0);
+        \fill[HGGGoldLight] (6,0) circle (3pt);
+    \end{tikzpicture}
+\end{center}
+\end{titlepage}
+
+\nopagecolor
+\color{HGGDarkText}
+\pagenumbering{arabic}
+
+% ══════════════════════════════════════════════════════════════════
+% TABLE OF CONTENTS
+% ══════════════════════════════════════════════════════════════════
+\newpage
+\tableofcontents
+\vspace{1cm}
+\begin{tcolorbox}[colback=HGGCanvas,colframe=HGGBorder,boxrule=1pt,arc=2mm]
+\small
+\textbf{\color{HGGNavy}Executive Scope:}\\
+This operations manual is prepared specifically for \textbf{THE HINTER GROUP GHANA LTD (HGG)}. It clarifies the architecture of the website (distinguishing permanent static master copy from dynamically editable CMS modules), provides step-by-step instructions for acquiring Sanity CMS Studio access, explains how to configure corporate email routing, and details how the HGG team can independently manage all website content.
+\end{tcolorbox}
+
+\newpage
+
+% ══════════════════════════════════════════════════════════════════
+% SECTION 1: IMPORTANT NOTICE — DATA ARCHITECTURE & CONTENT CLASSIFICATION
+% ══════════════════════════════════════════════════════════════════
+\section{Important Notice: Website Data Architecture (Static vs. CMS Modules)}
+To ensure full transparency during your testing and review, please review how the content across the website is structured:
+
+\begin{NoticeBox}{Content Classification: What is Static vs. What is Managed in CMS}
+The website is engineered with a hybrid architecture that combines \textbf{immutably structured brand frameworks} with \textbf{fully dynamic headless CMS modules}:
+
+\begin{enumerate}
+    \item \textbf{Static Master Data (Extracted 100\% Verbatim from HGG Official Documents):}
+    \begin{itemize}
+        \item \textbf{About Us Core Philosophy}: Company background, Mission, Vision, and the 8 Core Values (\textit{Integrity, Excellence, Professionalism, Collaboration, Innovation, Accountability, Sustainability, Respect}).
+        \item \textbf{Strategic Approach Framework}: The 6-stage structured methodology (\textit{Identify $\rightarrow$ Evaluate $\rightarrow$ Connect $\rightarrow$ Coordinate $\rightarrow$ Advance $\rightarrow$ Create Value}).
+        \item \textbf{Core Service Definitions}: Foundational architecture for \textbf{Consulting}, \textbf{Ventures}, and \textbf{Brokerage}.
+        \item \textbf{9 Focus Industry Sectors}: Official names, descriptions, and categories for the 9 priority sectors.
+        \item \textbf{9-Step Disciplined Project Pathway}: The complete structured execution cycle.
+        \item \textbf{Governance Responsibilities \& Tenets}: The 12 collective executive responsibilities and 10 principles of leadership and governance.
+    \end{itemize}
+
+    \item \textbf{Dynamic CMS-Connected Modules (Loaded with Document Copy + Testing Placeholders):}
+    \begin{itemize}
+        \item \textbf{Projects \& Strategic Partnerships (Sample Test Data):}
+        As specified in the Developer Package, no unapproved live client projects were published. The page is currently populated with \textbf{3 demonstration project case studies} (\texttt{Test Data 1, 2, 3}) illustrating renewable energy, agribusiness, and circular economy facilitation. \textbf{The HGG team can edit, update with real partner details, or delete these at any time in Sanity Studio.}
+        
+        \item \textbf{Insights \& News Articles (18 Institutional Publications):}
+        Loaded with 18 high-level thought leadership and corporate news articles across the 6 approved publication streams. These serve as master launch content and can be edited, expanded, or replaced via the CMS.
+
+        \item \textbf{Legal Pages (Privacy Policy \& Terms of Service):}
+        Structured with standard corporate compliance text aligned with the \textit{Ghana Data Protection Act, 2012 (Act 843)}. These layouts are active in Sanity CMS so that HGG Legal Counsel can paste final approved legal clauses directly into the system.
+
+        \item \textbf{Leadership Profiles}:
+        Pre-populated with verified names and biographies from HGG documentation. The CMS allows real-time executive portrait uploads, title updates, and priority reordering.
+
+        \item \textbf{Global Site Settings}:
+        Live CMS connection controlling corporate email, phone, office address, and social links with automatic site-wide synchronization.
+    \end{itemize}
+\end{enumerate}
+\end{NoticeBox}
+
+\newpage
+
+% ══════════════════════════════════════════════════════════════════
+% SECTION 2: TWO ESSENTIAL PREREQUISITES FOR CLIENT TESTING
+% ══════════════════════════════════════════════════════════════════
+\section{Two Essential Prerequisites for Client Launch \& Testing}
+To enable full administrative functionality and testing, the developer requires \textbf{two quick items} from the HGG leadership team:
+
+\begin{ActionBox}{1. Client Email Address for Sanity CMS Access}
+To grant you Administrator access to the Content Management Studio:
+\begin{enumerate}
+    \item Please reply with the \textbf{email address(es)} of the team members who should have administrative access (e.g., \texttt{charles@hintergroupghana.com} or your corporate Google/Work email).
+    \item Once provided, an official invitation will be sent to your inbox directly from \textbf{Sanity.io}.
+    \item You will click \textbf{"Accept Invitation"} to unlock full editing access at:
+    \begin{center}
+        \textbf{\large\url{https://hintergroup.netlify.app/studio}}
+    \end{center}
+\end{enumerate}
+\end{ActionBox}
+
+\begin{ActionBox}{2. Corporate Email App Password for Contact Form Delivery}
+The website features an enterprise-grade, server-side Inquiry Routing System on the \textbf{Contact Us} page. To ensure all inquiries reach your inbox securely without spam filtering:
+\begin{enumerate}
+    \item We need a 16-character \textbf{App Password} generated from your corporate email provider (e.g., Google Workspace / Gmail / Microsoft 365).
+    \item \textbf{Why an App Password?} It allows the website backend to securely send inquiry emails on your behalf without ever needing your personal email account password.
+    \item Follow the step-by-step guide in \textbf{Section \ref{sec:app-password}} to generate this in under 2 minutes.
+\end{enumerate}
+\end{ActionBox}
+
+\vspace{0.5cm}
+
+% ══════════════════════════════════════════════════════════════════
+% SECTION 3: STEP-BY-STEP EMAIL APP PASSWORD GENERATION
+% ══════════════════════════════════════════════════════════════════
+\section{How to Generate Your Corporate Email App Password}\label{sec:app-password}
+
+The Contact Us form is integrated with an automated SMTP mailer. Please follow the instructions below depending on your corporate email provider:
+
+\subsection{For Google Workspace / Gmail (Recommended)}
+\begin{enumerate}[label=\textbf{Step \arabic*:}]
+    \item Log into your corporate Google Account and navigate to \href{https://myaccount.google.com/security}{\textbf{Google Account Security Settings}} (\url{https://myaccount.google.com/security}).
+    \item Ensure that \textbf{2-Step Verification} is turned \textbf{ON}. (If not, enable it using your phone).
+    \item In the search bar at the top of your Google Account page, type: \texttt{App Passwords} and press Enter.
+    \item In the \textbf{"App name"} field, enter: \texttt{HGG Website Contact Form} and click \textbf{Create}.
+    \item Google will display a \textbf{16-character code} (e.g., \texttt{abcd efgh ijkl mnop}).
+    \item \textbf{Copy this 16-character code} and send it to the developer along with your receiving email address (e.g., \texttt{info@hintergroupghana.com}).
+\end{enumerate}
+
+\begin{TipBox}{Security Guarantee}
+App Passwords grant permission \emph{only} for outbound email dispatch through the Contact form. They do not give access to your Google Drive, calendar, or private account settings, and you can revoke them at any time with a single click.
+\end{TipBox}
+
+\subsection{For Microsoft 365 / Outlook Corporate Email}
+\begin{enumerate}[label=\textbf{Step \arabic*:}]
+    \item Log into your \href{https://mysignins.microsoft.com/security-info}{\textbf{Microsoft Security Info Page}} (\url{https://mysignins.microsoft.com/security-info}).
+    \item Click \textbf{Add sign-in method} $\rightarrow$ Select \textbf{App password}.
+    \item Enter the name: \texttt{HGG Corporate Web Form} and click \textbf{Next}.
+    \item Copy the generated password and provide it to the developer.
+\end{enumerate}
+
+\newpage
+
+% ══════════════════════════════════════════════════════════════════
+% SECTION 4: ACCESSING THE SANITY CONTENT STUDIO
+% ══════════════════════════════════════════════════════════════════
+\section{Accessing the Sanity Content Studio}
+
+The website includes a dedicated, embedded \textbf{Content Management Studio} directly at the \texttt{/studio} route.
+
+\begin{figure}[h!]
+\centering
+\begin{tcolorbox}[colback=HGGNavy!5,colframe=HGGNavy,boxrule=1pt,arc=3mm,width=0.95\textwidth]
+\centering
+\vspace{2mm}
+{\large\textbf{\color{HGGNavy}Active Studio Web Address:}}\\[2mm]
+{\Large\color{HGGAccentBlue}\textbf{\url{https://hintergroup.netlify.app/studio}}}\\[1mm]
+{\footnotesize\color{HGGMutedText}(Production custom domain \url{https://hintergroupghana.com/studio} will activate after DNS switch)}
+\vspace{2mm}
+\end{tcolorbox}
+\end{figure}
+
+\subsection{How to Sign In (First-Time Login)}
+\begin{StepBox}{Accepting the Invitation}
+Check your email for the invitation link from \textbf{Sanity.io}. Click \textbf{"Accept Invitation"}.
+\end{StepBox}
+
+\begin{StepBox}{Choosing Your Login Method}
+When you open \url{https://hintergroup.netlify.app/studio}, click \textbf{"Sign in with Sanity"}. You may authenticate using:
+\begin{itemize}
+    \item \textbf{Google SSO} (Sign in with one click if your email is on Google Workspace).
+    \item \textbf{Email \& Password} (Create your personal secure password).
+    \item \textbf{GitHub} (If using an enterprise developer account).
+\end{itemize}
+\end{StepBox}
+
+\begin{StepBox}{Entering the Studio Workspace}
+Once authenticated, you will be placed inside the \textbf{THE HINTER GROUP GHANA LTD — Content Studio}, organized cleanly into standard publishing desks.
+\end{StepBox}
+
+\vspace{0.5cm}
+
+% ══════════════════════════════════════════════════════════════════
+% SECTION 5: COMPLETE MODULE-BY-MODULE CMS MANAGEMENT GUIDE
+% ══════════════════════════════════════════════════════════════════
+\section{Complete Module-by-Module CMS Management Guide}
+
+The Content Studio is divided into \textbf{8 Dedicated Management Desks} in the left sidebar:
+
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{llX}
+\toprule
+\textbf{\color{HGGNavy}\#} & \textbf{\color{HGGNavy}Desk Section} & \textbf{\color{HGGNavy}Website Target \& Functionality} \\
+\midrule
+\textbf{1} & \textbf{Global Site Settings} & Company Name, Tagline, Phone, Email, Office Address, Socials. \\
+\textbf{2} & \textbf{Leadership \& Governance} & Executive Team profiles, Headshots, Titles, Biographies, Pillars. \\
+\textbf{3} & \textbf{Core Service Pillars} & Consulting, Ventures, Brokerage capabilities and process flows. \\
+\textbf{4} & \textbf{9 Priority Sectors} & Industry corridors, Descriptions, Focus areas, Stakeholder lists. \\
+\textbf{5} & \textbf{Projects \& Initiatives} & Case studies, Milestone status badges, Confidentiality controls. \\
+\textbf{6} & \textbf{Insights \& News Articles} & Publications, Thought leadership articles, Press releases, Tags. \\
+\textbf{7} & \textbf{Publication Streams} & Category classification filters (e.g., Strategic Advisory, Trade). \\
+\textbf{8} & \textbf{Legal Compliance Pages} & Privacy Policy and Terms of Service legal documents. \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\newpage
+
+% ── Module 5.1: Site Settings ──
+\subsection{Module 1: Global Site Settings}
+This is a \textbf{Singleton document} (one master record) controlling all global contact information across the header, footer, contact page, and metadata.
+
+\begin{itemize}
+    \item \textbf{Company Name \& Tagline}: Official registered company name and positioning slogan.
+    \item \textbf{Contact Email \& Phone}: The public email address and phone number displayed across the website.
+    \item \textbf{Office Headquarters Address}: The physical corporate address displayed on the Contact Page and Footer (\textit{e.g., The Octagon, Accra, Ghana}).
+    \item \textbf{Social Channels}: Direct URLs to HGG’s official LinkedIn, X (Twitter), and Facebook pages.
+    \item \textbf{Brand Imagery \& Favicon}: Upload vector brand logos and Open Graph (OG) social sharing preview graphics.
+\end{itemize}
+
+\begin{TipBox}{Automatic Site-Wide Propagation}
+When you update the phone number, email, or address in \textbf{Global Site Settings}, it updates across the entire website (Navbar, Footer, Contact Page, and Legal metadata) simultaneously in real time.
+\end{TipBox}
+
+\vspace{0.4cm}
+
+% ── Module 5.2: Leadership ──
+\subsection{Module 2: Leadership \& Governance}
+Manages the executive profile cards and rich biographical modal windows on the \textbf{/leadership} page.
+
+\begin{NoticeBox}{Leadership Fields \& Specifications}
+\begin{itemize}
+    \item \textbf{Full Name}: Executive’s full name with honorifics (\textit{e.g., Charles N. Hammond, Lt. Commander Daniel Kotei}).
+    \item \textbf{Title / Role}: Corporate designation (\textit{e.g., Chairman \& Founder, Strategic Coordination \& Stakeholder Engagement}).
+    \item \textbf{Executive Portrait}: Upload a clean, high-resolution portrait photograph. (The CMS automatically crops and optimizes portraits).
+    \item \textbf{Short Bio}: A 2-sentence executive summary displayed on the card front.
+    \item \textbf{Full Biography}: Comprehensive institutional background displayed in the interactive biography popup modal.
+    \item \textbf{Core Areas of Responsibility}: Bullet points outlining the executive's governance domain (\textit{e.g., Strategic Direction, Corporate Governance, Institutional Partnerships}).
+    \item \textbf{Display Order}: Numeric priority for sorting (\texttt{1} for Chairman \& Founder, \texttt{2}, \texttt{3}, etc.).
+\end{itemize}
+\end{NoticeBox}
+
+\vspace{0.4cm}
+
+% ── Module 5.3: Projects & Strategic Partnerships ──
+\subsection{Module 3: Projects \& Strategic Partnerships}
+Manages the project showcase cards and detailed case-study modal dialogs on the \textbf{/projects-and-partnerships} page.
+
+\begin{itemize}
+    \item \textbf{Project Title}: Formal title of the initiative or facilitation corridor.
+    \item \textbf{Sector Reference}: Select one of the 9 Priority Sectors from the dropdown.
+    \item \textbf{Milestone Status}: Choose from:
+    \begin{itemize}
+        \item \color{HGGGold}\textbf{Active Facilitation}\color{HGGDarkText} — Live structuring and partner alignment underway.
+        \item \color{HGGAccentBlue}\textbf{In Development}\color{HGGDarkText} — Project preparation, feasibility, or consortium structuring.
+        \item \color{HGGGreen}\textbf{Formalized Partnership}\color{HGGDarkText} — Execution agreements formalized.
+    \end{itemize}
+    \item \textbf{Confidentiality Hold Toggle}: Switch \textbf{ON} to temporarily hide sensitive projects from public view without deleting them.
+    \item \textbf{Executive Summary}: High-level briefing text visible on the showcase card.
+    \item \textbf{Key Deliverables}: Concrete bullet points of structured milestones.
+    \item \textbf{Comprehensive Narrative}: Full institutional background formatted with paragraphs and subheadings in the modal viewer.
+\end{itemize}
+
+\newpage
+
+% ── Module 5.4: Insights & News Hub ──
+\subsection{Module 4: Insights \& News Hub}
+The Insights hub on \textbf{/insights} is a fully dynamic editorial publication system.
+
+\begin{NoticeBox}{Creating a New Article / Insight}
+\begin{enumerate}[label=\textbf{Step \arabic*:}]
+    \item In the Sanity sidebar, click \textbf{"Insights \& News Articles"}.
+    \item Click the \textbf{"+" (Create New)} button at the top.
+    \item \textbf{Title}: Enter the article headline.
+    \item \textbf{Slug}: Click \textbf{"Generate"} to automatically create a clean, SEO-friendly web URL.
+    \item \textbf{Publication Stream (Category)}: Select the appropriate stream (\textit{e.g., Strategic Advisory, Investment \& Ventures, Policy \& Governance}).
+    \item \textbf{Author}: Select or create the author profile.
+    \item \textbf{Cover Image}: Upload a high-resolution featured image for the article.
+    \item \textbf{Publication Date}: Select the date for chronological ordering.
+    \item \textbf{Excerpt}: Enter a 2--3 sentence summary for search results and social previews.
+    \item \textbf{Rich Text Article Body}: Write or paste your article text. You can format with bold text, bulleted lists, quotes, subheadings, and callout blocks.
+    \item \textbf{Featured Toggle}: Toggle \textbf{ON} to highlight the article in the top hero spotlight on the Insights page.
+    \item \textbf{Publish}: Click the green \textbf{"Publish"} button in the bottom right corner.
+\end{enumerate}
+\end{NoticeBox}
+
+\vspace{0.4cm}
+
+% ── Module 5.5: Core Services & 9 Sectors ──
+\subsection{Module 5: Core Services \& 9 Priority Focus Corridors}
+Allows the HGG team to update service descriptions and industry focus corridors on the \textbf{/expertise} and \textbf{/about-us} pages.
+
+\begin{itemize}
+    \item \textbf{Core Service Pillars}: Edit the capabilities, delivery frameworks, and value statements for \textbf{Consulting}, \textbf{Ventures}, and \textbf{Brokerage}.
+    \item \textbf{9 Priority Sectors}: Refine descriptions, stakeholder targets, and technical focus areas for:
+    \begin{enumerate}
+        \item Infrastructure \& Urban Development
+        \item Energy \& Environmental Solutions
+        \item Waste Management \& Resource Recovery
+        \item Real Estate \& Property Development
+        \item Agriculture \& Agribusiness
+        \item Healthcare \& Life Sciences
+        \item Technology \& Digital Transformation
+        \item International Trade \& Investment
+        \item Education \& Human Capital Development
+    \end{enumerate}
+\end{itemize}
+
+\vspace{0.4cm}
+
+% ── Module 5.6: Legal & Compliance Pages ──
+\subsection{Module 6: Legal Compliance Pages (Privacy Policy \& Terms)}
+The \textbf{Privacy Policy} and \textbf{Terms of Service} are managed dynamically through Sanity CMS:
+\begin{itemize}
+    \item Allows HGG Legal Counsel to insert approved legal text, clauses, statutory references (such as the \textit{Data Protection Act, 2012 (Act 843)}), and compliance desk contact emails without touching source code.
+\end{itemize}
+
+\newpage
+
+% ══════════════════════════════════════════════════════════════════
+% SECTION 6: PUBLISHING WORKFLOW & CONTENT GOVERNANCE
+% ══════════════════════════════════════════════════════════════════
+\section{Publishing Workflow \& Content Governance Rules}
+
+To maintain the highest standards of corporate credibility, please adhere to the following workflow when publishing:
+
+\begin{center}
+\begin{tikzpicture}[node distance=1.8cm, auto]
+    % Styles
+    \tikzstyle{block} = [rectangle, draw=HGGNavy, fill=HGGCanvas, text width=3.2cm, text centered, rounded corners, minimum height=1.2cm, line width=1pt]
+    \tikzstyle{highlight} = [rectangle, draw=HGGGold, fill=HGGGold!15, text width=3.2cm, text centered, rounded corners, minimum height=1.2cm, line width=1.5pt]
+    \tikzstyle{line} = [draw=HGGAccentBlue, -latex', line width=1.5pt]
+
+    % Nodes
+    \node [block] (draft) {\textbf{1. Draft Mode}\\Auto-saved privately in Sanity Studio};
+    \node [block, right=1.2cm of draft] (review) {\textbf{2. Internal Review}\\Preview layout and typography};
+    \node [highlight, right=1.2cm of review] (publish) {\textbf{3. Live Publish}\\Instantly live across Next.js};
+
+    % Paths
+    \path [line] (draft) -- (review);
+    \path [line] (review) -- (publish);
+\end{tikzpicture}
+\end{center}
+
+\vspace{0.3cm}
+
+\subsection{Essential Editorial Controls}
+\begin{itemize}
+    \item \textbf{Draft Auto-Saving}: Sanity automatically saves every keystroke as a private draft. Your website visitors will only see changes after you press the green \textbf{"Publish"} button.
+    \item \textbf{Unpublishing / Archiving}: To temporarily take an article or project offline without deleting it, click the document menu $(\dots)$ and choose \textbf{"Unpublish"}.
+    \item \textbf{Image Resolution Standards}:
+    \begin{itemize}
+        \item \textbf{Executive Portraits}: Vertical aspect ratio ($3:4$ or $4:5$), minimum $1200 \times 1500\,\text{px}$, clean background.
+        \item \textbf{Article Cover Photos}: Landscape aspect ratio ($16:9$), minimum $1920 \times 1080\,\text{px}$, authentic contemporary photography.
+    \end{itemize}
+    \item \textbf{Financial Language Boundaries}: As mandated by HGG policy, all public wording must refer to \textit{Commercial Facilitation, Business Advisory, and Consortium Structuring} rather than regulated retail banking or securities brokerage.
+\end{itemize}
+
+\vspace{0.5cm}
+
+% ══════════════════════════════════════════════════════════════════
+% SECTION 7: CLIENT HANDOVER VERIFICATION CHECKLIST
+% ══════════════════════════════════════════════════════════════════
+\section{Client Handover Verification Checklist}
+
+Please review this quick checklist to confirm all systems before final deployment:
+
+\begin{tcolorbox}[colback=white,colframe=HGGBorder,boxrule=1pt,arc=3mm]
+\small
+\begin{itemize}[label=$\square$]
+    \item \textbf{CMS Access Invitation}: Client provided email address; invitation accepted on Sanity.io.
+    \item \textbf{Contact Form Routing}: 16-character Email App Password provided to developer.
+    \item \textbf{Executive Biographies \& Headshots}: Leadership team verified names, titles, and photos in Module 2.
+    \item \textbf{Project Disclosures}: Reviewed test case studies and added approved live initiatives in Module 3.
+    \item \textbf{Insights \& News}: Reviewed initial publication stream categories in Module 4.
+    \item \textbf{Legal Approval}: Final counsel-approved Privacy Policy \& Terms inserted in Module 6.
+    \item \textbf{Production Sign-off}: Final approval issued for live domain switch.
+\end{itemize}
+\end{tcolorbox}
+
+\vspace{0.8cm}
+
+\begin{center}
+    \color{HGGMutedText}\small
+    \rule{0.6\textwidth}{0.6pt}\\[0.2cm]
+    \textbf{THE HINTER GROUP GHANA LTD} \textbullet\ Committed to Excellence\\
+    \textit{Accra, Ghana \textbullet\ West Africa \textbullet\ \url{https://hintergroup.netlify.app/}}
+\end{center}
+
+\end{document}

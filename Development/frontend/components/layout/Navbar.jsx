@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, ArrowUpRight, ArrowRight, Mail, MapPin } from "lucide-react";
@@ -12,11 +12,38 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
+  const navRef = useRef(null);
+  const linkRefs = useRef({});
+  const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0, opacity: 0 });
+
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Compute horizontal-only indicator position inside the navbar container
+  useEffect(() => {
+    const updateIndicator = () => {
+      const activeEl = linkRefs.current[pathname];
+      const navEl = navRef.current;
+      if (activeEl && navEl) {
+        const activeRect = activeEl.getBoundingClientRect();
+        const navRect = navEl.getBoundingClientRect();
+        setIndicatorStyle({
+          left: activeRect.left - navRect.left,
+          width: activeRect.width,
+          opacity: 1,
+        });
+      } else {
+        setIndicatorStyle((prev) => ({ ...prev, opacity: 0 }));
+      }
+    };
+
+    updateIndicator();
+    window.addEventListener("resize", updateIndicator);
+    return () => window.removeEventListener("resize", updateIndicator);
+  }, [pathname]);
 
   // Lock background body scroll when mobile sidebar is open
   useEffect(() => {
@@ -33,8 +60,8 @@ export default function Navbar() {
   const navLinks = [
     { name: "HOME", href: "/" },
     { name: "ABOUT US", href: "/about-us" },
+    { name: "LEADERSHIP", href: "/leadership" },
     { name: "SERVICES", href: "/expertise" },
-    { name: "INDUSTRIES", href: "/industries" },
     { name: "PROJECTS", href: "/projects-and-partnerships" },
     { name: "INSIGHTS", href: "/insights" },
     { name: "CONTACT", href: "/contact" },
@@ -57,29 +84,42 @@ export default function Navbar() {
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
+            <nav ref={navRef} className="hidden lg:flex items-center gap-4 xl:gap-6 2xl:gap-7 relative py-1">
               {navLinks.map((link) => {
                 const isActive = pathname === link.href;
                 return (
                   <Link
                     key={link.name}
+                    ref={(el) => {
+                      if (el) linkRefs.current[link.href] = el;
+                    }}
                     href={link.href}
-                    className={`text-xs font-semibold tracking-wider transition-colors relative py-1 ${
+                    className={`text-xs font-semibold tracking-wider transition-colors relative py-1.5 ${
                       isActive
                         ? "text-[#DFB758]"
                         : "text-slate-200 hover:text-white"
                     }`}
                   >
                     {link.name}
-                    {isActive && (
-                      <motion.span
-                        layoutId="nav-underline"
-                        className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#DFB758] rounded-full shadow-[0_0_8px_rgba(223,183,88,0.6)]"
-                      />
-                    )}
                   </Link>
                 );
               })}
+
+              {/* Horizontal-Only Sliding Active Indicator */}
+              <motion.span
+                className="absolute bottom-0 h-[2px] bg-[#DFB758] rounded-full shadow-[0_0_8px_rgba(223,183,88,0.6)] pointer-events-none"
+                initial={false}
+                animate={{
+                  left: indicatorStyle.left,
+                  width: indicatorStyle.width,
+                  opacity: indicatorStyle.opacity,
+                }}
+                transition={{
+                  type: "spring",
+                  stiffness: 400,
+                  damping: 32,
+                }}
+              />
             </nav>
 
             {/* CTA Button */}
@@ -127,7 +167,7 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 30, stiffness: 300 }}
-              className="absolute inset-0 sm:left-auto sm:right-0 sm:w-[400px] bg-[#061739] border-l border-[#14588B]/40 text-white flex flex-col justify-between p-6 sm:p-8 overflow-y-auto shadow-2xl"
+              className="absolute inset-0 sm:left-auto sm:right-0 sm:w-[400px] h-[100dvh] max-h-[100dvh] bg-[#061739] border-l border-[#14588B]/40 text-white flex flex-col justify-between p-5 sm:p-8 pb-[calc(1.5rem+env(safe-area-inset-bottom))] overflow-y-auto shadow-2xl"
             >
               {/* 1. Sidebar Top Header */}
               <div className="flex items-center justify-between pb-6 border-b border-white/10">

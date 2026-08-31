@@ -1,20 +1,8 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import {
-  Building2,
-  Zap,
-  Recycle,
-  Home,
-  Sprout,
-  HeartPulse,
-  Cpu,
-  Globe2,
-  GraduationCap,
-  ArrowRight,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 /* ── 9 Sectors with Full Verbatim Names & Distinct Electron Colors ── */
 const sectors = [
@@ -23,7 +11,6 @@ const sectors = [
     number: "01",
     fullName: "Infrastructure & Urban Development",
     category: "Strategic Infrastructure",
-    icon: Building2,
     color: "#0284C7", // Azure Blue
     description:
       "Transportation corridors, ports, modern municipal infrastructure, and smart industrial park planning across Ghana.",
@@ -33,7 +20,6 @@ const sectors = [
     number: "02",
     fullName: "Energy & Environmental Solutions",
     category: "Clean Power & Transition",
-    icon: Zap,
     color: "#EAB308", // Sun Gold
     description:
       "Advancing clean energy transition, commercial & utility solar, grid modernization, battery storage, and energy efficiency.",
@@ -43,7 +29,6 @@ const sectors = [
     number: "03",
     fullName: "Waste Management & Resource Recovery",
     category: "Circular Economy",
-    icon: Recycle,
     color: "#10B981", // Emerald Green
     description:
       "Structuring circular economy initiatives, recycling facilities, waste-to-energy assets, and sustainable resource management.",
@@ -53,7 +38,6 @@ const sectors = [
     number: "04",
     fullName: "Real Estate & Property Development",
     category: "Commercial & Residential Assets",
-    icon: Home,
     color: "#F97316", // Terracotta Bronze
     description:
       "Connecting institutional investors and developers for prime commercial hubs, logistics warehouses, and residential schemes.",
@@ -63,7 +47,6 @@ const sectors = [
     number: "05",
     fullName: "Agriculture & Agribusiness",
     category: "Value Chains & Export",
-    icon: Sprout,
     color: "#84CC16", // Agro Lime Green
     description:
       "Unlocking commercial value chains through farming ventures, agro-processing, cold-chain storage, and export linkages.",
@@ -73,7 +56,6 @@ const sectors = [
     number: "06",
     fullName: "Healthcare & Life Sciences",
     category: "Medical & Health Infrastructure",
-    icon: HeartPulse,
     color: "#F43F5E", // Rose Medical
     description:
       "Facilitating partnerships for state-of-the-art medical centers, diagnostics, pharma manufacturing, and healthcare supply chains.",
@@ -83,7 +65,6 @@ const sectors = [
     number: "07",
     fullName: "Technology & Digital Transformation",
     category: "Digital Economy & Fintech",
-    icon: Cpu,
     color: "#6366F1", // Cyber Indigo
     description:
       "Deploying scalable fintech rails, enterprise software platforms, cloud data centers, and telecommunications infrastructure.",
@@ -93,7 +74,6 @@ const sectors = [
     number: "08",
     fullName: "International Trade & Investment",
     category: "Cross-Border Commerce & AfCFTA",
-    icon: Globe2,
     color: "#06B6D4", // Cyan Commerce
     description:
       "Enabling cross-border commerce, AfCFTA trade enablement, capital importation, and strategic international joint ventures.",
@@ -103,7 +83,6 @@ const sectors = [
     number: "09",
     fullName: "Education & Human Capital Development",
     category: "Workforce & Talent Capacity",
-    icon: GraduationCap,
     color: "#A855F7", // Purple Academy
     description:
       "Supporting technical institutions, vocational academies, executive training, and international academic partnerships.",
@@ -173,11 +152,12 @@ export default function IndustrySectorsSection() {
             viewport={{ once: true, margin: "-60px" }}
             className="max-w-2xl"
           >
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-[#DFB758]/50 shadow-sm mb-3">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#C49838] animate-pulse" />
-              <span className="text-[11px] font-mono font-bold tracking-[0.2em] text-[#061739] uppercase">
+            <div className="flex items-center gap-3 sm:gap-4 mb-2.5">
+              <div className="h-[1.5px] bg-gradient-to-r from-transparent via-[#DFB758]/60 to-[#DFB758] w-8 sm:w-12" />
+              <span className="text-[11px] sm:text-xs font-heading font-bold tracking-[0.22em] text-[#C49838] uppercase">
                 CIRCULAR ECOSYSTEM
               </span>
+              <div className="h-[1.5px] bg-gradient-to-l from-transparent via-[#DFB758]/60 to-[#DFB758] flex-1 max-w-[80px] sm:max-w-[140px]" />
             </div>
 
             <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-[#061739] tracking-tight leading-[1.2]">
@@ -186,6 +166,7 @@ export default function IndustrySectorsSection() {
                 Economic Sectors
               </span>
             </h2>
+            <div className="w-14 h-[3px] bg-[#C49838] rounded-full my-3" />
 
             <p className="mt-2 text-slate-600 text-sm sm:text-base leading-relaxed">
               HGG focuses on high-impact sectors essential for sustainable economic transformation in Ghana and West Africa.
@@ -200,10 +181,10 @@ export default function IndustrySectorsSection() {
             custom={0.1}
           >
             <Link
-              href="/industries"
+              href="/about-us#areas-of-focus"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-xs font-bold tracking-wider text-white bg-[#061739] hover:bg-[#0A2457] shadow-md hover:shadow-xl hover:shadow-[#061739]/15 transition-all duration-300 hover:-translate-y-0.5 group border border-white/10"
             >
-              <span>VIEW ALL INDUSTRIES</span>
+              <span>VIEW FOCUS AREAS</span>
               <ArrowRight className="w-4 h-4 text-[#DFB758] transition-transform group-hover:translate-x-1 duration-300" />
             </Link>
           </motion.div>
@@ -274,10 +255,9 @@ export default function IndustrySectorsSection() {
               </svg>
             </div>
 
-            {/* ── 9 ORBITAL NODES (EACH WITH DISTINCT ELECTRON COLOR) ── */}
+            {/* ── 9 ORBITAL NODES (EACH WITH DISTINCT ELECTRON COLOR & MONOGRAM NUMBER) ── */}
             <div className="orbit-spin-track absolute w-[840px] h-[840px] pointer-events-none">
               {sectors.map((sector, idx) => {
-                const Icon = sector.icon;
                 const angleDeg = idx * (360 / totalNodes) - 90;
                 const angleRad = angleDeg * (Math.PI / 180);
                 const x = centerCoord + Math.cos(angleRad) * radius;
@@ -294,40 +274,29 @@ export default function IndustrySectorsSection() {
                     }}
                     className="pointer-events-auto z-30"
                   >
-                    {/* Counter-rotation to keep icons & text upright */}
+                    {/* Counter-rotation to keep badges & text upright */}
                     <div className="orbit-counter-node flex flex-col items-center">
                       
-                      {/* Electron Node Icon (Distinct Colorized Container) */}
+                      {/* Electron Node Number Badge (Distinct Colorized Container) */}
                       <Link
-                        href={`/industries#${sector.id}`}
+                        href={`/about-us#${sector.id}`}
                         style={{
                           borderColor: `${sector.color}40`,
                           boxShadow: `0 4px 20px -2px ${sector.color}35`,
                         }}
-                        className="relative w-15 h-15 rounded-2xl flex flex-col items-center justify-center bg-white transition-all duration-300 shadow-md hover:scale-115 hover:shadow-xl group border-2"
+                        className="relative w-14 h-14 rounded-2xl flex flex-col items-center justify-center bg-white transition-all duration-300 shadow-md hover:scale-115 hover:shadow-xl group border-2"
                       >
-                        {/* Monospaced Index Badge with Sector Color */}
                         <span
-                          style={{
-                            backgroundColor: sector.color,
-                            color: "#ffffff",
-                            borderColor: "#ffffff",
-                          }}
-                          className="absolute -top-2 -right-2 text-[9.5px] font-mono font-bold px-1.5 py-0.2 rounded-full border shadow-sm"
+                          style={{ color: sector.color }}
+                          className="font-mono text-base font-extrabold tracking-tight transition-transform duration-200 group-hover:scale-110"
                         >
                           {sector.number}
                         </span>
-
-                        {/* Distinct Colored Icon */}
-                        <Icon
-                          className="w-6 h-6 transition-transform duration-200 group-hover:scale-110"
-                          style={{ color: sector.color }}
-                        />
                       </Link>
 
                       {/* Direct Link on Full Sector Title Badge with Sector Border Accent */}
                       <Link
-                        href={`/industries#${sector.id}`}
+                        href={`/about-us#${sector.id}`}
                         style={{
                           borderColor: `${sector.color}35`,
                         }}
@@ -358,7 +327,9 @@ export default function IndustrySectorsSection() {
 
               {/* Core Emblem / Crest Container */}
               <div className="w-13 h-13 rounded-2xl bg-gradient-to-br from-[#061739] to-[#0A2457] text-[#DFB758] flex items-center justify-center shadow-md mb-2.5 border border-[#DFB758]/30">
-                <Globe2 className="w-7 h-7 text-[#DFB758]" />
+                <span className="font-mono text-sm font-extrabold tracking-widest text-[#DFB758]">
+                  HGG
+                </span>
               </div>
 
               {/* Central Nucleus Title */}
@@ -374,7 +345,7 @@ export default function IndustrySectorsSection() {
               {/* Dedicated See Details Link */}
               <div className="mt-4">
                 <Link
-                  href="/industries"
+                  href="/about-us#areas-of-focus"
                   className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-bold text-[#061739] bg-gradient-to-r from-[#C49838] via-[#DFB758] to-[#C49838] hover:shadow-lg transition-all duration-200 hover:-translate-y-0.5 shadow-sm group"
                 >
                   <span>See Details</span>
@@ -386,40 +357,31 @@ export default function IndustrySectorsSection() {
           </div>
         </div>
 
-        {/* ── MOBILE & TABLET RESPONSIVE VIEW (3x3 Grid Ecosystem) ── */}
+        {/* ── MOBILE & TABLET RESPONSIVE VIEW (2/3-Column Grid Ecosystem) ── */}
         <div className="lg:hidden space-y-6">
-          {/* 3x3 Grid */}
-          <div className="grid grid-cols-3 gap-2 sm:gap-3.5">
+          {/* Responsive Mobile Grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-3.5">
             {sectors.map((sector) => {
-              const Icon = sector.icon;
-
               return (
                 <Link
                   key={sector.id}
-                  href={`/industries#${sector.id}`}
+                  href={`/about-us#${sector.id}`}
                   style={{
                     borderColor: `${sector.color}35`,
                   }}
-                  className="flex flex-col items-center justify-center text-center p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl transition-all cursor-pointer bg-white border shadow-sm hover:shadow-md hover:-translate-y-0.5 active:scale-95 group relative overflow-hidden min-h-[110px] sm:min-h-[125px]"
+                  className="flex flex-col items-center justify-center text-center p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl transition-all cursor-pointer bg-white border shadow-sm hover:shadow-md hover:-translate-y-0.5 active:scale-95 group relative overflow-hidden min-h-[105px] sm:min-h-[115px]"
                 >
-                  {/* Icon */}
+                  {/* Sector Number */}
                   <div
                     style={{
                       backgroundColor: `${sector.color}15`,
                       color: sector.color,
+                      borderColor: `${sector.color}35`,
                     }}
-                    className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center mb-1.5 transition-transform group-hover:scale-110"
-                  >
-                    <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
-                  </div>
-
-                  {/* Sector Number */}
-                  <span
-                    style={{ backgroundColor: sector.color, color: "#fff" }}
-                    className="text-[8px] sm:text-[9px] font-mono font-bold px-1.5 py-0.2 rounded-full mb-1"
+                    className="w-8 h-8 rounded-lg border flex items-center justify-center mb-1.5 font-mono text-xs font-bold transition-transform group-hover:scale-110"
                   >
                     {sector.number}
-                  </span>
+                  </div>
 
                   {/* Sector Name */}
                   <span className="text-[9.5px] sm:text-xs font-bold text-center leading-tight line-clamp-2 text-slate-800 group-hover:text-[#061739]">
@@ -432,8 +394,10 @@ export default function IndustrySectorsSection() {
 
           {/* Core Hub Overview Card (Mobile) */}
           <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-md text-center flex flex-col items-center">
-            <div className="w-12 h-12 rounded-xl bg-[#061739] text-[#DFB758] flex items-center justify-center shadow-md mb-3">
-              <Globe2 className="w-6 h-6" />
+            <div className="w-12 h-12 rounded-xl bg-[#061739] text-[#DFB758] flex items-center justify-center shadow-md mb-3 border border-[#DFB758]/30">
+              <span className="font-mono text-xs font-extrabold tracking-widest text-[#DFB758]">
+                HGG
+              </span>
             </div>
 
             <h3 className="font-heading text-xl font-bold text-[#061739] mb-2">
@@ -445,7 +409,7 @@ export default function IndustrySectorsSection() {
             </p>
 
             <Link
-              href="/industries"
+              href="/about-us#areas-of-focus"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold text-[#061739] bg-gradient-to-r from-[#C49838] via-[#DFB758] to-[#C49838] shadow-sm hover:shadow-md transition-all active:scale-95"
             >
               <span>See Details</span>

@@ -1,7 +1,6 @@
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
+import AppShell from "@/components/layout/AppShell";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -40,12 +39,15 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`${inter.variable} ${plusJakarta.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-[#F8F9FA] text-[#0F172A]">
-        <Navbar />
-        <main className="flex-grow">{children}</main>
-        <Footer />
+      <body
+        className="min-h-full flex flex-col bg-[#F8F9FA] text-[#0F172A]"
+        suppressHydrationWarning
+      >
+        <AppShell>{children}</AppShell>
       </body>
     </html>
   );

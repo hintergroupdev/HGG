@@ -1,0 +1,114 @@
+THE HINTER GROUP GHANA LTD
+WEBSITE DEVELOPER HANDOVERCOVER NOTE & PACKAGE INDEX
+Prepared for Shair Shishir
+WORKING VERSION 1.3
+7 CORE WEBSITE PAGES + 2 STANDARD LEGAL / UTILITY PAGES
+1. DEVELOPER HANDOVER COVER NOTE
+To: Shair Shishir — Website Designer / Developer
+From: Charles N. Hammond — Chairman & Chief Executive Officer, THE HINTER GROUP GHANA LTD
+Subject: HGG Corporate Website Development Package
+Date: __________________________
+Hello Shair,Thank you again for your continued work with THE HINTER GROUP GHANA LTD. We have now completed the principal content-development, implementation-control, and internal review structure for the HGG corporate website.
+To make the development process easier and avoid burdening you with HGG's full internal governance record, the website materials have now been separated into purpose-specific working documents.
+For your implementation work, the two principal documents are the HGG Public Website Copy and the HGG Developer Implementation Guide. Please treat these as the primary working references for the website build.
+Website Scope
+7 Core Website Pages: Home; About Us; Leadership; Expertise / Our Services; Projects & Strategic Partnerships; Insights / News; Contact Us.
+2 Standard Legal / Utility Pages: Privacy Policy; Terms of Service.
+Reusable CMS structure for Insights / Articles.
+Project Detail structure may be implemented where approved or kept future-ready.
+The extensive planning and quality-control materials developed internally by HGG do not expand the agreed project into additional custom-designed website pages.
+Design & Implementation Approach
+Please use your professional design judgment for layout, spacing, responsive behavior, typography scale, image placement, transitions, cards, mobile adaptation, and other normal design decisions.
+The Home Page should establish the principal visual system for the website before that system is rolled out across the remaining pages.
+The overall visual direction should remain premium, modern, minimalist, sophisticated, internationally oriented, Ghanaian-rooted, and understated.
+Please do not materially rewrite approved HGG messaging, leadership information, service names, project disclosures, or legal text without HGG approval.
+If any section appears too long for an effective layout, please recommend a presentation solution or proposed condensed wording before materially changing the approved copy.
+Legal Pages
+The Privacy Policy and Terms of Service are currently in a separate HGG Legal Review Package. They should not be treated as final production legal copy until HGG Legal Counsel completes review and HGG provides the approved versions.
+You may prepare the Privacy Policy and Terms page layouts using the established website design system, but final live wording must be the counsel-approved text supplied by HGG.
+Projects, Partners & Leadership
+Do not publish specific project names, partner names/logos, statistics, financial figures, or government/regulatory references unless HGG expressly approves them for public disclosure.
+Do not invent executive titles, credentials, biographies, departments, or qualifications.
+Use only HGG-approved leadership portraits and final verified public information.
+Ownership & Handover
+HGG must retain appropriate ownership or administrator-level control of the domain, hosting, DNS, CMS, source-code repository, analytics, Search Console, backups, and critical third-party services. The final website should be transferable to another qualified developer if necessary and should not depend on undocumented vendor-controlled systems.
+Please review the attached working documents and identify any missing information, unclear content, technical concerns, design questions, scope questions, or recurring-cost recommendations before making material assumptions.
+Thank you again for your professionalism and for working with us to build a website that reflects the direction, credibility, and long-term ambitions of HGG.
+Best regards,Charles N. HammondChairman & Chief Executive OfficerTHE HINTER GROUP GHANA LTDCommitted to Excellence
+2. DEVELOPER PACKAGE INDEX
+The current developer working package should contain the following:
+#
+ITEM
+PURPOSE
+STATUS
+01
+Website Developer Handover Cover Note & Package Index
+This document. Provides scope, reading order, legal-page status, and handover expectations.
+INCLUDED
+02
+HGG Public Website Copy — Working Version 1.2
+Visitor-facing source copy for Pages 1–7. Internal QC/developer notes removed.
+INCLUDED
+03
+HGG Developer Implementation Guide — Working Version 1.2
+Design, CMS, SEO, accessibility, security, ownership, staging, QA, and handover requirements.
+INCLUDED
+04
+Approved HGG Logo / Brand Assets
+Use the final approved vector/raster logo system and brand assets.
+AVAILABLE / FINAL ASSETS
+05
+Approved Leadership Portraits
+Final approved portraits for public leadership profiles.
+TO BE SUPPLIED / CONFIRMED
+06
+Final Executive Names & Public Titles
+Only verified HGG-approved public information should be implemented.
+PENDING FINAL VERIFICATION WHERE NOTED
+07
+Approved Project / Partnership Assets
+Only if HGG approves specific project/partner publication for launch.
+TO FOLLOW IF APPROVED
+08
+Insights / News Launch Content
+Initial articles or announcements for CMS population.
+TO FOLLOW / MAY BE DEFERRED
+09
+Privacy Policy — Final Counsel-Approved Version
+Replace any staging draft with final approved wording before launch.
+LEGAL REVIEW
+10
+Terms of Service — Final Counsel-Approved Version
+Replace any staging draft with final approved wording before launch.
+LEGAL REVIEW
+11
+Final Corporate Contact / Form Routing Details
+Final public email, phone, address, privacy contact, and inquiry routing.
+TO BE CONFIRMED
+12
+Domain / Hosting / CMS / Repository Access Details
+HGG-owned or HGG-controlled access to implementation systems.
+TO BE CONFIRMED DURING BUILD
+3. RECOMMENDED READING ORDER FOR SHAIR
+Read this Handover Cover Note & Package Index first.
+Read the Developer Implementation Guide second to understand design, technical, ownership, and handover requirements.
+Use the Public Website Copy as the source for visitor-facing content.
+Apply approved HGG brand assets and final leadership/project materials as supplied.
+Use the final counsel-approved Privacy Policy and Terms of Service when HGG issues them.
+4. MATERIAL NOT INCLUDED IN THE NORMAL DEVELOPER PACKAGE
+HGG maintains separate internal and legal-control records that are not necessary for Shair's day-to-day build and should not be treated as required developer reading.
+HGG Internal Governance & Control File.
+Full historical QC record and executive signoff sheets.
+Outstanding internal decision registers beyond developer-relevant pending information.
+HGG Legal Review Package and counsel correspondence.
+Privileged legal comments, tracked changes, contracts, NCNDAs, commission arrangements, or unrelated internal project records.
+5. IMPLEMENTATION CHECKPOINTS
+Checkpoint 1 — Confirm receipt of the developer package and raise questions.
+Checkpoint 2 — Home Page visual system review and approval.
+Checkpoint 3 — Core page build on staging.
+Checkpoint 4 — CMS, forms, responsive, SEO, accessibility, and security review.
+Checkpoint 5 — Insert final legal pages and final approved leadership/project/contact information.
+Checkpoint 6 — Pre-launch QA and HGG approval.
+Checkpoint 7 — Production launch and final handover of access, source, repository, backups, documentation, and training.
+6. FINAL PRINCIPLE
+DESIGN WITH PROFESSIONAL FREEDOM.IMPLEMENT WITH DISCIPLINE.PUBLISH ONLY WHAT HGG HAS APPROVED.

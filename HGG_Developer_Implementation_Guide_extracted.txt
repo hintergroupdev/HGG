@@ -1,0 +1,446 @@
+THE HINTER GROUP GHANA LTD
+DEVELOPER IMPLEMENTATION GUIDE
+Corporate Website Development Project
+Prepared for: Shair Shishir | Website Designer / Developer
+WORKING VERSION 1.2
+DESIGN WITH PROFESSIONAL FREEDOM.IMPLEMENT WITH DISCIPLINE.PUBLISH ONLY WHAT HGG HAS APPROVED.
+1. PURPOSE OF THIS GUIDE
+This guide is the developer-facing implementation document for THE HINTER GROUP GHANA LTD (HGG) corporate website. It consolidates the Quick-Start Developer Brief, approved imagery and visual direction, core technical requirements, selected publication controls, and final handover requirements into one practical working reference.
+It is intentionally narrower than HGG's full internal master document. The full Quality-Control record, executive approval sheets, legal-review correspondence, and other internal governance material remain with HGG.
+How to Use This Guide
+Use the separate HGG Public Website Copy document as the source for visitor-facing copy.
+Use this Developer Implementation Guide as the source for design, build, CMS, SEO, accessibility, security, staging, ownership, and handover requirements.
+Use only final HGG-approved project, partner, leadership, and legal information.
+Where a material change is recommended, present the recommendation to HGG before implementation.
+2. PROJECT OBJECTIVE
+Develop a premium, modern, sophisticated corporate website for THE HINTER GROUP GHANA LTD that accurately reflects the company's identity, strategic direction, services, leadership, and long-term ambitions.
+The completed website should present HGG as:
+Professional
+Credible
+Strategic
+Internationally Oriented
+Ghanaian-Rooted
+Relationship-Focused
+Forward-Looking
+Understated Rather Than Overly Promotional
+3. CORPORATE IDENTITY
+Official Company Name: THE HINTER GROUP GHANA LTD
+Short Form: HGG
+Corporate Descriptor: CONSULTING + VENTURES | BROKERAGE
+Motto: Committed to Excellence
+Primary Positioning: Connecting Opportunity. Creating Value. Advancing Sustainable Growth.
+4. WEBSITE SCOPE
+The principal implementation scope is:
+7 Core Website Pages
+Home
+About Us
+Leadership
+Expertise / Our Services
+Projects & Strategic Partnerships
+Insights / News
+Contact Us
+2 Standard Legal / Utility Pages
+Privacy Policy
+Terms of Service
+The Privacy Policy and Terms of Service should use the established site design system and should not be interpreted as additional complex custom-designed corporate pages.
+Reusable CMS Structures
+Insights / Article Template — required.
+Project Detail Template — where approved or future-ready.
+The existence of internal QC, handover, legal-review, or governance documents does not expand the agreed website into additional custom-designed pages.
+5. PRIMARY NAVIGATION
+HOME
+ABOUT
+EXPERTISE
+PROJECTS & PARTNERSHIPS
+INSIGHTS
+CONTACT
+Leadership remains a dedicated page and may be accessed through the About navigation structure. Navigation should remain concise, intuitive, responsive, and consistent across desktop and mobile.
+6. IMPLEMENTATION PRIORITY
+Where instructions appear to conflict, apply the following hierarchy:
+Final written HGG approval.
+Final HGG Legal Counsel-approved language.
+This Developer Implementation Guide and any final developer-facing publication controls.
+HGG Public Website Copy.
+Developer professional judgment where no conflict exists.
+7. CONTENT CONTROL
+The developer must distinguish between public website copy and internal implementation material.
+Do not publish internal labels or notes such as:
+DESIGN DIRECTION FOR DEVELOPER
+DEVELOPER NOTE
+CMS REQUIREMENT
+PUBLICATION CONTROL
+QUALITY-CONTROL CHECKLIST
+STATUS
+LEGAL REVIEW NOTE
+Internal approval instructions
+Content Rewriting
+Do not materially rewrite approved HGG copy without approval. If content appears too long for a proposed layout:
+Identify the presentation issue.
+Recommend a condensed treatment or interface pattern.
+Provide the proposed revised wording if a rewrite is necessary.
+Obtain HGG approval.
+Implement the approved treatment.
+Appropriate presentation tools may include accordions, tabs, cards, anchor navigation, progressive disclosure, summaries with 'learn more' treatment, and reusable CMS detail templates.
+8. VISUAL PRINCIPLE — UNDERSTATED EXCELLENCE
+The website should feel:
+Premium
+Modern
+Corporate
+Minimalist
+Sophisticated
+International
+Ghanaian-Rooted
+Credible
+Forward-Looking
+Primary Palette
+Deep Navy
+White
+Restrained Gold
+Gold should function primarily as an accent rather than as a dominant background color.
+Design Character
+Generous white space.
+Strong, refined typography.
+Clear visual hierarchy.
+Elegant spacing and restrained decorative elements.
+Consistent cards, buttons, icons, section rhythm, and page transitions.
+A design language that feels established and confident without exaggerated promotion.
+9. BRAND CONTROL
+Use only approved HGG logo and brand assets.
+Do not:
+Redraw the logo.
+Change logo proportions.
+Alter approved colors.
+Introduce unapproved gradients or metallic effects.
+Add heavy shadows.
+Modify the approved corporate descriptor.
+Modify the motto.
+Final production should use the strongest available vector/transparent assets supplied by HGG.
+10. IMAGERY DIRECTION
+Priority order:
+Approved authentic HGG imagery.
+Approved project imagery.
+High-quality properly licensed sector imagery.
+Carefully selected architecture, infrastructure, business, technology, and contemporary African imagery.
+Avoid generic corporate clichés such as:
+Handshakes
+Fake boardroom meetings
+Chess pieces
+Mountain climbers
+Money piles
+Trading screens
+Artificial executive teams
+Ghanaian Identity
+Reflect HGG's Ghanaian foundation naturally through:
+Contemporary Ghanaian environments
+Infrastructure
+Urban development
+Business activity
+Architecture
+Landscapes
+Professional settings
+Avoid excessive use of Ghana flags, maps, cultural motifs, or decorative national symbolism unless contextually appropriate.
+11. PAGE-SPECIFIC VISUAL DIRECTION
+Home
+Establish the principal visual system for the website.
+Hero should communicate premium corporate positioning, international perspective, confidence, and professionalism.
+Use strong typography, generous spacing, restrained motion, and clear calls to action.
+A subtle Ghana-to-international connectivity concept may be explored if executed with restraint.
+About Us
+Communicate trust, stability, professionalism, and long-term vision.
+Mission, Vision, and Values should be structured clearly and remain easy to scan.
+The six-stage Strategic Approach — IDENTIFY → EVALUATE → CONNECT → COORDINATE → ADVANCE → CREATE VALUE — should be treated as a signature visual element.
+Leadership
+Authoritative, elegant, highly professional presentation.
+Use natural executive portraits and generous spacing.
+The Chairman & Founder profile should be the principal executive profile.
+Avoid visual effects that turn leadership presentation into personal promotion.
+Expertise / Our Services
+Use a clear modular structure such as refined service cards, anchors, or expandable sections.
+Keep service names and descriptions consistent with approved HGG terminology.
+Do not create regulated financial, legal, engineering, architectural, or other professional-service implications that are not approved.
+Projects & Strategic Partnerships
+Emphasize collaboration, project-development process, and partnership architecture.
+Do not fabricate sample projects.
+If no specific project is approved for launch, the page should still work strongly as an HGG project and partnership framework.
+Insights / News
+CMS-driven landing page with reusable article template.
+Support future articles, company news, leadership perspectives, project updates, industry insights, and announcements.
+Keep article presentation consistent and scalable.
+Contact Us
+Professional, concise, accessible, and reassuring.
+Support General Contact and Project / Partnership Inquiry pathways.
+Do not publish unapproved personal or temporary contact details.
+Privacy Policy & Terms
+Use clean legal-page typography, section anchors where useful, and generous readability.
+Do not materially rewrite legal text for aesthetics or brevity.
+12. LEADERSHIP IMAGERY & INFORMATION
+All executive portraits must remain natural and professional.
+Permitted:
+Cropping
+Exposure adjustment
+White balance
+Mild sharpening
+Background cleanup
+Resolution improvement
+Do not materially alter faces through AI or beauty filtering.
+Do not invent:
+Executive titles
+Departments
+Corporate offices
+Credentials
+Career history
+Education
+Awards
+Professional memberships
+Use only leadership information approved by HGG. Pending names, title styling, or biographies should remain unpublished until verified.
+13. PROJECT & PARTNERSHIP PUBLICATION CONTROL
+Do not publish:
+Sample or fictional projects.
+Placeholder project names.
+Unapproved project information.
+Partner logos without HGG approval.
+Confidential project details.
+Internal financial figures.
+Government or regulatory relationships that imply endorsement or approval without support.
+Specific project names, partner names, logos, figures, status descriptions, or stakeholder references should appear only when HGG has expressly approved them for public disclosure.
+14. BROKERAGE & INVESTMENT LANGUAGE
+HGG's public wording must distinguish business and commercial facilitation from regulated financial activity.
+Do not independently describe HGG as providing:
+Securities Brokerage
+Investment Advisory
+Investment Management
+Portfolio Management
+Investment Banking
+Financial Advisory
+Final wording involving Brokerage, Venture Development & Investment Facilitation, and related regulated-service boundaries remains subject to HGG approval and, where applicable, Legal Counsel review.
+15. RESPONSIVE DESIGN & LAYOUT
+The website must function professionally across:
+Desktop
+Laptop
+Tablet
+Mobile
+Mobile users should receive materially equivalent content and functionality.
+Use responsive grids and fluid spacing rather than fixed desktop assumptions.
+Adapt process graphics, cards, tables, menus, and CTAs for smaller screens.
+Preserve content hierarchy and readability across breakpoints.
+Avoid layouts that depend on hover alone for essential information.
+16. TYPOGRAPHY & UI SYSTEM
+Establish a consistent heading scale and body-text system.
+Use readable line lengths and sufficient contrast.
+Keep buttons, links, cards, form fields, icons, and section spacing consistent.
+Use premium, restrained iconography rather than decorative clip-art or inconsistent icon families.
+Maintain visual consistency across all nine page types and reusable CMS templates.
+17. ANIMATION & INTERACTION
+Animation should be subtle, smooth, purposeful, and lightweight.
+Avoid:
+Splash screens
+Aggressive zoom effects
+Excessive parallax
+Constant motion
+Flashing effects
+Long intro animations
+Respect reduced-motion preferences where applicable.
+18. CMS & ADMINISTRATIVE CONTROL
+The CMS should allow HGG to manage, where applicable:
+Insights / News
+Projects
+Leadership Profiles
+Services
+Industries
+Contact Information
+Legal Pages
+Global Website Information
+HGG should not require the developer for routine content updates.
+Content Workflow
+Where supported: DRAFT → REVIEW → PUBLISH.
+HGG should retain administrator-level control.
+CMS Training
+Provide live training and/or a recorded walkthrough as agreed.
+Demonstrate creation, editing, publication, unpublication, media management, and routine content updates.
+Document any role-based permissions.
+19. FORMS, EMAIL & PRIVACY
+Forms should include:
+Validation
+Spam protection
+Professional confirmation messages
+Reliable email routing
+Privacy acknowledgment
+Accessible error handling
+Expected Inquiry Paths
+General Contact.
+Project / Partnership Inquiry.
+Final fields, routing addresses, privacy/confidentiality wording, and whether file uploads are enabled must follow HGG's confirmed decisions.
+File Uploads
+Enable only if HGG approves.
+Apply file-type and size restrictions.
+Validate server-side.
+Store securely and avoid public exposure of uploaded files.
+Do not request or expose unnecessary sensitive information.
+Email Delivery
+Use reliable transactional email delivery where appropriate.
+Keep sender/domain configuration under HGG control.
+Support appropriate SPF, DKIM, and DMARC configuration where applicable.
+20. SEO, SEARCH & SOCIAL METADATA
+Implement appropriate:
+Unique page titles
+Meta descriptions
+Canonical URLs
+XML sitemap
+robots.txt
+Open Graph metadata
+Structured data where appropriate
+Google Search Console
+Analytics where approved
+Do not create unsupported SEO claims, awards, statistics, or artificial authority signals.
+Staging and non-public environments must not be indexed by search engines.
+21. PERFORMANCE
+Prioritize:
+Optimized images
+Responsive images
+Efficient font loading
+Efficient JavaScript
+Caching
+Mobile performance
+Appropriate lazy loading
+The site should feel fast and polished. Avoid unnecessary animation libraries, oversized media, or third-party scripts that materially degrade performance without clear value.
+22. ACCESSIBILITY
+Include:
+Semantic HTML
+Keyboard navigation
+Visible focus states
+Adequate color contrast
+Proper form labels
+Appropriate alt text
+Reduced-motion support where applicable
+Accessibility should be considered during component design, not postponed until final QA.
+23. SECURITY
+The website must use:
+HTTPS
+Secure secret / API-key handling
+Appropriate access controls
+Server-side validation
+Protected forms
+Secure administrator access
+Reasonably current dependencies
+No passwords, private API keys, recovery codes, or credentials should appear in public source code or public files.
+24. DOMAIN, HOSTING & ACCOUNT OWNERSHIP
+HGG must retain control of:
+Domain registration
+Hosting
+DNS
+CMS
+Source-code repository
+Analytics
+Search Console
+Critical third-party services
+Backups
+Developer access may be granted, but the developer should not remain the sole owner of critical systems.
+25. SOURCE CODE & NO VENDOR LOCK-IN
+HGG must receive access to the final production source code and repository.
+The website should be transferable to another qualified developer if necessary.
+Avoid undocumented or developer-controlled dependencies that prevent HGG from independently operating, maintaining, recovering, or transferring the site.
+Identify any proprietary or third-party limitations before implementation.
+26. THIRD-PARTY SERVICES & RECURRING COSTS
+Before implementing a material paid recurring service, identify:
+Service
+Purpose
+Cost
+Billing cycle
+Account owner
+Reasonable alternative where relevant
+HGG approval is required before material recurring costs are incurred.
+27. BACKUPS & RECOVERY
+Implement and document:
+Backup method
+Backup frequency
+Retention
+Restore procedure
+HGG access to backups
+A backup is not considered complete unless restoration is reasonably documented and testable.
+28. STAGING, QA & DEVELOPMENT WORKFLOW
+Preferred workflow:
+DEVELOPMENT → STAGING → HGG REVIEW → APPROVAL → PRODUCTION
+Home Page Benchmark
+Before extensive rollout, HGG should review and approve the Home Page design system:
+Header
+Navigation
+Hero
+Typography
+Color system
+Buttons
+Section spacing
+Cards
+Footer
+General visual direction
+Once approved, that system should guide the remainder of the website.
+Pre-Launch QA
+Desktop, laptop, tablet, and mobile review.
+Navigation and link testing.
+Form submission and email-routing testing.
+CMS publishing test.
+SEO/indexing controls.
+Accessibility review.
+Performance review.
+Security/configuration review.
+Placeholder and unpublished-content review.
+29. LEGAL CONTENT
+Privacy Policy and Terms of Service remain subject to final HGG Legal Counsel approval.
+Draft legal text may be used on staging for layout purposes if clearly treated as draft.
+Do not materially edit counsel-approved legal text.
+Developer formatting may improve readability, but legal substance must remain unchanged.
+Cookie/consent implementation should reflect the actual technology stack and final HGG/legal direction.
+30. HGG APPROVAL REQUIRED BEFORE
+Material content rewrites.
+Corporate name changes.
+Service name changes.
+Logo or approved brand-color changes.
+Executive biography or title changes.
+Project publication.
+Partner-logo publication.
+New claims, statistics, testimonials, or awards.
+Legal-text changes.
+Significant technology changes affecting ownership, security, privacy, portability, or recurring cost.
+31. DELIVERABLES EXPECTED FROM HGG
+HGG will provide or confirm, as available:
+Public Website Copy.
+Approved logo and brand assets.
+Approved leadership portraits and final executive information.
+Approved project / partnership content where applicable.
+Approved Insights launch content where applicable.
+Corporate contact information.
+Domain/hosting/account details where required.
+Final counsel-approved Privacy Policy and Terms of Service.
+Final decisions on analytics, forms, file uploads, social links, and other pending items.
+32. FINAL HANDOVER REQUIREMENTS
+At project completion, HGG should receive appropriate access to:
+Production website.
+Source code.
+Repository access.
+Hosting access.
+Domain/DNS access.
+CMS administrator access.
+Analytics access.
+Search Console access.
+Backup access.
+Critical third-party service information.
+HGG should also receive:
+Technical documentation.
+Deployment documentation.
+CMS training.
+Backup and restore information.
+Third-party service inventory.
+Website-specific design assets where included in the agreed scope.
+33. FINAL DEVELOPER RECEIPT & QUESTIONS
+After receiving the working package, Shair should identify any:
+Missing files
+Unclear content
+Technical concerns
+Design questions
+Scope questions
+Recurring service recommendations
+Material assumptions requiring HGG approval
+Questions should be resolved before material assumptions are embedded in production.
+34. FINAL IMPLEMENTATION PRINCIPLE
+DESIGN WITH PROFESSIONAL FREEDOM.IMPLEMENT WITH DISCIPLINE.PUBLISH ONLY WHAT HGG HAS APPROVED.
+The objective is not to restrict creativity. It is to combine Shair's professional design and development expertise with HGG's corporate direction, brand standards, strategic messaging, ownership requirements, and publication controls.
+STATUS: DEVELOPER IMPLEMENTATION GUIDE — WORKING VERSION 1.2

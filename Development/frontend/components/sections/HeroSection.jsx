@@ -31,13 +31,14 @@ export default function HeroSection() {
   return (
     <section className="relative bg-[#061739] text-white min-h-[420px] sm:min-h-[450px] lg:min-h-[460px] flex items-center pt-20 pb-8 sm:pt-24 sm:pb-10 lg:pt-24 lg:pb-10 overflow-hidden border-b border-[#14588B]/20">
       
-      {/* ── 1. PANORAMIC GATE IMAGE WITH SMOOTH HORIZONTAL GRADIENT FADE ── */}
+      {/* ── 1. PANORAMIC IMAGE WITH SMOOTH HORIZONTAL GRADIENT FADE ── */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <Image
-          src="/assets/images/hero_executive_panoramic.jpg"
-          alt="Accra Financial Tower & Trade Corridors"
+          src="/images/img_new_2.PNG"
+          alt="Ghana Independence Arch & Trade Corridors"
           fill
           priority
+          loading="eager"
           unoptimized
           sizes="100vw"
           className="object-cover object-right lg:object-center opacity-90 filter contrast-[1.05]"
@@ -90,7 +91,7 @@ export default function HeroSection() {
             initial="hidden"
             animate="visible"
             custom={0.08}
-            className="font-[family-name:var(--font-plus-jakarta)] text-[1.65rem] sm:text-3xl lg:text-[2.25rem] font-extrabold tracking-tight leading-[1.2] text-white"
+            className="font-heading text-2xl sm:text-3xl lg:text-[2.25rem] font-extrabold tracking-tight leading-[1.2] text-white"
           >
             Connecting Opportunity.{" "}
             <br />
@@ -115,7 +116,7 @@ export default function HeroSection() {
             partners in Ghana and international markets.
           </motion.p>
 
-          {/* Action Buttons (Master Spec Primary & Secondary Actions) */}
+          {/* Action Buttons (Subtle Rounded-md Radius) */}
           <motion.div
             variants={fadeUp}
             initial="hidden"
@@ -125,18 +126,18 @@ export default function HeroSection() {
           >
             <Link
               href="/expertise"
-              className="w-full sm:w-auto inline-flex justify-center items-center gap-2 px-6 py-3.5 sm:px-7 sm:py-3 text-[13px] sm:text-sm font-bold tracking-wider text-[#061739] bg-gradient-to-r from-[#C49838] via-[#DFB758] to-[#C49838] bg-[length:200%_auto] hover:bg-right rounded-md shadow-[0_2px_16px_rgba(196,152,56,0.3)] hover:shadow-[0_4px_24px_rgba(223,183,88,0.45)] transition-all duration-300 hover:-translate-y-0.5 group"
+              className="inline-flex justify-center items-center gap-2 px-5 py-2.5 sm:px-7 sm:py-3 text-xs sm:text-sm font-bold tracking-wider text-[#061739] bg-gradient-to-r from-[#C49838] via-[#DFB758] to-[#C49838] bg-[length:200%_auto] hover:bg-right rounded-md shadow-[0_2px_16px_rgba(196,152,56,0.3)] hover:shadow-[0_4px_24px_rgba(223,183,88,0.45)] transition-all duration-300 hover:-translate-y-0.5 group"
             >
               <span>Explore HGG</span>
-              <ArrowRight className="w-4 h-4 sm:w-3.5 sm:h-3.5 transition-transform group-hover:translate-x-0.5" />
+              <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
             </Link>
 
             <Link
               href="/contact"
-              className="w-full sm:w-auto inline-flex justify-center items-center gap-2 px-6 py-3.5 sm:px-7 sm:py-3 text-[13px] sm:text-sm font-semibold tracking-wider text-white bg-[#061739]/60 hover:bg-[#061739]/90 border border-white/25 hover:border-[#DFB758]/60 rounded-md backdrop-blur-md transition-all duration-300 group"
+              className="inline-flex justify-center items-center gap-2 px-5 py-2.5 sm:px-7 sm:py-3 text-xs sm:text-sm font-semibold tracking-wider text-white bg-[#061739]/60 hover:bg-[#061739]/90 border border-white/25 hover:border-[#DFB758]/60 rounded-md backdrop-blur-md transition-all duration-300 group"
             >
               <span>Partner With Us</span>
-              <ArrowRight className="w-4 h-4 sm:w-3.5 sm:h-3.5 text-[#DFB758] group-hover:text-white transition-transform group-hover:translate-x-0.5" />
+              <ArrowRight className="w-3.5 h-3.5 text-[#DFB758] group-hover:text-white transition-transform group-hover:translate-x-0.5" />
             </Link>
           </motion.div>
 

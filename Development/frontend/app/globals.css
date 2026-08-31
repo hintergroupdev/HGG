@@ -27,41 +27,33 @@
   --foreground: #0F172A;
 }
 
+/* Smooth Scrolling & Overflow Containment */
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  max-width: 100vw;
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
   overflow-x: hidden;
+  max-width: 100vw;
+  position: relative;
 }
 
-/* Custom Utilities */
-.glass-panel {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(226, 232, 240, 0.8);
+/* Hide scrollbar for touch filter carousels */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-.glass-panel-dark {
-  background: rgba(10, 36, 87, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(87, 163, 192, 0.2);
-}
-
-.gold-gradient-text {
-  background: linear-gradient(135deg, #DFB758 0%, #C49838 50%, #A67D28 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.cyan-gradient-text {
-  background: linear-gradient(135deg, #9DE9FC 0%, #57A3C0 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* Smooth Scrolling */
-html {
-  scroll-behavior: smooth;
+/* Touch-optimized tap highlight */
+* {
+  -webkit-tap-highlight-color: transparent;
 }
