@@ -1,24 +1,25 @@
 import { createClient } from 'next-sanity';
-import { apiVersion, dataset, projectId, useCdn } from '../env';
+import { apiVersion, dataset, projectId } from '../env';
 
 export const client = createClient({
-  projectId: projectId || 'demo-project-id',
+  projectId: projectId || '0rqjd271',
   dataset: dataset || 'production',
   apiVersion,
-  useCdn,
+  useCdn: false, // Ensure direct live queries for real-time updates
   perspective: 'published',
 });
 
 // Helper for fetching data safely
 export async function sanityFetch({ query, params = {}, tags = [] }) {
-  if (!projectId) {
-    // Graceful fallback if Sanity is not connected yet
+  const activeProjectId = projectId || '0rqjd271';
+  if (!activeProjectId) {
     return null;
   }
   try {
     return await client.fetch(query, params, {
+      cache: 'no-store',
       next: {
-        revalidate: process.env.NODE_ENV === 'development' ? 30 : 3600,
+        revalidate: 0, // Real-time immediate updates
         tags,
       },
     });
