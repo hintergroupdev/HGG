@@ -186,11 +186,11 @@ export default function LeadershipPage() {
           <div className="absolute inset-0 bg-gradient-to-r from-[#061739] via-[#061739]/92 to-[#061739]/30 lg:hidden" />
         </div>
 
-        {/* Left: Solid Dark Navy Slanted Polygon */}
+        {/* Left: Solid Dark Navy Slanted Polygon (Flipped / Tangent = -1) */}
         <div
           className="absolute inset-0 z-10 pointer-events-none hidden lg:block bg-[#061739]"
           style={{
-            clipPath: "polygon(0 0, 55% 0, 39% 100%, 0 100%)",
+            clipPath: "polygon(0 0, 42% 0, 58% 100%, 0 100%)",
           }}
         />
 

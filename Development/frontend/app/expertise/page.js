@@ -832,20 +832,20 @@ export default function ExpertisePage() {
           <div className="absolute inset-0 bg-gradient-to-r from-[#061739] via-[#061739]/92 to-[#061739]/30 lg:hidden" />
         </div>
 
-        {/* ── Left: Solid Dark Navy Tangent Slanted Polygon ── */}
+        {/* ── Left: Solid Dark Navy Tangent Slanted Polygon (Flipped / Tangent = -1) ── */}
         <div
           className="absolute inset-0 z-10 pointer-events-none hidden lg:block bg-[#061739]"
           style={{
-            clipPath: "polygon(0 0, 55% 0, 39% 100%, 0 100%)",
+            clipPath: "polygon(0 0, 42% 0, 58% 100%, 0 100%)",
           }}
         >
           {/* Subtle Upward Chevron Watermark in Navy Area */}
-          <div className="absolute right-[22%] top-1/2 -translate-y-1/2 opacity-[0.035] pointer-events-none select-none">
+          <div className="absolute left-[15%] top-1/2 -translate-y-1/2 opacity-[0.035] pointer-events-none select-none">
             <svg width="220" height="280" viewBox="0 0 100 130" fill="currentColor" className="text-[#DFB758]">
               <path d="M50 12 L90 52 L74 52 L74 112 L26 112 L26 52 L10 52 Z" />
             </svg>
           </div>
-          <div className="absolute right-[36%] top-[20%] opacity-[0.02] pointer-events-none select-none">
+          <div className="absolute left-[25%] top-[15%] opacity-[0.02] pointer-events-none select-none">
             <svg width="150" height="200" viewBox="0 0 100 130" fill="currentColor" className="text-[#DFB758]">
               <path d="M50 12 L90 52 L74 52 L74 112 L26 112 L26 52 L10 52 Z" />
             </svg>
