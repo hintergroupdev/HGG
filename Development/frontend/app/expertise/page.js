@@ -838,19 +838,7 @@ export default function ExpertisePage() {
           style={{
             clipPath: "polygon(0 0, 42% 0, 58% 100%, 0 100%)",
           }}
-        >
-          {/* Subtle Upward Chevron Watermark in Navy Area */}
-          <div className="absolute left-[15%] top-1/2 -translate-y-1/2 opacity-[0.035] pointer-events-none select-none">
-            <svg width="220" height="280" viewBox="0 0 100 130" fill="currentColor" className="text-[#DFB758]">
-              <path d="M50 12 L90 52 L74 52 L74 112 L26 112 L26 52 L10 52 Z" />
-            </svg>
-          </div>
-          <div className="absolute left-[25%] top-[15%] opacity-[0.02] pointer-events-none select-none">
-            <svg width="150" height="200" viewBox="0 0 100 130" fill="currentColor" className="text-[#DFB758]">
-              <path d="M50 12 L90 52 L74 52 L74 112 L26 112 L26 52 L10 52 Z" />
-            </svg>
-          </div>
-        </div>
+        />
 
         {/* ── Hero Content Container ── */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 w-full py-8 sm:py-10 lg:py-10">
