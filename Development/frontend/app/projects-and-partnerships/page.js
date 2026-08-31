@@ -304,16 +304,12 @@ export default function ProjectsPage() {
     <div className="bg-[#F4F5F7] text-[#0F172A] min-h-screen">
 
       {/* ─────────────────────────────────────────────────
-          1. HERO — Luxury Dark Navy & Gold Architectural Showcase
+          1. HERO — Compact Diagonal Split: Dark Navy Left / Vibrant Photo Right
       ───────────────────────────────────────────────── */}
-      <section className="relative bg-[#061739] text-white overflow-hidden py-16 sm:py-20 lg:py-24 border-b border-[#14588B]/25">
+      <section className="relative bg-[#061739] overflow-hidden min-h-[400px] sm:min-h-[420px] lg:min-h-[440px] lg:h-[440px] flex items-center border-b border-[#14588B]/20">
 
-        {/* Ambient Radiant Glow Orbs */}
-        <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-[#DFB758]/10 rounded-full blur-[140px] pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#14588B]/20 rounded-full blur-[130px] pointer-events-none" />
-
-        {/* Right: Architectural Landmark Photo with Smooth Gradient Feathering */}
-        <div className="absolute right-0 top-0 bottom-0 w-full lg:w-[58%] xl:w-[54%] z-0 pointer-events-none select-none overflow-hidden">
+        {/* ── Right: Photo Framed for Tangent Slant ── */}
+        <div className="absolute right-0 top-0 bottom-0 w-full lg:w-[66%] xl:w-[64%] z-0 pointer-events-none overflow-hidden">
           <Image
             src="/images/img_new_2.PNG"
             alt="Strategic Partnerships — HGG Ghana"
@@ -321,39 +317,59 @@ export default function ProjectsPage() {
             priority
             loading="eager"
             unoptimized
-            sizes="(max-width: 1024px) 100vw, 55vw"
-            className="object-cover object-center lg:object-[72%_24%] filter contrast-[1.08] brightness-[1.02] opacity-[0.45] lg:opacity-[0.85]"
+            sizes="(max-width: 1024px) 100vw, 66vw"
+            className="object-cover object-center lg:object-[72%_24%] filter contrast-[1.06] brightness-[1.02]"
           />
-          {/* Multi-directional gradient overlays for perfect readability */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#061739] via-[#061739]/80 lg:via-[#061739]/60 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#061739] via-transparent to-[#061739]/70" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#061739]/80 via-transparent to-[#061739]" />
+          {/* Mobile dark gradient overlay so text remains readable */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#061739] via-[#061739]/92 to-[#061739]/30 lg:hidden" />
         </div>
 
-        {/* Hero Content Container */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-2xl lg:max-w-xl xl:max-w-2xl space-y-6">
+        {/* ── Left: Solid Dark Navy Tangent Slanted Polygon ── */}
+        <div
+          className="absolute inset-0 z-10 pointer-events-none hidden lg:block bg-[#061739]"
+          style={{
+            clipPath: "polygon(0 0, 55% 0, 39% 100%, 0 100%)",
+          }}
+        >
+          {/* Subtle Upward Chevron Watermark in Navy Area */}
+          <div className="absolute right-[22%] top-1/2 -translate-y-1/2 opacity-[0.035] pointer-events-none select-none">
+            <svg width="220" height="280" viewBox="0 0 100 130" fill="currentColor" className="text-[#DFB758]">
+              <path d="M50 12 L90 52 L74 52 L74 112 L26 112 L26 52 L10 52 Z" />
+            </svg>
+          </div>
+          <div className="absolute right-[36%] top-[20%] opacity-[0.02] pointer-events-none select-none">
+            <svg width="150" height="200" viewBox="0 0 100 130" fill="currentColor" className="text-[#DFB758]">
+              <path d="M50 12 L90 52 L74 52 L74 112 L26 112 L26 52 L10 52 Z" />
+            </svg>
+          </div>
+        </div>
+
+        {/* ── Hero Content Container ── */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 w-full py-8 sm:py-10 lg:py-10">
+          <div className="max-w-lg lg:max-w-md xl:max-w-lg space-y-3.5">
 
             {/* Eyebrow in Gold */}
-            <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={0} className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#DFB758]/10 border border-[#DFB758]/30 backdrop-blur-md shadow-xs">
-              <Sparkles className="w-3.5 h-3.5 text-[#DFB758]" />
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              animate="visible"
+              custom={0}
+              className="inline-block"
+            >
               <span className="text-[11px] sm:text-xs font-mono font-bold tracking-[0.2em] text-[#DFB758] uppercase">
                 THE HINTER GROUP GHANA LTD
               </span>
             </motion.div>
 
-            {/* Main Title */}
+            {/* Main Title: Projects & Partnerships */}
             <motion.h1
               variants={fadeUp}
               initial="hidden"
               animate="visible"
               custom={0.06}
-              className="font-heading text-3xl sm:text-4xl lg:text-[3.2rem] font-extrabold text-white tracking-tight leading-[1.12]"
+              className="font-heading text-3xl sm:text-4xl lg:text-[2.9rem] font-bold text-white tracking-tight leading-none"
             >
-              Projects &{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-[#DFB758]">
-                Partnerships
-              </span>
+              Projects & Partnerships
             </motion.h1>
 
             {/* Gold Horizontal Accent Bar */}
@@ -362,7 +378,7 @@ export default function ProjectsPage() {
               initial="hidden"
               animate="visible"
               custom={0.12}
-              className="w-16 h-[3.5px] bg-gradient-to-r from-[#DFB758] to-[#C49838] rounded-full"
+              className="w-12 h-[3px] bg-[#DFB758] rounded-full"
             />
 
             {/* Lead Narrative Copy */}
@@ -371,12 +387,12 @@ export default function ProjectsPage() {
               initial="hidden"
               animate="visible"
               custom={0.18}
-              className="space-y-3 text-slate-200 text-[14px] sm:text-[15px] leading-[1.7] font-normal"
+              className="space-y-2 text-slate-200 text-[13px] sm:text-[13.5px] lg:text-[14px] leading-[1.6] font-normal"
             >
               <p>
                 <strong className="font-semibold text-white">Building Lasting Partnerships That Create Sustainable Impact.</strong>
               </p>
-              <p className="text-slate-300 text-xs sm:text-[13.5px] leading-relaxed">
+              <p className="text-slate-300 text-[12.5px] leading-relaxed">
                 HGG brings together governments, investors, private enterprises, development institutions, and technology providers to advance transformative initiatives across Ghana and international markets.
               </p>
             </motion.div>
@@ -387,20 +403,19 @@ export default function ProjectsPage() {
               initial="hidden"
               animate="visible"
               custom={0.24}
-              className="pt-2 flex flex-wrap items-center gap-3"
+              className="flex flex-wrap items-center gap-2.5 sm:gap-3 pt-1"
             >
               <a
                 href="#pathway"
-                className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-heading font-bold tracking-wider text-[#061739] bg-gradient-to-r from-[#C49838] via-[#DFB758] to-[#C49838] rounded-md shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 uppercase"
+                className="inline-flex items-center gap-2 px-4 py-2 text-[11px] font-heading font-bold tracking-wider text-[#061739] bg-gradient-to-r from-[#C49838] via-[#DFB758] to-[#C49838] rounded-md shadow hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 uppercase"
               >
-                <span>The 9-Step Pathway</span>
-                <ArrowRight className="w-3.5 h-3.5" />
+                9-Step Pathway <ArrowRight className="w-3.5 h-3.5" />
               </a>
               <a
                 href="#philosophy"
-                className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-heading font-bold tracking-wider text-white border border-white/25 hover:border-[#DFB758]/70 bg-white/5 hover:bg-white/15 rounded-md backdrop-blur-md transition-all duration-300 uppercase"
+                className="inline-flex items-center gap-2 px-4 py-2 text-[11px] font-heading font-bold tracking-wider text-white border border-white/20 hover:border-[#DFB758]/60 bg-white/5 hover:bg-white/10 rounded-md backdrop-blur-sm transition-all duration-300 uppercase"
               >
-                <span>Our Philosophy</span>
+                Our Philosophy
               </a>
             </motion.div>
 
