@@ -5,7 +5,7 @@ export const client = createClient({
   projectId: projectId || '0rqjd271',
   dataset: dataset || 'production',
   apiVersion,
-  useCdn: false, // Ensure live real-time queries for immediate updates on edit
+  useCdn: true, // Edge CDN enabled for ultra-fast sub-second responses in production
   perspective: 'published',
 });
 

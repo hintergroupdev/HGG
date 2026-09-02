@@ -18,6 +18,8 @@ const plusJakarta = Plus_Jakarta_Sans({
 
 import { getSiteSettings } from "@/lib/sanityData";
 
+export const revalidate = 60;
+
 export async function generateMetadata() {
   let settings = null;
   try {

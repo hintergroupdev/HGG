@@ -94,6 +94,7 @@ export default function Navbar() {
                       if (el) linkRefs.current[link.href] = el;
                     }}
                     href={link.href}
+                    prefetch={true}
                     className={`text-xs font-semibold tracking-wider transition-colors relative py-1.5 ${
                       isActive
                         ? "text-[#DFB758]"
@@ -126,6 +127,7 @@ export default function Navbar() {
             <div className="hidden lg:flex items-center gap-4">
               <Link
                 href="/contact"
+                prefetch={true}
                 className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold tracking-wider text-[#DFB758] border border-[#C49838] rounded-md hover:bg-[#C49838] hover:text-[#061739] transition-all duration-300 shadow-[0_0_15px_rgba(196,152,56,0.15)] group"
               >
                 <span>PARTNER WITH US</span>
@@ -201,6 +203,7 @@ export default function Navbar() {
                     >
                       <Link
                         href={link.href}
+                        prefetch={true}
                         onClick={() => setIsOpen(false)}
                         className={`flex items-center justify-between px-4 py-3.5 rounded-xl text-sm font-bold tracking-wider transition-all duration-200 ${
                           isActive
@@ -224,6 +227,7 @@ export default function Navbar() {
               <div className="pt-6 border-t border-white/10 space-y-4">
                 <Link
                   href="/contact"
+                  prefetch={true}
                   onClick={() => setIsOpen(false)}
                   className="w-full flex items-center justify-center gap-2 px-5 py-3.5 text-xs font-bold tracking-wider text-[#061739] bg-gradient-to-r from-[#C49838] via-[#DFB758] to-[#C49838] rounded-xl shadow-[0_4px_20px_rgba(196,152,56,0.35)] transition-all duration-200 active:scale-[0.98]"
                 >

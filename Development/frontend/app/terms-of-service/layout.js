@@ -1,5 +1,8 @@
 import { siteConfig } from "@/lib/siteConfig";
 
+export const revalidate = 60;
+export const dynamic = "force-static";
+
 export const metadata = {
   title: "Terms of Service | Corporate Platform Engagement",
   description:

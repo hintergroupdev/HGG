@@ -1,5 +1,8 @@
 import { siteConfig } from "@/lib/siteConfig";
 
+export const revalidate = 60;
+export const dynamic = "force-static";
+
 export const metadata = {
   title: "Our Expertise | Strategic Consulting • Ventures • Brokerage",
   description:

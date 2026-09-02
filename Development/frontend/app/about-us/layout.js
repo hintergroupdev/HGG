@@ -1,5 +1,8 @@
 import { siteConfig } from "@/lib/siteConfig";
 
+export const revalidate = 60;
+export const dynamic = "force-static";
+
 export const metadata = {
   title: "About Us | Corporate Philosophy & 6-Stage Strategic Approach",
   description:
