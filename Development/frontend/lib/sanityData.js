@@ -14,6 +14,25 @@ import { urlForImage } from '@/sanity/lib/image';
 import { articlesData, publicationStreams } from './insightsData';
 
 /* ─────────────────────────────────────────────────────────────
+   HELPER: Same-origin Client CMS Fetcher
+   Ensures client components in browser query via /api/cms proxy,
+   eliminating CORS errors, ad-blocker drops, and stale caches.
+───────────────────────────────────────────────────────────── */
+async function fetchClientCms(type, slug = '') {
+  if (typeof window === 'undefined') return null;
+  try {
+    const url = `/api/cms?type=${encodeURIComponent(type)}${slug ? `&slug=${encodeURIComponent(slug)}` : ''}`;
+    const res = await fetch(url, { cache: 'no-store' });
+    if (res.ok) {
+      return await res.json();
+    }
+  } catch (err) {
+    console.warn(`[Client CMS Fetch Error for ${type}]`, err);
+  }
+  return null;
+}
+
+/* ─────────────────────────────────────────────────────────────
    1. SITE SETTINGS DATA FETCHER
 ───────────────────────────────────────────────────────────── */
 export async function getSiteSettings() {
@@ -21,15 +40,25 @@ export async function getSiteSettings() {
     companyName: 'THE HINTER GROUP GHANA LTD',
     tagline: 'Consulting + Ventures | Brokerage • Committed to Excellence',
     contactEmail: 'info@hintergroupghana.com',
-    contactPhone: '+233 (0) 30 200 0000',
+    contactPhone: '+233 (0) 30 200 0001',
+    contactPhoneAlt: null,
     officeAddress: '2nd Floor, The Octagon, Block D, Central Avenue, Accra, Ghana',
-    linkedinUrl: 'https://linkedin.com',
-    twitterUrl: 'https://x.com',
-    facebookUrl: 'https://facebook.com',
+    corporatePostalAddress: null,
+    linkedinUrl: null,
+    twitterUrl: null,
+    facebookUrl: null,
+    instagramUrl: null,
+    youtubeUrl: null,
     defaultOgImage: null,
   };
 
-  const data = await sanityFetch({ query: siteSettingsQuery, tags: ['siteSettings'] });
+  // When executed in client browser, fetch from our same-origin API route to prevent CORS/adblocker drops
+  if (typeof window !== 'undefined') {
+    const clientData = await fetchClientCms('siteSettings');
+    return clientData || fallback;
+  }
+
+  const data = await sanityFetch({ query: siteSettingsQuery, tags: ['siteSettings'], revalidate: 0 });
   if (!data) return fallback;
 
   return {
@@ -62,7 +91,7 @@ export const defaultLeadershipMembers = [
       'Strategic Partnerships & Institutional Engagement',
       'Corporate Governance, Accountability & Integrity',
     ],
-    linkedinUrl: 'https://linkedin.com',
+    linkedinUrl: null,
   },
   {
     id: 'daniel-kotei',
@@ -80,7 +109,7 @@ export const defaultLeadershipMembers = [
       'Institutional Engagement & Communication',
       'Disciplined Commercial Alignment',
     ],
-    linkedinUrl: 'https://linkedin.com',
+    linkedinUrl: null,
   },
   {
     id: 'mathew-essien',
@@ -98,7 +127,7 @@ export const defaultLeadershipMembers = [
       'Business Development Strategy',
       'Cross-Functional Coordination',
     ],
-    linkedinUrl: 'https://linkedin.com',
+    linkedinUrl: null,
   },
   {
     id: 'harold-lumor',
@@ -116,7 +145,7 @@ export const defaultLeadershipMembers = [
       'Financial Awareness & Structuring',
       'Disciplined Opportunity Evaluation',
     ],
-    linkedinUrl: 'https://linkedin.com',
+    linkedinUrl: null,
   },
   {
     id: 'rodney-rollins',
@@ -134,11 +163,17 @@ export const defaultLeadershipMembers = [
       'Data-Driven Decision Support',
       'Opportunity Landscape Mapping',
     ],
-    linkedinUrl: 'https://linkedin.com',
+    linkedinUrl: null,
   },
 ];
 
 export async function getLeadershipMembers() {
+  if (typeof window !== 'undefined') {
+    const clientData = await fetchClientCms('leadership');
+    if (clientData && clientData.length > 0) return clientData;
+    return defaultLeadershipMembers;
+  }
+
   const data = await sanityFetch({ query: leadershipMembersQuery, tags: ['leadershipMember'] });
   if (!data || data.length === 0) return defaultLeadershipMembers;
 
@@ -160,6 +195,12 @@ export async function getLeadershipMembers() {
    3. INSIGHTS & NEWS DATA FETCHER (POSTS & CATEGORIES)
 ───────────────────────────────────────────────────────────── */
 export async function getInsightsArticles() {
+  if (typeof window !== 'undefined') {
+    const clientData = await fetchClientCms('insights');
+    if (clientData && clientData.length > 0) return clientData;
+    return articlesData;
+  }
+
   const data = await sanityFetch({ query: postsQuery, tags: ['post', 'category'] });
   if (!data || data.length === 0) {
     // Return built-in master dataset
@@ -176,6 +217,7 @@ export async function getInsightsArticles() {
       title: post.title,
       categoryId: post.category?.slug?.current || 'company-news',
       category: post.category?.title || 'Company News',
+      publishedAt: post.publishedAt,
       date: post.publishedAt
         ? new Date(post.publishedAt).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
         : 'August 2026',
@@ -196,6 +238,12 @@ export async function getInsightsArticles() {
 }
 
 export async function getPublicationStreams() {
+  if (typeof window !== 'undefined') {
+    const clientData = await fetchClientCms('streams');
+    if (clientData && clientData.length > 0) return clientData;
+    return publicationStreams;
+  }
+
   const data = await sanityFetch({ query: categoriesQuery, tags: ['category'] });
   if (!data || data.length === 0) return publicationStreams;
 
@@ -212,6 +260,10 @@ export async function getPublicationStreams() {
    3.5. CORE SERVICES & PRACTICE PILLARS DATA FETCHER
 ───────────────────────────────────────────────────────────── */
 export async function getServices() {
+  if (typeof window !== 'undefined') {
+    return await fetchClientCms('services');
+  }
+
   const data = await sanityFetch({ query: servicesQuery, tags: ['service'] });
   if (!data || data.length === 0) {
     return null;
@@ -226,6 +278,10 @@ export async function getServices() {
    3.6. FOCUS SECTORS & INDUSTRIES DATA FETCHER
 ───────────────────────────────────────────────────────────── */
 export async function getIndustries() {
+  if (typeof window !== 'undefined') {
+    return await fetchClientCms('industries');
+  }
+
   const data = await sanityFetch({ query: industriesQuery, tags: ['industry'] });
   if (!data || data.length === 0) {
     return null;
@@ -324,9 +380,15 @@ export const defaultProjects = [
 ];
 
 export async function getProjects() {
+  if (typeof window !== 'undefined') {
+    const clientData = await fetchClientCms('projects');
+    if (clientData) return clientData;
+    return [];
+  }
+
   const data = await sanityFetch({ query: projectsQuery, tags: ['project', 'industry'] });
   if (!data || data.length === 0) {
-    return defaultProjects;
+    return [];
   }
 
   const liveProjects = data
@@ -344,13 +406,17 @@ export async function getProjects() {
       isFromSanity: true,
     }));
 
-  return liveProjects.length > 0 ? liveProjects : defaultProjects;
+  return liveProjects;
 }
 
 /* ─────────────────────────────────────────────────────────────
    5. LEGAL PAGES DATA FETCHER (PRIVACY POLICY & TERMS OF SERVICE)
 ───────────────────────────────────────────────────────────── */
 export async function getLegalPage(slug) {
+  if (typeof window !== 'undefined') {
+    return await fetchClientCms('legal', slug);
+  }
+
   try {
     const data = await sanityFetch({
       query: legalPageBySlugQuery,

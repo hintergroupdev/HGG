@@ -1632,18 +1632,18 @@ export default function ExpertisePage() {
       ───────────────────────────────────────────────── */}
       <section id="service-disciplines" className="py-16 sm:py-20 lg:py-24 bg-[#F8F9FA] text-[#0F172A] relative overflow-hidden border-b border-slate-200/80">
 
-        {/* Left-Side Focused Background Landmark Image */}
+        {/* Left-Side Focused Background Landmark Image (Subtle Low-Opacity per Client Brief Section 2) */}
         <div className="absolute left-0 top-0 bottom-0 w-full lg:w-[56%] xl:w-[50%] z-0 pointer-events-none select-none overflow-hidden">
           <Image
             src="/images/img_new_1.PNG"
             alt="Ghana Landmark Scenery"
             fill
             unoptimized
-            className="object-cover object-left lg:object-[15%_center] filter contrast-[1.08] brightness-[1.02] opacity-[0.60] sm:opacity-[0.70]"
+            className="object-cover object-left lg:object-[15%_center] filter contrast-[1.08] brightness-[1.02] opacity-[0.15] sm:opacity-[0.20]"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#F8F9FA]/40 to-[#F8F9FA]" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#F8F9FA] via-transparent to-[#F8F9FA]/80" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#F8F9FA] via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#F8F9FA]/60 to-[#F8F9FA]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#F8F9FA] via-transparent to-[#F8F9FA]/90" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#F8F9FA]/90 via-transparent to-transparent" />
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -2235,6 +2235,13 @@ export default function ExpertisePage() {
               <p className="text-slate-600 text-xs sm:text-sm leading-relaxed max-w-2xl mx-auto">
                 Our objective is to become a trusted long-term partner to organizations seeking responsible growth, meaningful collaboration, and sustainable value creation.
               </p>
+
+              {/* Professional Diligence Disclaimer (Client Brief Section 7 & 10) */}
+              <div className="pt-3 pb-1 max-w-xl mx-auto text-[11px] text-slate-500 leading-relaxed border-t border-slate-100">
+                <p>
+                  <em>Note: Where engagements require specialist legal, financial, environmental, or engineering assessments, HGG facilitates and coordinates these workstreams alongside appropriately qualified and accredited professional advisers and technical specialists.</em>
+                </p>
+              </div>
 
               {/* CTA Button Row */}
               <div className="flex flex-wrap items-center justify-center gap-3 pt-2">

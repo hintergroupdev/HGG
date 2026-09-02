@@ -19,6 +19,12 @@ import {
   Settings,
   TrendingUp,
   ChevronDown,
+  Search,
+  CheckSquare,
+  Network,
+  GitMerge,
+  Rocket,
+  LineChart,
 } from "lucide-react";
 
 /* ── 6 Core Values verbatim from HGG_Public_Website_Copy.docx ── */
@@ -31,26 +37,43 @@ const values = [
   "Sustainability",
 ];
 
+/* ── Approved 6-Stage Strategic Approach (Client Brief Section 5 & 12) ── */
 const steps = [
   {
-    title: "Understand",
-    description: "We listen, research, and gain deep insight.",
-    icon: Lightbulb,
+    step: "01",
+    title: "Identify",
+    description: "Screening credible commercial opportunities.",
+    icon: Search,
   },
   {
-    title: "Design",
-    description: "We craft tailored strategies and solutions.",
-    icon: Puzzle,
+    step: "02",
+    title: "Evaluate",
+    description: "Rigorous viability and risk evaluation.",
+    icon: CheckSquare,
   },
   {
-    title: "Execute",
-    description: "We implement with discipline and precision.",
-    icon: Settings,
+    step: "03",
+    title: "Connect",
+    description: "Aligning capital, partners, and institutions.",
+    icon: Network,
   },
   {
-    title: "Deliver Impact",
-    description: "We measure results and drive sustainable growth.",
-    icon: TrendingUp,
+    step: "04",
+    title: "Coordinate",
+    description: "Building consensus and governance clarity.",
+    icon: GitMerge,
+  },
+  {
+    step: "05",
+    title: "Advance",
+    description: "Structuring actionable implementation.",
+    icon: Rocket,
+  },
+  {
+    step: "06",
+    title: "Create Value",
+    description: "Delivering lasting, sustainable outcomes.",
+    icon: LineChart,
   },
 ];
 
@@ -328,15 +351,15 @@ export default function AboutFoundationSection() {
               {/* Header with Gold Rule */}
               <motion.div variants={fadeUp} className="flex items-center gap-4">
                 <h3 className="text-xs font-mono font-bold tracking-[0.22em] text-[#C49838] uppercase whitespace-nowrap">
-                  OUR STRATEGIC APPROACH
+                  OUR 6-STAGE STRATEGIC APPROACH
                 </h3>
                 <span className="h-[1px] w-full bg-[#DFB758]/50" />
               </motion.div>
 
-              {/* 4 Steps Container with Centered High-Visibility Connecting Line */}
+              {/* 6 Steps Container with Centered High-Visibility Connecting Line */}
               <div className="relative pt-2">
-                {/* Precision Vector Dotted Line (Desktop - Connects Centers of Step 1 to Step 4) */}
-                <div className="hidden lg:block absolute top-[35px] left-[12.5%] right-[12.5%] z-0 pointer-events-none">
+                {/* Precision Vector Dotted Line (Desktop - Connects Centers of Step 1 to Step 6) */}
+                <div className="hidden lg:block absolute top-[30px] left-[8.33%] right-[8.33%] z-0 pointer-events-none">
                   <svg className="w-full h-[3px] overflow-visible" fill="none">
                     <line
                       x1="0"
@@ -344,38 +367,38 @@ export default function AboutFoundationSection() {
                       x2="100%"
                       y2="1.5"
                       stroke="#061739"
-                      strokeWidth="2.5"
-                      strokeDasharray="5 7"
-                      strokeOpacity="0.35"
+                      strokeWidth="2"
+                      strokeDasharray="4 6"
+                      strokeOpacity="0.30"
                     />
                   </svg>
                 </div>
 
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-6 lg:gap-4 relative z-10">
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 sm:gap-3.5 lg:gap-2.5 relative z-10">
                   {steps.map((stepItem, idx) => {
                     const Icon = stepItem.icon;
                     return (
                       <motion.div
                         key={idx}
                         variants={fadeUp}
-                        custom={idx * 0.08}
-                        className="p-3.5 sm:p-0 rounded-xl sm:rounded-none bg-[#F8FAFC] sm:bg-transparent border border-slate-200/80 sm:border-none flex flex-col items-center text-center group relative"
+                        custom={idx * 0.06}
+                        className="p-3 sm:p-2 rounded-xl sm:rounded-none bg-[#F8FAFC] sm:bg-transparent border border-slate-200/80 sm:border-none flex flex-col items-center text-center group relative"
                       >
                         {/* Circular Dark Navy Icon Badge with Solid White Outline for Crisp Connector Cutout */}
-                        <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#061739] text-[#DFB758] ring-4 ring-white flex items-center justify-center mb-2.5 sm:mb-3.5 shadow-md group-hover:scale-105 group-hover:bg-[#0A2457] group-hover:shadow-lg transition-all duration-300 relative z-10">
-                          <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
-                          <span className="absolute -top-1 -right-1 w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#DFB758] text-[#061739] font-mono font-extrabold text-[9px] sm:text-[10px] flex items-center justify-center shadow-xs">
-                            0{idx + 1}
+                        <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#061739] text-[#DFB758] ring-4 ring-white flex items-center justify-center mb-2 shadow-md group-hover:scale-105 group-hover:bg-[#0A2457] group-hover:shadow-lg transition-all duration-300 relative z-10">
+                          <Icon className="w-5 h-5" />
+                          <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[#DFB758] text-[#061739] font-mono font-extrabold text-[8.5px] flex items-center justify-center shadow-xs">
+                            {stepItem.step}
                           </span>
                         </div>
 
                         {/* Title */}
-                        <h4 className="font-heading text-xs sm:text-base font-bold text-[#061739] mb-1 group-hover:text-[#14588B] transition-colors">
+                        <h4 className="font-heading text-xs sm:text-[13px] font-bold text-[#061739] mb-1 group-hover:text-[#14588B] transition-colors uppercase tracking-wider">
                           {stepItem.title}
                         </h4>
 
                         {/* Description */}
-                        <p className="text-[10.5px] sm:text-[11.5px] text-slate-500 leading-snug font-normal">
+                        <p className="text-[10px] sm:text-[11px] text-slate-500 leading-tight font-normal line-clamp-2">
                           {stepItem.description}
                         </p>
                       </motion.div>

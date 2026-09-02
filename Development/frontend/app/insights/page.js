@@ -53,12 +53,46 @@ const fadeUp = {
 
 const ITEMS_PER_PAGE = 12;
 
+/* Stream Segmentation Constants (Client Review Section 13) */
+const PERSPECTIVE_STREAM_IDS = [
+  "business-insights",
+  "industry-perspectives",
+  "leadership-perspectives",
+];
+
+const CORPORATE_STREAM_IDS = [
+  "company-news",
+  "project-partnerships",
+  "announcements",
+];
+
+/* Distinct Light-Color Category System */
+const getCategoryBadgeStyle = (categoryId) => {
+  switch (categoryId) {
+    case "business-insights":
+      return "bg-[#FFFBEB] text-[#92400E] border-[#FDE68A]";
+    case "industry-perspectives":
+      return "bg-[#F0F9FF] text-[#0369A1] border-[#BAE6FD]";
+    case "leadership-perspectives":
+      return "bg-[#FAF5FF] text-[#6B21A8] border-[#E9D5FF]";
+    case "company-news":
+      return "bg-[#EFF6FF] text-[#1E40AF] border-[#BFDBFE]";
+    case "announcements":
+      return "bg-[#ECFDF5] text-[#065F46] border-[#A7F3D0]";
+    case "project-partnerships":
+      return "bg-[#F0FDFA] text-[#115E59] border-[#99F6E4]";
+    default:
+      return "bg-slate-50 text-slate-800 border-slate-200";
+  }
+};
+
 /* ─────────────────────────────────────────────────────────────
    INSIGHTS CONTENT INNER COMPONENT (Handles Query Params & State)
 ───────────────────────────────────────────────────────────── */
 function InsightsContent() {
   const searchParams = useSearchParams();
   const [articles, setArticles] = useState(articlesData);
+  const [activeStream, setActiveStream] = useState("perspectives"); // "perspectives" | "corporate"
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState("date-desc");
@@ -95,14 +129,19 @@ function InsightsContent() {
     }
     const catParam = searchParams.get("category");
     if (catParam) {
+      if (CORPORATE_STREAM_IDS.includes(catParam)) {
+        setActiveStream("corporate");
+      } else {
+        setActiveStream("perspectives");
+      }
       setSelectedCategory(catParam);
     }
   }, [searchParams, articles]);
 
-  // Reset page number on filter, search, or sort change
+  // Reset page number on filter, search, sort, or stream change
   useEffect(() => {
     setCurrentPage(1);
-  }, [selectedCategory, searchQuery, sortBy]);
+  }, [activeStream, selectedCategory, searchQuery, sortBy]);
 
   // Close modals on Escape key press
   useEffect(() => {
@@ -125,11 +164,43 @@ function InsightsContent() {
     }
   }, [activeArticleModal, isWhatWePublishOpen]);
 
+  // Stream counts
+  const perspectivesCount = useMemo(
+    () => articles.filter((a) => PERSPECTIVE_STREAM_IDS.includes(a.categoryId)).length,
+    [articles]
+  );
+  const corporateCount = useMemo(
+    () => articles.filter((a) => CORPORATE_STREAM_IDS.includes(a.categoryId)).length,
+    [articles]
+  );
+
+  // Active stream category list
+  const activeStreamCategories = useMemo(() => {
+    const allowed =
+      activeStream === "perspectives"
+        ? PERSPECTIVE_STREAM_IDS
+        : CORPORATE_STREAM_IDS;
+    return publicationStreams.filter((s) => allowed.includes(s.id));
+  }, [activeStream]);
+
   // Filter & Sort logic
   const filteredArticles = useMemo(() => {
+    const streamAllowedIds =
+      activeStream === "perspectives"
+        ? PERSPECTIVE_STREAM_IDS
+        : CORPORATE_STREAM_IDS;
+
     const result = articles.filter((article) => {
+      // Must match active stream
+      if (!streamAllowedIds.includes(article.categoryId)) {
+        return false;
+      }
+
+      // Category filter within stream
       const matchesCategory =
         selectedCategory === "all" || article.categoryId === selectedCategory;
+
+      // Search query
       const matchesSearch =
         searchQuery.trim() === "" ||
         article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -138,18 +209,21 @@ function InsightsContent() {
           article.tags.some((t) =>
             t.toLowerCase().includes(searchQuery.toLowerCase())
           ));
+
       return matchesCategory && matchesSearch;
     });
 
-    // Helper to safely parse dates (e.g. "August 2026", "2026-08-15")
+    // Helper to safely parse dates across browsers (handles ISO, "August 2026", etc.)
     const parseArticleDate = (a) => {
       if (a.publishedAt) {
         const t = new Date(a.publishedAt).getTime();
         if (!isNaN(t)) return t;
       }
       if (a.date) {
-        const parsed = Date.parse(a.date);
-        if (!isNaN(parsed)) return parsed;
+        const direct = Date.parse(a.date);
+        if (!isNaN(direct)) return direct;
+        const withDay = Date.parse(`1 ${a.date}`);
+        if (!isNaN(withDay)) return withDay;
       }
       return 0;
     };
@@ -184,7 +258,7 @@ function InsightsContent() {
     });
 
     return result;
-  }, [articles, selectedCategory, searchQuery, sortBy]);
+  }, [articles, activeStream, selectedCategory, searchQuery, sortBy]);
 
   // Pagination calculation
   const totalPages = Math.max(1, Math.ceil(filteredArticles.length / ITEMS_PER_PAGE));
@@ -194,12 +268,12 @@ function InsightsContent() {
   }, [filteredArticles, currentPage]);
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] text-[#0F172A] font-sans antialiased overflow-x-hidden selection:bg-[#DFB758]/20 selection:text-[#061739] pt-6 sm:pt-8 pb-20">
+    <div className="min-h-screen bg-[#F8FAFC] text-[#0F172A] font-sans antialiased overflow-x-hidden selection:bg-[#DFB758]/20 selection:text-[#061739] pt-6 sm:pt-8 pb-20 relative">
 
       {/* ─────────────────────────────────────────────────
           1. CLEAN PAGE HEADER WITH "WHAT WE PUBLISH" BUTTON
       ───────────────────────────────────────────────── */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6 relative z-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-5 pb-6 border-b border-slate-200">
           <div className="space-y-2.5 max-w-2xl">
             <div className="flex items-center gap-3 sm:gap-4 mb-2.5">
@@ -272,6 +346,60 @@ function InsightsContent() {
       ───────────────────────────────────────────────── */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
+        {/* Primary Dual-Stream Segmented Navigation */}
+        <div className="mb-8 pb-6 border-b border-slate-200 flex justify-center">
+          <div className="inline-flex p-1 bg-slate-100/90 rounded-xl border border-slate-200/80 w-full sm:w-auto flex-col sm:flex-row gap-1 shadow-2xs">
+            <button
+              type="button"
+              onClick={() => {
+                setActiveStream("perspectives");
+                setSelectedCategory("all");
+              }}
+              className={`px-4 py-2.5 rounded-lg text-xs font-heading font-bold transition-all flex items-center justify-center gap-2 cursor-pointer ${
+                activeStream === "perspectives"
+                  ? "bg-[#DFB758] text-[#061739] shadow-xs border border-[#C49838]/50"
+                  : "text-slate-600 hover:text-[#061739] hover:bg-white/60"
+              }`}
+            >
+              <TrendingUp className={`w-3.5 h-3.5 ${activeStream === "perspectives" ? "text-[#061739]" : "text-[#C49838]"}`} />
+              <span>Strategic Perspectives & Sector Analysis</span>
+              <span
+                className={`text-[10px] font-mono px-1.5 py-0.5 rounded-full font-bold ${
+                  activeStream === "perspectives"
+                    ? "bg-[#061739] text-[#DFB758]"
+                    : "bg-slate-200 text-slate-600"
+                }`}
+              >
+                {perspectivesCount}
+              </span>
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setActiveStream("corporate");
+                setSelectedCategory("all");
+              }}
+              className={`px-4 py-2.5 rounded-lg text-xs font-heading font-bold transition-all flex items-center justify-center gap-2 cursor-pointer ${
+                activeStream === "corporate"
+                  ? "bg-[#14588B] text-white shadow-xs border border-[#0E3D60]"
+                  : "text-slate-600 hover:text-[#061739] hover:bg-white/60"
+              }`}
+            >
+              <Building2 className={`w-3.5 h-3.5 ${activeStream === "corporate" ? "text-[#DFB758]" : "text-[#14588B]"}`} />
+              <span>Corporate Announcements & News</span>
+              <span
+                className={`text-[10px] font-mono px-1.5 py-0.5 rounded-full font-bold ${
+                  activeStream === "corporate"
+                    ? "bg-white/20 text-white"
+                    : "bg-slate-200 text-slate-600"
+                }`}
+              >
+                {corporateCount}
+              </span>
+            </button>
+          </div>
+        </div>
+
         {/* Search Bar & Category Filter Controls */}
         <div className="bg-white border border-slate-200 rounded-xl p-4 sm:p-6 mb-8 shadow-xs space-y-4">
           {/* Search Input */}
@@ -281,7 +409,11 @@ function InsightsContent() {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search by keyword, sector (e.g. Infrastructure, Energy, Agribusiness), or topic..."
+              placeholder={
+                activeStream === "perspectives"
+                  ? "Search by sector (e.g. Infrastructure, Energy, Agribusiness, AfCFTA), or topic..."
+                  : "Search official notices, announcements, corporate developments..."
+              }
               className="w-full pl-11 pr-10 py-3 text-xs sm:text-sm bg-[#F8FAFC] border border-slate-200 rounded-md focus:outline-none focus:border-[#DFB758] focus:ring-2 focus:ring-[#DFB758]/20 transition-all placeholder:text-slate-400"
             />
             {searchQuery && (
@@ -307,9 +439,10 @@ function InsightsContent() {
                   : "bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-[#061739]"
               }`}
             >
-              All ({articles.length})
+              All {activeStream === "perspectives" ? "Perspectives" : "Notices"} (
+              {activeStream === "perspectives" ? perspectivesCount : corporateCount})
             </button>
-            {publicationStreams.map((stream) => {
+            {activeStreamCategories.map((stream) => {
               const count = articles.filter(
                 (a) => a.categoryId === stream.id
               ).length;
@@ -381,24 +514,57 @@ function InsightsContent() {
 
         {/* Articles Grid */}
         {paginatedArticles.length === 0 ? (
-          <div className="text-center py-16 bg-white border border-slate-200 rounded-2xl p-8 space-y-3">
-            <BookOpen className="w-10 h-10 text-slate-300 mx-auto" />
-            <h3 className="font-heading text-lg font-bold text-[#061739]">
-              No publications found
-            </h3>
-            <p className="text-slate-500 text-xs sm:text-sm max-w-md mx-auto">
-              We couldn&apos;t find any articles matching your search query or selected category filter.
-            </p>
-            <button
-              onClick={() => {
-                setSelectedCategory("all");
-                setSearchQuery("");
-              }}
-              className="mt-2 inline-flex items-center gap-2 px-4 py-2 text-xs font-heading font-bold text-[#061739] bg-[#DFB758]/20 hover:bg-[#DFB758]/30 rounded-md transition-colors cursor-pointer"
-            >
-              Reset Filters
-            </button>
-          </div>
+          activeStream === "corporate" ? (
+            <div className="text-center py-16 px-6 bg-white border border-slate-200/90 rounded-2xl p-8 space-y-4 shadow-2xs max-w-2xl mx-auto my-4">
+              <div className="w-14 h-14 rounded-full bg-[#14588B]/10 border border-[#14588B]/20 flex items-center justify-center text-[#14588B] mx-auto">
+                <Megaphone className="w-6 h-6" />
+              </div>
+              <div className="space-y-2">
+                <span className="text-[10px] font-mono font-bold text-[#C49838] uppercase tracking-wider block">
+                  CORPORATE DISCLOSURE CLEARANCE PROTOCOL
+                </span>
+                <h3 className="font-heading text-lg sm:text-xl font-bold text-[#061739]">
+                  Official Announcements & Corporate Releases
+                </h3>
+                <p className="text-slate-600 text-xs sm:text-sm leading-relaxed max-w-lg mx-auto">
+                  Official notices, executive appointments, symposium participations, and bilateral partnership milestones are published here following executive authorization from HGG Leadership. Currently, no active public press announcements are scheduled.
+                </p>
+              </div>
+              <div className="pt-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setActiveStream("perspectives");
+                    setSelectedCategory("all");
+                  }}
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-md bg-[#061739] hover:bg-[#0A2457] text-white text-xs font-heading font-bold transition-all shadow-xs cursor-pointer"
+                >
+                  <TrendingUp className="w-3.5 h-3.5 text-[#DFB758]" />
+                  Explore Strategic & Sector Perspectives ({perspectivesCount})
+                </button>
+              </div>
+            </div>
+          ) : (
+            <div className="text-center py-16 bg-white border border-slate-200 rounded-2xl p-8 space-y-3">
+              <BookOpen className="w-10 h-10 text-slate-300 mx-auto" />
+              <h3 className="font-heading text-lg font-bold text-[#061739]">
+                No publications found
+              </h3>
+              <p className="text-slate-500 text-xs sm:text-sm max-w-md mx-auto">
+                We couldn&apos;t find any articles matching your search query or selected category filter.
+              </p>
+              <button
+                type="button"
+                onClick={() => {
+                  setSelectedCategory("all");
+                  setSearchQuery("");
+                }}
+                className="mt-2 inline-flex items-center gap-2 px-4 py-2 text-xs font-heading font-bold text-[#061739] bg-[#DFB758]/20 hover:bg-[#DFB758]/30 rounded-md transition-colors cursor-pointer"
+              >
+                Reset Filters
+              </button>
+            </div>
+          )
         ) : (
           <>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
@@ -431,9 +597,22 @@ function InsightsContent() {
 
                     {/* Meta Header */}
                     <div className="flex items-center justify-between gap-2">
-                      <span className="px-2.5 py-1 rounded-md bg-[#061739] text-white text-[10px] sm:text-[11px] font-heading font-extrabold uppercase tracking-wider shadow-xs">
+                      <span
+                        className={`px-2 py-0.5 rounded text-[9px] sm:text-[9.5px] font-heading font-bold uppercase tracking-wider border shadow-2xs ${getCategoryBadgeStyle(
+                          article.categoryId
+                        )}`}
+                      >
                         {article.category}
                       </span>
+                      {PERSPECTIVE_STREAM_IDS.includes(article.categoryId) ? (
+                        <span className="text-[9px] font-mono font-bold text-[#C49838] uppercase tracking-wider flex items-center gap-1">
+                          <TrendingUp className="w-2.5 h-2.5 text-[#C49838]" /> SECTOR PERSPECTIVE
+                        </span>
+                      ) : (
+                        <span className="text-[9px] font-mono font-bold text-[#14588B] uppercase tracking-wider flex items-center gap-1">
+                          <Megaphone className="w-2.5 h-2.5 text-[#14588B]" /> OFFICIAL NOTICE
+                        </span>
+                      )}
                     </div>
 
                     {/* Title */}
@@ -751,7 +930,7 @@ function InsightsContent() {
 
                 <div className="space-y-2 pr-8">
                   <div className="flex items-center gap-2 flex-wrap">
-                    <span className="px-2.5 py-0.5 rounded-md text-[10px] font-heading font-bold bg-[#DFB758] text-[#061739] uppercase tracking-wider">
+                    <span className={`px-2 py-0.5 rounded text-[9.5px] font-heading font-bold uppercase tracking-wider border shadow-2xs ${getCategoryBadgeStyle(activeArticleModal.categoryId)}`}>
                       {activeArticleModal.category}
                     </span>
                     <span className="text-slate-400 text-xs font-mono flex items-center gap-1.5">
@@ -796,28 +975,30 @@ function InsightsContent() {
                   <p>{activeArticleModal.excerpt}</p>
                 )}
 
-                <div className="pt-5 border-t border-slate-200">
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                    <div className="flex flex-wrap gap-1.5">
-                      {activeArticleModal.tags && activeArticleModal.tags.map((tag, idx) => (
-                        <span
-                          key={idx}
-                          className="px-2 py-0.5 rounded-md bg-[#F8FAFC] border border-slate-200 text-slate-600 text-[11px] font-mono"
-                        >
-                          #{tag}
-                        </span>
-                      ))}
-                    </div>
+                {/* Institutional Reader Footnote */}
+                <div className="p-3.5 rounded-lg bg-slate-50 border border-slate-200/80 text-[11px] text-slate-500 leading-relaxed">
+                  <span className="font-bold text-[#061739]">Editorial & Advisory Disclosure:</span> This publication is issued by THE HINTER GROUP GHANA LTD as strategic industry analysis to foster commercial dialogue. It does not constitute a formal transaction offer, financial guarantee, or specialist legal advice.
+                </div>
 
-                    <Link
-                      href="/contact"
-                      onClick={() => setActiveArticleModal(null)}
-                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 text-xs font-heading font-bold text-[#061739] bg-[#DFB758] hover:bg-[#C49838] rounded-md transition-colors uppercase tracking-wider shadow-xs"
+                <div className="pt-5 border-t border-slate-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                  <div className="flex items-center gap-2">
+                    <span
+                      className={`px-2.5 py-0.5 rounded text-[10px] font-heading font-bold uppercase tracking-wider border shadow-2xs ${getCategoryBadgeStyle(
+                        activeArticleModal.categoryId
+                      )}`}
                     >
-                      <span>Discuss with HGG</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </Link>
+                      {activeArticleModal.category}
+                    </span>
                   </div>
+
+                  <Link
+                    href="/contact"
+                    onClick={() => setActiveArticleModal(null)}
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 text-xs font-heading font-bold text-[#061739] bg-[#DFB758] hover:bg-[#C49838] rounded-md transition-colors uppercase tracking-wider shadow-xs"
+                  >
+                    <span>Discuss with HGG</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
                 </div>
               </div>
             </motion.div>

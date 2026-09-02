@@ -647,21 +647,21 @@ export default function LeadershipPage() {
           5. 10 LEADERSHIP PRINCIPLES & GOVERNANCE
       ───────────────────────────────────────────────── */}
       <section id="core-tenets" className="py-14 sm:py-20 lg:py-24 bg-[#F8F9FA] border-b border-slate-200/80 relative overflow-hidden">
-        {/* ── Right-Side Focused Background Image: img_new_2.PNG ── */}
+        {/* ── Right-Side Focused Background Image: img_new_1.PNG (Black Star Square - Alternating Landmark per Section 2) ── */}
         <div className="absolute right-0 top-0 bottom-0 w-full lg:w-[58%] xl:w-[50%] z-0 pointer-events-none select-none overflow-hidden">
           <Image
-            src="/images/img_new_2.PNG"
-            alt="Ghana Landmark Background"
+            src="/images/img_new_1.PNG"
+            alt="Ghana Black Star Square Background"
             fill
             sizes="(max-width: 1024px) 100vw, 55vw"
             unoptimized
-            className="object-cover object-right lg:object-[80%_center] filter contrast-[1.08] brightness-[1.02] opacity-[0.45] sm:opacity-[0.75]"
+            className="object-cover object-right lg:object-[80%_center] filter contrast-[1.08] brightness-[1.02] opacity-[0.14] sm:opacity-[0.18]"
           />
           {/* Smooth horizontal gradient fade to the left */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#F8F9FA] via-[#F8F9FA]/80 to-[#F8F9FA]/40 lg:via-[#F8F9FA]/50 lg:to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-[#F8F9FA]/70" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#F8F9FA] via-[#F8F9FA]/85 to-[#F8F9FA]/50 lg:via-[#F8F9FA]/70 lg:to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-[#F8F9FA]/90" />
           {/* Top and bottom edge blending */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#F8F9FA] via-transparent to-[#F8F9FA]/80" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#F8F9FA] via-transparent to-[#F8F9FA]/90" />
           <div className="absolute inset-0 bg-gradient-to-b from-[#F8F9FA] via-transparent to-transparent" />
         </div>
 

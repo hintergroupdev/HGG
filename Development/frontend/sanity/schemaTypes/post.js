@@ -38,6 +38,13 @@ export const post = defineType({
       to: [{ type: 'category' }],
     }),
     defineField({
+      name: 'isApproved',
+      title: 'HGG Editorial Approval (Cleared for Public Release)',
+      type: 'boolean',
+      description: 'Must be explicitly toggled ON to authorize public website display. Keep OFF for drafts under HGG executive review.',
+      initialValue: true,
+    }),
+    defineField({
       name: 'author',
       title: 'Author / Contributor',
       type: 'reference',

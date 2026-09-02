@@ -8,50 +8,40 @@ import {
   FileCheck,
   Users,
   MessageSquareCheck,
-  FolderGit2,
-  Scale,
-  FileSignature,
   Rocket,
   ArrowRight,
-  ArrowDown,
-  Workflow,
-  Flag,
-  Trophy,
-  MoveRight,
-  MoveLeft,
-  ChevronsDown,
   ChevronDown,
   CheckCircle2,
   ShieldCheck,
   X,
-  Layers,
+  Trophy,
+  Flag,
 } from "lucide-react";
-
 import Image from "next/image";
 
-/* ── 9 Steps with 9 Distinct Circumference Colors & Rich Verbatim Master Metadata ── */
-const steps = [
+/* ── 6 Approved Stages with Master Metadata (Client Brief Section 5 & 12) ── */
+const stages = [
   {
     number: "01",
-    title: "Opportunity Identification",
-    scope: "Systematic market scanning and preliminary opportunity screening.",
-    phase: "Conceptualization & Sourcing",
+    title: "IDENTIFY",
+    scope: "Identifying and sourcing high-potential opportunities.",
+    phase: "Opportunity Identification",
     icon: Compass,
     color: "#0284C7", // Sky Blue
     fullLead:
-      "HGG proactively identifies, evaluates, and sources promising business, investment, and infrastructure opportunities that align with Ghana's economic priorities, regional growth corridors, and international investor criteria.",
+      "HGG identifies business, investment, partnership, and development opportunities that demonstrate potential for economic, commercial, technological, environmental, or social value across Ghana, West Africa, and international corridors.",
     keyActivities: [
       {
-        title: "Market & Sector Scanning",
-        desc: "Evaluating high-impact sectors including energy, infrastructure, agribusiness, real estate, and technology.",
+        title: "Market & Sector Opportunity Scanning",
+        desc: "Systematic screening across priority corridors including infrastructure, energy, agribusiness, technology, and industry.",
       },
       {
-        title: "Strategic Fit Screening",
-        desc: "Assessing alignment with institutional mandates, commercial viability, and developmental impact.",
+        title: "Strategic Relevance & Mandate Filtering",
+        desc: "Assessing alignment with institutional mandates, commercial viability, and responsible long-term growth.",
       },
       {
         title: "Preliminary Opportunity Dossier",
-        desc: "Structuring initial concept notes, operating briefs, and baseline parameter definitions.",
+        desc: "Structuring initial concept notes, operating briefs, and baseline commercial parameters.",
       },
     ],
     milestoneDeliverable: "Preliminary Opportunity Brief & Initial Screening Memo",
@@ -59,210 +49,132 @@ const steps = [
   },
   {
     number: "02",
-    title: "Preliminary Assessment",
-    scope: "High-level viability review, risk mapping, and initial capacity evaluation.",
-    phase: "Feasibility & Risk Evaluation",
+    title: "EVALUATE",
+    scope: "Comprehensive viability review, risk mapping, and feasibility.",
+    phase: "Feasibility & Diligence",
     icon: FileCheck,
-    color: "#6366F1", // Indigo
+    color: "#14588B", // Corporate Navy Blue
     fullLead:
-      "Before significant resources or relationships are committed, HGG conducts a rigorous preliminary assessment to understand commercial feasibility, technical viability, regulatory parameters, and strategic risk constraints.",
+      "Before advancing an opportunity, HGG conducts rigorous evaluation to understand its objectives, stakeholders, potential risks, commercial considerations, development impact, and overall strategic relevance.",
     keyActivities: [
       {
-        title: "Commercial Viability Analysis",
+        title: "Commercial & Economic Viability Analysis",
         desc: "Examining market demand, revenue drivers, cost structures, and preliminary financial feasibility.",
       },
       {
         title: "Regulatory & Legal Landscape Review",
-        desc: "Mapping licensing requirements, statutory permits, local content requirements, and compliance standards.",
+        desc: "Mapping licensing requirements, statutory permits, local content requirements, and compliance standards alongside accredited external advisers.",
       },
       {
-        title: "Risk Constraint Mapping",
-        desc: "Identifying macroeconomic, operational, counterparty, and environmental risks with mitigation paths.",
+        title: "Risk Constraint Mapping & Mitigation",
+        desc: "Identifying macroeconomic, operational, counterparty, and environmental risks with actionable mitigation paths.",
       },
     ],
-    milestoneDeliverable: "High-Level Feasibility Dossier & Risk Matrix",
-    stakeholdersInvolved: ["Corporate Sponsors", "Financial Analysts", "Regulatory Advisors"],
+    milestoneDeliverable: "Strategic Feasibility Dossier & Risk Matrix",
+    stakeholdersInvolved: ["Corporate Sponsors", "Financial Analysts", "Technical Advisors"],
   },
   {
     number: "03",
-    title: "Stakeholder Mapping",
-    scope: "Identifying key institutional, private, and community stakeholders.",
-    phase: "Ecosystem Mobilization",
+    title: "CONNECT",
+    scope: "Bringing the right stakeholders, capital, and expertise together.",
+    phase: "Stakeholder Ecosystem Mobilization",
     icon: Users,
-    color: "#8B5CF6", // Purple
+    color: "#C49838", // Warm Gold
     fullLead:
-      "Complex initiatives require multi-party alignment. HGG maps and analyzes the entire institutional, financial, and commercial ecosystem required to successfully develop, finance, and execute the initiative.",
+      "HGG connects opportunities with the organizations, investors, institutions, technologies, expertise, and strategic relationships capable of helping advance them. Our role is to create meaningful connections rather than simply introductions.",
     keyActivities: [
       {
-        title: "Decision-Maker Identification",
+        title: "Decision-Maker & Institutional Mapping",
         desc: "Pinpointing key public ministries, municipal agencies, statutory regulators, and community leaders.",
       },
       {
         title: "Capital & Tech Partner Profiling",
-        desc: "Identifying suitable equity funds, development banks, EPC contractors, and technology vendors.",
+        desc: "Identifying suitable equity funds, development finance institutions, EPC contractors, and technology vendors.",
       },
       {
-        title: "Alignment Strategy Formulation",
-        desc: "Developing tailored engagement plans to address each stakeholder group's strategic mandate.",
+        title: "Confidential Introduction Protocols",
+        desc: "Facilitating senior-level introductions under strict institutional confidentiality and non-disclosure standards.",
       },
     ],
-    milestoneDeliverable: "Stakeholder Architecture Matrix & Engagement Blueprint",
-    stakeholdersInvolved: ["Public Authorities", "Institutional Partners", "HGG Facilitators"],
+    milestoneDeliverable: "Stakeholder Architecture Matrix & Strategic Introduction Brief",
+    stakeholdersInvolved: ["Institutional Investors", "Technology Providers", "Public Authorities"],
   },
   {
     number: "04",
-    title: "Strategic Engagement",
-    scope: "Exploring compatibility, strategic interest, and core partner contributions.",
-    phase: "Dialogue & Relationship Building",
+    title: "COORDINATE",
+    scope: "Building alignment, governance clarity, and shared objectives.",
+    phase: "Multi-Party Alignment & Structuring",
     icon: MessageSquareCheck,
-    color: "#D97706", // Amber
+    color: "#0A2457", // Deep Navy
     fullLead:
-      "HGG initiates and coordinates discreet, high-level discussions among identified stakeholders to explore compatibility, clarify strategic expectations, and confirm mutual interest in collaboration.",
+      "Complex opportunities often involve multiple parties with different responsibilities and expectations. HGG facilitates communication, stakeholder engagement, and coordination to establish clarity, shared objectives, and constructive collaboration throughout the development process.",
     keyActivities: [
       {
-        title: "Discreet Executive Introductions",
-        desc: "Managing initial executive meetings under strict confidentiality and non-disclosure standards.",
+        title: "Multi-Party Dialogue & Facilitation",
+        desc: "Structuring alignment workshops and negotiation frameworks to reconcile divergent stakeholder expectations.",
       },
       {
-        title: "Strategic Objective Clarification",
-        desc: "Facilitating structured discussions to align commercial, technical, and developmental goals.",
+        title: "Commercial Architecture & Governance",
+        desc: "Clarifying participant roles, responsibilities, contribution matrices, and institutional governance arrangements.",
       },
       {
-        title: "Partner Contribution Scoping",
-        desc: "Clarifying roles, equity commitments, technology transfer scopes, and operational responsibilities.",
+        title: "Regulatory & Public-Private Interface",
+        desc: "Coordinating public-private dialogue to ensure statutory alignment and institutional support.",
       },
     ],
-    milestoneDeliverable: "Strategic Alignment Summary & Partner Consensus Protocol",
-    stakeholdersInvolved: ["Executive Leadership", "Investors", "Technology Providers", "Public Agencies"],
+    milestoneDeliverable: "Stakeholder Alignment Charter & Partnership Term Sheet",
+    stakeholdersInvolved: ["Project Steering Committees", "Joint Venture Partners", "HGG Coordinators"],
   },
   {
     number: "05",
-    title: "Project & Partnership Development",
-    scope: "Formulating project concepts, roles, and commercial briefs.",
-    phase: "Structuring & Development",
-    icon: FolderGit2,
-    color: "#C49838", // HGG Gold
+    title: "ADVANCE",
+    scope: "Supporting the path toward execution and implementation.",
+    phase: "Execution & Implementation Readiness",
+    icon: Rocket,
+    color: "#57A3C0", // Cyan Blue
     fullLead:
-      "HGG assists parties in transforming aligned interest into structured initiative concepts, establishing preliminary project governance, operational frameworks, and institutional partnership briefs.",
+      "As opportunities progress, HGG supports the development process through strategic facilitation, business coordination, stakeholder engagement, and relationship management to help move promising opportunities from discussion toward structured and actionable initiatives.",
     keyActivities: [
       {
-        title: "Commercial Brief & Project Blueprint",
-        desc: "Drafting detailed project briefs, investment memoranda, and implementation roadmaps.",
+        title: "Transaction Facilitation & Readiness",
+        desc: "Assisting parties in preparing documentation, structuring commercial agreements, and reaching closing.",
       },
       {
-        title: "Governance & Operating Frameworks",
-        desc: "Designing governance models, steering committees, and clear division of responsibilities.",
+        title: "Resource & Partner Mobilization",
+        desc: "Coordinating the assembly of capital, technology, and operational resources needed for deployment.",
       },
       {
-        title: "Consortium & JV Structuring",
-        desc: "Establishing structural parameters for joint ventures, public-private partnerships (PPPs), or consortia.",
+        title: "Milestone Tracking & Execution Support",
+        desc: "Providing active oversight, milestone monitoring, and relationship stewardship through project launch.",
       },
     ],
-    milestoneDeliverable: "Comprehensive Project Blueprint & Term Sheet Framework",
-    stakeholdersInvolved: ["Consortium Partners", "Legal Counsel", "HGG Project Leads"],
+    milestoneDeliverable: "Execution Readiness Dossier & Implementation Framework",
+    stakeholdersInvolved: ["Legal Counsel", "EPC Contractors", "Financing Syndicates"],
   },
   {
     number: "06",
-    title: "Professional Due Diligence",
-    scope: "Coordinating legal, financial, environmental, and technical reviews.",
-    phase: "Verification & Compliance",
-    icon: Scale,
-    color: "#EA580C", // Tangerine
-    fullLead:
-      "All parties coordinate comprehensive professional due diligence alongside independent legal, financial, technical, environmental, and social impact specialists to ensure full transparency and compliance.",
-    keyActivities: [
-      {
-        title: "Legal & Corporate Verification",
-        desc: "Validating ownership, statutory licenses, corporate authority, and contract validity.",
-      },
-      {
-        title: "Financial & Tax Modeling",
-        desc: "Auditing financial projections, debt service capacities, and tax structuring.",
-      },
-      {
-        title: "Environmental & Social Impact (ESIA)",
-        desc: "Confirming compliance with EPA Ghana standards and international ESG benchmarks.",
-      },
-    ],
-    milestoneDeliverable: "Independent Due Diligence Clearance & Bankability Report",
-    stakeholdersInvolved: ["Independent Auditors", "Legal Specialists", "Technical Engineers", "DFIs"],
-  },
-  {
-    number: "07",
-    title: "Formalization",
-    scope: "Supporting execution of MOUs, Letters of Intent, JVs, and Service Agreements.",
-    phase: "Contractual Execution",
-    icon: FileSignature,
-    color: "#0D9488", // Teal
-    fullLead:
-      "Following successful due diligence and commercial consensus, HGG supports the finalization and formal execution of binding agreements, memorandums of understanding, joint venture contracts, and concession documents.",
-    keyActivities: [
-      {
-        title: "Contractual Coordination",
-        desc: "Harmonizing multi-party input into final definitive legal agreements alongside qualified counsel.",
-      },
-      {
-        title: "Closing Condition Precedent (CP) Management",
-        desc: "Tracking and fulfilling all closing conditions, board approvals, and regulatory clearances.",
-      },
-      {
-        title: "Signing & Institutional Launch",
-        desc: "Organizing formal ceremonial signing protocols and multi-agency stakeholder announcements.",
-      },
-    ],
-    milestoneDeliverable: "Executed Definitive Agreements & Institutional Charter",
-    stakeholdersInvolved: ["Legal Counsel", "Authorized Signatories", "Government Ministers", "Financiers"],
-  },
-  {
-    number: "08",
-    title: "Project Advancement",
-    scope: "Active milestone management, progress tracking, and stakeholder liaison.",
-    phase: "Implementation & Advancement",
-    icon: Rocket,
-    color: "#10B981", // Emerald
-    fullLead:
-      "Moving from agreements into active execution, HGG maintains ongoing stakeholder liaison, progress monitoring, and inter-agency coordination to ensure milestones are achieved on schedule.",
-    keyActivities: [
-      {
-        title: "Implementation Liaison Desk",
-        desc: "Maintaining active communication channels between project operators, investors, and public authorities.",
-      },
-      {
-        title: "Milestone & Bottleneck Tracking",
-        desc: "Proactively identifying operational or permitting delays and coordinating rapid resolution.",
-      },
-      {
-        title: "Stakeholder Reporting & Alignment",
-        desc: "Providing regular executive briefings to maintain transparency and ongoing confidence.",
-      },
-    ],
-    milestoneDeliverable: "Milestone Progress Dashboard & Execution Review Logs",
-    stakeholdersInvolved: ["Project Operators", "EPC Contractors", "Steering Committee", "HGG Desk"],
-  },
-  {
-    number: "09",
-    title: "Long-Term Value Creation",
-    scope: "Generating sustainable commercial returns, institutional cooperation, and economic impact.",
-    phase: "Operational Excellence & Impact",
+    title: "CREATE VALUE",
+    scope: "Building measurable, sustainable, and enduring multi-generational value.",
+    phase: "Sustainable Impact & Value Realization",
     icon: Trophy,
-    color: "#059669", // Jade Finish
+    color: "#10B981", // Emerald Green
     fullLead:
-      "The ultimate milestone of HGG's pathway is the realization of enduring commercial profitability, socio-economic development, community upliftment, and sustainable multi-generational value across Ghana and Africa.",
+      "The ultimate goal of every HGG engagement is to help create measurable and sustainable value. This includes commercial growth, investment opportunities, economic development, institutional collaboration, technology transfer, environmental improvement, job creation, and broader social impact.",
     keyActivities: [
       {
-        title: "Socio-Economic Impact Assessment",
+        title: "Socio-Economic & Impact Assessment",
         desc: "Measuring local job creation, supply chain linkages, technology transfer, and infrastructure improvements.",
       },
       {
-        title: "Commercial Return Realization",
+        title: "Commercial Return & Sustainability",
         desc: "Ensuring steady revenue realization, investor yields, and operational sustainability.",
       },
       {
-        title: "Expansion & Follow-On Phasing",
-        desc: "Identifying Phase 2 and follow-on growth opportunities to scale successful initiatives.",
+        title: "Expansion & Phased Scaling",
+        desc: "Identifying follow-on growth opportunities to scale successful initiatives across regional markets.",
       },
     ],
-    milestoneDeliverable: "Annual Impact & Value Realization Report",
+    milestoneDeliverable: "Value Creation & Sustainability Review",
     stakeholdersInvolved: ["Asset Owners", "Communities", "Government Partners", "Long-Term Investors"],
   },
 ];
@@ -270,7 +182,7 @@ const steps = [
 /* ── Circular Step Node Component (Interactive Clickable Node) ── */
 function StepCard({ step, isHovered, onHover, onLeave, onSelect }) {
   const Icon = step.icon;
-  const isFinal = step.number === "09";
+  const isFinal = step.number === "06";
 
   return (
     <motion.div
@@ -301,46 +213,46 @@ function StepCard({ step, isHovered, onHover, onLeave, onSelect }) {
 
       {/* Top Icon Badge - Filled with Step Color */}
       <div
-        className="w-7 h-7 rounded-full flex items-center justify-center mb-1 shadow-xs transition-all duration-300 group-hover:scale-110"
+        className="w-8 h-8 rounded-full flex items-center justify-center mb-1.5 shadow-xs transition-all duration-300 group-hover:scale-110"
         style={{
           backgroundColor: step.color,
           color: "#FFFFFF",
         }}
       >
-        <Icon className="w-3.5 h-3.5" />
+        <Icon className="w-4 h-4" />
       </div>
 
       {/* Step Number Tag - Filled with Step Color */}
-      <div className="flex items-center gap-1 mb-0.5">
+      <div className="flex items-center gap-1 mb-1">
         <span
-          className="text-[8.5px] font-mono font-black tracking-wider uppercase transition-colors duration-300 px-2 py-0.5 rounded-full text-white shadow-xs"
+          className="text-[9px] font-mono font-black tracking-wider uppercase transition-colors duration-300 px-2.5 py-0.5 rounded-full text-white shadow-xs"
           style={{
             backgroundColor: isHovered ? "#061739" : step.color,
           }}
         >
-          STEP {step.number}
+          STAGE {step.number}
         </span>
         {isFinal && (
-          <span className="flex items-center text-[7.5px] font-mono font-bold text-emerald-800 bg-emerald-100 px-1.5 py-0.5 rounded-full">
-            <Flag className="w-2 h-2 mr-0.5 text-emerald-600" /> GOAL
+          <span className="flex items-center text-[7.5px] font-mono font-bold text-emerald-800 bg-emerald-100 px-1.5 py-0.5 rounded-full shadow-2xs">
+            GOAL
           </span>
         )}
       </div>
 
       {/* Title */}
-      <h4 className="font-heading text-[11px] lg:text-[11.5px] font-extrabold text-[#061739] leading-tight line-clamp-2 mb-0.5 px-1 group-hover:text-[#C49838] transition-colors">
+      <h4 className="font-heading text-[12px] sm:text-[13px] font-bold text-[#061739] group-hover:text-[#14588B] transition-colors leading-tight line-clamp-1 px-1 uppercase tracking-wide">
         {step.title}
       </h4>
 
-      {/* Scope Description */}
-      <p className="text-[8.5px] lg:text-[9px] text-slate-600 leading-tight line-clamp-2 px-1 max-w-[155px]">
+      {/* Scope Preview */}
+      <p className="text-[9.5px] text-slate-500 line-clamp-2 leading-tight px-1 font-normal mt-0.5">
         {step.scope}
       </p>
 
       {/* Hover Prompt Pill */}
       <div className="absolute -bottom-2 opacity-0 group-hover:opacity-100 transition-all duration-200 transform translate-y-1 group-hover:translate-y-0 pointer-events-none">
         <span className="text-[8px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#061739] text-[#DFB758] shadow-md border border-[#DFB758]/40 flex items-center gap-1">
-          Explore Step →
+          Explore Stage →
         </span>
       </div>
     </motion.div>
@@ -348,8 +260,8 @@ function StepCard({ step, isHovered, onHover, onLeave, onSelect }) {
 }
 
 export default function DisciplinedPathwaySection({
-  ctaLink = "/projects-and-partnerships",
-  ctaText = "EXPLORE OUR PROJECT & PARTNERSHIP MODEL",
+  ctaLink = "/about-us#strategic-approach",
+  ctaText = "LEARN MORE ABOUT OUR STRATEGIC APPROACH",
 }) {
   const [hoveredIdx, setHoveredIdx] = useState(null);
   const [showAllSteps, setShowAllSteps] = useState(false);
@@ -358,7 +270,7 @@ export default function DisciplinedPathwaySection({
   const handleToggleSteps = () => {
     if (showAllSteps) {
       setShowAllSteps(false);
-      const el = document.getElementById("pathway");
+      const el = document.getElementById("strategic-approach-section");
       if (el) {
         const yOffset = -70;
         const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
@@ -389,25 +301,24 @@ export default function DisciplinedPathwaySection({
     }
   }, [selectedStepModal]);
 
-  /* Snake rows: Row1 L→R, Row2 R→L, Row3 L→R */
-  const row1 = [steps[0], steps[1], steps[2]];
-  const row2 = [steps[3], steps[4], steps[5]]; // Step 04, 05, 06
-  const row3 = [steps[6], steps[7], steps[8]];
+  /* 2 Rows of 3 Stages: Row 1 (01, 02, 03) and Row 2 (04, 05, 06) */
+  const row1 = [stages[0], stages[1], stages[2]];
+  const row2 = [stages[3], stages[4], stages[5]];
 
   return (
     <section
-      id="pathway"
+      id="strategic-approach-section"
       className="py-14 lg:py-18 relative overflow-hidden border-b border-slate-200/80 bg-[#F8FAFC]"
     >
-      {/* ── Client Ghana Landmark Watermark: Black Star Square (Fixed height to prevent stretch on expand) ── */}
-      <div className="absolute left-0 top-0 w-full lg:w-[50%] h-[1500px] pointer-events-none z-0 overflow-hidden select-none">
+      {/* ── Client Ghana Landmark Watermark: Black Star Square (Subtle Low-Opacity per Client Brief Section 2) ── */}
+      <div className="absolute left-0 top-0 w-full lg:w-[50%] h-[1200px] pointer-events-none z-0 overflow-hidden select-none">
         <div className="relative w-full h-full">
           <Image
             src="/images/img_new_1.PNG"
             alt="Black Star Square Landmark"
             fill
             unoptimized
-            className="object-cover object-top lg:object-left-top opacity-[0.10] lg:opacity-[0.15] filter contrast-[1.05] saturate-110"
+            className="object-cover object-top lg:object-left-top opacity-[0.10] lg:opacity-[0.14] filter contrast-[1.05] saturate-110"
             priority={true}
           />
           {/* Smooth Fade Out from Left to Right + Top/Bottom edges */}
@@ -426,21 +337,21 @@ export default function DisciplinedPathwaySection({
           <div className="flex items-center justify-center gap-3 sm:gap-4 mb-2.5">
             <div className="h-[1.5px] bg-gradient-to-r from-transparent via-[#DFB758]/60 to-[#DFB758] flex-1 max-w-[120px] sm:max-w-[200px]" />
             <span className="text-[11px] sm:text-xs font-heading font-bold tracking-[0.22em] text-[#C49838] uppercase">
-              OUR DISCIPLINED METHODOLOGY
+              PRIMARY STRATEGIC METHODOLOGY
             </span>
             <div className="h-[1.5px] bg-gradient-to-l from-transparent via-[#DFB758]/60 to-[#DFB758] flex-1 max-w-[120px] sm:max-w-[200px]" />
           </div>
 
           <h2 className="font-heading text-2xl sm:text-3xl lg:text-[2.6rem] font-extrabold text-[#061739] tracking-tight leading-[1.15]">
-            The 9-Step Disciplined{" "}
+            The 6-Stage Strategic{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0A2457] via-[#14588B] to-[#C49838]">
-              Project Pathway
+              Approach
             </span>
           </h2>
           <div className="w-14 h-[3px] bg-[#C49838] rounded-full mx-auto my-3" />
 
           <p className="mt-2.5 text-slate-600 text-xs sm:text-[13.5px] leading-relaxed max-w-2xl mx-auto">
-            Our structured methodology guides high-impact initiatives from initial concept through institutional alignment, due diligence, and operational success.
+            HGG’s disciplined methodology connecting credible opportunities with the strategic stakeholders, capital, and execution coordination required to build enduring value across Ghana and international markets.
           </p>
         </div>
 
@@ -449,16 +360,14 @@ export default function DisciplinedPathwaySection({
           
           {/* ── UNBROKEN ATTACHED SVG PIPELINE LINE ── */}
           <div className="absolute inset-0 pointer-events-none z-0">
-            <svg className="w-full h-full overflow-visible" viewBox="0 0 1000 580" preserveAspectRatio="none" fill="none">
+            <svg className="w-full h-full overflow-visible" viewBox="0 0 1000 390" preserveAspectRatio="none" fill="none">
               
-              {/* Continuous Gold Pipeline Track */}
+              {/* Continuous Gold Pipeline Track for 2 Rows */}
               <path
                 d="M 166 92 
                    L 834 92 
                    C 970 92, 970 290, 834 290 
-                   L 166 290 
-                   C 30 290, 30 488, 166 488 
-                   L 834 488"
+                   L 166 290"
                 stroke="#C49838"
                 strokeWidth="4"
                 strokeLinecap="round"
@@ -466,7 +375,7 @@ export default function DisciplinedPathwaySection({
               />
 
               {/* ── DIRECTIONAL ARROWS ON THE UNBROKEN TRACK ── */}
-              {/* Row 1 Forward Arrows */}
+              {/* Row 1 Forward Arrows (Left to Right) */}
               <g transform="translate(333, 92)">
                 <polygon points="-5,-5 5,0 -5,5" fill="#C49838" />
               </g>
@@ -479,7 +388,7 @@ export default function DisciplinedPathwaySection({
                 <polygon points="-5,-5 0,5 5,-5" fill="#C49838" />
               </g>
 
-              {/* Row 2 Backward (Right to Left) Arrows */}
+              {/* Row 2 Backward (Right to Left) Arrows for Snake Flow to Final Goal */}
               <g transform="translate(666, 290)">
                 <polygon points="5,-5 -5,0 5,5" fill="#C49838" />
               </g>
@@ -487,44 +396,24 @@ export default function DisciplinedPathwaySection({
                 <polygon points="5,-5 -5,0 5,5" fill="#C49838" />
               </g>
 
-              {/* Left Turn Downward Arrow */}
-              <g transform="translate(62, 389)">
-                <polygon points="-5,-5 0,5 5,-5" fill="#C49838" />
-              </g>
-
-              {/* Row 3 Forward Arrows */}
-              <g transform="translate(333, 488)">
-                <polygon points="-5,-5 5,0 -5,5" fill="#C49838" />
-              </g>
-              <g transform="translate(666, 488)">
-                <polygon points="-5,-5 5,0 -5,5" fill="#C49838" />
-              </g>
-
             </svg>
           </div>
 
-          {/* ── 3 ROWS OF 3 CIRCULAR STEP NODES ── */}
-          <div className="space-y-6 lg:space-y-8 relative z-10">
+          {/* ── 2 ROWS OF 3 CIRCULAR STEP NODES ── */}
+          <div className="space-y-8 relative z-10">
 
-            {/* ROW 1: Step 01 ➔ Step 02 ➔ Step 03 */}
+            {/* ROW 1: Stage 01 ➔ Stage 02 ➔ Stage 03 */}
             <div className="grid grid-cols-3 gap-6 items-center">
               <StepCard step={row1[0]} isHovered={hoveredIdx === 0} onHover={() => setHoveredIdx(0)} onLeave={() => setHoveredIdx(null)} onSelect={setSelectedStepModal} />
               <StepCard step={row1[1]} isHovered={hoveredIdx === 1} onHover={() => setHoveredIdx(1)} onLeave={() => setHoveredIdx(null)} onSelect={setSelectedStepModal} />
               <StepCard step={row1[2]} isHovered={hoveredIdx === 2} onHover={() => setHoveredIdx(2)} onLeave={() => setHoveredIdx(null)} onSelect={setSelectedStepModal} />
             </div>
 
-            {/* ROW 2: Step 06 🠔 Step 05 🠔 Step 04 (Reversed order for Right-to-Left Snake flow) */}
+            {/* ROW 2: Stage 06 🠔 Stage 05 🠔 Stage 04 (Reversed order for Right-to-Left Snake flow to Stage 06) */}
             <div className="grid grid-cols-3 gap-6 items-center">
               <StepCard step={row2[2]} isHovered={hoveredIdx === 5} onHover={() => setHoveredIdx(5)} onLeave={() => setHoveredIdx(null)} onSelect={setSelectedStepModal} />
               <StepCard step={row2[1]} isHovered={hoveredIdx === 4} onHover={() => setHoveredIdx(4)} onLeave={() => setHoveredIdx(null)} onSelect={setSelectedStepModal} />
               <StepCard step={row2[0]} isHovered={hoveredIdx === 3} onHover={() => setHoveredIdx(3)} onLeave={() => setHoveredIdx(null)} onSelect={setSelectedStepModal} />
-            </div>
-
-            {/* ROW 3: Step 07 ➔ Step 08 ➔ Step 09 */}
-            <div className="grid grid-cols-3 gap-6 items-center">
-              <StepCard step={row3[0]} isHovered={hoveredIdx === 6} onHover={() => setHoveredIdx(6)} onLeave={() => setHoveredIdx(null)} onSelect={setSelectedStepModal} />
-              <StepCard step={row3[1]} isHovered={hoveredIdx === 7} onHover={() => setHoveredIdx(7)} onLeave={() => setHoveredIdx(null)} onSelect={setSelectedStepModal} />
-              <StepCard step={row3[2]} isHovered={hoveredIdx === 8} onHover={() => setHoveredIdx(8)} onLeave={() => setHoveredIdx(null)} onSelect={setSelectedStepModal} />
             </div>
 
           </div>
@@ -537,11 +426,11 @@ export default function DisciplinedPathwaySection({
             {/* Continuous Vertical Timeline Line */}
             <div className="absolute left-[11px] top-4 bottom-4 w-[3px] bg-gradient-to-b from-[#0284C7] via-[#DFB758] to-[#10B981] rounded-full" />
 
-            {/* Timeline Steps Container with Zero Node Clipping */}
+            {/* Timeline Steps Container */}
             <div className="space-y-4">
-              {steps.map((step, idx) => {
+              {stages.map((step, idx) => {
                 const Icon = step.icon;
-                const isFinal = step.number === "09";
+                const isFinal = step.number === "06";
                 const isHidden = !showAllSteps && idx >= 4;
 
                 if (isHidden) return null;
@@ -580,7 +469,7 @@ export default function DisciplinedPathwaySection({
                             style={{ backgroundColor: step.color }}
                             className="text-[10px] font-mono font-bold text-white px-2.5 py-0.5 rounded-full shadow-2xs"
                           >
-                            STEP {step.number}
+                            STAGE {step.number}
                           </span>
                           {isFinal && (
                             <span className="flex items-center text-[8.5px] font-mono font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-full">
@@ -596,7 +485,7 @@ export default function DisciplinedPathwaySection({
                         </div>
                       </div>
 
-                      <h4 className="font-heading text-sm font-bold text-[#061739] mb-1 group-hover:text-[#C49838] transition-colors leading-snug">
+                      <h4 className="font-heading text-sm font-bold text-[#061739] mb-1 group-hover:text-[#C49838] transition-colors leading-snug uppercase tracking-wide">
                         {step.title}
                       </h4>
                       <p className="text-xs text-slate-500 leading-relaxed mb-3">
@@ -605,7 +494,7 @@ export default function DisciplinedPathwaySection({
 
                       <div className="pt-2.5 border-t border-slate-100 flex items-center justify-between">
                         <span className="text-[10.5px] font-heading font-bold uppercase tracking-wider text-[#C49838] flex items-center gap-1">
-                          Explore Step <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+                          Explore Stage <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
                         </span>
                         <span className="text-[9.5px] font-mono text-slate-400 uppercase tracking-wider">
                           {step.phase}
@@ -624,7 +513,7 @@ export default function DisciplinedPathwaySection({
                 onClick={handleToggleSteps}
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md text-xs font-heading font-bold tracking-wider text-[#061739] bg-white border border-slate-200 shadow-2xs hover:text-[#C49838] hover:border-[#DFB758] transition-all active:scale-95 cursor-pointer uppercase"
               >
-                <span>{showAllSteps ? "SHOW LESS" : `VIEW ALL 9 STEPS (${steps.length - 4} MORE)`}</span>
+                <span>{showAllSteps ? "SHOW LESS" : `VIEW ALL 6 STAGES (${stages.length - 4} MORE)`}</span>
                 <ChevronDown
                   className={`w-3.5 h-3.5 transition-transform duration-300 ${
                     showAllSteps ? "rotate-180" : "rotate-0"
@@ -648,7 +537,7 @@ export default function DisciplinedPathwaySection({
       </div>
 
       {/* ─────────────────────────────────────────────────
-          DETAILED 9-STEP PROJECT PATHWAY POPUP MODAL
+          DETAILED 6-STAGE STRATEGIC APPROACH POPUP MODAL
       ───────────────────────────────────────────────── */}
       <AnimatePresence>
         {selectedStepModal && (
@@ -677,7 +566,7 @@ export default function DisciplinedPathwaySection({
                   type="button"
                   onClick={() => setSelectedStepModal(null)}
                   className="absolute top-4 right-4 sm:top-5 sm:right-5 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 active:bg-white/30 text-white flex items-center justify-center transition-all cursor-pointer"
-                  aria-label="Close step details"
+                  aria-label="Close stage details"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -688,22 +577,22 @@ export default function DisciplinedPathwaySection({
                       style={{ backgroundColor: selectedStepModal.color }}
                       className="text-[9.5px] sm:text-[10px] font-mono font-bold uppercase tracking-widest text-white px-2.5 py-0.5 rounded-full shadow-xs"
                     >
-                      STEP {selectedStepModal.number}
+                      STAGE {selectedStepModal.number}
                     </span>
                     <span className="text-[10px] sm:text-[11px] font-heading font-semibold text-[#DFB758] uppercase tracking-wider">
                       {selectedStepModal.phase}
                     </span>
                   </div>
-                  <h3 className="font-heading text-lg sm:text-2xl font-bold text-white tracking-tight leading-tight">
+                  <h3 className="font-heading text-lg sm:text-2xl font-bold text-white tracking-tight leading-tight uppercase">
                     {selectedStepModal.title}
                   </h3>
                 </div>
               </div>
 
-              {/* Modal Body (Scrollable with Full Detailed Verbatim Text) */}
+              {/* Modal Body */}
               <div className="p-5 sm:p-8 overflow-y-auto space-y-6 text-[#0F172A] flex-1 max-h-[calc(90dvh-130px)]">
 
-                {/* 1. Step Mandate & Strategic Purpose */}
+                {/* 1. Mandate & Strategic Purpose */}
                 <div className="space-y-2">
                   <span className="text-[10px] font-heading font-bold tracking-[0.2em] text-[#C49838] uppercase block">
                     STRATEGIC SCOPE & PURPOSE
@@ -713,10 +602,10 @@ export default function DisciplinedPathwaySection({
                   </p>
                 </div>
 
-                {/* 2. Key Execution Activities & Mechanisms */}
+                {/* 2. Key Execution Activities & Methodology */}
                 <div className="space-y-3 pt-1 border-t border-slate-100">
                   <span className="text-[10px] font-heading font-bold tracking-[0.2em] text-[#061739] uppercase block">
-                    KEY EXECUTION ACTIVITIES & METHODOLOGY
+                    KEY ACTIVITIES & FACILITATION MECHANISMS
                   </span>
                   <div className="space-y-2.5">
                     {selectedStepModal.keyActivities.map((act, aIdx) => (
@@ -729,11 +618,11 @@ export default function DisciplinedPathwaySection({
                             className="w-4 h-4 shrink-0"
                             style={{ color: selectedStepModal.color }}
                           />
-                          <h4 className="font-heading text-xs sm:text-[12.5px] font-bold text-[#061739] leading-snug">
+                          <h5 className="font-heading text-xs sm:text-[13px] font-bold text-[#061739]">
                             {act.title}
-                          </h4>
+                          </h5>
                         </div>
-                        <p className="text-slate-500 text-[11.5px] leading-relaxed pl-6">
+                        <p className="text-[11.5px] sm:text-xs text-slate-500 pl-6 leading-relaxed">
                           {act.desc}
                         </p>
                       </div>
@@ -741,34 +630,30 @@ export default function DisciplinedPathwaySection({
                   </div>
                 </div>
 
-                {/* 3. Milestone Deliverable Banner */}
-                <div className="p-4 rounded-xl bg-[#F8FAFC] border border-slate-200 space-y-1.5">
+                {/* 3. Milestone Deliverable Callout */}
+                <div className="p-4 rounded-xl bg-[#061739]/5 border border-[#14588B]/20 space-y-1.5">
                   <div className="flex items-center gap-2">
-                    <ShieldCheck className="w-4 h-4 text-[#C49838]" />
-                    <span className="text-[10px] font-heading font-bold tracking-[0.15em] text-[#061739] uppercase">
-                      CORE MILESTONE DELIVERABLE
+                    <ShieldCheck className="w-4 h-4 text-[#C49838] shrink-0" />
+                    <span className="text-[10.5px] font-heading font-bold uppercase tracking-wider text-[#061739]">
+                      Key Milestone Deliverable
                     </span>
                   </div>
-                  <p className="text-slate-700 text-xs sm:text-[13px] font-semibold leading-snug pl-6">
+                  <p className="text-xs sm:text-[12.5px] font-medium text-slate-700 pl-6">
                     {selectedStepModal.milestoneDeliverable}
                   </p>
                 </div>
 
-                {/* 4. Applicable Key Stakeholders */}
+                {/* 4. Stakeholders Involved */}
                 <div className="space-y-2 pt-1 border-t border-slate-100">
-                  <span className="text-[10px] font-heading font-bold tracking-[0.2em] text-slate-500 uppercase block">
-                    KEY PARTICIPATING STAKEHOLDERS
+                  <span className="text-[10px] font-heading font-bold tracking-[0.2em] text-slate-400 uppercase block">
+                    PRIMARY STAKEHOLDERS INVOLVED
                   </span>
                   <div className="flex flex-wrap gap-2">
                     {selectedStepModal.stakeholdersInvolved.map((stk, sIdx) => (
                       <span
                         key={sIdx}
-                        className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-[11px] font-medium border border-slate-200"
+                        className="px-3 py-1 rounded-full text-[11px] font-medium bg-slate-100 text-slate-700 border border-slate-200"
                       >
-                        <span
-                          className="w-1.5 h-1.5 rounded-full"
-                          style={{ backgroundColor: selectedStepModal.color }}
-                        />
                         {stk}
                       </span>
                     ))}
@@ -777,22 +662,17 @@ export default function DisciplinedPathwaySection({
 
               </div>
 
-              {/* Modal Footer Actions */}
-              <div className="px-5 py-4 sm:px-8 sm:py-4 bg-slate-50 border-t border-slate-200 flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between gap-3 shrink-0">
-                <button
-                  type="button"
-                  onClick={() => setSelectedStepModal(null)}
-                  className="w-full sm:w-auto flex items-center justify-center px-4 py-2.5 rounded-md text-xs font-heading font-bold tracking-wider text-slate-600 hover:text-[#061739] bg-white border border-slate-200 hover:border-slate-300 transition-colors uppercase cursor-pointer"
-                >
-                  Close
-                </button>
-
+              {/* Modal Footer with Direct Inquiry CTA */}
+              <div className="px-5 py-3.5 sm:px-8 sm:py-4 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3">
+                <span className="text-[11px] text-slate-500 hidden sm:inline">
+                  Part of HGG’s approved 6-Stage Strategic Approach
+                </span>
                 <Link
-                  href={`/contact?step=${encodeURIComponent(selectedStepModal.title)}`}
+                  href={`/contact?step=Stage ${selectedStepModal.number}: ${selectedStepModal.title}`}
                   onClick={() => setSelectedStepModal(null)}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-md text-xs font-heading font-bold tracking-wider text-[#061739] bg-gradient-to-r from-[#C49838] via-[#DFB758] to-[#C49838] hover:from-[#DFB758] hover:to-[#C49838] transition-all uppercase shadow-xs"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-md bg-[#061739] hover:bg-[#14588B] text-white text-xs font-heading font-bold tracking-wider uppercase transition-colors shadow-xs"
                 >
-                  <span>Inquire Regarding Step {selectedStepModal.number}</span>
+                  <span>Inquire Regarding This Stage</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>

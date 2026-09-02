@@ -1248,20 +1248,20 @@ export default function AboutUsPage() {
       ───────────────────────────────────────────────── */}
       <section id="why-choose-us" className="py-16 sm:py-20 lg:py-24 bg-[#F8F9FA] text-[#0F172A] relative overflow-hidden border-b border-slate-200/80">
 
-        {/* ── Left-Side Focused Background Image: img_new_1.PNG ── */}
+        {/* ── Left-Side Focused Background Image: img_new_1.PNG (Subtle Low-Opacity per Client Brief Section 2) ── */}
         <div className="absolute left-0 top-0 bottom-0 w-full lg:w-[56%] xl:w-[50%] z-0 pointer-events-none select-none overflow-hidden">
           <Image
             src="/images/img_new_1.PNG"
             alt="Ghana Landmark Background"
             fill
             unoptimized
-            className="object-cover object-left lg:object-[15%_center] filter contrast-[1.08] brightness-[1.02] opacity-[0.60] sm:opacity-[0.72]"
+            className="object-cover object-left lg:object-[15%_center] filter contrast-[1.08] brightness-[1.02] opacity-[0.16] sm:opacity-[0.22]"
           />
           {/* Smooth horizontal gradient fade to the right */}
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#F8F9FA]/40 to-[#F8F9FA]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#F8F9FA]/60 to-[#F8F9FA]" />
           {/* Top and bottom edge blending */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#F8F9FA] via-transparent to-[#F8F9FA]/80" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#F8F9FA] via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#F8F9FA] via-transparent to-[#F8F9FA]/90" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#F8F9FA]/90 via-transparent to-transparent" />
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -1390,13 +1390,21 @@ export default function AboutUsPage() {
       </section>
 
       {/* ─────────────────────────────────────────────────
-          6. STRATEGIC APPROACH — 6-Stage Process
+          6. STRATEGIC APPROACH — 6-Stage Process (Primary Methodology)
       ───────────────────────────────────────────────── */}
-      <section id="strategy" className="py-20 lg:py-28 relative overflow-hidden bg-[#F4F5F7]">
-        {/* Decorative bg image */}
-        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-          <Image src="/images/img_new_2.PNG" alt="" fill unoptimized aria-hidden="true"
-            className="object-cover object-center opacity-[0.04] saturate-0" />
+      <section id="strategic-approach" className="py-20 lg:py-28 relative overflow-hidden bg-[#F4F5F7] border-b border-slate-200/80">
+        {/* Subtle Decorative Landmark Background (Client Brief Section 2) */}
+        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden select-none">
+          <Image
+            src="/images/img_new_2.PNG"
+            alt="Ghana Landmark Background"
+            fill
+            unoptimized
+            aria-hidden="true"
+            className="object-cover object-center opacity-[0.08] lg:opacity-[0.11] filter contrast-[1.05]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#F4F5F7] via-transparent to-[#F4F5F7]/80" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#F4F5F7]/80 via-transparent to-[#F4F5F7]" />
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

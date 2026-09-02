@@ -19,26 +19,41 @@ export const siteSettings = defineType({
     }),
     defineField({
       name: 'contactEmail',
-      title: 'Official Contact Email',
+      title: 'Official Corporate Email (Stationery Source)',
+      description: 'Official corporate email as shown on approved stationery (e.g., info@hintergroupghana.com)',
       type: 'string',
       initialValue: 'info@hintergroupghana.com',
     }),
     defineField({
       name: 'contactPhone',
-      title: 'Official Phone Number',
+      title: 'Primary Ghana Telephone Number (Stationery Source)',
+      description: 'Official primary Ghana phone number as shown on approved corporate stationery',
       type: 'string',
       initialValue: '+233 (0) 30 200 0000',
     }),
     defineField({
+      name: 'contactPhoneAlt',
+      title: 'Secondary / Direct Ghana Telephone Number (Optional)',
+      description: 'Alternative Ghana phone line, mobile, or direct executive line',
+      type: 'string',
+    }),
+    defineField({
       name: 'officeAddress',
-      title: 'Office / Mailing Address',
+      title: 'Physical Corporate Office Address (Stationery Source)',
+      description: 'Physical corporate headquarters address as shown on approved stationery',
       type: 'text',
       rows: 3,
       initialValue: '2nd Floor, The Octagon, Block D, Central Avenue, Accra, Ghana',
     }),
     defineField({
+      name: 'corporatePostalAddress',
+      title: 'Postal / Mailing Address (P.O. Box) (Optional)',
+      description: 'Official postal address as shown on stationery (if distinct from physical office)',
+      type: 'string',
+    }),
+    defineField({
       name: 'linkedinUrl',
-      title: 'LinkedIn Profile URL',
+      title: 'LinkedIn Corporate Page URL',
       type: 'url',
     }),
     defineField({
@@ -48,7 +63,17 @@ export const siteSettings = defineType({
     }),
     defineField({
       name: 'facebookUrl',
-      title: 'Facebook Profile URL',
+      title: 'Facebook Page URL',
+      type: 'url',
+    }),
+    defineField({
+      name: 'instagramUrl',
+      title: 'Instagram Profile URL (Optional)',
+      type: 'url',
+    }),
+    defineField({
+      name: 'youtubeUrl',
+      title: 'YouTube Channel URL (Optional)',
       type: 'url',
     }),
     defineField({

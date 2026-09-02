@@ -7,10 +7,14 @@ export const siteSettingsQuery = groq`
     tagline,
     contactEmail,
     contactPhone,
+    contactPhoneAlt,
     officeAddress,
+    corporatePostalAddress,
     linkedinUrl,
     twitterUrl,
     facebookUrl,
+    instagramUrl,
+    youtubeUrl,
     logo,
     heroImage,
     defaultOgImage
@@ -90,7 +94,7 @@ export const projectsQuery = groq`
 
 // 6. Insights & News Posts Query
 export const postsQuery = groq`
-  *[_type == "post"] | order(publishedAt desc) {
+  *[_type == "post" && (!defined(isApproved) || isApproved == true)] | order(publishedAt desc) {
     _id,
     title,
     slug,

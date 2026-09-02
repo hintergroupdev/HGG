@@ -21,10 +21,10 @@ const fadeUp = {
 };
 
 const quickPillars = [
-  { icon: Target, title: "Strategic Consulting", desc: "Market entry & advisory" },
-  { icon: TrendingUp, title: "Investment Ventures", desc: "Capital & project incubation" },
-  { icon: Handshake, title: "Brokerage Solutions", desc: "Institutional deal structuring" },
-  { icon: Globe2, title: "Global-Local Bridge", desc: "Ghana to global corridors" },
+  { icon: Target, title: "Strategic Consulting", desc: "Advisory & market entry" },
+  { icon: TrendingUp, title: "Venture Development", desc: "Initiative facilitation & incubation" },
+  { icon: Handshake, title: "Brokerage Solutions", desc: "Partnership & deal facilitation" },
+  { icon: Globe2, title: "Strategic Bridge", desc: "Connecting Ghana to global corridors" },
 ];
 
 export default function HeroSection() {

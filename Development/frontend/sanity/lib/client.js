@@ -5,26 +5,33 @@ export const client = createClient({
   projectId: projectId || '0rqjd271',
   dataset: dataset || 'production',
   apiVersion,
-  useCdn: false, // Ensure direct live queries for real-time updates
+  useCdn: false, // Ensure live real-time queries for immediate updates on edit
   perspective: 'published',
 });
 
 // Helper for fetching data safely
-export async function sanityFetch({ query, params = {}, tags = [] }) {
+export async function sanityFetch({ query, params = {}, tags = [], revalidate = 60 }) {
   const activeProjectId = projectId || '0rqjd271';
   if (!activeProjectId) {
     return null;
   }
   try {
-    return await client.fetch(query, params, {
-      cache: 'no-store',
-      next: {
-        revalidate: 0, // Real-time immediate updates
-        tags,
-      },
-    });
+    const isServer = typeof window === 'undefined';
+    const fetchOptions = isServer
+      ? {
+          next: {
+            revalidate, // Fast ISR caching with automatic background revalidation on server
+            tags,
+          },
+        }
+      : {};
+
+    return await client.fetch(query, params, fetchOptions);
   } catch (error) {
-    console.warn('[Sanity Fetch Warning]', error?.message || error);
+    // In browser, fail gracefully to fallback data without console noise
+    if (typeof window === 'undefined') {
+      console.warn('[Sanity Fetch Warning]', error?.message || error);
+    }
     return null;
   }
 }

@@ -5,11 +5,36 @@ import IndustrySectorsSection from "@/components/sections/IndustrySectorsSection
 import DisciplinedPathwaySection from "@/components/sections/DisciplinedPathwaySection";
 import InsightsPreviewSection from "@/components/sections/InsightsPreviewSection";
 
-export const metadata = {
-  title: "THE HINTER GROUP GHANA LTD | Connecting Opportunity. Creating Value.",
-  description:
-    "THE HINTER GROUP GHANA LTD is a Ghana-based consulting, ventures, and brokerage company connecting strategic opportunities with investors, technology providers, institutions, and development partners in Ghana and international markets.",
-};
+import { siteConfig } from "@/lib/siteConfig";
+import { getSiteSettings } from "@/lib/sanityData";
+
+export async function generateMetadata() {
+  let settings = null;
+  try {
+    settings = await getSiteSettings();
+  } catch {
+    // Fallback
+  }
+
+  const companyName = settings?.companyName || siteConfig.name;
+  const slogan = settings?.tagline || siteConfig.slogan;
+  const ogImageUrl = settings?.defaultOgImageUrl || settings?.heroImageUrl || siteConfig.ogImage;
+
+  return {
+    title: `${companyName} | ${slogan}`,
+    description: siteConfig.description,
+    alternates: {
+      canonical: siteConfig.url,
+    },
+    openGraph: {
+      title: `${companyName} | ${slogan}`,
+      description: siteConfig.description,
+      url: siteConfig.url,
+      siteName: companyName,
+      images: [{ url: ogImageUrl, width: 1200, height: 630, alt: companyName }],
+    },
+  };
+}
 
 export default function HomePage() {
   return (
@@ -26,7 +51,7 @@ export default function HomePage() {
       {/* 4. Sectors of Focus (9 Industries) */}
       <IndustrySectorsSection />
 
-      {/* 5. Our Disciplined 9-Step Pathway */}
+      {/* 5. The 6-Stage Strategic Approach */}
       <DisciplinedPathwaySection />
 
       {/* 6. Perspectives on Market Opportunities (Insights) */}

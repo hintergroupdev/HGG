@@ -3,6 +3,7 @@
 import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Mail,
   MapPin,
@@ -24,10 +25,11 @@ function ContactContent() {
     tagline: "Consulting + Ventures | Brokerage • Committed to Excellence",
     contactEmail: "info@hintergroupghana.com",
     contactPhone: "+233 (0) 30 200 0000",
-    officeAddress: "2nd Floor, The Octagon, Block D, Central Avenue, Accra, Ghana",
-    linkedinUrl: "https://linkedin.com",
-    twitterUrl: "https://x.com",
-    facebookUrl: "https://facebook.com",
+    linkedinUrl: null,
+    twitterUrl: null,
+    facebookUrl: null,
+    instagramUrl: null,
+    youtubeUrl: null,
   });
 
   useEffect(() => {
@@ -99,7 +101,7 @@ function ContactContent() {
       const data = await res.json();
 
       if (!res.ok) {
-        throw new Error(data.error || "Failed to send inquiry. Please try again.");
+        throw new Error(data.message || "Failed to submit inquiry.");
       }
 
       setSubmitted(true);
@@ -112,8 +114,22 @@ function ContactContent() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] text-[#0F172A] font-sans antialiased selection:bg-[#DFB758]/20 selection:text-[#061739] pt-8 pb-20">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#F8FAFC] text-[#0F172A] font-sans antialiased selection:bg-[#DFB758]/20 selection:text-[#061739] pt-8 pb-20 relative overflow-hidden">
+      {/* Subtle Ghanaian Architectural Landmark Background (Client Brief Section 2) */}
+      <div className="absolute right-0 top-0 w-full lg:w-[48%] h-[420px] pointer-events-none select-none overflow-hidden z-0">
+        <Image
+          src="/images/img_new_2.PNG"
+          alt="Ghana Landmark Background"
+          fill
+          unoptimized
+          priority
+          className="object-cover object-[center_20%] filter contrast-[1.05] opacity-[0.10] lg:opacity-[0.14]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#F8FAFC] via-[#F8FAFC]/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#F8FAFC]/50 to-[#F8FAFC]" />
+      </div>
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Page Header */}
         <div className="mb-8 pb-6 border-b border-slate-200">
@@ -166,13 +182,29 @@ function ContactContent() {
                   </div>
                   <div>
                     <span className="text-[10.5px] font-mono text-slate-400 block uppercase">
-                      Office / Mailing Address
+                      Office / Physical Headquarters
                     </span>
                     <span className="text-white font-medium leading-relaxed block whitespace-pre-line">
                       {siteSettings.officeAddress}
                     </span>
                   </div>
                 </div>
+
+                {siteSettings.corporatePostalAddress && (
+                  <div className="flex items-start gap-3.5">
+                    <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center shrink-0 text-[#DFB758] mt-0.5">
+                      <MapPin className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <span className="text-[10.5px] font-mono text-slate-400 block uppercase">
+                        Postal Address
+                      </span>
+                      <span className="text-white font-medium leading-relaxed block whitespace-pre-line">
+                        {siteSettings.corporatePostalAddress}
+                      </span>
+                    </div>
+                  </div>
+                )}
 
                 <div className="flex items-start gap-3.5">
                   <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center shrink-0 text-[#DFB758]">
@@ -197,7 +229,7 @@ function ContactContent() {
                   </div>
                   <div>
                     <span className="text-[10.5px] font-mono text-slate-400 block uppercase">
-                      Telephone / Direct Line
+                      Telephone / Primary Ghana Line
                     </span>
                     <a
                       href={`tel:${siteSettings.contactPhone.replace(/\s+/g, '')}`}
@@ -207,6 +239,25 @@ function ContactContent() {
                     </a>
                   </div>
                 </div>
+
+                {siteSettings.contactPhoneAlt && (
+                  <div className="flex items-start gap-3.5">
+                    <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center shrink-0 text-[#DFB758]">
+                      <Phone className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <span className="text-[10.5px] font-mono text-slate-400 block uppercase">
+                        Secondary / Direct Ghana Line
+                      </span>
+                      <a
+                        href={`tel:${siteSettings.contactPhoneAlt.replace(/\s+/g, '')}`}
+                        className="text-white hover:text-[#DFB758] font-medium transition-colors"
+                      >
+                        {siteSettings.contactPhoneAlt}
+                      </a>
+                    </div>
+                  </div>
+                )}
 
                 <div className="flex items-start gap-3.5">
                   <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center shrink-0 text-[#DFB758]">
@@ -264,6 +315,34 @@ function ContactContent() {
                       >
                         <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                           <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z" />
+                        </svg>
+                      </a>
+                    )}
+                    {siteSettings.instagramUrl && (
+                      <a
+                        href={siteSettings.instagramUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-9 h-9 rounded-md bg-white/5 hover:bg-[#14588B] border border-white/10 hover:border-[#DFB758]/50 flex items-center justify-center text-slate-300 hover:text-white transition-all"
+                        aria-label="Instagram"
+                      >
+                        <svg className="w-4 h-4 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
+                          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                      </a>
+                    )}
+                    {siteSettings.youtubeUrl && (
+                      <a
+                        href={siteSettings.youtubeUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-9 h-9 rounded-md bg-white/5 hover:bg-[#14588B] border border-white/10 hover:border-[#DFB758]/50 flex items-center justify-center text-slate-300 hover:text-white transition-all"
+                        aria-label="YouTube"
+                      >
+                        <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                         </svg>
                       </a>
                     )}
@@ -433,6 +512,19 @@ function ContactContent() {
                       <span>{errorMessage}</span>
                     </div>
                   )}
+
+                  {/* Confidentiality & Non-Engagement Notice (Client Brief Section 15) */}
+                  <div className="p-3.5 bg-slate-50 border border-slate-200/80 rounded-md text-[11px] text-slate-500 leading-relaxed space-y-1.5">
+                    <p className="flex items-start gap-1.5 text-slate-600">
+                      <Lock className="w-3.5 h-3.5 text-[#C49838] shrink-0 mt-0.5" />
+                      <span>
+                        <strong className="text-[#061739] font-semibold">Confidentiality & Inquiries Notice:</strong> Please do not submit confidential, proprietary, privileged, or commercially sensitive information through this general inquiry form unless appropriate confidentiality arrangements or an executed non-disclosure agreement have been established.
+                      </span>
+                    </p>
+                    <p className="text-[10.5px] text-slate-400 pl-5">
+                      Submitting an inquiry through this website does not, by itself, establish a client, advisory, brokerage, fiduciary, or legal relationship with THE HINTER GROUP GHANA LTD.
+                    </p>
+                  </div>
 
                   {/* Submit Button */}
                   <button

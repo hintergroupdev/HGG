@@ -114,6 +114,14 @@ export default function PrivacyPolicyPage() {
               <span>•</span>
               <span className="bg-[#DFB758]/15 text-[#8A6314] px-2 py-0.5 rounded font-bold">Act 843 Compliant</span>
             </div>
+
+            {/* Legal Review Qualification Notice (Client Brief Section 17) */}
+            <div className="mt-3 p-3 bg-slate-50 border border-slate-200/80 rounded-lg text-[11.5px] text-slate-500 leading-relaxed max-w-2xl flex items-start gap-2">
+              <Scale className="w-4 h-4 text-[#C49838] shrink-0 mt-0.5" />
+              <span>
+                <strong>Corporate Legal Notice:</strong> This policy constitutes HGG&apos;s operational data governance baseline and remains subject to final HGG executive review and external legal-counsel approval prior to formal execution.
+              </span>
+            </div>
           </div>
         </div>
 

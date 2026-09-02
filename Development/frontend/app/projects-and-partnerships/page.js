@@ -205,16 +205,48 @@ const partnerCategories = [
   },
 ];
 
-/* ─── 8 HGG Engagement Roles ─── */
+/* ─── 8 HGG Engagement Roles (Client Brief Section 9) ─── */
 const engagementRoles = [
-  { icon: Target, label: "Strategic Advisor", desc: "Providing strategic advisory support on opportunity evaluation, positioning, and navigation." },
-  { icon: Rocket, label: "Business Development Partner", desc: "Identifying, developing, and advancing promising commercial and investment opportunities." },
-  { icon: Lightbulb, label: "Venture Facilitator", desc: "Supporting early-stage concepts through positioning, partnership formation, and coordination." },
-  { icon: GitMerge, label: "Brokerage & Intermediary Partner", desc: "Facilitating trusted strategic business relationships with full confidentiality and professionalism." },
-  { icon: Network, label: "Stakeholder Coordinator", desc: "Managing multi-party engagement, alignment, and disciplined communication across all stages." },
-  { icon: TrendingUp, label: "Investment Facilitator", desc: "Connecting credible opportunities with investors, DFIs, financial institutions, and capital." },
-  { icon: Handshake, label: "Partnership Development Partner", desc: "Building long-term strategic partnerships across governments, corporations, and institutions." },
-  { icon: Layers, label: "Project Development Facilitator", desc: "Transforming ideas into structured initiatives capable of attracting investment and implementation." },
+  {
+    icon: Target,
+    label: "Strategic Advisor",
+    desc: "Providing strategic guidance and objective advisory support on opportunity evaluation, commercial positioning, and market navigation.",
+  },
+  {
+    icon: Rocket,
+    label: "Business Development Partner",
+    desc: "Identifying, evaluating, and connecting promising commercial initiatives with strategic partners and market expansion pathways.",
+  },
+  {
+    icon: Lightbulb,
+    label: "Venture Facilitator",
+    desc: "Assisting emerging business concepts through strategic structuring, stakeholder alignment, and project development coordination.",
+  },
+  {
+    icon: GitMerge,
+    label: "Brokerage & Intermediary Partner",
+    desc: "Facilitating confidential introductions and commercial relationship development with institutional integrity, discretion, and professionalism.",
+  },
+  {
+    icon: Network,
+    label: "Stakeholder Coordinator",
+    desc: "Facilitating multi-stakeholder dialogue, institutional consensus, and structured communication among public and private partners.",
+  },
+  {
+    icon: TrendingUp,
+    label: "Investment Facilitator",
+    desc: "Connecting viable project initiatives with prospective investors, financial institutions, and development finance partners.",
+  },
+  {
+    icon: Handshake,
+    label: "Partnership Development Partner",
+    desc: "Cultivating collaborative alliances and enduring strategic partnerships across corporate, public, and institutional sectors.",
+  },
+  {
+    icon: Layers,
+    label: "Project Development Facilitator",
+    desc: "Supporting the structured preparation and coordination of initiatives to enhance project readiness and implementation alignment.",
+  },
 ];
 
 export default function ProjectsPage() {
@@ -270,11 +302,10 @@ export default function ProjectsPage() {
     async function loadCmsProjects() {
       try {
         const live = await getProjects();
-        if (live && live.length > 0) {
-          setProjects(live);
-        }
+        setProjects(live || []);
       } catch (err) {
         console.error("Failed to load projects from Sanity:", err);
+        setProjects([]);
       }
     }
     loadCmsProjects();
@@ -394,17 +425,17 @@ export default function ProjectsPage() {
               className="flex flex-wrap items-center gap-2.5 sm:gap-3 pt-1"
             >
               <a
-                href="#pathway"
+                href="#projects"
                 className="inline-flex items-center gap-2 px-4 py-2 text-[11px] font-heading font-bold tracking-wider text-[#061739] bg-gradient-to-r from-[#C49838] via-[#DFB758] to-[#C49838] rounded-md shadow hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 uppercase"
               >
-                9-Step Pathway <ArrowRight className="w-3.5 h-3.5" />
+                Explore Projects <ArrowRight className="w-3.5 h-3.5" />
               </a>
-              <a
-                href="#philosophy"
+              <Link
+                href="/about-us#strategic-approach"
                 className="inline-flex items-center gap-2 px-4 py-2 text-[11px] font-heading font-bold tracking-wider text-white border border-white/20 hover:border-[#DFB758]/60 bg-white/5 hover:bg-white/10 rounded-md backdrop-blur-sm transition-all duration-300 uppercase"
               >
-                Our Philosophy
-              </a>
+                Strategic Approach
+              </Link>
             </motion.div>
 
           </div>
@@ -415,17 +446,18 @@ export default function ProjectsPage() {
           SECTION 2 — PHILOSOPHY: 3-Column Pillars
       ═══════════════════════════════════════════════════ */}
       <section id="philosophy" className="py-16 sm:py-20 lg:py-24 bg-white border-b border-slate-200/80 relative overflow-hidden">
-        {/* Subtle Landmark Architectural Background Watermark */}
-        <div className="absolute right-0 top-0 bottom-0 w-full lg:w-[45%] pointer-events-none z-0 overflow-hidden select-none opacity-[0.06] hidden lg:block">
+        {/* Subtle Landmark Architectural Background Watermark: Independence Arch (Alternating Landmark per Section 2) */}
+        <div className="absolute right-0 top-0 bottom-0 w-full lg:w-[48%] pointer-events-none z-0 overflow-hidden select-none opacity-[0.10] lg:opacity-[0.14] hidden lg:block">
           <div className="relative w-full h-full">
             <Image
-              src="/images/img_new_1.PNG"
-              alt="Ghana Landmark Background"
+              src="/images/img_new_2.PNG"
+              alt="Ghana Independence Arch Background"
               fill
               unoptimized
-              className="object-cover object-right-top filter contrast-[1.05]"
+              className="object-cover object-[center_20%] filter contrast-[1.05] saturate-110"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-white via-white/70 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white" />
           </div>
         </div>
 
@@ -528,9 +560,8 @@ export default function ProjectsPage() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, ease: "easeOut" }}
-                  className={`${
-                    isHidden ? "hidden sm:flex" : "flex"
-                  } group items-start gap-3.5 p-5 rounded-xl bg-white border border-slate-200/90 hover:border-[#DFB758]/60 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 shadow-xs`}
+                  className={`${isHidden ? "hidden sm:flex" : "flex"
+                    } group items-start gap-3.5 p-5 rounded-xl bg-white border border-slate-200/90 hover:border-[#DFB758]/60 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 shadow-xs`}
                 >
                   <div className="w-9 h-9 rounded-lg bg-[#DFB758]/12 border border-[#DFB758]/25 flex items-center justify-center shrink-0 group-hover:bg-[#DFB758]/25 transition-colors duration-300">
                     <Icon className="w-4 h-4 text-[#C49838]" />
@@ -559,9 +590,8 @@ export default function ProjectsPage() {
                   : `SEE MORE STEPS (${collaborativeSteps.length - 4} MORE)`}
               </span>
               <ChevronDown
-                className={`w-3.5 h-3.5 transition-transform duration-300 ${
-                  showAllApproachSteps ? "rotate-180" : "rotate-0"
-                }`}
+                className={`w-3.5 h-3.5 transition-transform duration-300 ${showAllApproachSteps ? "rotate-180" : "rotate-0"
+                  }`}
               />
             </button>
           </div>
@@ -569,17 +599,17 @@ export default function ProjectsPage() {
       </section>
 
       {/* ─────────────────────────────────────────────────
-          DYNAMIC CMS SECTION — APPROVED PUBLIC INITIATIVES
+          DYNAMIC CMS SECTION — INDICATIVE SECTOR CASE STUDIES
           (Rendered dynamically when projects are published in Sanity Studio)
       ───────────────────────────────────────────────── */}
       {projects.length > 0 && (
-        <section id="approved-initiatives" className="py-16 sm:py-20 lg:py-24 bg-white border-b border-slate-200/80 relative overflow-hidden">
+        <section id="projects" className="py-16 sm:py-20 lg:py-24 bg-white border-b border-slate-200/80 relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <SectionHeader
-              eyebrow="APPROVED INITIATIVES & CASE STUDIES"
-              title="Public Projects &"
-              highlight="Strategic Engagements"
-              subtitle="Publicly disclosed initiatives and active facilitation frameworks structured by THE HINTER GROUP GHANA LTD."
+              eyebrow="PORTFOLIO & SECTOR CASE STUDIES"
+              title="Indicative Projects &"
+              highlight="Sector Opportunities"
+              subtitle="Indicative frameworks and representative case studies illustrating HGG's facilitation capabilities across priority commercial corridors in Ghana."
             />
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -611,8 +641,8 @@ export default function ProjectsPage() {
                       <span className="text-[10px] font-mono font-bold tracking-wider text-[#C49838] uppercase px-2.5 py-1 rounded bg-[#DFB758]/10 border border-[#DFB758]/20">
                         {proj.sector}
                       </span>
-                      <span className="text-[9.5px] font-heading font-bold text-slate-500 uppercase tracking-widest">
-                        {proj.status.replace("_", " ")}
+                      <span className="text-[9px] font-mono font-semibold text-slate-500 uppercase tracking-wider px-2 py-0.5 rounded bg-slate-100 border border-slate-200/80">
+                        {proj.status ? proj.status.replace("_", " ") : "INDICATIVE CASE STUDY"}
                       </span>
                     </div>
 
@@ -641,7 +671,7 @@ export default function ProjectsPage() {
       )}
 
       {/* ─────────────────────────────────────────────────
-          4. THE 9-STEP DISCIPLINED PROJECT PATHWAY
+          4. THE 6-STAGE STRATEGIC APPROACH
       ───────────────────────────────────────────────── */}
       <DisciplinedPathwaySection
         ctaLink="/contact"
@@ -675,9 +705,8 @@ export default function ProjectsPage() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, ease: "easeOut" }}
-                  className={`${
-                    isHidden ? "hidden sm:block" : "block"
-                  } group relative bg-[#F8FAFC] border border-slate-200 rounded-xl p-5 sm:p-6 hover:border-[#DFB758]/50 hover:bg-white hover:-translate-y-1 hover:shadow-md transition-all duration-300 overflow-hidden`}
+                  className={`${isHidden ? "hidden sm:block" : "block"
+                    } group relative bg-[#F8FAFC] border border-slate-200 rounded-xl p-5 sm:p-6 hover:border-[#DFB758]/50 hover:bg-white hover:-translate-y-1 hover:shadow-md transition-all duration-300 overflow-hidden`}
                 >
                   {/* Corner bracket */}
                   <div className="absolute top-2.5 right-2.5 w-3 h-3 border-t-2 border-r-2 border-[#DFB758]/30 rounded-tr-sm opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -710,9 +739,8 @@ export default function ProjectsPage() {
                   : `SEE MORE CATEGORIES (${partnerCategories.length - 4} MORE)`}
               </span>
               <ChevronDown
-                className={`w-3.5 h-3.5 transition-transform duration-300 ${
-                  showAllPartners ? "rotate-180" : "rotate-0"
-                }`}
+                className={`w-3.5 h-3.5 transition-transform duration-300 ${showAllPartners ? "rotate-180" : "rotate-0"
+                  }`}
               />
             </button>
           </div>
@@ -756,9 +784,8 @@ export default function ProjectsPage() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, ease: "easeOut" }}
-                  className={`${
-                    isHidden ? "hidden sm:block" : "block"
-                  } group bg-white border border-slate-200 rounded-xl p-5 hover:border-[#DFB758]/50 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 shadow-xs`}
+                  className={`${isHidden ? "hidden sm:block" : "block"
+                    } group bg-white border border-slate-200 rounded-xl p-5 hover:border-[#DFB758]/50 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 shadow-xs`}
                 >
                   <div className="flex items-center gap-3 mb-3">
                     <div className="w-8 h-8 rounded-lg bg-[#061739]/6 border border-[#061739]/8 flex items-center justify-center shrink-0 group-hover:bg-[#DFB758]/15 group-hover:border-[#DFB758]/25 transition-colors duration-300">
@@ -785,9 +812,8 @@ export default function ProjectsPage() {
                   : `SEE MORE CAPACITIES (${engagementRoles.length - 4} MORE)`}
               </span>
               <ChevronDown
-                className={`w-3.5 h-3.5 transition-transform duration-300 ${
-                  showAllRoles ? "rotate-180" : "rotate-0"
-                }`}
+                className={`w-3.5 h-3.5 transition-transform duration-300 ${showAllRoles ? "rotate-180" : "rotate-0"
+                  }`}
               />
             </button>
           </div>
@@ -815,7 +841,7 @@ export default function ProjectsPage() {
                   Responsible Project Development
                 </h4>
                 <p className="text-slate-600 text-xs sm:text-[13px] leading-relaxed mb-4">
-                  Where appropriate, projects are subject to rigorous independent review across essential commercial and technical disciplines:
+                  Where necessary, specialist reviews may be undertaken by or in structured coordination with appropriately qualified professional advisers and technical specialists, depending upon the engagement:
                 </p>
 
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
@@ -839,8 +865,8 @@ export default function ProjectsPage() {
                 </div>
               </div>
 
-              <p className="text-[11px] font-mono text-slate-400 pt-3 border-t border-slate-100">
-                Working alongside qualified professional advisors and technical specialists where required.
+              <p className="text-[11.5px] text-slate-500 pt-3 border-t border-slate-100 leading-relaxed">
+                <em>Note: HGG does not independently perform regulated legal, financial, investment-management, environmental, or engineering functions. Where required, HGG coordinates these governance workstreams alongside appropriately qualified, accredited independent professional advisers and technical specialists.</em>
               </p>
             </motion.div>
 

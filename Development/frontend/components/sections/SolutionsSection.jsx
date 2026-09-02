@@ -45,7 +45,7 @@ const solutionNodes = [
     title: "Brokerage",
     tagline: "Commercial Mediation",
     description:
-      "Connecting capital, vetted project opportunities, and cross-border trade partners to accelerate successful, high-value transactions.",
+      "Connecting credible project opportunities with strategic investors, cross-border trade partners, and institutions to facilitate high-value commercial outcomes.",
     icon: Handshake,
     href: "/expertise#pillar-brokerage",
     color: "#0A2457",

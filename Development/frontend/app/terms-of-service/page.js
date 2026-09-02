@@ -113,6 +113,14 @@ export default function TermsOfServicePage() {
               <span>•</span>
               <span className="bg-[#DFB758]/15 text-[#8A6314] px-2 py-0.5 rounded font-bold">Republic of Ghana</span>
             </div>
+
+            {/* Legal Review Qualification Notice (Client Brief Section 17) */}
+            <div className="mt-3 p-3 bg-slate-50 border border-slate-200/80 rounded-lg text-[11.5px] text-slate-500 leading-relaxed max-w-2xl flex items-start gap-2">
+              <Scale className="w-4 h-4 text-[#C49838] shrink-0 mt-0.5" />
+              <span>
+                <strong>Corporate Legal Notice:</strong> These terms govern corporate platform use and remain subject to final HGG executive review and external legal-counsel approval prior to formal execution.
+              </span>
+            </div>
           </div>
         </div>
 
@@ -327,7 +335,7 @@ export default function TermsOfServicePage() {
                     </h2>
                   </div>
                   <p className="text-xs sm:text-[13.5px] text-slate-600 leading-relaxed">
-                    All visual assets, trademarks, corporate emblems, text, and proprietary methodologies—including HGG&apos;s <em>9-Step Disciplined Project Pathway</em>—are the exclusive intellectual property of THE HINTER GROUP GHANA LTD. Unauthorized reproduction, modification, or commercial re-use is strictly prohibited.
+                    All visual assets, trademarks, corporate emblems, text, and proprietary methodologies—including HGG&apos;s <em>6-Stage Strategic Approach</em>—are the exclusive intellectual property of THE HINTER GROUP GHANA LTD. Unauthorized reproduction, modification, or commercial re-use is strictly prohibited.
                   </p>
                 </section>
 

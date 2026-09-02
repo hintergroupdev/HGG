@@ -723,7 +723,7 @@ function SeedToolComponent() {
                 {
                   _key: 'ts4',
                   _type: 'span',
-                  text: "All visual assets, trademarks, corporate emblems, text, and proprietary methodologies—including HGG's 9-Step Disciplined Project Pathway—are the exclusive intellectual property of THE HINTER GROUP GHANA LTD. Unauthorized reproduction, modification, or commercial re-use is strictly prohibited.",
+                  text: "All visual assets, trademarks, corporate emblems, text, and proprietary methodologies—including HGG's 6-Stage Strategic Approach—are the exclusive intellectual property of THE HINTER GROUP GHANA LTD. Unauthorized reproduction, modification, or commercial re-use is strictly prohibited.",
                 },
               ],
             },
