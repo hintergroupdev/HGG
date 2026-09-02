@@ -8,9 +8,6 @@ import InsightsPreviewSection from "@/components/sections/InsightsPreviewSection
 import { siteConfig } from "@/lib/siteConfig";
 import { getSiteSettings } from "@/lib/sanityData";
 
-export const revalidate = 60;
-export const dynamic = "force-static";
-
 export async function generateMetadata() {
   let settings = null;
   try {

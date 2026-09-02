@@ -14,29 +14,17 @@ import { urlForImage } from '@/sanity/lib/image';
 import { articlesData, publicationStreams } from './insightsData';
 
 /* ─────────────────────────────────────────────────────────────
-   HELPER: Same-origin Client CMS Fetcher with In-Memory Cache
+   HELPER: Same-origin Client CMS Fetcher
    Ensures client components in browser query via /api/cms proxy,
-   with fast in-memory caching to eliminate navigation rendering delay.
+   eliminating CORS errors, ad-blocker drops, and stale caches.
 ───────────────────────────────────────────────────────────── */
-const clientMemoryCache = new Map();
-
 async function fetchClientCms(type, slug = '') {
   if (typeof window === 'undefined') return null;
-  const cacheKey = `${type}:${slug}`;
-  if (clientMemoryCache.has(cacheKey)) {
-    const entry = clientMemoryCache.get(cacheKey);
-    if (Date.now() - entry.timestamp < 120000) {
-      return entry.data;
-    }
-  }
-
   try {
     const url = `/api/cms?type=${encodeURIComponent(type)}${slug ? `&slug=${encodeURIComponent(slug)}` : ''}`;
-    const res = await fetch(url);
+    const res = await fetch(url, { cache: 'no-store' });
     if (res.ok) {
-      const data = await res.json();
-      clientMemoryCache.set(cacheKey, { data, timestamp: Date.now() });
-      return data;
+      return await res.json();
     }
   } catch (err) {
     console.warn(`[Client CMS Fetch Error for ${type}]`, err);

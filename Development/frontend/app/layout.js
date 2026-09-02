@@ -18,8 +18,6 @@ const plusJakarta = Plus_Jakarta_Sans({
 
 import { getSiteSettings } from "@/lib/sanityData";
 
-export const revalidate = 60;
-
 export async function generateMetadata() {
   let settings = null;
   try {
@@ -112,13 +110,11 @@ export default function RootLayout({ children }) {
       className={`${inter.variable} ${plusJakarta.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <head>
-        <JsonLd />
-      </head>
       <body
         className="min-h-full flex flex-col bg-[#F8F9FA] text-[#0F172A]"
         suppressHydrationWarning
       >
+        <JsonLd />
         <AppShell>{children}</AppShell>
       </body>
     </html>
