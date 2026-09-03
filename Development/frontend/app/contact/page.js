@@ -232,7 +232,7 @@ function ContactContent() {
                       Telephone / Primary Ghana Line
                     </span>
                     <a
-                      href={`tel:${siteSettings.contactPhone.replace(/\s+/g, '')}`}
+                      href={`tel:${String(siteSettings.contactPhone || '').replace(/\s+/g, '')}`}
                       className="text-white hover:text-[#DFB758] font-medium transition-colors"
                     >
                       {siteSettings.contactPhone}
@@ -250,7 +250,7 @@ function ContactContent() {
                         Secondary / Direct Ghana Line
                       </span>
                       <a
-                        href={`tel:${siteSettings.contactPhoneAlt.replace(/\s+/g, '')}`}
+                        href={`tel:${String(siteSettings.contactPhoneAlt || '').replace(/\s+/g, '')}`}
                         className="text-white hover:text-[#DFB758] font-medium transition-colors"
                       >
                         {siteSettings.contactPhoneAlt}
@@ -530,7 +530,7 @@ function ContactContent() {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 text-xs sm:text-sm font-heading font-bold text-[#061739] bg-gradient-to-r from-[#C49838] via-[#DFB758] to-[#C49838] rounded-md shadow hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 uppercase tracking-wider disabled:opacity-50 cursor-pointer min-h-[48px]"
+                    className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 text-xs sm:text-sm font-heading font-bold text-[#061739] bg-gradient-to-r from-[#DFB758] via-[#F3D78A] to-[#C49838] hover:from-[#C49838] hover:to-[#B8860B] rounded-xl shadow-[0_4px_20px_rgba(223,183,88,0.35)] hover:shadow-[0_8px_30px_rgba(223,183,88,0.5)] hover:-translate-y-0.5 transition-all duration-300 uppercase tracking-wider disabled:opacity-50 cursor-pointer min-h-[48px]"
                   >
                     {loading ? (
                       <span>Sending...</span>

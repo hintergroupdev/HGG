@@ -149,22 +149,22 @@ export default function HeroSection() {
             custom={0.32}
             className="hidden sm:block pt-4 border-t border-white/10"
           >
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
               {quickPillars.map((pillar, idx) => {
                 const Icon = pillar.icon;
                 return (
                   <div
                     key={idx}
-                    className="p-2.5 rounded-lg bg-[#061739]/80 hover:bg-[#061739] border border-white/[0.08] hover:border-[#DFB758]/40 transition-colors backdrop-blur-md flex flex-col items-start gap-1.5"
+                    className="group p-3 sm:p-3.5 rounded-xl bg-[#061739]/85 hover:bg-[#061739] border border-white/15 hover:border-[#DFB758]/70 transition-all duration-300 backdrop-blur-md flex flex-col items-start gap-2 shadow-lg hover:shadow-[0_8px_20px_-4px_rgba(223,183,88,0.2)] hover:-translate-y-0.5"
                   >
-                    <div className="w-6 h-6 rounded bg-[#14588B]/40 flex items-center justify-center text-[#DFB758]">
-                      <Icon className="w-3 h-3" />
+                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-br from-[#14588B]/50 to-[#061739] border border-[#DFB758]/30 group-hover:border-[#DFB758]/70 flex items-center justify-center text-[#DFB758] shadow-xs transition-colors">
+                      <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                     </div>
                     <div>
-                      <div className="text-[11px] font-bold text-white tracking-wide leading-tight">
+                      <div className="text-[11.5px] sm:text-[12px] font-bold text-white tracking-wide leading-tight group-hover:text-[#DFB758] transition-colors">
                         {pillar.title}
                       </div>
-                      <div className="text-[9.5px] text-slate-300 mt-0.5 leading-snug">
+                      <div className="text-[10px] sm:text-[10.5px] text-slate-300 mt-0.5 leading-snug">
                         {pillar.desc}
                       </div>
                     </div>

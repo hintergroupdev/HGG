@@ -355,20 +355,18 @@ function InsightsContent() {
                 setActiveStream("perspectives");
                 setSelectedCategory("all");
               }}
-              className={`px-4 py-2.5 rounded-lg text-xs font-heading font-bold transition-all flex items-center justify-center gap-2 cursor-pointer ${
-                activeStream === "perspectives"
+              className={`px-4 py-2.5 rounded-lg text-xs font-heading font-bold transition-all flex items-center justify-center gap-2 cursor-pointer ${activeStream === "perspectives"
                   ? "bg-[#DFB758] text-[#061739] shadow-xs border border-[#C49838]/50"
                   : "text-slate-600 hover:text-[#061739] hover:bg-white/60"
-              }`}
+                }`}
             >
               <TrendingUp className={`w-3.5 h-3.5 ${activeStream === "perspectives" ? "text-[#061739]" : "text-[#C49838]"}`} />
               <span>Strategic Perspectives & Sector Analysis</span>
               <span
-                className={`text-[10px] font-mono px-1.5 py-0.5 rounded-full font-bold ${
-                  activeStream === "perspectives"
+                className={`text-[10px] font-mono px-1.5 py-0.5 rounded-full font-bold ${activeStream === "perspectives"
                     ? "bg-[#061739] text-[#DFB758]"
                     : "bg-slate-200 text-slate-600"
-                }`}
+                  }`}
               >
                 {perspectivesCount}
               </span>
@@ -379,20 +377,18 @@ function InsightsContent() {
                 setActiveStream("corporate");
                 setSelectedCategory("all");
               }}
-              className={`px-4 py-2.5 rounded-lg text-xs font-heading font-bold transition-all flex items-center justify-center gap-2 cursor-pointer ${
-                activeStream === "corporate"
+              className={`px-4 py-2.5 rounded-lg text-xs font-heading font-bold transition-all flex items-center justify-center gap-2 cursor-pointer ${activeStream === "corporate"
                   ? "bg-[#14588B] text-white shadow-xs border border-[#0E3D60]"
                   : "text-slate-600 hover:text-[#061739] hover:bg-white/60"
-              }`}
+                }`}
             >
               <Building2 className={`w-3.5 h-3.5 ${activeStream === "corporate" ? "text-[#DFB758]" : "text-[#14588B]"}`} />
               <span>Corporate Announcements & News</span>
               <span
-                className={`text-[10px] font-mono px-1.5 py-0.5 rounded-full font-bold ${
-                  activeStream === "corporate"
+                className={`text-[10px] font-mono px-1.5 py-0.5 rounded-full font-bold ${activeStream === "corporate"
                     ? "bg-white/20 text-white"
                     : "bg-slate-200 text-slate-600"
-                }`}
+                  }`}
               >
                 {corporateCount}
               </span>
@@ -433,11 +429,10 @@ function InsightsContent() {
             </span>
             <button
               onClick={() => setSelectedCategory("all")}
-              className={`px-3.5 py-1.5 rounded-md text-xs font-heading font-bold transition-all shrink-0 cursor-pointer ${
-                selectedCategory === "all"
+              className={`px-3.5 py-1.5 rounded-md text-xs font-heading font-bold transition-all shrink-0 cursor-pointer ${selectedCategory === "all"
                   ? "bg-[#061739] text-white shadow-xs"
                   : "bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-[#061739]"
-              }`}
+                }`}
             >
               All {activeStream === "perspectives" ? "Perspectives" : "Notices"} (
               {activeStream === "perspectives" ? perspectivesCount : corporateCount})
@@ -450,11 +445,10 @@ function InsightsContent() {
                 <button
                   key={stream.id}
                   onClick={() => setSelectedCategory(stream.id)}
-                  className={`px-3.5 py-1.5 rounded-md text-xs font-heading font-bold transition-all shrink-0 cursor-pointer ${
-                    selectedCategory === stream.id
+                  className={`px-3.5 py-1.5 rounded-md text-xs font-heading font-bold transition-all shrink-0 cursor-pointer ${selectedCategory === stream.id
                       ? "bg-[#061739] text-white shadow-xs"
                       : "bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-[#061739]"
-                  }`}
+                    }`}
                 >
                   {stream.title} ({count})
                 </button>
@@ -672,11 +666,10 @@ function InsightsContent() {
                       }
                     }}
                     disabled={currentPage === 1}
-                    className={`inline-flex items-center gap-1 px-3 py-2 rounded-md text-xs font-heading font-bold border transition-all cursor-pointer ${
-                      currentPage === 1
+                    className={`inline-flex items-center gap-1 px-3 py-2 rounded-md text-xs font-heading font-bold border transition-all cursor-pointer ${currentPage === 1
                         ? "bg-slate-100 text-slate-400 border-slate-200 cursor-not-allowed"
                         : "bg-white text-[#061739] border-slate-200 hover:border-[#DFB758] hover:bg-slate-50 shadow-xs"
-                    }`}
+                      }`}
                   >
                     <ChevronLeft className="w-3.5 h-3.5" />
                     <span>Prev</span>
@@ -690,11 +683,10 @@ function InsightsContent() {
                           setCurrentPage(pageNo);
                           window.scrollTo({ top: 0, behavior: "smooth" });
                         }}
-                        className={`w-8 h-8 sm:w-9 sm:h-9 rounded-md text-xs font-heading font-bold transition-all flex items-center justify-center cursor-pointer ${
-                          currentPage === pageNo
+                        className={`w-8 h-8 sm:w-9 sm:h-9 rounded-md text-xs font-heading font-bold transition-all flex items-center justify-center cursor-pointer ${currentPage === pageNo
                             ? "bg-[#061739] text-white shadow-xs"
                             : "bg-white text-slate-600 border border-slate-200 hover:border-[#DFB758] hover:bg-slate-50"
-                        }`}
+                          }`}
                       >
                         {pageNo}
                       </button>
@@ -710,11 +702,10 @@ function InsightsContent() {
                       }
                     }}
                     disabled={currentPage === totalPages}
-                    className={`inline-flex items-center gap-1 px-3 py-2 rounded-md text-xs font-heading font-bold border transition-all cursor-pointer ${
-                      currentPage === totalPages
+                    className={`inline-flex items-center gap-1 px-3 py-2 rounded-md text-xs font-heading font-bold border transition-all cursor-pointer ${currentPage === totalPages
                         ? "bg-slate-100 text-slate-400 border-slate-200 cursor-not-allowed"
                         : "bg-white text-[#061739] border-slate-200 hover:border-[#DFB758] hover:bg-slate-50 shadow-xs"
-                    }`}
+                      }`}
                   >
                     <span>Next</span>
                     <ChevronRight className="w-3.5 h-3.5" />
@@ -775,21 +766,19 @@ function InsightsContent() {
                 <div className="flex items-center gap-2 mt-4 pt-3 border-t border-white/10">
                   <button
                     onClick={() => setActiveCharterTab("streams")}
-                    className={`px-3.5 py-1.5 rounded-md text-xs font-heading font-bold transition-all uppercase tracking-wider cursor-pointer ${
-                      activeCharterTab === "streams"
+                    className={`px-3.5 py-1.5 rounded-md text-xs font-heading font-bold transition-all uppercase tracking-wider cursor-pointer ${activeCharterTab === "streams"
                         ? "bg-[#DFB758] text-[#061739] shadow-xs"
                         : "bg-white/5 text-slate-300 hover:bg-white/10 hover:text-white"
-                    }`}
+                      }`}
                   >
                     6 Knowledge Streams
                   </button>
                   <button
                     onClick={() => setActiveCharterTab("charter")}
-                    className={`px-3.5 py-1.5 rounded-md text-xs font-heading font-bold transition-all uppercase tracking-wider cursor-pointer ${
-                      activeCharterTab === "charter"
+                    className={`px-3.5 py-1.5 rounded-md text-xs font-heading font-bold transition-all uppercase tracking-wider cursor-pointer ${activeCharterTab === "charter"
                         ? "bg-[#DFB758] text-[#061739] shadow-xs"
                         : "bg-white/5 text-slate-300 hover:bg-white/10 hover:text-white"
-                    }`}
+                      }`}
                   >
                     7-Point Quality Charter
                   </button>

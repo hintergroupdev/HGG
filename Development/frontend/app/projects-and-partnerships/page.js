@@ -642,7 +642,7 @@ export default function ProjectsPage() {
                         {proj.sector}
                       </span>
                       <span className="text-[9px] font-mono font-semibold text-slate-500 uppercase tracking-wider px-2 py-0.5 rounded bg-slate-100 border border-slate-200/80">
-                        {proj.status ? proj.status.replace("_", " ") : "INDICATIVE CASE STUDY"}
+                        {proj.status ? String(proj.status).replace(/_/g, " ") : "INDICATIVE CASE STUDY"}
                       </span>
                     </div>
 
@@ -1034,7 +1034,7 @@ export default function ProjectsPage() {
                       {selectedProject.sector}
                     </span>
                     <span className="text-[9.5px] font-mono uppercase text-slate-300">
-                      • {selectedProject.status.replace("_", " ")}
+                      • {selectedProject.status ? String(selectedProject.status).replace(/_/g, " ") : ""}
                     </span>
                   </div>
                   <h3 className="font-heading text-lg sm:text-2xl font-bold text-white tracking-tight leading-tight">

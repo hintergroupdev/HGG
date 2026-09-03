@@ -314,8 +314,11 @@ export default function LeadershipPage() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="bg-[#F8FAFC] rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-all max-w-5xl mx-auto"
+              className="bg-gradient-to-b from-white via-white to-slate-50/80 rounded-2xl border border-slate-200/90 overflow-hidden shadow-sm hover:shadow-xl hover:border-[#DFB758]/60 transition-all duration-300 max-w-5xl mx-auto relative"
             >
+              {/* Top Luxury Metallic Gold Accent Line */}
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#DFB758] via-[#F3D78A] to-[#C49838]" />
+
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-10 p-6 sm:p-8 lg:p-10 items-center">
 
                 {/* Left: Prominent Avatar / Portrait Box */}
@@ -463,7 +466,8 @@ export default function LeadershipPage() {
           {/* Dynamic Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6">
             {filteredTeam.map((member, idx) => {
-              const initials = member.name
+              const memberName = member?.name || "HGG";
+              const initials = memberName
                 .replace(/^(Lt\.|Commander|Dr\.|Mr\.|Mrs\.|Ms\.)\s+/gi, "")
                 .trim()
                 .split(/\s+/)

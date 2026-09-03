@@ -245,7 +245,7 @@ function StepCard({ step, isHovered, onHover, onLeave, onSelect }) {
       </h4>
 
       {/* Scope Preview */}
-      <p className="text-[9.5px] text-slate-500 line-clamp-2 leading-tight px-1 font-normal mt-0.5">
+      <p className="text-[9.5px] sm:text-[10px] text-slate-500 leading-snug px-1 font-normal mt-0.5">
         {step.scope}
       </p>
 
@@ -528,7 +528,7 @@ export default function DisciplinedPathwaySection({
         <div className="mt-14 text-center">
           <Link
             href={ctaLink}
-            className="inline-flex items-center gap-2.5 px-7 py-3 text-xs font-heading font-bold tracking-wider text-[#061739] bg-gradient-to-r from-[#C49838] via-[#DFB758] to-[#C49838] hover:shadow-xl hover:shadow-[#C49838]/25 rounded-md transition-all duration-300 hover:-translate-y-0.5 group shadow-md uppercase"
+            className="inline-flex items-center gap-2.5 px-8 py-3.5 text-xs font-heading font-bold tracking-wider text-[#061739] bg-gradient-to-r from-[#DFB758] via-[#F3D78A] to-[#C49838] hover:from-[#C49838] hover:to-[#B8860B] rounded-xl transition-all duration-300 hover:-translate-y-0.5 group shadow-[0_4px_20px_rgba(223,183,88,0.35)] hover:shadow-[0_8px_30px_rgba(223,183,88,0.5)] uppercase"
           >
             <span>{ctaText}</span>
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1 duration-200" />

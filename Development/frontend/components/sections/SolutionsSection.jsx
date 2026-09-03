@@ -172,8 +172,11 @@ export default function SolutionsSection() {
                 key={index}
                 variants={fadeUp}
                 custom={index * 0.04}
-                className="group relative bg-white p-7 sm:p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-[#DFB758]/60 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+                className="group relative bg-gradient-to-b from-white via-white to-slate-50/70 p-7 sm:p-8 rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-[0_20px_40px_-15px_rgba(6,23,57,0.12)] hover:border-[#DFB758]/70 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between"
               >
+                {/* Top Subtle Luxury Gold Accent Line */}
+                <div className="absolute top-0 left-6 right-6 h-[2px] bg-gradient-to-r from-transparent via-[#DFB758]/40 to-transparent group-hover:via-[#DFB758] transition-all duration-500" />
+
                 {/* Corner Accent Bracket */}
                 <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-[#DFB758]/30 rounded-tr-2xl group-hover:border-[#DFB758] transition-colors" />
 
@@ -181,12 +184,12 @@ export default function SolutionsSection() {
                   {/* Top Meta: Icon + Step Badge */}
                   <div className="flex items-center justify-between mb-5">
                     <div
-                      className={`w-13 h-13 rounded-full ${item.iconBg} ${item.iconColor} flex items-center justify-center border border-[#14588B]/30 shadow-xs group-hover:scale-105 group-hover:bg-[#14588B] transition-all duration-300`}
+                      className={`w-13 h-13 rounded-xl ${item.iconBg} ${item.iconColor} flex items-center justify-center border border-[#14588B]/30 shadow-md group-hover:scale-105 group-hover:bg-[#0A2457] group-hover:border-[#DFB758]/60 transition-all duration-300`}
                     >
                       <Icon className="w-6 h-6" />
                     </div>
 
-                    <span className="text-[11px] font-mono font-bold text-slate-300 group-hover:text-[#C49838] transition-colors">
+                    <span className="text-[11px] font-mono font-bold text-slate-400 group-hover:text-[#C49838] transition-colors">
                       0{index + 1}
                     </span>
                   </div>
@@ -209,7 +212,7 @@ export default function SolutionsSection() {
                 <div className="pt-4 mt-6 border-t border-slate-100 flex items-center justify-between">
                   <Link
                     href={item.href}
-                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-[#DFB758] hover:bg-[#C49838] text-[#061739] text-[11.5px] font-heading font-bold uppercase tracking-wider transition-all duration-300 shadow-xs hover:shadow-sm group/btn"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-gradient-to-r from-[#DFB758] to-[#C49838] hover:from-[#C49838] hover:to-[#B8860B] text-[#061739] text-[11.5px] font-heading font-bold uppercase tracking-wider transition-all duration-300 shadow-[0_2px_8px_rgba(223,183,88,0.25)] hover:shadow-[0_4px_12px_rgba(223,183,88,0.35)] group/btn"
                   >
                     <span>Explore Practice</span>
                     <ArrowRight className="w-3.5 h-3.5 text-[#061739] transition-transform group-hover/btn:translate-x-1 duration-300" />

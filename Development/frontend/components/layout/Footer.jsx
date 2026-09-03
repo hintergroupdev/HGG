@@ -265,7 +265,7 @@ export default function Footer() {
                 <li className="flex items-center gap-2.5">
                   <Phone className="w-4 h-4 text-[#DFB758] shrink-0" />
                   <a
-                    href={`tel:${settings.contactPhone.replace(/\s+/g, "")}`}
+                    href={`tel:${String(settings.contactPhone).replace(/\s+/g, "")}`}
                     className="hover:text-white transition-colors"
                   >
                     {settings.contactPhone}
@@ -276,7 +276,7 @@ export default function Footer() {
                 <li className="flex items-center gap-2.5">
                   <Phone className="w-4 h-4 text-[#DFB758] shrink-0" />
                   <a
-                    href={`tel:${settings.contactPhoneAlt.replace(/\s+/g, "")}`}
+                    href={`tel:${String(settings.contactPhoneAlt).replace(/\s+/g, "")}`}
                     className="hover:text-white transition-colors"
                   >
                     {settings.contactPhoneAlt}

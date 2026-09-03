@@ -220,23 +220,16 @@ export default function AboutFoundationSection() {
             <motion.div
               variants={fadeUp}
               custom={0.26}
-              className="pt-4 sm:pt-5 mt-2 lg:mt-0 flex items-center gap-3 border-t border-slate-200/80"
+              className="pt-4 border-t border-slate-200/80 flex items-center gap-3"
             >
-              <div className="relative w-6 h-6 flex-shrink-0 opacity-40">
-                <Image
-                  src="/assets/logos/Favicon/Logo_Favicon.svg"
-                  alt="HGG Monogram"
-                  fill
-                  className="object-contain"
-                />
-              </div>
-              <span className="text-[10.5px] font-mono font-semibold tracking-[0.28em] text-slate-400 uppercase">
+              <div className="w-2.5 h-2.5 rounded-full bg-[#DFB758]" />
+              <span className="text-[11px] font-mono uppercase tracking-widest text-slate-500 font-bold">
                 COMMITTED TO EXCELLENCE
               </span>
             </motion.div>
           </motion.div>
 
-          {/* ── RIGHT COLUMN: OUR FOUNDATION (TOP) + OUR STRATEGIC APPROACH (BOTTOM) ── */}
+          {/* ── RIGHT COLUMN: FOUNDATION & 6-STAGE APPROACH ── */}
           <div className="lg:col-span-7 space-y-8 sm:space-y-10 lg:space-y-12">
 
             {/* 1. OUR FOUNDATION (Verbatim from docx: Mission, Vision, Values) */}
@@ -256,72 +249,76 @@ export default function AboutFoundationSection() {
                 <span className="h-[1px] w-full bg-[#DFB758]/50" />
               </motion.div>
 
-              {/* 3 Columns Grid (Cards on mobile for clarity, side-by-side on desktop) */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 lg:gap-7">
-                
-                {/* Mission Card (Always visible on mobile & desktop) */}
+              {/* 3 Columns Grid (Luxury Cards) */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5">
+                {/* Mission Card */}
                 <motion.div
                   variants={fadeUp}
-                  className="p-4 sm:p-0 rounded-xl sm:rounded-none bg-[#F8FAFC] sm:bg-transparent border border-slate-200/80 sm:border-none space-y-2.5"
+                  className="p-5 rounded-xl bg-gradient-to-b from-white via-white to-slate-50/80 border border-slate-200/90 shadow-xs hover:shadow-md hover:border-[#DFB758]/60 transition-all duration-300 space-y-2.5 flex flex-col justify-between"
                 >
-                  <div className="w-9 h-9 rounded-md sm:rounded-full bg-[#061739]/5 flex items-center justify-center text-[#061739] mb-1.5 sm:mb-3">
-                    <Target className="w-5 h-5 text-[#061739]" />
+                  <div>
+                    <div className="w-10 h-10 rounded-lg bg-[#061739] flex items-center justify-center text-[#DFB758] mb-3 shadow-xs">
+                      <Target className="w-5 h-5 text-[#DFB758]" />
+                    </div>
+                    <h4 className="font-heading text-sm sm:text-base font-bold text-[#061739] mb-1.5">
+                      Our Mission
+                    </h4>
+                    <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                      To connect strategic opportunities with the right people,
+                      organizations, technologies, and investments while delivering
+                      innovative consulting, venture development, and brokerage
+                      solutions that create lasting economic and social value.
+                    </p>
                   </div>
-                  <h4 className="font-heading text-sm sm:text-base font-bold text-[#061739]">
-                    Our Mission
-                  </h4>
-                  <p className="text-xs text-slate-600 leading-relaxed font-normal">
-                    To connect strategic opportunities with the right people,
-                    organizations, technologies, and investments while delivering
-                    innovative consulting, venture development, and brokerage
-                    solutions that create lasting economic and social value.
-                  </p>
                 </motion.div>
 
-                {/* Vision Card (Expandable on mobile, always visible on sm+) */}
+                {/* Vision Card */}
                 <motion.div
                   variants={fadeUp}
-                  className={`p-4 sm:p-0 rounded-xl sm:rounded-none bg-[#F8FAFC] sm:bg-transparent border border-slate-200/80 sm:border-none space-y-2.5 ${
-                    showFoundation ? "block" : "hidden sm:block"
+                  className={`p-5 rounded-xl bg-gradient-to-b from-white via-white to-slate-50/80 border border-slate-200/90 shadow-xs hover:shadow-md hover:border-[#DFB758]/60 transition-all duration-300 space-y-2.5 flex flex-col justify-between ${
+                    showFoundation ? "block" : "hidden sm:flex"
                   }`}
                 >
-                  <div className="w-9 h-9 rounded-md sm:rounded-full bg-[#C49838]/10 flex items-center justify-center text-[#C49838] mb-1.5 sm:mb-3">
-                    <Eye className="w-5 h-5 text-[#C49838]" />
+                  <div>
+                    <div className="w-10 h-10 rounded-lg bg-[#061739] flex items-center justify-center text-[#DFB758] mb-3 shadow-xs">
+                      <Eye className="w-5 h-5 text-[#DFB758]" />
+                    </div>
+                    <h4 className="font-heading text-sm sm:text-base font-bold text-[#061739] mb-1.5">
+                      Our Vision
+                    </h4>
+                    <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                      To become one of Africa&apos;s most trusted consulting,
+                      ventures, and brokerage companies, recognized internationally
+                      for facilitating transformative partnerships, responsible
+                      investments, and sustainable development initiatives.
+                    </p>
                   </div>
-                  <h4 className="font-heading text-sm sm:text-base font-bold text-[#061739]">
-                    Our Vision
-                  </h4>
-                  <p className="text-xs text-slate-600 leading-relaxed font-normal">
-                    To become one of Africa&apos;s most trusted consulting,
-                    ventures, and brokerage companies, recognized internationally
-                    for facilitating transformative partnerships, responsible
-                    investments, and sustainable development initiatives.
-                  </p>
                 </motion.div>
 
-                {/* Core Values Card (Expandable on mobile, always visible on sm+) */}
+                {/* Core Values Card */}
                 <motion.div
                   variants={fadeUp}
-                  className={`p-4 sm:p-0 rounded-xl sm:rounded-none bg-[#F8FAFC] sm:bg-transparent border border-slate-200/80 sm:border-none space-y-2.5 ${
-                    showFoundation ? "block" : "hidden sm:block"
+                  className={`p-5 rounded-xl bg-gradient-to-b from-white via-white to-slate-50/80 border border-slate-200/90 shadow-xs hover:shadow-md hover:border-[#DFB758]/60 transition-all duration-300 space-y-2.5 flex flex-col justify-between ${
+                    showFoundation ? "block" : "hidden sm:flex"
                   }`}
                 >
-                  <div className="w-9 h-9 rounded-md sm:rounded-full bg-[#14588B]/10 flex items-center justify-center text-[#14588B] mb-1.5 sm:mb-3">
-                    <ShieldCheck className="w-5 h-5 text-[#14588B]" />
+                  <div>
+                    <div className="w-10 h-10 rounded-lg bg-[#061739] flex items-center justify-center text-[#DFB758] mb-3 shadow-xs">
+                      <ShieldCheck className="w-5 h-5 text-[#DFB758]" />
+                    </div>
+                    <h4 className="font-heading text-sm sm:text-base font-bold text-[#061739] mb-1.5">
+                      Our Core Values
+                    </h4>
+                    <ul className="grid grid-cols-2 sm:grid-cols-1 gap-x-2 gap-y-1.5 text-xs text-slate-600 font-normal">
+                      {values.map((v, i) => (
+                        <li key={i} className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#C49838] flex-shrink-0" />
+                          <span className="font-medium text-slate-700">{v}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <h4 className="font-heading text-sm sm:text-base font-bold text-[#061739]">
-                    Our Core Values
-                  </h4>
-                  <ul className="grid grid-cols-2 sm:grid-cols-1 gap-x-2 gap-y-1.5 text-xs text-slate-600 font-normal">
-                    {values.map((v, i) => (
-                      <li key={i} className="flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#C49838] flex-shrink-0" />
-                        <span className="font-medium text-slate-700">{v}</span>
-                      </li>
-                    ))}
-                  </ul>
                 </motion.div>
-
               </div>
 
               {/* Read More / Read Less Toggle Button (Mobile Only) */}

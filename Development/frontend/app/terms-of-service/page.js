@@ -225,7 +225,7 @@ export default function TermsOfServicePage() {
                             <Phone className="w-4 h-4 text-[#DFB758] shrink-0" />
                             <div>
                               <span className="text-slate-400 font-mono text-[10.5px] block uppercase">Telephone</span>
-                              <a href={`tel:${siteSettings.contactPhone.replace(/\s+/g, '')}`} className="text-white hover:text-[#DFB758] font-medium transition-colors">
+                              <a href={`tel:${String(siteSettings.contactPhone || '').replace(/\s+/g, '')}`} className="text-white hover:text-[#DFB758] font-medium transition-colors">
                                 {siteSettings.contactPhone}
                               </a>
                             </div>
@@ -454,7 +454,7 @@ export default function TermsOfServicePage() {
                         <Phone className="w-4 h-4 text-[#DFB758] shrink-0" />
                         <div>
                           <span className="text-slate-400 font-mono text-[10.5px] block uppercase">Telephone</span>
-                          <a href={`tel:${siteSettings.contactPhone.replace(/\s+/g, '')}`} className="text-white hover:text-[#DFB758] font-medium transition-colors">
+                          <a href={`tel:${String(siteSettings.contactPhone || '').replace(/\s+/g, '')}`} className="text-white hover:text-[#DFB758] font-medium transition-colors">
                             {siteSettings.contactPhone}
                           </a>
                         </div>
