@@ -320,6 +320,7 @@ export default function DisciplinedPathwaySection({
             unoptimized
             className="object-cover object-top lg:object-left-top opacity-[0.10] lg:opacity-[0.14] filter contrast-[1.05] saturate-110"
             priority={true}
+            loading="eager"
           />
           {/* Smooth Fade Out from Left to Right + Top/Bottom edges */}
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#F8FAFC]/60 to-[#F8FAFC]" />

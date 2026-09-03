@@ -57,6 +57,7 @@ export default function InsightsPreviewSection() {
           fill
           unoptimized
           priority
+          loading="eager"
           sizes="50vw"
           className="object-cover object-center lg:object-right-top opacity-[0.09] lg:opacity-[0.14] filter contrast-[1.05] saturate-110"
         />
@@ -154,60 +155,6 @@ export default function InsightsPreviewSection() {
                 >
                   <span>READ ARTICLE</span>
                   <ArrowRight className="w-3.5 h-3.5 text-[#061739] group-hover/btn:translate-x-1 transition-transform" />
-                </Link>
-              </div>
-            </motion.article>
-          ))}
-        </div>
-
-        {/* Mobile View All Insights Footer CTA */}
-        <div className="mt-8 text-center md:hidden">
-          <Link
-            href="/insights"
-            className="inline-flex items-center justify-center gap-2 w-full px-6 py-3.5 text-xs font-heading font-bold text-[#061739] bg-white border border-slate-200 rounded-xl shadow-xs hover:border-[#DFB758] transition-all uppercase tracking-wider"
-          >
-            <span>EXPLORE ALL INSIGHTS</span>
-            <ArrowRight className="w-4 h-4 text-[#C49838]" />
-          </Link>
-        </div>
-      </div>
-    </section>
-  );
-}
-                    </span>
-                  ) : (
-                    <span className="text-[9px] font-mono font-bold text-[#14588B] uppercase tracking-wider flex items-center gap-1">
-                      <Megaphone className="w-2.5 h-2.5 text-[#14588B]" /> OFFICIAL NOTICE
-                    </span>
-                  )}
-                </div>
-
-                {/* Title */}
-                <h3 className="font-heading text-base sm:text-lg font-extrabold text-[#061739] group-hover:text-[#14588B] transition-colors leading-snug tracking-tight mt-4 mb-2.5">
-                  <Link href={`/insights?article=${article.id}`}>
-                    {article.title}
-                  </Link>
-                </h3>
-
-                {/* Excerpt */}
-                <p className="text-slate-600 text-xs sm:text-[13px] leading-relaxed mb-5 flex-1 line-clamp-3">
-                  {article.excerpt}
-                </p>
-              </div>
-
-              {/* Card Footer Divider */}
-              <div className="border-t border-slate-100 pt-4 mt-auto flex items-center justify-between gap-2">
-                <div className="flex items-center gap-1.5 text-[11px] font-mono text-slate-500 font-medium">
-                  <Calendar className="w-3.5 h-3.5 text-[#C49838]" />
-                  <span>{article.date}</span>
-                </div>
-
-                <Link
-                  href={`/insights?article=${article.id}`}
-                  className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-gradient-to-r from-[#DFB758] to-[#C49838] hover:from-[#C49838] hover:to-[#B8860B] text-[#061739] font-heading font-bold text-[11px] uppercase tracking-wider transition-all duration-200 shadow-[0_2px_6px_rgba(223,183,88,0.25)] hover:shadow-[0_4px_10px_rgba(223,183,88,0.35)] cursor-pointer group/btn"
-                >
-                  <span>READ ARTICLE</span>
-                  <ArrowRight className="w-3 h-3 text-[#061739] group-hover/btn:translate-x-0.5 transition-transform" />
                 </Link>
               </div>
             </motion.article>
