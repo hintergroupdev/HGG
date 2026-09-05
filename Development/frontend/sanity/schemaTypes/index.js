@@ -6,6 +6,7 @@ import { project } from './project';
 import { post } from './post';
 import { category } from './category';
 import { legalPage } from './legalPage';
+import { employeeVerification } from './employeeVerification';
 
 export const schemaTypes = [
   siteSettings,
@@ -16,4 +17,6 @@ export const schemaTypes = [
   post,
   category,
   legalPage,
+  employeeVerification,
 ];
+

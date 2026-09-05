@@ -7,9 +7,14 @@ import Footer from './Footer';
 export default function AppShell({ children }) {
   const pathname = usePathname();
   const isStudio = pathname?.startsWith('/studio');
+  const isVerify = pathname?.startsWith('/verify');
 
-  if (isStudio) {
-    return <main className="h-screen w-screen overflow-hidden">{children}</main>;
+  if (isStudio || isVerify) {
+    return (
+      <main className={isStudio ? "h-screen w-screen overflow-hidden" : "min-h-screen w-full flex flex-col bg-[#010912]"}>
+        {children}
+      </main>
+    );
   }
 
   return (

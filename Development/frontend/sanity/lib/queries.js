@@ -174,3 +174,38 @@ export const legalPageBySlugQuery = groq`
     }
   }
 `;
+
+// 10. Employee Verification by ID Query
+export const employeeVerificationQuery = groq`
+  *[_type == "employeeVerification" && (employeeId == $employeeId || employeeId == upper($employeeId))][0] {
+    _id,
+    employeeId,
+    fullName,
+    position,
+    organization,
+    department,
+    status,
+    issuedDate,
+    portrait,
+    _createdAt
+  }
+`;
+
+// 11. All Employee Verifications Query (For Admin Studio Tool)
+export const allEmployeeVerificationsQuery = groq`
+  *[_type == "employeeVerification"] | order(employeeId asc) {
+    _id,
+    employeeId,
+    fullName,
+    position,
+    organization,
+    department,
+    status,
+    issuedDate,
+    portrait,
+    internalNotes,
+    _createdAt,
+    _updatedAt
+  }
+`;
+

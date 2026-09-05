@@ -3,6 +3,7 @@ import { structureTool } from 'sanity/structure';
 import { schemaTypes } from './sanity/schemaTypes';
 import { projectId, dataset } from './sanity/env';
 import { seedTool } from './sanity/tools/seedTool';
+import { employeeQrTool } from './sanity/tools/employeeQrTool';
 
 export default defineConfig({
   basePath: '/studio',
@@ -29,6 +30,9 @@ export default defineConfig({
             S.divider(),
             // Leadership & Governance
             S.documentTypeListItem('leadershipMember').title('Leadership & Governance'),
+            // Employee ID & Verification
+            S.documentTypeListItem('employeeVerification').title('Employee ID & Verification'),
+            S.divider(),
             // Service Offerings
             S.documentTypeListItem('service').title('Core Service Pillars'),
             // Focus Industries
@@ -46,7 +50,7 @@ export default defineConfig({
     }),
   ],
 
-  tools: (prev) => [...prev, seedTool()],
+  tools: (prev) => [...prev, employeeQrTool(), seedTool()],
 
   document: {
     comments: {
@@ -58,3 +62,4 @@ export default defineConfig({
     types: schemaTypes,
   },
 });
+
