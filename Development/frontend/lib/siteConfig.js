@@ -1,6 +1,8 @@
+const envUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://hintergroupghana.com');
+  envUrl && envUrl.length > 0
+    ? envUrl.replace(/\/+$/, '')
+    : (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://hintergroupghana.com');
 
 export const siteConfig = {
   name: 'THE HINTER GROUP GHANA LTD',

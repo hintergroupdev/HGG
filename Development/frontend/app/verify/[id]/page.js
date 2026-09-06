@@ -17,7 +17,7 @@ export async function generateMetadata({ params }) {
   const id = resolvedParams?.id?.toUpperCase() || 'VERIFY';
   return {
     title: `Identity Verification — ${id} | ${siteConfig.name}`,
-    description: 'Official personnel credential and identity verification system of The Hinter Group Ghana Ltd.',
+    description: 'Designed to enhance credential authentication for personnel of The Hinter Group Ghana Ltd.',
     robots: { index: false, follow: false, noarchive: true, nosnippet: true },
   };
 }

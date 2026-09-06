@@ -13,17 +13,18 @@ export default function VerificationClientActions({ employeeId, fullName, isVeri
       const now = new Date();
       setTimeStr(
         now.toLocaleTimeString('en-GB', {
+          timeZone: 'Africa/Accra',
           hour: '2-digit',
           minute: '2-digit',
           second: '2-digit',
-          timeZoneName: 'short',
-        })
+        }) + ' GMT (Accra)'
       );
       setDateStr(
         now.toLocaleDateString('en-GB', {
-          weekday: 'long',
+          timeZone: 'Africa/Accra',
+          weekday: 'short',
           day: '2-digit',
-          month: 'long',
+          month: 'short',
           year: 'numeric',
         })
       );
@@ -45,8 +46,12 @@ export default function VerificationClientActions({ employeeId, fullName, isVeri
 
   return (
     <>
-      {/* Live Timestamp */}
-      <div className="verify-live-clock">
+      {/* Live Timestamp (Ghana / GMT) */}
+      <div
+        className="verify-live-clock"
+        title="Live verification clock — helps determine whether you are viewing the current verification page (Accra, Ghana • GMT)"
+        aria-label="Live verification clock helping determine whether you are viewing the current verification page"
+      >
         <Wifi size={11} className="verify-clock-icon" />
         <span className="verify-clock-date">{dateStr}</span>
         <span className="verify-clock-sep">·</span>

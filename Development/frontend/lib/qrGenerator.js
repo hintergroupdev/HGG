@@ -8,7 +8,7 @@ const FAVICON_DATA_URL = faviconJson.dataUrl;
  * Matches the official physical ID card specification:
  * - Rounded white card container
  * - Fine metallic gold outer border frame (#C59B3F)
- * - Crisp black QR modules with Level-H (30%) error correction
+ * - Crisp black QR modules with high error correction (Level-H) for improved scanning reliability
  * - Dedicated white quiet zone cutout with the HGG shield emblem centered
  *
  * @param {string} verificationUrl - Full canonical verification URL

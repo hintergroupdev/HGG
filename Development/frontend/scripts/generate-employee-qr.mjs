@@ -2,20 +2,26 @@ import fs from 'fs';
 import path from 'path';
 import QRCode from 'qrcode';
 
-// Load .env.local if present
-const envPath = path.resolve(process.cwd(), '.env.local');
-let siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://hintergroupghana.com';
+const customDomain = process.argv[3]?.trim();
+let siteUrl = customDomain || process.env.SITE_URL;
 
-if (fs.existsSync(envPath)) {
-  const envContent = fs.readFileSync(envPath, 'utf8');
-  const match = envContent.match(/NEXT_PUBLIC_SITE_URL\s*=\s*(.+)/);
-  if (match && match[1]) {
-    siteUrl = match[1].trim().replace(/['"]/g, '');
+if (!siteUrl) {
+  const envPath = path.resolve(process.cwd(), '.env.local');
+  if (fs.existsSync(envPath)) {
+    const envContent = fs.readFileSync(envPath, 'utf8');
+    const match = envContent.match(/NEXT_PUBLIC_SITE_URL\s*=\s*(.+)/);
+    if (match && match[1]) {
+      siteUrl = match[1].trim().replace(/['"]/g, '');
+    }
   }
 }
 
+if (!siteUrl) {
+  siteUrl = 'https://hintergroupghana.com';
+}
+
 const employeeId = (process.argv[2] || 'HGG-001').toUpperCase().trim();
-const verifyUrl = `${siteUrl}/verify/${employeeId}`;
+const verifyUrl = `${siteUrl.replace(/\/+$/, '')}/verify/${employeeId}`;
 
 console.log(`=======================================================`);
 console.log(`HGG ID CARD QR GENERATOR (OFFICIAL DESIGN)`);

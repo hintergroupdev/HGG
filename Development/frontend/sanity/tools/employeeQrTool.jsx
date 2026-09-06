@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useClient } from 'sanity';
 import { generateHggQrSvg, downloadHggQrSvg, downloadHggQrPng } from '../../lib/qrGenerator';
+import { siteConfig } from '../../lib/siteConfig';
 
 export function EmployeeQrToolComponent() {
   const client = useClient({ apiVersion: '2024-08-30' });
@@ -9,13 +10,8 @@ export function EmployeeQrToolComponent() {
   const [error, setError] = useState(null);
   const [qrPreviews, setQrPreviews] = useState({});
 
-  // Dynamic canonical domain from environment
-  const siteBaseUrl =
-    typeof window !== 'undefined' && process.env.NEXT_PUBLIC_SITE_URL
-      ? process.env.NEXT_PUBLIC_SITE_URL
-      : typeof window !== 'undefined'
-      ? window.location.origin
-      : 'https://hintergroupghana.com';
+  // Authoritative canonical domain: reads NEXT_PUBLIC_SITE_URL from .env; if nothing is given, defaults to https://hintergroupghana.com
+  const siteBaseUrl = (siteConfig?.url || 'https://hintergroupghana.com').replace(/\/+$/, '');
 
   const fetchEmployees = async () => {
     try {
@@ -91,7 +87,7 @@ export function EmployeeQrToolComponent() {
             Registered Employee ID & QR Registry
           </h3>
           <p style={{ margin: 0, fontSize: '13px', color: '#64748b' }}>
-            Official registered corporate personnel credentials. All QR codes correspond strictly to validated database records.
+            Designed to enhance credential authentication with high error correction for improved scanning reliability. Credential updates are reflected dynamically through the central registry.
           </p>
         </div>
         <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', alignItems: 'center' }}>
@@ -270,7 +266,7 @@ export function EmployeeQrToolComponent() {
                         </div>
                       )}
                       <div style={{ marginTop: '12px', fontSize: '11px', color: '#DFB758', textAlign: 'center', fontWeight: '600' }}>
-                        Level-H (30%) • Gold Border & Centered Shield
+                        Level-H Error Correction • High Scanning Reliability • Gold Border & Centered Shield
                       </div>
                     </div>
 

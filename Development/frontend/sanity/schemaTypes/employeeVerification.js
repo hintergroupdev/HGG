@@ -3,13 +3,29 @@ import { defineField, defineType } from 'sanity';
 export const employeeVerification = defineType({
   name: 'employeeVerification',
   title: 'Employee ID & Verification',
+  description: 'Designed to enhance credential authentication. Credential updates are reflected dynamically through the central registry.',
   type: 'document',
+  groups: [
+    {
+      name: 'credential',
+      title: 'Public Credential (Card & Verification)',
+      default: true,
+    },
+    {
+      name: 'personal',
+      title: 'Confidential Personal Info (CMS Only)',
+    },
+  ],
   fields: [
+    // ══════════════════════════════════════════════════════════════════
+    // GROUP: PUBLIC CREDENTIAL (Displayed on Verification Card)
+    // ══════════════════════════════════════════════════════════════════
     defineField({
       name: 'employeeId',
       title: 'Employee ID',
       type: 'string',
-      description: 'Official unique identifier (e.g. HGG-001). Auto-generated with next available sequential ID.',
+      group: 'credential',
+      description: 'Official unique identifier (e.g. HGG-001). Auto-generated with next available sequential ID. Displayed on public verification page.',
       initialValue: async (params, context) => {
         try {
           const { getClient } = context;
@@ -69,34 +85,41 @@ export const employeeVerification = defineType({
       name: 'fullName',
       title: 'Full Name',
       type: 'string',
-      description: 'Legal full name as printed on the official ID card.',
+      group: 'credential',
+      description: 'Legal full name as printed on the official ID card. Displayed on public verification page.',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'position',
       title: 'Position / Official Role',
       type: 'string',
-      description: 'Official corporate title (e.g. Chairman & Chief Executive Officer).',
+      group: 'credential',
+      description: 'Official corporate title (e.g. Chairman & Chief Executive Officer). Displayed on public verification page.',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'organization',
       title: 'Organization',
       type: 'string',
+      group: 'credential',
       initialValue: 'THE HINTER GROUP GHANA LTD',
+      description: 'Corporate entity name. Displayed on public verification page.',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'department',
       title: 'Department / Division',
       type: 'string',
-      description: 'Corporate department or governance council.',
+      group: 'credential',
+      description: 'Corporate department or governance council. Displayed on public verification page.',
       initialValue: 'Executive Leadership & Governance',
     }),
     defineField({
       name: 'status',
       title: 'Verification Status',
       type: 'string',
+      group: 'credential',
+      description: 'Status indicator shown upon scan. Displayed on public verification page.',
       options: {
         list: [
           { title: 'Active / Verified', value: 'active' },
@@ -112,6 +135,8 @@ export const employeeVerification = defineType({
       name: 'issuedDate',
       title: 'Card Issuance Date',
       type: 'date',
+      group: 'credential',
+      description: 'Date of official issuance or badge printing. Displayed on public verification page.',
       options: {
         dateFormat: 'YYYY-MM-DD',
       },
@@ -120,17 +145,69 @@ export const employeeVerification = defineType({
       name: 'portrait',
       title: 'Approved Official Portrait',
       type: 'image',
-      description: 'Optional executive portrait image to display on the verification page.',
+      group: 'credential',
+      description: 'Approved executive portrait image to display on the public verification page.',
       options: {
         hotspot: true,
       },
+    }),
+
+    // ══════════════════════════════════════════════════════════════════
+    // GROUP: CONFIDENTIAL PERSONAL INFO (CMS ONLY — NEVER DISPLAYED)
+    // ══════════════════════════════════════════════════════════════════
+    defineField({
+      name: 'dateOfBirth',
+      title: 'Date of Birth',
+      type: 'date',
+      group: 'personal',
+      description: '🔒 Confidential (CMS Only): For internal HR records. NEVER displayed on public verification page.',
+      options: {
+        dateFormat: 'YYYY-MM-DD',
+      },
+    }),
+    defineField({
+      name: 'homeAddress',
+      title: 'Residential / Home Address',
+      type: 'text',
+      rows: 2,
+      group: 'personal',
+      description: '🔒 Confidential (CMS Only): Residential address for internal records. NEVER displayed on public verification page.',
+    }),
+    defineField({
+      name: 'personalPhone',
+      title: 'Personal Telephone Number',
+      type: 'string',
+      group: 'personal',
+      description: '🔒 Confidential (CMS Only): Direct telephone contact for internal records. NEVER displayed on public verification page.',
+    }),
+    defineField({
+      name: 'personalEmail',
+      title: 'Personal Email Address',
+      type: 'string',
+      group: 'personal',
+      description: '🔒 Confidential (CMS Only): Personal email address for internal records. NEVER displayed on public verification page.',
+    }),
+    defineField({
+      name: 'governmentIdNumber',
+      title: 'Government ID / Passport / Ghana Card Number',
+      type: 'string',
+      group: 'personal',
+      description: '🔒 Confidential (CMS Only): National identification, Ghana Card, or passport number for compliance. NEVER displayed on public verification page.',
+    }),
+    defineField({
+      name: 'emergencyContact',
+      title: 'Emergency Contact Details',
+      type: 'string',
+      group: 'personal',
+      description: '🔒 Confidential (CMS Only): Emergency contact name and phone number for internal HR records. NEVER displayed on public verification page.',
     }),
     defineField({
       name: 'internalNotes',
       title: 'Internal Administrative Notes',
       type: 'text',
-      rows: 2,
-      description: 'Internal reference notes (never displayed on the public verification page).',
+      rows: 3,
+      group: 'personal',
+      description: '🔒 Confidential (CMS Only): Private internal reference remarks. NEVER displayed on public verification page.',
     }),
   ],
   preview: {
