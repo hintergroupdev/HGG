@@ -67,23 +67,6 @@ export default function HeroSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="max-w-2xl lg:max-w-3xl space-y-5">
           
-          {/* Eyebrow Badge */}
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            custom={0}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#061739]/80 border border-[#DFB758]/35 backdrop-blur-md shadow-sm"
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-[#DFB758] animate-pulse" />
-            <span className="text-[10px] font-bold font-mono tracking-widest text-[#DFB758] uppercase">
-              THE HINTER GROUP GHANA LTD
-            </span>
-            <span className="text-white/20 text-xs">|</span>
-            <span className="text-[10px] font-medium text-slate-300 tracking-wider">
-              ACCRA • WEST AFRICA
-            </span>
-          </motion.div>
 
           {/* Headline with Gold Accents */}
           <motion.h1

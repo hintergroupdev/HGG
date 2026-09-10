@@ -2,7 +2,6 @@ import { defineConfig } from 'sanity';
 import { structureTool } from 'sanity/structure';
 import { schemaTypes } from './sanity/schemaTypes';
 import { projectId, dataset } from './sanity/env';
-import { seedTool } from './sanity/tools/seedTool';
 import { employeeQrTool } from './sanity/tools/employeeQrTool';
 
 export default defineConfig({
@@ -50,7 +49,7 @@ export default defineConfig({
     }),
   ],
 
-  tools: (prev) => [...prev, employeeQrTool(), seedTool()],
+  tools: (prev) => [...prev, employeeQrTool()],
 
   document: {
     comments: {

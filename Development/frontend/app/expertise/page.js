@@ -1685,9 +1685,8 @@ export default function ExpertisePage() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, ease: "easeOut" }}
-                  className={`${
-                    isHidden ? "hidden sm:flex" : "flex"
-                  } bg-white/95 backdrop-blur-xs hover:bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-[#DFB758]/70 rounded-xl p-5 sm:p-6 transition-all duration-300 hover:-translate-y-1 relative group flex-col justify-between`}
+                  className={`${isHidden ? "hidden sm:flex" : "flex"
+                    } bg-white/95 backdrop-blur-xs hover:bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-[#DFB758]/70 rounded-xl p-5 sm:p-6 transition-all duration-300 hover:-translate-y-1 relative group flex-col justify-between`}
                 >
                   <div>
                     {/* Header: Icon & Number */}
@@ -1744,9 +1743,8 @@ export default function ExpertisePage() {
                   : `SEE MORE DISCIPLINES (${serviceDisciplines.length - 4} MORE)`}
               </span>
               <ChevronDown
-                className={`w-3.5 h-3.5 transition-transform duration-300 ${
-                  showAllDisciplines ? "rotate-180" : "rotate-0"
-                }`}
+                className={`w-3.5 h-3.5 transition-transform duration-300 ${showAllDisciplines ? "rotate-180" : "rotate-0"
+                  }`}
               />
             </button>
           </div>
@@ -1949,9 +1947,8 @@ export default function ExpertisePage() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3, ease: "easeOut" }}
-                    className={`${
-                      isHidden ? "hidden sm:flex" : "flex"
-                    } bg-[#F8F9FA] rounded-xl p-5 sm:p-6 border border-slate-200 hover:border-[#DFB758]/60 hover:bg-white hover:shadow-lg transition-all duration-300 flex-col justify-between relative group`}
+                    className={`${isHidden ? "hidden sm:flex" : "flex"
+                      } bg-[#F8F9FA] rounded-xl p-5 sm:p-6 border border-slate-200 hover:border-[#DFB758]/60 hover:bg-white hover:shadow-lg transition-all duration-300 flex-col justify-between relative group`}
                   >
                     <div>
                       {/* Header: Numbered Circle Node & Step Label */}
@@ -2006,9 +2003,8 @@ export default function ExpertisePage() {
                     : `SEE MORE PRINCIPLES (${deliveryPrinciples.length - 3} MORE)`}
                 </span>
                 <ChevronDown
-                  className={`w-3.5 h-3.5 transition-transform duration-300 ${
-                    showAllDeliveryPrinciples ? "rotate-180" : "rotate-0"
-                  }`}
+                  className={`w-3.5 h-3.5 transition-transform duration-300 ${showAllDeliveryPrinciples ? "rotate-180" : "rotate-0"
+                    }`}
                 />
               </button>
             </div>
