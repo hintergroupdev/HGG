@@ -59,7 +59,7 @@ const collectiveResponsibilities = [
   "Relationship development with government institutions, private sector entities, and strategic partners",
   "Coordination and facilitation of investment, commercial, and development initiatives",
   "Corporate governance, compliance, accountability, and institutional integrity",
-  "Executive-level oversight of projects, ventures, brokerage activities, and advisory mandates",
+  "Executive-level oversight of projects, ventures, business brokerage activities, and advisory mandates",
   "Review of legal, regulatory, policy, and stakeholder considerations affecting business activities",
   "Evaluation of business models, partnerships, operational structures, and resource requirements",
   "Management of external communications, institutional representation, and brand reputation",

@@ -248,7 +248,7 @@ export default function Navbar() {
                 </div>
 
                 <div className="text-[10px] font-mono uppercase tracking-wider text-slate-300 pt-1">
-                  CONSULTING + VENTURES | BROKERAGE
+                  CONSULTING + VENTURES | BUSINESS BROKERAGE
                 </div>
               </div>
             </motion.div>

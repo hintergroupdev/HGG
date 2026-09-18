@@ -22,7 +22,7 @@ function ContactContent() {
   const searchParams = useSearchParams();
   const [siteSettings, setSiteSettings] = useState({
     companyName: "THE HINTER GROUP GHANA LTD",
-    tagline: "Consulting + Ventures | Brokerage • Committed to Excellence",
+    tagline: "Consulting + Ventures | Business Brokerage • Committed to Excellence",
     contactEmail: "info@hintergroupghana.com",
     contactPhone: "+233 (0) 30 200 0000",
     linkedinUrl: null,
@@ -411,7 +411,7 @@ function ContactContent() {
                       <option value="Strategic Consulting">Strategic Consulting</option>
                       <option value="Project Development & Facilitation">Project Development & Facilitation</option>
                       <option value="Venture & Investment Opportunities">Venture & Investment Opportunities</option>
-                      <option value="Brokerage & Business Development">Brokerage & Business Development</option>
+                      <option value="Business Brokerage">Business Brokerage</option>
                       <option value="Strategic Partnerships">Strategic Partnerships</option>
                       <option value="Market Entry & International Business">Market Entry & International Business</option>
                       <option value="Media & Corporate Communications">Media & Corporate Communications</option>
@@ -522,7 +522,7 @@ function ContactContent() {
                       </span>
                     </p>
                     <p className="text-[10.5px] text-slate-400 pl-5">
-                      Submitting an inquiry through this website does not, by itself, establish a client, advisory, brokerage, fiduciary, or legal relationship with THE HINTER GROUP GHANA LTD.
+                      Submitting an inquiry through this website does not, by itself, establish a client, advisory, business brokerage, fiduciary, or legal relationship with THE HINTER GROUP GHANA LTD. HGG’s Business Brokerage services focus on commercial transactions and project facilitation; HGG does not represent itself as a securities broker-dealer or securities investment adviser.
                     </p>
                   </div>
 

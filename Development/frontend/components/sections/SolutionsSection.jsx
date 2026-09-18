@@ -42,10 +42,10 @@ const solutionNodes = [
   },
   {
     step: "03",
-    title: "Brokerage",
-    tagline: "Commercial Mediation",
+    title: "Business Brokerage",
+    tagline: "Strategic Business Intermediary",
     description:
-      "Connecting credible project opportunities with strategic investors, cross-border trade partners, and institutions to facilitate high-value commercial outcomes.",
+      "Strategic business intermediary connecting international companies, investors, and project developers with credible opportunities in Ghana and across Africa.",
     icon: Handshake,
     href: "/expertise#pillar-brokerage",
     color: "#0A2457",

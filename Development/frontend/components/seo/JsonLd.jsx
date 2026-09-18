@@ -112,10 +112,10 @@ export default async function JsonLd() {
     knowsAbout: [
       "Strategic Business Consulting",
       "Venture Development & Commercial Incubation",
-      "Commodity & Commercial Brokerage",
+      "Business Brokerage & Deal Facilitation",
       "Infrastructure Development & Public-Private Partnerships",
       "Clean Energy Transition & Environmental Sustainability",
-      "Cross-Border Trade & Investment Facilitation",
+      "Cross-Border Business Brokerage & FDI Facilitation",
     ],
   };
 

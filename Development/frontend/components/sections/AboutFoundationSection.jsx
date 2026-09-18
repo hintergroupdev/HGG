@@ -173,7 +173,7 @@ export default function AboutFoundationSection() {
               <strong className="text-[#061739] font-bold">
                 THE HINTER GROUP GHANA LTD (HGG)
               </strong>{" "}
-              is a Ghana-based consulting, ventures, and brokerage company
+              is a Ghana-based consulting, ventures, and business brokerage company
               dedicated to identifying, developing, and advancing strategic
               business and investment opportunities across Ghana and
               international markets.
@@ -192,17 +192,16 @@ export default function AboutFoundationSection() {
               sustainable economic value.
             </motion.p>
 
-            {/* Body Paragraph 3 (Verbatim from docx) */}
+            {/* Body Paragraph 3 (Verbatim from docx & Approach Update) */}
             <motion.p
               variants={fadeUp}
               custom={0.2}
               className="text-slate-600 text-xs sm:text-[13px] leading-relaxed font-normal hidden sm:block"
             >
-              Our approach extends beyond traditional consulting. We work
-              collaboratively with our partners to identify opportunities,
-              facilitate meaningful relationships, coordinate stakeholders, and
-              support the successful development and execution of projects that
-              contribute to long-term growth and positive impact.
+              Our approach extends beyond traditional consulting. HGG operates
+              as a trusted bridge between global opportunities and African markets,
+              working with international and domestic partners to originate relationships,
+              coordinate stakeholders, and support commercially viable, long-term outcomes.
             </motion.p>
 
             {/* CTA Button (Matching Explore HGG Gold Gradient Button) - DESKTOP ONLY */}
@@ -266,7 +265,7 @@ export default function AboutFoundationSection() {
                     <p className="text-xs text-slate-600 leading-relaxed font-normal">
                       To connect strategic opportunities with the right people,
                       organizations, technologies, and investments while delivering
-                      innovative consulting, venture development, and brokerage
+                      innovative consulting, venture development, and business brokerage
                       solutions that create lasting economic and social value.
                     </p>
                   </div>
@@ -288,7 +287,7 @@ export default function AboutFoundationSection() {
                     </h4>
                     <p className="text-xs text-slate-600 leading-relaxed font-normal">
                       To become one of Africa&apos;s most trusted consulting,
-                      ventures, and brokerage companies, recognized internationally
+                      ventures, and business brokerage companies, recognized internationally
                       for facilitating transformative partnerships, responsible
                       investments, and sustainable development initiatives.
                     </p>

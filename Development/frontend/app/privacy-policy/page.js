@@ -28,7 +28,7 @@ export default function PrivacyPolicyPage() {
   const [legalDoc, setLegalDoc] = useState(null);
   const [siteSettings, setSiteSettings] = useState({
     companyName: "THE HINTER GROUP GHANA LTD",
-    tagline: "Consulting + Ventures | Brokerage • Committed to Excellence",
+    tagline: "Consulting + Ventures | Business Brokerage • Committed to Excellence",
     contactEmail: "info@hintergroupghana.com",
     contactPhone: "+233 (0) 30 200 0000",
     officeAddress: "2nd Floor, The Octagon, Block D, Central Avenue, Accra, Ghana",

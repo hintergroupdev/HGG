@@ -189,54 +189,64 @@ const corePillarsData = [
   {
     id: "brokerage",
     number: "03",
-    title: "Brokerage & Business Development",
-    tagline: "Connecting Relationships. Advancing Opportunities. Creating Value.",
-    shortDesc: "Provides brokerage and business development support designed to help organizations identify commercial opportunities, build strategic relationships, and facilitate mutually beneficial engagements.",
+    title: "Business Brokerage",
+    tagline: "Connecting Opportunities. Building Partnerships. Facilitating Growth.",
+    shortDesc: "Serves as a strategic business intermediary, connecting international companies, investors, technology providers, project developers, and institutional partners with credible business and project opportunities in Ghana and across Africa.",
     icon: Handshake,
-    leadText: "THE HINTER GROUP GHANA LTD provides brokerage and business development support designed to help organizations identify commercial opportunities, build strategic relationships, and facilitate mutually beneficial business engagements grounded in professionalism, discretion, transparency, and clear alignment of mutual interests.",
+    leadText: "THE HINTER GROUP GHANA LTD (HGG LTD) serves as a strategic business intermediary, connecting international companies, investors, technology providers, project developers, and institutional partners with credible business and project opportunities in Ghana and across Africa. Our Business Brokerage services focus on identifying opportunities, originating strategic relationships, facilitating introductions, supporting negotiations, coordinating stakeholder engagement, and helping parties advance commercially viable transactions and long-term partnerships.",
     modules: [
       {
         number: "01",
-        title: "Strategic Introductions",
-        description: "HGG facilitates introductions between organizations that benefit from working together, including buyers and sellers, investors and project owners, technology providers and local partners, developers and institutions, and international companies with African enterprises.",
+        title: "Strategic Business Introductions & Relationship Origination",
+        description: "HGG originates strategic introductions and facilitates commercial relationships connecting international companies, investors, and institutions with verified opportunities.",
       },
       {
         number: "02",
-        title: "Business Opportunity Development",
-        description: "HGG assists in identifying and developing commercial opportunities that benefit from strategic positioning, partnership formation, investor engagement, or market access, moving them toward structured commercial engagement.",
+        title: "International Market-Entry Facilitation",
+        description: "Facilitating structured market entry for foreign corporations through commercial orientation, regulatory insight, and local stakeholder navigation.",
       },
       {
         number: "03",
-        title: "Commercial Relationship Facilitation",
-        description: "Successful transactions depend on strong communication and trusted relationships. HGG facilitates engagement by supporting initial introductions, meeting coordination, information exchange, follow-up communication, and commercial discussions.",
+        title: "Foreign Direct Investment & Project Facilitation",
+        description: "Bridging the gap between international capital, technology, and expertise and credible African businesses, institutions, projects, and market opportunities.",
       },
       {
         number: "04",
-        title: "Market Access Support",
-        description: "Organizations entering new markets frequently require trusted relationships and local understanding. HGG helps companies identify potential partners, stakeholders, institutions, and commercial pathways that support market entry or expansion.",
+        title: "Identification of Qualified Local & International Partners",
+        description: "Conducting targeted partner qualification and counterparty matching to ensure commercial alignment, integrity, and operational capacity.",
       },
       {
         number: "05",
-        title: "Partnership Development",
-        description: "HGG works with organizations seeking to establish long-term strategic relationships rather than one-time transactions, clarifying objectives, facilitating discussions, and developing frameworks for mutual value creation.",
+        title: "Business-to-Business Transaction Facilitation",
+        description: "Facilitating commercial B2B transactions, trade agreements, and consortium partnerships with transparent, balanced commercial structuring.",
       },
       {
         number: "06",
-        title: "Opportunity Representation",
-        description: "Where formally authorized, HGG represents or supports organizations in presenting business opportunities to prospective partners, investors, and institutions within agreed responsibilities, confidentiality, and professional conduct.",
+        title: "Commercial Negotiations & Transaction Coordination",
+        description: "Coordinating transaction workflows, commercial negotiations, stakeholder alignment, and communication milestones toward definitive closing.",
       },
       {
         number: "07",
-        title: "Transaction Facilitation",
-        description: "HGG supports communication, meeting facilitation, information coordination, and commercial follow-up as parties progress toward potential commercial transactions while ensuring legal and financial matters are handled by qualified advisors.",
+        title: "Public- & Private-Sector Stakeholder Engagement",
+        description: "Coordinating constructive dialogue and consensus-building among government ministries, statutory authorities, and private sector sponsors.",
       },
       {
         number: "08",
-        title: "Confidentiality & Relationship Protection",
-        description: "Commercial relationships involve proprietary information and valuable contacts. HGG places utmost importance on discretion, supported by appropriate confidentiality, non-disclosure, non-circumvention, or brokerage agreements.",
+        title: "Project Development & Strategic Partnership Support",
+        description: "Helping initiatives mature from preliminary concepts into bankable, commercially viable projects underpinned by robust strategic partnerships.",
+      },
+      {
+        number: "09",
+        title: "Cross-Border Business Development",
+        description: "Originating commercial trade corridors and expansion opportunities linking Ghanaian enterprises with regional West African and international markets.",
+      },
+      {
+        number: "10",
+        title: "Success-Fee & Transaction Commercial Engagements",
+        description: "Structuring performance-aligned, success-fee, and transaction-based commercial intermediary engagements that incentivize tangible execution.",
       },
     ],
-    processTitle: "5-Stage Business Development Process",
+    processTitle: "5-Stage Business Brokerage Process",
     process: [
       { stage: "UNDERSTAND", desc: "Understand the commercial opportunity and the objectives of the parties involved." },
       { stage: "IDENTIFY", desc: "Identify relevant organizations, decision-makers, partners, buyers, investors, or institutions." },
@@ -244,8 +254,8 @@ const corePillarsData = [
       { stage: "DEVELOP", desc: "Support communication, relationship-building, commercial discussions, and stakeholder alignment." },
       { stage: "ADVANCE", desc: "Assist the parties in progressing toward a structured commercial relationship or potential transaction." },
     ],
-    valueStatement: "HGG combines relationship development, market understanding, stakeholder coordination, and commercial awareness to help organizations access opportunities that may otherwise be difficult to identify or navigate.",
-    ctaText: "DISCUSS A BUSINESS OPPORTUNITY",
+    valueStatement: "Our objective is not simply to make introductions. We seek to build credible, mutually beneficial relationships capable of developing into sustainable businesses, projects, investments, and long-term partnerships.",
+    ctaText: "DISCUSS A BUSINESS BROKERAGE INITIATIVE",
   },
 ];
 
@@ -356,35 +366,35 @@ const serviceDisciplines = [
   {
     number: "04",
     icon: Briefcase,
-    title: "Brokerage & Business Development",
+    title: "Business Brokerage",
     description:
-      "Facilitating strategic commercial transactions and business relationships with discretion and integrity.",
+      "Strategic business intermediary services connecting global capital, technology, and partners with African enterprise opportunities.",
     fullLead:
-      "As a trusted intermediary, HGG facilitates strategic commercial relationships that create mutual value. We support transactions through professionally managed introductions, commercial negotiations, and strict confidentiality.",
+      "THE HINTER GROUP GHANA LTD (HGG LTD) serves as a strategic business intermediary, connecting international companies, investors, technology providers, project developers, and institutional partners with credible business and project opportunities in Ghana and across Africa.",
     keyCapabilities: [
       {
-        title: "Strategic Commercial Matchmaking",
-        desc: "Connecting buyers and sellers, technology providers and local operators with aligned commercial objectives.",
+        title: "Strategic Introductions & Relationship Origination",
+        desc: "Originating high-trust connections between global corporations, investors, and vetted domestic opportunities.",
       },
       {
-        title: "Confidentiality & Relationship Protection",
-        desc: "Conducting engagements under strict non-disclosure and non-circumvention protocols.",
+        title: "Foreign Direct Investment & Project Facilitation",
+        desc: "Bridging the gap between international capital, technology, and expertise and credible African enterprises.",
       },
       {
-        title: "Transaction Coordination",
-        desc: "Guiding parties through commercial milestones from initial dialogue through closing.",
+        title: "Commercial Negotiations & Transaction Coordination",
+        desc: "Guiding parties through commercial terms, stakeholder coordination, and milestones toward successful closing.",
       },
     ],
     targetOutcomes: [
-      "Protected commercial relationships",
-      "Targeted business opportunities",
-      "Frictionless deal coordination",
+      "Commercially viable transactions",
+      "Sustainable long-term partnerships",
+      "FDI & market-entry acceleration",
     ],
     applicableStakeholders: [
-      "Trading Houses",
-      "Technology Providers",
-      "Industrial Corporations",
-      "Commercial Enterprises",
+      "International Investors & Funds",
+      "Global Technology Providers",
+      "Project Developers & Sponsors",
+      "Institutional & Enterprise Partners",
     ],
   },
   {
@@ -889,7 +899,7 @@ export default function ExpertisePage() {
                 <strong className="font-semibold text-white">Strategic Insight. Trusted Relationships. Practical Execution.</strong>
               </p>
               <p className="text-slate-300 text-[12.5px] leading-relaxed">
-                THE HINTER GROUP GHANA LTD provides consulting, venture development, brokerage, and strategic partnership services tailored to the unique circumstances of each engagement.
+                THE HINTER GROUP GHANA LTD provides consulting, venture development, business brokerage, and strategic partnership services tailored to the unique circumstances of each engagement.
               </p>
             </motion.div>
 
@@ -998,7 +1008,7 @@ export default function ExpertisePage() {
                 {/* Branch 2 to Ventures (Center) */}
                 <path d="M 512 20 L 512 48" stroke="#061739" strokeWidth="2" markerEnd="url(#tree-arrow-expertise)" />
 
-                {/* Branch 3 to Brokerage */}
+                {/* Branch 3 to Business Brokerage */}
                 <path d="M 854 20 L 854 48" stroke="#061739" strokeWidth="2" markerEnd="url(#tree-arrow-expertise)" />
               </svg>
             </div>
@@ -1332,16 +1342,16 @@ export default function ExpertisePage() {
               </div>
             </div>
 
-            {/* ── PILLAR 03: BROKERAGE & BUSINESS DEVELOPMENT ── */}
+            {/* ── PILLAR 03: BUSINESS BROKERAGE ── */}
             <div id="pillar-brokerage" className="scroll-mt-24 pt-10 border-t border-slate-200/80">
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start">
 
-                {/* Left: Brokerage Illustration / Uploaded Image */}
+                {/* Left: Business Brokerage Illustration / Uploaded Image */}
                 <div className="lg:col-span-5 flex items-center justify-center">
                   <div className="relative w-full max-w-sm sm:max-w-md h-[280px] sm:h-[340px] lg:h-[380px]">
                     <Image
                       src={pillarsData[2]?.imageUrl || "/images/brokerage-icon.png"}
-                      alt="Brokerage & Business Development"
+                      alt="Business Brokerage — HGG LTD"
                       fill
                       loading="eager"
                       sizes="(max-width: 1024px) 100vw, 420px"
@@ -1351,27 +1361,84 @@ export default function ExpertisePage() {
                   </div>
                 </div>
 
-                {/* Right: Discussion & Stages */}
+                {/* Right: Discussion, Roles, Stages & Disclaimers */}
                 <div className="lg:col-span-7 space-y-5">
                   <div className="space-y-2">
-                    <span className="text-xs sm:text-sm font-heading font-bold tracking-[0.25em] text-[#C49838] uppercase block">
-                      WHO WE ARE • PILLAR 03
-                    </span>
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <span className="text-xs sm:text-sm font-heading font-bold tracking-[0.25em] text-[#C49838] uppercase block">
+                        WHO WE ARE • PILLAR 03
+                      </span>
+                      <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-widest">
+                        • PRIMARY BRAND POSITIONING
+                      </span>
+                    </div>
                     <h3 className="font-heading text-2xl sm:text-3xl lg:text-[2.2rem] font-extrabold text-[#061739] tracking-tight leading-tight">
-                      {pillarsData[2]?.title || "Brokerage & Business Development"}
+                      {pillarsData[2]?.title || "Business Brokerage"}
                     </h3>
                     <p className="text-xs sm:text-[13px] font-mono font-bold text-[#C49838] uppercase tracking-wider">
-                      {pillarsData[2]?.tagline || "Connecting Relationships. Advancing Opportunities. Creating Value."}
+                      {pillarsData[2]?.tagline || "Connecting Opportunities. Building Partnerships. Facilitating Growth."}
                     </p>
                   </div>
 
                   {/* Clean Narrative Text */}
                   <div className="space-y-3 text-slate-600 text-[13.5px] sm:text-[14.5px] leading-relaxed">
                     <p>
-                      <strong className="text-[#061739] font-semibold">THE HINTER GROUP GHANA LTD</strong> provides brokerage and business development support designed to help organizations identify commercial opportunities, build strategic relationships, and facilitate mutually beneficial business engagements.
+                      <strong className="text-[#061739] font-semibold">THE HINTER GROUP GHANA LTD (HGG LTD)</strong> serves as a strategic business intermediary, connecting international companies, investors, technology providers, project developers, and institutional partners with credible business and project opportunities in Ghana and across Africa.
                     </p>
                     <p>
-                      We place utmost importance on professional discretion, transparent alignment of mutual interests, and robust confidentiality across all commercial transactions.
+                      Our Business Brokerage services focus on identifying opportunities, originating strategic relationships, facilitating introductions, supporting negotiations, coordinating stakeholder engagement, and helping parties advance commercially viable transactions and long-term partnerships.
+                    </p>
+                  </div>
+
+                  {/* HGG's Role May Include (10 Bullet Points) */}
+                  <div className="pt-1">
+                    <span className="text-[10.5px] font-mono font-bold uppercase tracking-widest text-[#061739]/80 block mb-2.5">
+                      HGG’s Role May Include:
+                    </span>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-700">
+                      {[
+                        "Strategic business introductions and relationship origination",
+                        "International market-entry facilitation",
+                        "Foreign direct investment and project facilitation",
+                        "Identification of qualified local and international partners",
+                        "Business-to-business transaction facilitation",
+                        "Commercial negotiations and transaction coordination",
+                        "Public- and private-sector stakeholder engagement",
+                        "Project development and strategic partnership support",
+                        "Cross-border business development",
+                        "Success-fee and transaction-based commercial engagements",
+                      ].map((role, rIdx) => (
+                        <div key={rIdx} className="flex items-start gap-2 p-2.5 rounded-lg bg-slate-50 border border-slate-200/80">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#C49838] shrink-0 mt-0.5" />
+                          <span className="leading-snug">{role}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Foreign Direct Investment & Project Facilitation Callout */}
+                  <div className="p-4 rounded-xl bg-gradient-to-r from-[#061739]/5 to-transparent border-l-4 border-[#14588B] space-y-1.5">
+                    <span className="text-[10.5px] font-mono font-bold uppercase tracking-widest text-[#14588B] block">
+                      FOREIGN DIRECT INVESTMENT & PROJECT FACILITATION
+                    </span>
+                    <p className="text-[12.5px] text-slate-600 leading-relaxed">
+                      HGG supports international companies and investors exploring opportunities in Ghana and other African markets by facilitating market entry, strategic partnerships, project development, stakeholder engagement, and foreign direct investment opportunities. We help bridge the gap between international capital, technology and expertise and credible African businesses, institutions, projects and market opportunities.
+                    </p>
+                  </div>
+
+                  {/* Important Service Distinction Alert Box */}
+                  <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/30 space-y-1.5">
+                    <div className="flex items-center gap-2">
+                      <ShieldCheck className="w-4 h-4 text-[#C49838] shrink-0" />
+                      <span className="text-[11px] font-heading font-bold uppercase tracking-wider text-[#061739]">
+                        IMPORTANT SERVICE DISTINCTION
+                      </span>
+                    </div>
+                    <p className="text-xs text-slate-700 leading-relaxed">
+                      HGG’s Business Brokerage services are focused on commercial transactions, strategic introductions, project facilitation, business development, and market-entry support.
+                    </p>
+                    <p className="text-[11.5px] text-slate-600 leading-relaxed italic">
+                      HGG does not represent itself as a securities broker-dealer, stockbroker, investment fund manager, or securities investment adviser, and does not offer, sell, execute, or manage securities transactions unless appropriately authorized to undertake such activities.
                     </p>
                   </div>
 
@@ -1451,16 +1518,23 @@ export default function ExpertisePage() {
                     </div>
                   </div>
 
-                  {/* CTA Button: Read More Modal Trigger */}
-                  <div className="pt-3">
+                  {/* CTA Button: Read More Modal Trigger & Direct Contact */}
+                  <div className="pt-2 flex flex-wrap items-center gap-3">
                     <button
                       type="button"
                       onClick={() => setSelectedPillarModal(pillarsData[2])}
                       className="inline-flex items-center gap-2.5 px-6 py-3 rounded-lg bg-gradient-to-r from-[#C49838] via-[#DFB758] to-[#C49838] hover:bg-right bg-[length:200%_auto] text-[#061739] text-xs font-heading font-bold uppercase tracking-wider transition-all duration-300 shadow-[0_2px_14px_rgba(196,152,56,0.25)] hover:shadow-[0_4px_20px_rgba(223,183,88,0.4)] hover:-translate-y-0.5 group/btn cursor-pointer"
                     >
-                      <span>Read More</span>
+                      <span>Explore 10 Focus Tracks</span>
                       <ArrowRight className="w-4 h-4 text-[#061739] group-hover/btn:translate-x-1 transition-all" />
                     </button>
+
+                    <Link
+                      href="/contact?practice=Business%20Brokerage"
+                      className="inline-flex items-center gap-2 px-5 py-3 rounded-lg text-xs font-heading font-bold uppercase tracking-wider text-[#061739] bg-white border border-slate-300 hover:border-[#DFB758] transition-colors"
+                    >
+                      <span>Inquire Regarding Business Brokerage</span>
+                    </Link>
                   </div>
                 </div>
 
@@ -1599,6 +1673,35 @@ export default function ExpertisePage() {
                     "{selectedPillarModal.valueStatement}"
                   </p>
                 </div>
+
+                {/* Brokerage-Specific Service Distinction & FDI Highlights */}
+                {selectedPillarModal.id === "brokerage" && (
+                  <div className="space-y-3 pt-2">
+                    <div className="p-4 rounded-xl bg-slate-50 border-l-4 border-[#14588B] space-y-1.5">
+                      <span className="text-[10.5px] font-mono font-bold uppercase tracking-widest text-[#14588B] block">
+                        FOREIGN DIRECT INVESTMENT & PROJECT FACILITATION
+                      </span>
+                      <p className="text-xs text-slate-600 leading-relaxed">
+                        HGG supports international companies and investors exploring opportunities in Ghana and other African markets by facilitating market entry, strategic partnerships, project development, stakeholder engagement, and foreign direct investment opportunities. We help bridge the gap between international capital, technology and expertise and credible African businesses, institutions, projects and market opportunities.
+                      </p>
+                    </div>
+
+                    <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/30 space-y-1.5">
+                      <div className="flex items-center gap-2">
+                        <ShieldCheck className="w-4 h-4 text-[#C49838] shrink-0" />
+                        <span className="text-[10.5px] font-heading font-bold uppercase tracking-wider text-[#061739]">
+                          IMPORTANT SERVICE DISTINCTION
+                        </span>
+                      </div>
+                      <p className="text-xs text-slate-700 leading-relaxed">
+                        HGG’s Business Brokerage services are focused on commercial transactions, strategic introductions, project facilitation, business development, and market-entry support.
+                      </p>
+                      <p className="text-[11.5px] text-slate-600 leading-relaxed italic">
+                        HGG does not represent itself as a securities broker-dealer, stockbroker, investment fund manager, or securities investment adviser, and does not offer, sell, execute, or manage securities transactions unless appropriately authorized to undertake such activities.
+                      </p>
+                    </div>
+                  </div>
+                )}
 
               </div>
 
@@ -2232,10 +2335,13 @@ export default function ExpertisePage() {
                 Our objective is to become a trusted long-term partner to organizations seeking responsible growth, meaningful collaboration, and sustainable value creation.
               </p>
 
-              {/* Professional Diligence Disclaimer (Client Brief Section 7 & 10) */}
-              <div className="pt-3 pb-1 max-w-xl mx-auto text-[11px] text-slate-500 leading-relaxed border-t border-slate-100">
+              {/* Professional Diligence Disclaimer & Important Service Distinction */}
+              <div className="pt-3 pb-1 max-w-2xl mx-auto text-[11px] text-slate-500 leading-relaxed border-t border-slate-100 space-y-2 text-center">
                 <p>
                   <em>Note: Where engagements require specialist legal, financial, environmental, or engineering assessments, HGG facilitates and coordinates these workstreams alongside appropriately qualified and accredited professional advisers and technical specialists.</em>
+                </p>
+                <p className="text-[10.5px] text-slate-500">
+                  <strong className="text-slate-700">Important Service Distinction:</strong> HGG’s Business Brokerage services are focused on commercial transactions, strategic introductions, project facilitation, business development, and market-entry support. HGG does not represent itself as a securities broker-dealer, stockbroker, investment fund manager, or securities investment adviser, and does not offer, sell, execute, or manage securities transactions unless appropriately authorized to undertake such activities.
                 </p>
               </div>
 

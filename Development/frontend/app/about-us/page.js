@@ -411,7 +411,7 @@ export default function AboutUsPage() {
               className="space-y-2 text-slate-200 text-[13px] sm:text-[13.5px] lg:text-[14px] leading-[1.6] font-normal"
             >
               <p>
-                THE HINTER GROUP GHANA LTD (HGG) is a Ghana-based consulting, ventures, and brokerage company established to facilitate strategic partnerships, responsible investment, and sustainable business development across Ghana, Africa, and international markets.
+                THE HINTER GROUP GHANA LTD (HGG) is a Ghana-based consulting, ventures, and business brokerage company established to facilitate strategic partnerships, responsible investment, and sustainable business development across Ghana, Africa, and international markets.
               </p>
               <p className="text-slate-300 text-[12.5px] leading-relaxed hidden xl:block">
                 Our company was founded on the belief that meaningful progress is achieved when the right people, organizations, technologies, and opportunities are brought together through integrity, professionalism, and a shared commitment to excellence.
@@ -515,7 +515,7 @@ export default function AboutUsPage() {
               {/* Paragraphs (100% Verbatim Copy from docx_text.txt) */}
               <div className="space-y-4 text-slate-600 text-[13.5px] sm:text-[14.5px] leading-relaxed">
                 <p>
-                  <strong className="font-bold text-[#061739]">THE HINTER GROUP GHANA LTD (HGG)</strong> is a Ghana-based consulting, ventures, and brokerage company established to facilitate strategic partnerships, responsible investment, and sustainable business development across Ghana, Africa, and international markets.
+                  <strong className="font-bold text-[#061739]">THE HINTER GROUP GHANA LTD (HGG)</strong> is a Ghana-based consulting, ventures, and business brokerage company established to facilitate strategic partnerships, responsible investment, and sustainable business development across Ghana, Africa, and international markets.
                 </p>
                 <p>
                   Our company was founded on the belief that meaningful progress is achieved when the right people, organizations, technologies, and opportunities are brought together through integrity, professionalism, and a shared commitment to excellence.
@@ -602,7 +602,7 @@ export default function AboutUsPage() {
                   </span>
                   <div className="space-y-3 text-slate-600 text-xs sm:text-[13.5px] leading-relaxed">
                     <p className="border-l-3 border-[#DFB758] pl-3.5 italic text-slate-800 font-medium bg-[#F8FAFC] p-3 rounded-r-xl border border-slate-200/80">
-                      "THE HINTER GROUP GHANA LTD (HGG) is a Ghana-based consulting, ventures, and brokerage company dedicated to identifying, developing, and advancing strategic business and investment opportunities across Ghana and international markets."
+                      "THE HINTER GROUP GHANA LTD (HGG) is a Ghana-based consulting, ventures, and business brokerage company dedicated to identifying, developing, and advancing strategic business and investment opportunities across Ghana and international markets."
                     </p>
                     <p>
                       Founded on the principles of integrity, professionalism, innovation, and excellence, HGG serves as a trusted bridge between governments, private enterprises, investors, technology providers, development institutions, and strategic partners seeking to create sustainable economic value.
@@ -633,7 +633,7 @@ export default function AboutUsPage() {
                         </h4>
                       </div>
                       <p className="text-slate-600 text-xs leading-relaxed">
-                        To connect strategic opportunities with the right people, organizations, technologies, and investments while delivering innovative consulting, venture development, and brokerage solutions that create lasting economic and social value.
+                        To connect strategic opportunities with the right people, organizations, technologies, and investments while delivering innovative consulting, venture development, and business brokerage solutions that create lasting economic and social value.
                       </p>
                     </div>
 
@@ -645,7 +645,7 @@ export default function AboutUsPage() {
                         </h4>
                       </div>
                       <p className="text-slate-600 text-xs leading-relaxed">
-                        To become one of Africa's most trusted consulting, ventures, and brokerage companies, recognized internationally for facilitating transformative partnerships, responsible investments, and sustainable development initiatives.
+                        To become one of Africa's most trusted consulting, ventures, and business brokerage companies, recognized internationally for facilitating transformative partnerships, responsible investments, and sustainable development initiatives.
                       </p>
                     </div>
                   </div>
@@ -774,7 +774,7 @@ export default function AboutUsPage() {
                     Our purpose is to connect people, organizations, and opportunities that contribute to sustainable economic development while promoting responsible investment, innovation, and long-term collaboration.
                   </p>
                   <p>
-                    Through strategic consulting, venture development, brokerage, and partnership facilitation, we help create environments where businesses, institutions, governments, and investors can work together to achieve meaningful and measurable outcomes.
+                    Through strategic consulting, venture development, business brokerage, and partnership facilitation, we help create environments where businesses, institutions, governments, and investors can work together to achieve meaningful and measurable outcomes.
                   </p>
                 </div>
               </div>
@@ -784,7 +784,7 @@ export default function AboutUsPage() {
                 {[
                   "Strategic Consulting",
                   "Venture Development",
-                  "Commercial Brokerage",
+                  "Business Brokerage",
                   "Partnership Facilitation",
                   "Responsible Investment",
                 ].map((tag, tIdx) => (
@@ -998,7 +998,7 @@ export default function AboutUsPage() {
                   To identify, develop, and connect strategic opportunities with the people, organizations, technologies, and investments capable of creating sustainable economic and social value.
                 </p>
                 <p>
-                  Through consulting, venture development, brokerage, and strategic facilitation, <strong className="text-[#061739] font-semibold">THE HINTER GROUP GHANA LTD</strong> works to build trusted relationships, strengthen collaboration, support responsible investment, and help transform promising opportunities into meaningful and sustainable outcomes.
+                  Through consulting, venture development, business brokerage, and strategic facilitation, <strong className="text-[#061739] font-semibold">THE HINTER GROUP GHANA LTD</strong> works to build trusted relationships, strengthen collaboration, support responsible investment, and help transform promising opportunities into meaningful and sustainable outcomes.
                 </p>
               </div>
             </motion.div>
@@ -1031,7 +1031,7 @@ export default function AboutUsPage() {
               {/* Body Text */}
               <div className="space-y-4 text-slate-600 text-[13.5px] sm:text-[14.5px] leading-relaxed">
                 <p>
-                  To become a respected and trusted African-based international consulting, ventures, and brokerage organization recognized for connecting opportunities, facilitating transformative partnerships, advancing responsible investment, and contributing to sustainable development across Ghana, Africa, and global markets.
+                  To become a respected and trusted African-based international consulting, ventures, and business brokerage organization recognized for connecting opportunities, facilitating transformative partnerships, advancing responsible investment, and contributing to sustainable development across Ghana, Africa, and global markets.
                 </p>
                 <p>
                   Our long-term vision is to build an organization known not only for the opportunities it helps create, but also for the integrity, professionalism, and lasting value behind every relationship it develops.
@@ -1427,7 +1427,33 @@ export default function AboutUsPage() {
             <div className="w-14 h-[3px] bg-[#C49838] rounded-full mx-auto my-3" />
           </motion.div>
 
-          {/* Steps */}
+          {/* ── APPROACH HIGHLIGHT (Verbatim Client Master Guidance) ── */}
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto mb-12 p-6 sm:p-8 rounded-2xl bg-white border border-slate-200/90 shadow-sm space-y-4"
+          >
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#DFB758]" />
+              <h3 className="text-xs font-mono font-bold tracking-[0.2em] text-[#C49838] uppercase">
+                A Trusted Bridge Between Global Opportunities & African Markets
+              </h3>
+            </div>
+            <div className="space-y-3 text-slate-600 text-[13.5px] sm:text-[14.5px] leading-relaxed">
+              <p>
+                <strong className="text-[#061739] font-semibold">HGG operates as a trusted bridge between global opportunities and African markets.</strong>
+              </p>
+              <p>
+                We work with international and domestic organizations seeking credible partners, projects, technologies, investment opportunities, market access, and strategic relationships. From initial opportunity identification through introductions, negotiations, stakeholder coordination, and transaction development, HGG helps bring the right parties together and supports the process toward successful commercial outcomes.
+              </p>
+              <p className="border-l-3 border-[#DFB758] pl-3.5 italic text-slate-700 bg-slate-50 py-2.5 rounded-r-lg">
+                “Our objective is not simply to make introductions. We seek to build credible, mutually beneficial relationships capable of developing into sustainable businesses, projects, investments, and long-term partnerships.”
+              </p>
+            </div>
+          </motion.div>
+
           {/* Steps */}
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 mb-14">
             {pathwaySteps.map((item, idx) => {
@@ -1495,7 +1521,7 @@ export default function AboutUsPage() {
                     "Strategic Advisor",
                     "Business Development Partner",
                     "Venture Facilitator",
-                    "Brokerage & Intermediary Partner",
+                    "Business Brokerage & Intermediary Partner",
                     "Stakeholder Coordinator",
                     "Investment Facilitator",
                     "Partnership Development Partner",

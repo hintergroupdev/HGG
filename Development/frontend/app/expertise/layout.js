@@ -1,16 +1,16 @@
 import { siteConfig } from "@/lib/siteConfig";
 
 export const metadata = {
-  title: "Our Expertise | Strategic Consulting • Ventures • Brokerage",
+  title: "Our Expertise | Strategic Consulting • Ventures • Business Brokerage",
   description:
-    "Explore HGG's practice architecture across Strategic Consulting, Venture Development, and Commercial Brokerage, bridging investors, public institutions, and high-impact African opportunities.",
+    "Explore HGG's practice architecture across Strategic Consulting, Venture Development, and Business Brokerage, bridging investors, public institutions, and high-impact African opportunities.",
   alternates: {
     canonical: `${siteConfig.url}/expertise`,
   },
   openGraph: {
     title: "Our Expertise | THE HINTER GROUP GHANA LTD",
     description:
-      "Explore HGG's practice architecture across Strategic Consulting, Venture Development, and Commercial Brokerage, bridging investors, public institutions, and high-impact African opportunities.",
+      "Explore HGG's practice architecture across Strategic Consulting, Venture Development, and Business Brokerage, bridging investors, public institutions, and high-impact African opportunities.",
     url: `${siteConfig.url}/expertise`,
     images: [{ url: siteConfig.ogImage, width: 1200, height: 630, alt: "Expertise of THE HINTER GROUP GHANA LTD" }],
   },

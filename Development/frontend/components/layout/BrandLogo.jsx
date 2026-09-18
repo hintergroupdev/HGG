@@ -34,19 +34,19 @@ export default function BrandLogo({
         4-Tier Corporate Lockup Refinement (Client Brief Section 3 — Large Presentations)
         Tier 1: HGG LTD (prominently rendered in vector logo above)
         Tier 2: THE HINTER GROUP GHANA LTD (visually subordinate)
-        Tier 3: CONSULTING + VENTURES | BROKERAGE (gold corporate descriptor)
+        Tier 3: CONSULTING + VENTURES | BUSINESS BROKERAGE (gold corporate descriptor)
         Tier 4: COMMITTED TO EXCELLENCE (corporate motto)
       */}
       {(showHierarchy || isLarge) && (
-        <div className="pt-2 text-left space-y-0.5 mt-1 border-t border-white/10 max-w-[270px]">
+        <div className="pt-2 text-left space-y-0.5 mt-1 border-t border-white/10 max-w-[290px]">
           {/* Tier 2: Full Corporate Legal Name (Visually Subordinate to HGG LTD) */}
           <div className="text-[10px] sm:text-[11px] font-heading font-semibold tracking-[0.14em] text-slate-200 uppercase leading-snug">
             THE HINTER GROUP GHANA LTD
           </div>
 
           {/* Tier 3: Corporate Business Activity Descriptor */}
-          <div className="text-[8.5px] sm:text-[9px] font-mono font-bold tracking-[0.16em] text-[#DFB758] uppercase leading-snug">
-            CONSULTING + VENTURES | BROKERAGE
+          <div className="text-[8.2px] sm:text-[8.8px] font-mono font-bold tracking-[0.14em] text-[#DFB758] uppercase leading-snug">
+            CONSULTING + VENTURES | BUSINESS BROKERAGE
           </div>
 
           {/* Tier 4: Corporate Motto */}

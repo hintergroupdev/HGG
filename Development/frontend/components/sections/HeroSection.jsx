@@ -23,7 +23,7 @@ const fadeUp = {
 const quickPillars = [
   { icon: Target, title: "Strategic Consulting", desc: "Advisory & market entry" },
   { icon: TrendingUp, title: "Venture Development", desc: "Initiative facilitation & incubation" },
-  { icon: Handshake, title: "Brokerage Solutions", desc: "Partnership & deal facilitation" },
+  { icon: Handshake, title: "Business Brokerage", desc: "Strategic intermediary & deal facilitation" },
   { icon: Globe2, title: "Strategic Bridge", desc: "Connecting Ghana to global corridors" },
 ];
 
@@ -94,7 +94,7 @@ export default function HeroSection() {
             className="text-slate-200 text-[13px] sm:text-sm lg:text-[15px] leading-[1.6] sm:leading-relaxed max-w-xl font-normal drop-shadow-sm"
           >
             THE HINTER GROUP GHANA LTD is a Ghana-based consulting, ventures,
-            and brokerage company connecting strategic opportunities with
+            and business brokerage company connecting strategic opportunities with
             investors, technology providers, institutions, and development
             partners in Ghana and international markets.
           </motion.p>

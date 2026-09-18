@@ -224,8 +224,8 @@ const engagementRoles = [
   },
   {
     icon: GitMerge,
-    label: "Brokerage & Intermediary Partner",
-    desc: "Facilitating confidential introductions and commercial relationship development with institutional integrity, discretion, and professionalism.",
+    label: "Business Brokerage & Intermediary Partner",
+    desc: "Facilitating confidential strategic introductions, relationship origination, and commercial transaction development with institutional integrity, discretion, and professionalism.",
   },
   {
     icon: Network,

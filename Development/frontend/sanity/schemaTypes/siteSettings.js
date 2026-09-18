@@ -15,7 +15,7 @@ export const siteSettings = defineType({
       name: 'tagline',
       title: 'Corporate Tagline',
       type: 'string',
-      initialValue: 'Consulting + Ventures | Brokerage • Committed to Excellence',
+      initialValue: 'Consulting + Ventures | Business Brokerage • Committed to Excellence',
     }),
     defineField({
       name: 'contactEmail',

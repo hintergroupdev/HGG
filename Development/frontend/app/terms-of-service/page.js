@@ -26,7 +26,7 @@ export default function TermsOfServicePage() {
   const [legalDoc, setLegalDoc] = useState(null);
   const [siteSettings, setSiteSettings] = useState({
     companyName: "THE HINTER GROUP GHANA LTD",
-    tagline: "Consulting + Ventures | Brokerage • Committed to Excellence",
+    tagline: "Consulting + Ventures | Business Brokerage • Committed to Excellence",
     contactEmail: "info@hintergroupghana.com",
     contactPhone: "+233 (0) 30 200 0000",
     officeAddress: "2nd Floor, The Octagon, Block D, Central Avenue, Accra, Ghana",
@@ -164,7 +164,20 @@ export default function TermsOfServicePage() {
                 </span>
               </div>
               <p className="text-xs text-slate-300 leading-relaxed font-normal">
-                Website interaction or inquiry submission does not constitute a client, advisory, fiduciary, or brokerage engagement until executed under separate written contract.
+                Website interaction or inquiry submission does not constitute a client, advisory, fiduciary, or business brokerage engagement until executed under separate written contract.
+              </p>
+            </div>
+
+            {/* Important Service Distinction Callout Box */}
+            <div className="bg-amber-500/10 border border-[#DFB758]/30 p-5 rounded-2xl space-y-2">
+              <div className="flex items-center gap-2 text-[#061739]">
+                <AlertCircle className="w-4 h-4 text-[#C49838] shrink-0" />
+                <span className="text-[10px] font-heading font-bold tracking-wider uppercase text-[#061739]">
+                  IMPORTANT SERVICE DISTINCTION
+                </span>
+              </div>
+              <p className="text-[11.5px] text-slate-600 leading-relaxed">
+                HGG&apos;s Business Brokerage services are focused on commercial transactions, strategic introductions, and project facilitation. HGG does not represent itself as a securities broker-dealer, stockbroker, investment fund manager, or securities investment adviser.
               </p>
             </div>
           </div>
@@ -281,7 +294,7 @@ export default function TermsOfServicePage() {
                     </h2>
                   </div>
                   <p className="text-xs sm:text-[13.5px] text-slate-600 leading-relaxed">
-                    THE HINTER GROUP GHANA LTD is a strategic consulting, ventures, and brokerage company established to identify opportunities, mobilize resources, and structure sustainable development initiatives across Ghana, Africa, and international markets. This digital platform provides orientation, company updates, and preliminary inquiry channels.
+                    THE HINTER GROUP GHANA LTD is a strategic consulting, ventures, and business brokerage company established to identify opportunities, mobilize resources, and structure sustainable development initiatives across Ghana, Africa, and international markets. This digital platform provides orientation, company updates, and preliminary inquiry channels.
                   </p>
                 </section>
 
@@ -355,6 +368,20 @@ export default function TermsOfServicePage() {
                   <p className="text-xs sm:text-[13.5px] text-slate-600 leading-relaxed">
                     Platform materials are provided for general orientation. While HGG exercises diligence, materials are provided &quot;as is&quot; without warranties. Published market perspectives or industry observations represent high-level macroeconomic viewpoints and do not constitute financial, investment, tax, or legal advice.
                   </p>
+                  <div className="p-4 rounded-xl bg-amber-500/10 border border-[#DFB758]/30 space-y-2 mt-2">
+                    <div className="flex items-center gap-2 text-[#061739]">
+                      <AlertCircle className="w-4 h-4 text-[#C49838] shrink-0" />
+                      <span className="text-[11px] font-heading font-bold tracking-wider uppercase text-[#061739]">
+                        IMPORTANT SERVICE DISTINCTION — BUSINESS BROKERAGE
+                      </span>
+                    </div>
+                    <p className="text-xs text-slate-600 leading-relaxed">
+                      HGG&apos;s Business Brokerage services are focused on commercial transactions, strategic introductions, project facilitation, business development, and market-entry support.
+                    </p>
+                    <p className="text-xs text-slate-600 leading-relaxed">
+                      HGG does not represent itself as a securities broker-dealer, stockbroker, investment fund manager, or securities investment adviser, and does not offer, sell, execute, or manage securities transactions unless appropriately authorized to undertake such activities.
+                    </p>
+                  </div>
                 </section>
 
                 {/* Fallback Static Section 6 */}

@@ -11,7 +11,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
   const [settings, setSettings] = useState({
     companyName: 'THE HINTER GROUP GHANA LTD',
-    tagline: 'Consulting + Ventures | Brokerage • Committed to Excellence',
+    tagline: 'Consulting + Ventures | Business Brokerage • Committed to Excellence',
     contactEmail: 'info@hintergroupghana.com',
     contactPhone: '+233 (0) 30 200 0000',
     contactPhoneAlt: null,
@@ -56,7 +56,7 @@ export default function Footer() {
             </Link>
 
             <p className="text-slate-300 text-xs sm:text-sm leading-relaxed max-w-sm">
-              Strategic consulting, venture development, and commercial brokerage facilitating investment, infrastructure, and institutional growth.
+              Strategic consulting, venture development, and business brokerage facilitating investment, infrastructure, and institutional growth.
             </p>
 
             {/* Social Links — Sourced directly from Sanity CMS */}
@@ -199,7 +199,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/expertise#brokerage" className="text-slate-300 hover:text-[#DFB758] transition-colors">
-                  Commercial Brokerage
+                  Business Brokerage
                 </Link>
               </li>
               <li>
@@ -297,6 +297,16 @@ export default function Footer() {
             </ul>
           </div>
 
+        </div>
+
+        {/* Important Service Distinction Notice */}
+        <div className="mt-12 pt-6 border-t border-white/10 text-[11px] text-slate-400 leading-relaxed font-sans max-w-5xl">
+          <p>
+            <span className="font-semibold text-slate-300 uppercase tracking-wider text-[10px] block sm:inline mr-2">
+              Important Service Distinction:
+            </span>
+            HGG’s Business Brokerage services are focused on commercial transactions, strategic introductions, project facilitation, business development, and market-entry support. HGG does not represent itself as a securities broker-dealer, stockbroker, investment fund manager, or securities investment adviser, and does not offer, sell, execute, or manage securities transactions unless appropriately authorized to undertake such activities.
+          </p>
         </div>
 
         {/* Bottom Legal & Governance Bar */}

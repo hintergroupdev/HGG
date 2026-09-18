@@ -38,7 +38,7 @@ async function fetchClientCms(type, slug = '') {
 export async function getSiteSettings() {
   const fallback = {
     companyName: 'THE HINTER GROUP GHANA LTD',
-    tagline: 'Consulting + Ventures | Brokerage • Committed to Excellence',
+    tagline: 'Consulting + Ventures | Business Brokerage • Committed to Excellence',
     contactEmail: 'info@hintergroupghana.com',
     contactPhone: '+233 (0) 30 200 0001',
     contactPhoneAlt: null,
@@ -82,7 +82,7 @@ export const defaultLeadershipMembers = [
     order: 1,
     portraitUrl: null,
     shortBio:
-      'Charles N. Hammond provides the strategic vision, corporate oversight, and institutional direction for THE HINTER GROUP GHANA LTD, guiding the firm’s development across strategic consulting, ventures, and brokerage.',
+      'Charles N. Hammond provides the strategic vision, corporate oversight, and institutional direction for THE HINTER GROUP GHANA LTD, guiding the firm’s development across strategic consulting, ventures, and business brokerage.',
     fullBiography:
       'Charles N. Hammond is the Chairman and Founder of THE HINTER GROUP GHANA LTD (HGG), where he provides the strategic vision, institutional leadership, and corporate governance direction for the company.\n\nMr. Hammond brings a strategic and relationship-focused perspective to HGG’s development, with particular emphasis on identifying viable commercial opportunities, building long-term stakeholder partnerships, and structuring high-impact initiatives across Ghana, Africa, and international corridors.\n\nHis leadership approach is grounded in uncompromising integrity, professionalism, disciplined execution, and the conviction that meaningful economic progress is built through trusted relationships, risk awareness, and sustainable value creation. As Founder, Mr. Hammond has positioned HGG as an authoritative bridge connecting governments, private enterprises, global technology providers, and institutional investors.\n\nUnder his stewardship, the firm champions responsible leadership and ESG alignment, ensuring every project under HGG’s advisory or incubation framework meets the highest standards of governance and delivers lasting economic and social value.',
     principles: [
