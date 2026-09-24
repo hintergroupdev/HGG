@@ -6,6 +6,7 @@ import { client } from '@/sanity/lib/client';
 import { employeeVerificationQuery } from '@/sanity/lib/queries';
 import { urlForImage } from '@/sanity/lib/image';
 import { siteConfig } from '@/lib/siteConfig';
+import { DEFAULT_VERIFIED_EMPLOYEES } from '@/lib/defaultEmployees';
 import VerificationClientActions from './VerificationClientActions';
 
 export const dynamic = 'force-dynamic';
@@ -21,29 +22,6 @@ export async function generateMetadata({ params }) {
     robots: { index: false, follow: false, noarchive: true, nosnippet: true },
   };
 }
-
-const DEFAULT_VERIFIED_EMPLOYEES = {
-  'HGG-001': {
-    employeeId: 'HGG-001',
-    fullName: 'Charles N. Hammond',
-    position: 'Chairman & Chief Executive Officer',
-    organization: 'THE HINTER GROUP GHANA LTD',
-    department: 'Executive Leadership & Governance',
-    status: 'active',
-    issuedDate: '2026-09-01',
-    portraitUrl: '/images/CEO.PNG',
-  },
-  '0001': {
-    employeeId: '0001', fullName: 'Charles N. Hammond', position: 'Chairman & Chief Executive Officer',
-    organization: 'THE HINTER GROUP GHANA LTD', department: 'Executive Leadership & Governance',
-    status: 'active', issuedDate: '2026-09-01', portraitUrl: '/images/CEO.PNG',
-  },
-  'HGG-0001': {
-    employeeId: 'HGG-0001', fullName: 'Charles N. Hammond', position: 'Chairman & Chief Executive Officer',
-    organization: 'THE HINTER GROUP GHANA LTD', department: 'Executive Leadership & Governance',
-    status: 'active', issuedDate: '2026-09-01', portraitUrl: '/images/CEO.PNG',
-  },
-};
 
 export default async function EmployeeVerifyPage({ params }) {
   const resolvedParams = await params;

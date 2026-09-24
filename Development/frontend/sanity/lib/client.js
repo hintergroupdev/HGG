@@ -1,16 +1,16 @@
 import { createClient } from 'next-sanity';
-import { apiVersion, dataset, projectId } from '../env';
+import { apiVersion, dataset, projectId, useCdn } from '../env';
 
 export const client = createClient({
   projectId: projectId || '0rqjd271',
   dataset: dataset || 'production',
   apiVersion,
-  useCdn: true, // Edge CDN enabled for ultra-fast sub-second responses in production
+  useCdn: useCdn ?? false, // Ensure live real-time Sanity data without Edge CDN caching latency
   perspective: 'published',
 });
 
 // Helper for fetching data safely
-export async function sanityFetch({ query, params = {}, tags = [], revalidate = 60 }) {
+export async function sanityFetch({ query, params = {}, tags = [], revalidate = 0 }) {
   const activeProjectId = projectId || '0rqjd271';
   if (!activeProjectId) {
     return null;
@@ -20,9 +20,10 @@ export async function sanityFetch({ query, params = {}, tags = [], revalidate = 
     const fetchOptions = isServer
       ? {
           next: {
-            revalidate, // Fast ISR caching with automatic background revalidation on server
+            revalidate, // Dynamic revalidation
             tags,
           },
+          cache: revalidate === 0 ? 'no-store' : undefined,
         }
       : {};
 

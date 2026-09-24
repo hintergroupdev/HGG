@@ -132,6 +132,75 @@ export const employeeVerification = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'isExecutive',
+      title: 'Is Executive? (Show on Leadership Page)',
+      type: 'boolean',
+      group: 'credential',
+      description:
+        'Toggle ON to designate this person as an Executive Leader. Only employees with this option enabled are shown on the public Leadership & Governance page.',
+      initialValue: false,
+    }),
+    defineField({
+      name: 'leadershipCategory',
+      title: 'Leadership Tier',
+      type: 'string',
+      group: 'credential',
+      description: 'Tier category for this executive on the Leadership page.',
+      options: {
+        list: [
+          { title: 'Executive Leadership', value: 'executive' },
+          { title: 'Advisory Council', value: 'advisory' },
+          { title: 'Board of Directors', value: 'board' },
+        ],
+      },
+      initialValue: 'executive',
+      hidden: ({ document }) => !document?.isExecutive,
+    }),
+    defineField({
+      name: 'leadershipOrder',
+      title: 'Leadership Display Priority Order',
+      type: 'number',
+      group: 'credential',
+      description: 'Display order on the Leadership page (e.g. 1 for Founder, 2, 3, etc.).',
+      initialValue: 10,
+      hidden: ({ document }) => !document?.isExecutive,
+    }),
+    defineField({
+      name: 'shortBio',
+      title: 'Executive Short Summary (Card Bio)',
+      type: 'text',
+      rows: 3,
+      group: 'credential',
+      description: 'Brief executive summary displayed on the leadership card.',
+      hidden: ({ document }) => !document?.isExecutive,
+    }),
+    defineField({
+      name: 'fullBiography',
+      title: 'Full Executive Biography (Modal Popup)',
+      type: 'array',
+      of: [{ type: 'block' }],
+      group: 'credential',
+      description: 'Comprehensive background displayed in the "View Role & Bio" popup modal on the Leadership page.',
+      hidden: ({ document }) => !document?.isExecutive,
+    }),
+    defineField({
+      name: 'principles',
+      title: 'Core Focus & Responsibilities',
+      type: 'array',
+      of: [{ type: 'string' }],
+      group: 'credential',
+      description: 'Key areas of executive responsibility shown in the bio popup modal.',
+      hidden: ({ document }) => !document?.isExecutive,
+    }),
+    defineField({
+      name: 'linkedinUrl',
+      title: 'LinkedIn Profile URL',
+      type: 'url',
+      group: 'credential',
+      description: 'Public LinkedIn profile link for this executive.',
+      hidden: ({ document }) => !document?.isExecutive,
+    }),
+    defineField({
       name: 'issuedDate',
       title: 'Card Issuance Date',
       type: 'date',
@@ -146,7 +215,7 @@ export const employeeVerification = defineType({
       title: 'Approved Official Portrait',
       type: 'image',
       group: 'credential',
-      description: 'Approved executive portrait image to display on the public verification page.',
+      description: 'Approved executive portrait image to display on the public verification page and leadership card.',
       options: {
         hotspot: true,
       },
@@ -216,18 +285,20 @@ export const employeeVerification = defineType({
       subtitle: 'employeeId',
       position: 'position',
       status: 'status',
+      isExecutive: 'isExecutive',
       media: 'portrait',
     },
     prepare(selection) {
-      const { title, subtitle, position, status, media } = selection;
+      const { title, subtitle, position, status, isExecutive, media } = selection;
       const statusLabel =
         status === 'active'
           ? '✓ Active'
           : status === 'inactive'
           ? '✕ Inactive'
           : '⚠ Suspended';
+      const rolePrefix = isExecutive ? '⭐ [Executive] ' : '';
       return {
-        title: `${title} (${subtitle || 'No ID'})`,
+        title: `${rolePrefix}${title} (${subtitle || 'No ID'})`,
         subtitle: `${position || ''} • ${statusLabel}`,
         media,
       };

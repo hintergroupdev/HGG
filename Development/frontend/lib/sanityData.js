@@ -95,7 +95,7 @@ export const defaultLeadershipMembers = [
   },
   {
     id: 'daniel-kotei',
-    name: 'Lt. Commander Daniel Kotei',
+    name: 'Lt. Commander Daniel Kotei — USN (Rtd.)',
     title: 'Executive Leadership Team — Strategic Coordination & Stakeholder Engagement',
     category: 'executive',
     order: 2,
@@ -103,7 +103,7 @@ export const defaultLeadershipMembers = [
     shortBio:
       'Contributes to HGG’s strategic coordination, stakeholder engagement, relationship development, and executive-level business discussions.',
     fullBiography:
-      'Lt. Commander Daniel Kotei contributes to HGG’s strategic coordination, stakeholder engagement, relationship development, and executive-level business discussions. His involvement supports HGG’s efforts to establish and maintain constructive relationships with relevant stakeholders while helping coordinate opportunities that require disciplined communication, institutional engagement, and strategic alignment.\n\nHis contribution to the Executive Leadership Team reflects HGG’s emphasis on responsible coordination, professional relationships, and collaborative execution.',
+      'Lt. Commander Daniel Kotei — USN (Rtd.) contributes to HGG’s strategic coordination, stakeholder engagement, relationship development, and executive-level business discussions. His involvement supports HGG’s efforts to establish and maintain constructive relationships with relevant stakeholders while helping coordinate opportunities that require disciplined communication, institutional engagement, and strategic alignment.\n\nHis contribution to the Executive Leadership Team reflects HGG’s emphasis on responsible coordination, professional relationships, and collaborative execution.',
     principles: [
       'Strategic Stakeholder Liaison',
       'Institutional Engagement & Communication',
@@ -112,8 +112,8 @@ export const defaultLeadershipMembers = [
     linkedinUrl: null,
   },
   {
-    id: 'mathew-essien',
-    name: 'Mathew Essien',
+    id: 'matthew-essien',
+    name: 'Maj. Gen. Matthew Essien — GAF (Rtd.)',
     title: 'Executive Leadership Team — Strategic Development & Business Coordination',
     category: 'executive',
     order: 3,
@@ -121,7 +121,7 @@ export const defaultLeadershipMembers = [
     shortBio:
       'Contributes to HGG’s strategic development, business coordination, opportunity assessment, and executive-level planning.',
     fullBiography:
-      'Mathew Essien contributes to HGG’s strategic development, business coordination, opportunity assessment, and executive-level planning. His involvement supports the company’s efforts to evaluate emerging opportunities, strengthen internal coordination, contribute to strategic discussions, and advance business-development initiatives consistent with HGG’s objectives.\n\nHis role within the Executive Leadership Team supports collaborative decision-making and the disciplined advancement of HGG’s business interests.',
+      'Maj. Gen. Matthew Essien — GAF (Rtd.) contributes to HGG’s strategic development, business coordination, opportunity assessment, and executive-level planning. His involvement supports the company’s efforts to evaluate emerging opportunities, strengthen internal coordination, contribute to strategic discussions, and advance business-development initiatives consistent with HGG’s objectives.\n\nHis role within the Executive Leadership Team supports collaborative decision-making and the disciplined advancement of HGG’s business interests.',
     principles: [
       'Opportunity Assessment & Feasibility',
       'Business Development Strategy',
@@ -129,66 +129,95 @@ export const defaultLeadershipMembers = [
     ],
     linkedinUrl: null,
   },
-  {
-    id: 'harold-lumor',
-    name: 'Harold Lumor',
-    title: 'Executive Leadership Team — Finance & Commercial Review',
-    category: 'executive',
-    order: 4,
-    portraitUrl: null,
-    shortBio:
-      'Contributes financial and commercial perspective to HGG’s Executive Leadership Team, supporting the review of commercial opportunities and business planning.',
-    fullBiography:
-      'Harold Lumor contributes financial and commercial perspective to HGG’s Executive Leadership Team. His involvement supports the review of financial considerations, commercial opportunities, project-related information, business planning, and other matters requiring responsible financial awareness and disciplined evaluation.\n\nHis contribution helps strengthen HGG’s approach to financial oversight, commercial decision-making, opportunity assessment, and sustainable organizational growth.',
-    principles: [
-      'Commercial Viability Reviews',
-      'Financial Awareness & Structuring',
-      'Disciplined Opportunity Evaluation',
-    ],
-    linkedinUrl: null,
-  },
-  {
-    id: 'rodney-rollins',
-    name: 'Rodney Rollins',
-    title: 'Executive Leadership Team — Research & Strategic Analysis',
-    category: 'executive',
-    order: 5,
-    portraitUrl: null,
-    shortBio:
-      'Contributes to HGG’s research, strategic analysis, market intelligence, and opportunity-development activities.',
-    fullBiography:
-      'Rodney Rollins contributes to HGG’s research, strategic analysis, market intelligence, and opportunity-development activities. His work supports the gathering and evaluation of information relevant to business opportunities, stakeholder environments, markets, institutions, funding pathways, and strategic initiatives.\n\nHis contribution helps provide HGG’s leadership with organized research and analytical information that can support informed decision-making and business-development activities.',
-    principles: [
-      'Market Intelligence & Sector Research',
-      'Data-Driven Decision Support',
-      'Opportunity Landscape Mapping',
-    ],
-    linkedinUrl: null,
-  },
 ];
+
+export function normalizeLeadershipMember(m) {
+  // Pass through Sanity CMS data directly without hardcoded overrides
+  return m;
+}
 
 export async function getLeadershipMembers() {
   if (typeof window !== 'undefined') {
     const clientData = await fetchClientCms('leadership');
-    if (clientData && clientData.length > 0) return clientData;
+    if (clientData && clientData.length > 0) {
+      return clientData.filter(
+        (m) =>
+          !m.name?.toLowerCase().includes('harold') &&
+          !m.name?.toLowerCase().includes('rollins') &&
+          !m.id?.toLowerCase().includes('lumor') &&
+          !m.id?.toLowerCase().includes('rollins')
+      );
+    }
     return defaultLeadershipMembers;
   }
 
-  const data = await sanityFetch({ query: leadershipMembersQuery, tags: ['leadershipMember'] });
+  const data = await sanityFetch({
+    query: leadershipMembersQuery,
+    tags: ['leadershipMember', 'employeeVerification'],
+    revalidate: 0,
+  });
   if (!data || data.length === 0) return defaultLeadershipMembers;
 
-  return data.map((m) => ({
-    id: m.slug?.current || m._id,
-    name: m.name,
-    title: m.title,
-    category: m.category || 'executive',
-    order: m.order ?? 10,
-    portraitUrl: m.portrait ? urlForImage(m.portrait)?.url() : null,
-    shortBio: m.shortBio,
-    fullBiography: m.fullBiography,
-    principles: m.principles && m.principles.length > 0 ? m.principles : [],
-    linkedinUrl: m.linkedinUrl,
-  }));
+  const mapped = data
+    .filter(
+      (m) =>
+        !m.name?.toLowerCase().includes('harold') &&
+        !m.name?.toLowerCase().includes('rollins') &&
+        !m._id?.toLowerCase().includes('lumor') &&
+        !m._id?.toLowerCase().includes('rollins') &&
+        (m.isExecutive === true ||
+          (['HGG-001', 'HGG-002', 'HGG-003'].includes(m.employeeId) && m.isExecutive !== false) ||
+          m._type === 'leadershipMember')
+    )
+    .map((m) => {
+      const fallback = defaultLeadershipMembers.find(
+        (def) =>
+          def.id === m.employeeId ||
+          def.name?.toLowerCase() === (m.name || m.fullName)?.toLowerCase()
+      );
+
+      return {
+        id: m.employeeId || m.slug?.current || m._id,
+        employeeId: m.employeeId,
+        name: m.name || m.fullName,
+        title: m.title || m.position,
+        category: m.category || fallback?.category || 'executive',
+        order: m.order ?? fallback?.order ?? 10,
+        portraitUrl: m.portrait ? urlForImage(m.portrait)?.url() : fallback?.portraitUrl || null,
+        shortBio:
+          m.shortBio ||
+          fallback?.shortBio ||
+          `${m.name || m.fullName} serves as ${m.title || m.position} at THE HINTER GROUP GHANA LTD.`,
+        fullBiography:
+          m.fullBiography ||
+          fallback?.fullBiography ||
+          m.shortBio ||
+          fallback?.shortBio ||
+          `${m.name || m.fullName} serves as ${m.title || m.position} at THE HINTER GROUP GHANA LTD.`,
+        principles:
+          m.principles && m.principles.length > 0 ? m.principles : fallback?.principles || [],
+        linkedinUrl: m.linkedinUrl || fallback?.linkedinUrl || null,
+      };
+    });
+
+  // De-duplicate so each executive appears exactly once
+  const seen = new Set();
+  const uniqueMembers = [];
+
+  for (const item of mapped) {
+    const key = (item.name || '')
+      .toLowerCase()
+      .replace(/^(maj\.\s*gen\.|lt\.\s*commander|gen\.|lt\.|dr\.|mr\.|mrs\.|ms\.)\s+/gi, '')
+      .replace(/\s*—.*$/, '')
+      .replace(/[^a-z0-9]/g, '');
+
+    if (!seen.has(key)) {
+      seen.add(key);
+      uniqueMembers.push(item);
+    }
+  }
+
+  return uniqueMembers.sort((a, b) => (a.order ?? 10) - (b.order ?? 10));
 }
 
 /* ─────────────────────────────────────────────────────────────

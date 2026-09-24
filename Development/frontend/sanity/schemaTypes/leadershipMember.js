@@ -9,6 +9,8 @@ export const leadershipMember = defineType({
       name: 'name',
       title: 'Full Name',
       type: 'string',
+      description:
+        'Executive legal and professional name with approved military or honorary designations (e.g., Maj. Gen. Matthew Essien — GAF (Rtd.), Lt. Commander Daniel Kotei — USN (Rtd.)).',
       validation: (Rule) => Rule.required(),
     }),
     defineField({

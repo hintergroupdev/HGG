@@ -21,15 +21,21 @@ export const siteSettingsQuery = groq`
   }
 `;
 
-// 2. Leadership Query
+// 2. Leadership Query — Unified Executive Query
 export const leadershipMembersQuery = groq`
-  *[_type == "leadershipMember"] | order(order asc, name asc) {
+  *[
+    (_type == "employeeVerification" && (isExecutive == true || (employeeId in ["HGG-001", "HGG-002", "HGG-003"] && isExecutive != false))) ||
+    (_type == "leadershipMember" && !(_id in ["leader-harold-lumor", "leader-rodney-rollins", "drafts.leader-harold-lumor", "drafts.leader-rodney-rollins"]) && !(name match "*Harold*") && !(name match "*Rollins*"))
+  ] | order(coalesce(leadershipOrder, order, 10) asc, employeeId asc, name asc, fullName asc) {
     _id,
-    name,
-    title,
+    _type,
+    employeeId,
+    isExecutive,
+    "name": coalesce(fullName, name),
+    "title": coalesce(position, title),
+    "category": coalesce(leadershipCategory, category, "executive"),
+    "order": coalesce(leadershipOrder, order, 10),
     slug,
-    category,
-    order,
     portrait,
     shortBio,
     fullBiography,
@@ -187,6 +193,13 @@ export const employeeVerificationQuery = groq`
     status,
     issuedDate,
     portrait,
+    isExecutive,
+    "category": coalesce(leadershipCategory, "executive"),
+    "order": coalesce(leadershipOrder, 10),
+    shortBio,
+    fullBiography,
+    principles,
+    linkedinUrl,
     _createdAt
   }
 `;
@@ -203,6 +216,7 @@ export const allEmployeeVerificationsQuery = groq`
     status,
     issuedDate,
     portrait,
+    isExecutive,
     internalNotes,
     _createdAt,
     _updatedAt
