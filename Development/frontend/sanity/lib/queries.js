@@ -24,8 +24,8 @@ export const siteSettingsQuery = groq`
 // 2. Leadership Query — Unified Executive Query
 export const leadershipMembersQuery = groq`
   *[
-    (_type == "employeeVerification" && (isExecutive == true || (employeeId in ["HGG-001", "HGG-002", "HGG-003"] && isExecutive != false))) ||
-    (_type == "leadershipMember" && !(_id in ["leader-harold-lumor", "leader-rodney-rollins", "drafts.leader-harold-lumor", "drafts.leader-rodney-rollins"]) && !(name match "*Harold*") && !(name match "*Rollins*"))
+    (_type == "employeeVerification" && (isExecutive == true || (employeeId in ["HGG-001", "HGG-002", "HGG-003", "HGG-004", "HGG-005"] && isExecutive != false))) ||
+    (_type == "leadershipMember")
   ] | order(coalesce(leadershipOrder, order, 10) asc, employeeId asc, name asc, fullName asc) {
     _id,
     _type,
@@ -33,6 +33,7 @@ export const leadershipMembersQuery = groq`
     isExecutive,
     "name": coalesce(fullName, name),
     "title": coalesce(position, title),
+    "position": coalesce(position, title),
     "category": coalesce(leadershipCategory, category, "executive"),
     "order": coalesce(leadershipOrder, order, 10),
     slug,

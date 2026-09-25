@@ -36,29 +36,39 @@ export function EmployeeQrToolComponent() {
         }
       }`;
       const data = await client.fetch(query);
-      const remoteEmployees = (data || []).filter(
-        (e) =>
-          e.employeeId !== 'HGG-004' &&
-          e.employeeId !== 'HGG-005' &&
-          !e.fullName?.toLowerCase().includes('harold') &&
-          !e.fullName?.toLowerCase().includes('rollins')
-      );
+      const remoteEmployees = data || [];
 
-      // Clean up unwanted records from Sanity if client has write access
-      try {
-        await client.delete('leader-harold-lumor').catch(() => {});
-        await client.delete('leader-rodney-rollins').catch(() => {});
-        await client.delete('emp-HGG-004').catch(() => {});
-        await client.delete('emp-HGG-005').catch(() => {});
-      } catch (delErr) {
-        // Safe ignore
-      }
-
-      // Ensure default executives have isExecutive: true and bios set if missing
+      // Ensure default executives have isExecutive: true and correct official designations/roles
       try {
         await client.patch('emp-HGG-001').setIfMissing({ isExecutive: true, leadershipOrder: 1, leadershipCategory: 'executive' }).commit();
-        await client.patch('emp-HGG-002').setIfMissing({ isExecutive: true, leadershipOrder: 2, leadershipCategory: 'executive' }).commit();
-        await client.patch('emp-HGG-003').setIfMissing({ isExecutive: true, leadershipOrder: 3, leadershipCategory: 'executive' }).commit();
+        await client.patch('emp-HGG-002').set({
+          fullName: 'Lt. Commander Daniel Kotei — USN (Rtd.)',
+          position: 'Strategic Coordination & Stakeholder Engagement',
+          isExecutive: true,
+          leadershipOrder: 2,
+          leadershipCategory: 'executive',
+        }).commit();
+        await client.patch('emp-HGG-003').set({
+          fullName: 'Maj. Gen. Matthew Essien — GAF (Rtd.)',
+          position: 'Strategic Development & Business Coordination',
+          isExecutive: true,
+          leadershipOrder: 3,
+          leadershipCategory: 'executive',
+        }).commit();
+        await client.patch('emp-HGG-004').setIfMissing({
+          isExecutive: true,
+          leadershipOrder: 4,
+          leadershipCategory: 'executive',
+          fullName: 'Mr. Harold Lumor',
+          position: 'Finance & Commercial Review',
+        }).commit();
+        await client.patch('emp-HGG-005').setIfMissing({
+          isExecutive: true,
+          leadershipOrder: 5,
+          leadershipCategory: 'executive',
+          fullName: 'Mr. Rodney Rollins',
+          position: 'Research & Strategic Analysis',
+        }).commit();
       } catch (patchErr) {
         // Safe ignore
       }
@@ -101,12 +111,13 @@ export function EmployeeQrToolComponent() {
         if (index === -1) {
           mergedEmployees.push(defEmp);
         } else {
-          // If remote record exists, ensure official designations for executive officers are up to date
-          if (defEmp.employeeId === 'HGG-002' && !mergedEmployees[index].fullName?.includes('USN (Rtd.)')) {
-            mergedEmployees[index] = { ...mergedEmployees[index], fullName: defEmp.fullName };
-          } else if (defEmp.employeeId === 'HGG-003' && !mergedEmployees[index].fullName?.includes('GAF (Rtd.)')) {
-            mergedEmployees[index] = { ...mergedEmployees[index], fullName: defEmp.fullName };
-          }
+          // Keep official designations, positions, and executive status up to date
+          mergedEmployees[index] = {
+            ...mergedEmployees[index],
+            fullName: defEmp.fullName || mergedEmployees[index].fullName,
+            position: defEmp.position || mergedEmployees[index].position,
+            isExecutive: mergedEmployees[index].isExecutive ?? defEmp.isExecutive,
+          };
         }
       }
 

@@ -94,17 +94,37 @@ export const defaultLeadershipMembers = [
     linkedinUrl: null,
   },
   {
-    id: 'daniel-kotei',
-    name: 'Lt. Commander Daniel Kotei — USN (Rtd.)',
-    title: 'Executive Leadership Team — Strategic Coordination & Stakeholder Engagement',
+    id: 'matthew-essien',
+    name: 'Maj. Gen. Matthew Essien — GAF (Rtd.)',
+    title: 'Strategic Development & Business Coordination',
     category: 'executive',
     order: 2,
+    portraitUrl: null,
+    shortBio:
+      'Contributes to HGG’s strategic development, business coordination, opportunity assessment, and executive-level planning.',
+    fullBiography:
+      'Maj. Gen. Matthew Essien — GAF (Rtd.) contributes to HGG’s strategic development, business coordination, opportunity assessment, and executive-level planning. His involvement supports the company’s efforts to evaluate emerging opportunities, strengthen internal coordination, contribute to strategic discussions, and advance business-development initiatives consistent with HGG’s objectives.\n\nHis role within the Executive Leadership Team supports collaborative decision-making and the disciplined advancement of HGG’s business interests.',
+    principles: [
+      'Strategic Development & Business Coordination',
+      'Opportunity Assessment & Feasibility',
+      'Business Development Strategy',
+      'Cross-Functional Coordination',
+    ],
+    linkedinUrl: null,
+  },
+  {
+    id: 'daniel-kotei',
+    name: 'Lt. Commander Daniel Kotei — USN (Rtd.)',
+    title: 'Strategic Coordination & Stakeholder Engagement',
+    category: 'executive',
+    order: 3,
     portraitUrl: null,
     shortBio:
       'Contributes to HGG’s strategic coordination, stakeholder engagement, relationship development, and executive-level business discussions.',
     fullBiography:
       'Lt. Commander Daniel Kotei — USN (Rtd.) contributes to HGG’s strategic coordination, stakeholder engagement, relationship development, and executive-level business discussions. His involvement supports HGG’s efforts to establish and maintain constructive relationships with relevant stakeholders while helping coordinate opportunities that require disciplined communication, institutional engagement, and strategic alignment.\n\nHis contribution to the Executive Leadership Team reflects HGG’s emphasis on responsible coordination, professional relationships, and collaborative execution.',
     principles: [
+      'Strategic Coordination & Stakeholder Engagement',
       'Strategic Stakeholder Liaison',
       'Institutional Engagement & Communication',
       'Disciplined Commercial Alignment',
@@ -112,27 +132,44 @@ export const defaultLeadershipMembers = [
     linkedinUrl: null,
   },
   {
-    id: 'matthew-essien',
-    name: 'Maj. Gen. Matthew Essien — GAF (Rtd.)',
-    title: 'Executive Leadership Team — Strategic Development & Business Coordination',
+    id: 'harold-lumor',
+    name: 'Mr. Harold Lumor',
+    title: 'Finance & Commercial Review',
     category: 'executive',
-    order: 3,
+    order: 4,
     portraitUrl: null,
     shortBio:
-      'Contributes to HGG’s strategic development, business coordination, opportunity assessment, and executive-level planning.',
+      'Contributes financial and commercial perspective to HGG’s Executive Leadership Team, supporting financial oversight and sustainable growth.',
     fullBiography:
-      'Maj. Gen. Matthew Essien — GAF (Rtd.) contributes to HGG’s strategic development, business coordination, opportunity assessment, and executive-level planning. His involvement supports the company’s efforts to evaluate emerging opportunities, strengthen internal coordination, contribute to strategic discussions, and advance business-development initiatives consistent with HGG’s objectives.\n\nHis role within the Executive Leadership Team supports collaborative decision-making and the disciplined advancement of HGG’s business interests.',
+      'Mr. Harold Lumor contributes financial and commercial perspective to HGG’s Executive Leadership Team.\n\nHis involvement supports the review of financial considerations, commercial opportunities, project-related information, business planning, and other matters requiring responsible financial awareness and disciplined evaluation.\n\nHis contribution helps strengthen HGG’s approach to financial oversight, commercial decision-making, opportunity assessment, and sustainable organizational growth.',
     principles: [
-      'Opportunity Assessment & Feasibility',
-      'Business Development Strategy',
-      'Cross-Functional Coordination',
+      'Finance & Commercial Review',
+      'Commercial Opportunity Evaluation',
+      'Financial Oversight & Business Planning',
+    ],
+    linkedinUrl: null,
+  },
+  {
+    id: 'rodney-rollins',
+    name: 'Mr. Rodney Rollins',
+    title: 'Research & Strategic Analysis',
+    category: 'executive',
+    order: 5,
+    portraitUrl: null,
+    shortBio:
+      'Contributes to HGG’s research, strategic analysis, market intelligence, and opportunity-development activities.',
+    fullBiography:
+      'Mr. Rodney Rollins contributes to HGG’s research, strategic analysis, market intelligence, and opportunity-development activities.\n\nHis work supports the gathering and evaluation of information relevant to business opportunities, stakeholder environments, markets, institutions, funding pathways, and strategic initiatives.\n\nHis contribution helps provide HGG’s leadership with organized research and analytical information that can support informed decision-making and business-development activities.',
+    principles: [
+      'Research & Strategic Analysis',
+      'Market Intelligence & Opportunity Development',
+      'Institutional & Strategic Evaluation',
     ],
     linkedinUrl: null,
   },
 ];
 
 export function normalizeLeadershipMember(m) {
-  // Pass through Sanity CMS data directly without hardcoded overrides
   return m;
 }
 
@@ -140,13 +177,7 @@ export async function getLeadershipMembers() {
   if (typeof window !== 'undefined') {
     const clientData = await fetchClientCms('leadership');
     if (clientData && clientData.length > 0) {
-      return clientData.filter(
-        (m) =>
-          !m.name?.toLowerCase().includes('harold') &&
-          !m.name?.toLowerCase().includes('rollins') &&
-          !m.id?.toLowerCase().includes('lumor') &&
-          !m.id?.toLowerCase().includes('rollins')
-      );
+      return clientData;
     }
     return defaultLeadershipMembers;
   }
@@ -161,13 +192,9 @@ export async function getLeadershipMembers() {
   const mapped = data
     .filter(
       (m) =>
-        !m.name?.toLowerCase().includes('harold') &&
-        !m.name?.toLowerCase().includes('rollins') &&
-        !m._id?.toLowerCase().includes('lumor') &&
-        !m._id?.toLowerCase().includes('rollins') &&
-        (m.isExecutive === true ||
-          (['HGG-001', 'HGG-002', 'HGG-003'].includes(m.employeeId) && m.isExecutive !== false) ||
-          m._type === 'leadershipMember')
+        m.isExecutive === true ||
+        ['HGG-001', 'HGG-002', 'HGG-003', 'HGG-004', 'HGG-005'].includes(m.employeeId) ||
+        m._type === 'leadershipMember'
     )
     .map((m) => {
       const fallback = defaultLeadershipMembers.find(
@@ -176,33 +203,45 @@ export async function getLeadershipMembers() {
           def.name?.toLowerCase() === (m.name || m.fullName)?.toLowerCase()
       );
 
+      const rawName = m.name || m.fullName || fallback?.name || '';
+      let normalizedName = rawName;
+      if (rawName.toLowerCase().includes('rodney') && rawName.toLowerCase().includes('rollins') && !rawName.startsWith('Mr.')) {
+        normalizedName = 'Mr. Rodney Rollins';
+      }
+      if (rawName.toLowerCase().includes('harold') && rawName.toLowerCase().includes('lumor') && !rawName.startsWith('Mr.')) {
+        normalizedName = 'Mr. Harold Lumor';
+      }
+
+      const rawTitle = m.title || m.position || fallback?.title || '';
+      const cleanTitle = rawTitle.replace(/^Executive Leadership Team\s*—\s*/i, '').trim() || rawTitle;
+
       return {
         id: m.employeeId || m.slug?.current || m._id,
         employeeId: m.employeeId,
-        name: m.name || m.fullName,
-        title: m.title || m.position,
+        name: normalizedName,
+        title: cleanTitle,
+        position: cleanTitle,
         category: m.category || fallback?.category || 'executive',
         order: m.order ?? fallback?.order ?? 10,
         portraitUrl: m.portrait ? urlForImage(m.portrait)?.url() : fallback?.portraitUrl || null,
         shortBio:
           m.shortBio ||
           fallback?.shortBio ||
-          `${m.name || m.fullName} serves as ${m.title || m.position} at THE HINTER GROUP GHANA LTD.`,
+          `${m.name || m.fullName} serves as ${cleanTitle} at THE HINTER GROUP GHANA LTD.`,
         fullBiography:
           m.fullBiography ||
           fallback?.fullBiography ||
           m.shortBio ||
           fallback?.shortBio ||
-          `${m.name || m.fullName} serves as ${m.title || m.position} at THE HINTER GROUP GHANA LTD.`,
+          `${m.name || m.fullName} serves as ${cleanTitle} at THE HINTER GROUP GHANA LTD.`,
         principles:
           m.principles && m.principles.length > 0 ? m.principles : fallback?.principles || [],
         linkedinUrl: m.linkedinUrl || fallback?.linkedinUrl || null,
       };
     });
 
-  // De-duplicate so each executive appears exactly once
-  const seen = new Set();
-  const uniqueMembers = [];
+  // De-duplicate so each executive appears exactly once, preferring employeeVerification data
+  const seen = new Map();
 
   for (const item of mapped) {
     const key = (item.name || '')
@@ -212,12 +251,25 @@ export async function getLeadershipMembers() {
       .replace(/[^a-z0-9]/g, '');
 
     if (!seen.has(key)) {
-      seen.add(key);
-      uniqueMembers.push(item);
+      seen.set(key, item);
+    } else {
+      const existing = seen.get(key);
+      if (item.employeeId && !existing.employeeId) {
+        seen.set(key, { ...existing, ...item });
+      } else {
+        seen.set(key, {
+          ...item,
+          ...existing,
+          title: item.title || existing.title,
+          position: item.position || existing.position,
+          portraitUrl: item.portraitUrl || existing.portraitUrl,
+          fullBiography: item.fullBiography || existing.fullBiography,
+        });
+      }
     }
   }
 
-  return uniqueMembers.sort((a, b) => (a.order ?? 10) - (b.order ?? 10));
+  return Array.from(seen.values()).sort((a, b) => (a.order ?? 10) - (b.order ?? 10));
 }
 
 /* ─────────────────────────────────────────────────────────────

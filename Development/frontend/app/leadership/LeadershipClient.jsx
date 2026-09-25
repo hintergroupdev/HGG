@@ -159,15 +159,15 @@ export default function LeadershipClient({ initialMembers = [] }) {
 
   const sanitizedMembers = members.filter(
     (m) =>
-      !m.name?.toLowerCase().includes("harold") &&
-      !m.name?.toLowerCase().includes("rollins") &&
-      !m.id?.toLowerCase().includes("lumor") &&
-      !m.id?.toLowerCase().includes("rollins") &&
-      (m.isExecutive === true ||
-        ['HGG-001', 'HGG-002', 'HGG-003'].includes(m.employeeId) ||
-        m.id === 'charles-n-hammond' ||
-        m.id === 'daniel-kotei' ||
-        m.id === 'mathew-essien')
+      m.isExecutive === true ||
+      ['HGG-001', 'HGG-002', 'HGG-003', 'HGG-004', 'HGG-005'].includes(m.employeeId) ||
+      m.category === 'executive' ||
+      m._type === 'leadershipMember' ||
+      m.id === 'charles-n-hammond' ||
+      m.id === 'daniel-kotei' ||
+      m.id === 'matthew-essien' ||
+      m.id === 'harold-lumor' ||
+      m.id === 'rodney-rollins'
   );
 
   const founder =
@@ -545,8 +545,8 @@ export default function LeadershipClient({ initialMembers = [] }) {
                       <h3 className="font-heading text-lg font-bold text-[#061739] group-hover:text-[#14588B] transition-colors leading-snug">
                         {member.name}
                       </h3>
-                      <p className="text-xs text-[#C49838] font-medium line-clamp-2 leading-relaxed min-h-0 sm:min-h-[32px]">
-                        {member.title}
+                      <p className="text-xs sm:text-[13px] text-[#C49838] font-semibold leading-relaxed min-h-0">
+                        {(member.title || member.position || '').replace(/^Executive Leadership Team\s*—\s*/i, '').trim()}
                       </p>
                       <p className="text-slate-600 text-xs sm:text-[12.5px] leading-relaxed line-clamp-3 pt-2 border-t border-slate-100">
                         {member.shortBio}
@@ -931,7 +931,7 @@ export default function LeadershipClient({ initialMembers = [] }) {
                     {activeBioModal.name}
                   </h3>
                   <p className="text-xs text-slate-300 font-mono">
-                    {activeBioModal.title}
+                    {(activeBioModal.title || activeBioModal.position || '').replace(/^Executive Leadership Team\s*—\s*/i, '').trim()}
                   </p>
                 </div>
 
@@ -960,7 +960,7 @@ export default function LeadershipClient({ initialMembers = [] }) {
                 {activeBioModal.principles && activeBioModal.principles.length > 0 && (
                   <div className="pt-4 mt-6 border-t border-slate-200 space-y-2.5">
                     <h4 className="text-xs font-heading font-bold tracking-wider text-[#061739] uppercase">
-                      {activeBioModal.id === "charles-n-hammond"
+                      {activeBioModal.employeeId === "HGG-001" || activeBioModal.id === "charles-n-hammond"
                         ? "Core Leadership Priorities & Mandates:"
                         : "Core Focus & Responsibilities:"}
                     </h4>
