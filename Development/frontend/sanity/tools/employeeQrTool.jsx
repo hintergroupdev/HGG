@@ -272,7 +272,7 @@ export function EmployeeQrToolComponent() {
             </a>
           </div>
         ) : (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))', gap: '20px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 360px), 1fr))', gap: '20px' }}>
             {employees.map((emp) => {
               const previewSvg = qrPreviews[emp.employeeId];
               const verifyUrl = `${siteBaseUrl}/verify/${emp.employeeId}`;
@@ -296,18 +296,32 @@ export function EmployeeQrToolComponent() {
                 >
                   <div>
                     {/* Card Top: ID Badge & Status */}
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <div
+                      style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        flexWrap: 'wrap',
+                        gap: '8px 12px',
+                        marginBottom: '16px',
+                      }}
+                    >
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
                         <span
                           style={{
                             background: '#0A2457',
                             color: '#DFB758',
-                            fontSize: '13px',
+                            fontSize: '12px',
                             fontWeight: '800',
                             fontFamily: 'monospace',
-                            padding: '4px 10px',
+                            padding: '4px 9px',
                             borderRadius: '6px',
-                            letterSpacing: '0.05em',
+                            letterSpacing: '0.04em',
+                            whiteSpace: 'nowrap',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            lineHeight: '1.2',
+                            flexShrink: 0,
                           }}
                         >
                           {emp.employeeId}
@@ -317,25 +331,31 @@ export function EmployeeQrToolComponent() {
                             style={{
                               background: 'linear-gradient(135deg, #DFB758 0%, #C49838 100%)',
                               color: '#061739',
-                              fontSize: '10.5px',
+                              fontSize: '10px',
                               fontWeight: '800',
-                              padding: '3px 8px',
+                              padding: '4px 8px',
                               borderRadius: '6px',
-                              letterSpacing: '0.03em',
+                              letterSpacing: '0.04em',
                               textTransform: 'uppercase',
                               display: 'inline-flex',
                               alignItems: 'center',
+                              gap: '4px',
+                              whiteSpace: 'nowrap',
+                              lineHeight: '1.2',
+                              flexShrink: 0,
                             }}
                           >
-                            ⭐ Executive
+                            <span>⭐</span>
+                            <span>Executive</span>
                           </span>
                         )}
                       </div>
                       <span
                         style={{
-                          fontSize: '11px',
+                          fontSize: '10.5px',
                           fontWeight: '700',
                           textTransform: 'uppercase',
+                          letterSpacing: '0.02em',
                           padding: '4px 10px',
                           borderRadius: '20px',
                           background: isVerified ? '#ecfdf5' : '#fef2f2',
@@ -343,10 +363,14 @@ export function EmployeeQrToolComponent() {
                           border: `1px solid ${isVerified ? '#a7f3d0' : '#fecaca'}`,
                           display: 'inline-flex',
                           alignItems: 'center',
-                          gap: '4px',
+                          gap: '5px',
+                          whiteSpace: 'nowrap',
+                          lineHeight: '1.2',
+                          flexShrink: 0,
                         }}
                       >
-                        {isVerified ? '● Active / Verified' : '○ Inactive'}
+                        <span style={{ fontSize: '9px', lineHeight: 1 }}>{isVerified ? '●' : '○'}</span>
+                        <span>{isVerified ? 'Active / Verified' : 'Inactive'}</span>
                       </span>
                     </div>
 
