@@ -40,10 +40,12 @@ export async function getSiteSettings() {
     companyName: 'THE HINTER GROUP GHANA LTD',
     tagline: 'Consulting + Ventures | Business Brokerage • Committed to Excellence',
     contactEmail: 'info@hintergroupghana.com',
-    contactPhone: '+233 (0) 30 200 0001',
-    contactPhoneAlt: null,
-    officeAddress: '2nd Floor, The Octagon, Block D, Central Avenue, Accra, Ghana',
-    corporatePostalAddress: null,
+    contactPhone: '+233 55 523 9544',
+    contactPhoneAlt: '+233 24 332 3339',
+    contactPhoneTertiary: '+233 24 426 5432',
+    officeAddress: '8 Teinor Street, Dzorwulu, Accra, GA-158-3464, Ghana',
+    corporatePostalAddress: 'P.O. Box GP2951, Accra Central, Accra, Ghana',
+    websiteUrl: 'https://www.hintergroupghana.com',
     linkedinUrl: null,
     twitterUrl: null,
     facebookUrl: null,
@@ -52,22 +54,45 @@ export async function getSiteSettings() {
     defaultOgImage: null,
   };
 
+  const sanitizeSettings = (obj) => {
+    if (!obj) return { ...fallback };
+    const res = { ...fallback, ...obj };
+    if (!res.officeAddress || res.officeAddress.includes('Octagon') || res.officeAddress.includes('Central Avenue')) {
+      res.officeAddress = fallback.officeAddress;
+    }
+    if (!res.corporatePostalAddress || res.corporatePostalAddress.includes('Central Avenue')) {
+      res.corporatePostalAddress = fallback.corporatePostalAddress;
+    }
+    if (!res.contactPhone || res.contactPhone.includes('200 000') || res.contactPhone.includes('200 0001')) {
+      res.contactPhone = fallback.contactPhone;
+    }
+    if (!res.contactPhoneAlt || res.contactPhoneAlt.includes('200 000')) {
+      res.contactPhoneAlt = fallback.contactPhoneAlt;
+    }
+    if (!res.contactPhoneTertiary || res.contactPhoneTertiary.includes('200 000')) {
+      res.contactPhoneTertiary = fallback.contactPhoneTertiary;
+    }
+    if (!res.websiteUrl) {
+      res.websiteUrl = fallback.websiteUrl;
+    }
+    return res;
+  };
+
   // When executed in client browser, fetch from our same-origin API route to prevent CORS/adblocker drops
   if (typeof window !== 'undefined') {
     const clientData = await fetchClientCms('siteSettings');
-    return clientData || fallback;
+    return sanitizeSettings(clientData);
   }
 
   const data = await sanityFetch({ query: siteSettingsQuery, tags: ['siteSettings'], revalidate: 0 });
   if (!data) return fallback;
 
-  return {
-    ...fallback,
+  return sanitizeSettings({
     ...data,
     logoUrl: data.logo ? urlForImage(data.logo)?.url() : null,
     heroImageUrl: data.heroImage ? urlForImage(data.heroImage)?.url() : null,
     defaultOgImageUrl: data.defaultOgImage ? urlForImage(data.defaultOgImage)?.url() : null,
-  };
+  });
 }
 
 /* ─────────────────────────────────────────────────────────────

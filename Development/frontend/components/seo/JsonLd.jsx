@@ -23,7 +23,42 @@ export default async function JsonLd() {
   const ogImage = settings?.defaultOgImageUrl || settings?.heroImageUrl || siteConfig.ogImage;
   const contactPhone = settings?.contactPhone || siteConfig.contact.phone;
   const contactEmail = settings?.contactEmail || siteConfig.contact.email;
-  const officeAddress = settings?.officeAddress || "2nd Floor, The Octagon, Block D, Central Avenue, Accra, Ghana";
+  const officeAddress = settings?.officeAddress || "8 Teinor Street, Dzorwulu, Accra, GA-158-3464, Ghana";
+
+  const contactPoints = [
+    {
+      "@type": "ContactPoint",
+      telephone: settings?.contactPhone || siteConfig.contact.phone,
+      contactType: "primary corporate inquiry",
+      email: contactEmail,
+      areaServed: ["GH", "Africa", "Global"],
+      availableLanguage: ["English"],
+    },
+    ...(settings?.contactPhoneAlt || siteConfig.contact.phoneAlt
+      ? [
+          {
+            "@type": "ContactPoint",
+            telephone: settings?.contactPhoneAlt || siteConfig.contact.phoneAlt,
+            contactType: "secondary corporate inquiry",
+            email: contactEmail,
+            areaServed: ["GH", "Africa", "Global"],
+            availableLanguage: ["English"],
+          },
+        ]
+      : []),
+    ...(settings?.contactPhoneTertiary || siteConfig.contact.phoneTertiary
+      ? [
+          {
+            "@type": "ContactPoint",
+            telephone: settings?.contactPhoneTertiary || siteConfig.contact.phoneTertiary,
+            contactType: "direct executive inquiry",
+            email: contactEmail,
+            areaServed: ["GH", "Africa", "Global"],
+            availableLanguage: ["English"],
+          },
+        ]
+      : []),
+  ];
 
   const organizationSchema = {
     "@context": "https://schema.org",
@@ -52,20 +87,12 @@ export default async function JsonLd() {
     address: {
       "@type": "PostalAddress",
       streetAddress: officeAddress,
-      addressLocality: "Accra",
+      addressLocality: "Dzorwulu, Accra",
       addressRegion: "Greater Accra",
+      postalCode: "GA-158-3464",
       addressCountry: "GH",
     },
-    contactPoint: [
-      {
-        "@type": "ContactPoint",
-        telephone: contactPhone,
-        contactType: "corporate inquiries",
-        email: contactEmail,
-        areaServed: ["GH", "Africa", "Global"],
-        availableLanguage: ["English"],
-      },
-    ],
+    contactPoint: contactPoints,
     ...(socialLinks.length > 0 ? { sameAs: socialLinks } : {}),
   };
 
@@ -95,8 +122,9 @@ export default async function JsonLd() {
     address: {
       "@type": "PostalAddress",
       streetAddress: officeAddress,
-      addressLocality: "Accra",
+      addressLocality: "Dzorwulu, Accra",
       addressRegion: "Greater Accra",
+      postalCode: "GA-158-3464",
       addressCountry: "GH",
     },
     geo: {

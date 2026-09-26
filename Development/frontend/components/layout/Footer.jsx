@@ -13,9 +13,12 @@ export default function Footer() {
     companyName: 'THE HINTER GROUP GHANA LTD',
     tagline: 'Consulting + Ventures | Business Brokerage • Committed to Excellence',
     contactEmail: 'info@hintergroupghana.com',
-    contactPhone: '+233 (0) 30 200 0000',
-    contactPhoneAlt: null,
-    officeAddress: '2nd Floor, The Octagon, Block D, Central Avenue, Accra, Ghana',
+    contactPhone: '+233 55 523 9544',
+    contactPhoneAlt: '+233 24 332 3339',
+    contactPhoneTertiary: '+233 24 426 5432',
+    officeAddress: '8 Teinor Street, Dzorwulu, Accra, GA-158-3464, Ghana',
+    corporatePostalAddress: 'P.O. Box GP2951, Accra Central, Accra, Ghana',
+    websiteUrl: 'https://www.hintergroupghana.com',
     linkedinUrl: null,
     twitterUrl: null,
     facebookUrl: null,
@@ -252,15 +255,24 @@ export default function Footer() {
           {/* Column 5: Official Contact & Location */}
           <div className="space-y-4">
             <h4 className="font-heading text-xs font-bold tracking-widest text-[#DFB758] uppercase">
-              Headquarters
+              Head Office
             </h4>
             <ul className="space-y-3 text-xs text-slate-300">
               <li className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-[#DFB758] shrink-0 mt-0.5" />
                 <span className="leading-relaxed whitespace-pre-line">
-                  {settings?.officeAddress || "Accra, Ghana"}
+                  {settings?.officeAddress || "8 Teinor Street, Dzorwulu, Accra, GA-158-3464, Ghana"}
                 </span>
               </li>
+              {settings?.corporatePostalAddress && (
+                <li className="flex items-start gap-2.5 pt-1">
+                  <Mail className="w-4 h-4 text-[#DFB758] shrink-0 mt-0.5" />
+                  <div className="leading-relaxed">
+                    <span className="text-[10px] font-mono text-slate-400 block uppercase tracking-wider">Mailing Address</span>
+                    <span className="whitespace-pre-line">{settings.corporatePostalAddress}</span>
+                  </div>
+                </li>
+              )}
               {settings?.contactPhone && (
                 <li className="flex items-center gap-2.5">
                   <Phone className="w-4 h-4 text-[#DFB758] shrink-0" />
@@ -280,6 +292,17 @@ export default function Footer() {
                     className="hover:text-white transition-colors"
                   >
                     {settings.contactPhoneAlt}
+                  </a>
+                </li>
+              )}
+              {settings?.contactPhoneTertiary && (
+                <li className="flex items-center gap-2.5">
+                  <Phone className="w-4 h-4 text-[#DFB758] shrink-0" />
+                  <a
+                    href={`tel:${String(settings.contactPhoneTertiary).replace(/\s+/g, "")}`}
+                    className="hover:text-white transition-colors"
+                  >
+                    {settings.contactPhoneTertiary}
                   </a>
                 </li>
               )}

@@ -30,8 +30,8 @@ export default function PrivacyPolicyPage() {
     companyName: "THE HINTER GROUP GHANA LTD",
     tagline: "Consulting + Ventures | Business Brokerage • Committed to Excellence",
     contactEmail: "info@hintergroupghana.com",
-    contactPhone: "+233 (0) 30 200 0000",
-    officeAddress: "2nd Floor, The Octagon, Block D, Central Avenue, Accra, Ghana",
+    contactPhone: "+233 55 523 9544",
+    officeAddress: "8 Teinor Street, Dzorwulu, Accra, GA-158-3464, Ghana",
   });
 
   useEffect(() => {

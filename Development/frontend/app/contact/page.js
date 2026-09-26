@@ -24,7 +24,12 @@ function ContactContent() {
     companyName: "THE HINTER GROUP GHANA LTD",
     tagline: "Consulting + Ventures | Business Brokerage • Committed to Excellence",
     contactEmail: "info@hintergroupghana.com",
-    contactPhone: "+233 (0) 30 200 0000",
+    contactPhone: "+233 55 523 9544",
+    contactPhoneAlt: "+233 24 332 3339",
+    contactPhoneTertiary: "+233 24 426 5432",
+    officeAddress: "8 Teinor Street, Dzorwulu, Accra, GA-158-3464, Ghana",
+    corporatePostalAddress: "P.O. Box GP2951, Accra Central, Accra, Ghana",
+    websiteUrl: "https://www.hintergroupghana.com",
     linkedinUrl: null,
     twitterUrl: null,
     facebookUrl: null,
@@ -165,7 +170,7 @@ function ContactContent() {
             <div className="bg-[#061739] text-white p-7 sm:p-8 rounded-2xl shadow-sm space-y-6">
               <div>
                 <span className="text-[10px] font-heading font-bold tracking-widest text-[#DFB758] uppercase">
-                  HEADQUARTERS
+                  CORPORATE HEADQUARTERS
                 </span>
                 <h2 className="text-xl sm:text-2xl font-heading font-bold mt-1">
                   {siteSettings.companyName}
@@ -176,13 +181,14 @@ function ContactContent() {
               </div>
 
               <div className="space-y-4 pt-4 border-t border-white/10 text-xs sm:text-sm">
+                {/* Head Office */}
                 <div className="flex items-start gap-3.5">
                   <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center shrink-0 text-[#DFB758] mt-0.5">
                     <MapPin className="w-4 h-4" />
                   </div>
                   <div>
                     <span className="text-[10.5px] font-mono text-slate-400 block uppercase">
-                      Office / Physical Headquarters
+                      Head Office
                     </span>
                     <span className="text-white font-medium leading-relaxed block whitespace-pre-line">
                       {siteSettings.officeAddress}
@@ -190,14 +196,15 @@ function ContactContent() {
                   </div>
                 </div>
 
+                {/* Mailing Address */}
                 {siteSettings.corporatePostalAddress && (
                   <div className="flex items-start gap-3.5">
                     <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center shrink-0 text-[#DFB758] mt-0.5">
-                      <MapPin className="w-4 h-4" />
+                      <Mail className="w-4 h-4" />
                     </div>
                     <div>
                       <span className="text-[10.5px] font-mono text-slate-400 block uppercase">
-                        Postal Address
+                        Mailing Address
                       </span>
                       <span className="text-white font-medium leading-relaxed block whitespace-pre-line">
                         {siteSettings.corporatePostalAddress}
@@ -206,70 +213,85 @@ function ContactContent() {
                   </div>
                 )}
 
+                {/* Telephone */}
+                <div className="flex items-start gap-3.5">
+                  <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center shrink-0 text-[#DFB758]">
+                    <Phone className="w-4 h-4" />
+                  </div>
+                  <div className="space-y-1">
+                    <span className="text-[10.5px] font-mono text-slate-400 block uppercase">
+                      Telephone
+                    </span>
+                    <div className="space-y-1.5 pt-0.5">
+                      {siteSettings.contactPhone && (
+                        <div>
+                          <a
+                            href={`tel:${String(siteSettings.contactPhone || '').replace(/\s+/g, '')}`}
+                            className="text-white hover:text-[#DFB758] font-medium transition-colors block"
+                          >
+                            {siteSettings.contactPhone}
+                          </a>
+                        </div>
+                      )}
+                      {siteSettings.contactPhoneAlt && (
+                        <div>
+                          <a
+                            href={`tel:${String(siteSettings.contactPhoneAlt || '').replace(/\s+/g, '')}`}
+                            className="text-white hover:text-[#DFB758] font-medium transition-colors block"
+                          >
+                            {siteSettings.contactPhoneAlt}
+                          </a>
+                        </div>
+                      )}
+                      {siteSettings.contactPhoneTertiary && (
+                        <div>
+                          <a
+                            href={`tel:${String(siteSettings.contactPhoneTertiary || '').replace(/\s+/g, '')}`}
+                            className="text-white hover:text-[#DFB758] font-medium transition-colors block"
+                          >
+                            {siteSettings.contactPhoneTertiary}
+                          </a>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Email */}
                 <div className="flex items-start gap-3.5">
                   <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center shrink-0 text-[#DFB758]">
                     <Mail className="w-4 h-4" />
                   </div>
                   <div>
                     <span className="text-[10.5px] font-mono text-slate-400 block uppercase">
-                      Corporate Email
+                      Email
                     </span>
                     <a
                       href={`mailto:${siteSettings.contactEmail}`}
-                      className="text-white hover:text-[#DFB758] font-medium transition-colors"
+                      className="text-white hover:text-[#DFB758] font-medium transition-colors block"
                     >
                       {siteSettings.contactEmail}
                     </a>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3.5">
-                  <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center shrink-0 text-[#DFB758]">
-                    <Phone className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="text-[10.5px] font-mono text-slate-400 block uppercase">
-                      Telephone / Primary Ghana Line
-                    </span>
-                    <a
-                      href={`tel:${String(siteSettings.contactPhone || '').replace(/\s+/g, '')}`}
-                      className="text-white hover:text-[#DFB758] font-medium transition-colors"
-                    >
-                      {siteSettings.contactPhone}
-                    </a>
-                  </div>
-                </div>
-
-                {siteSettings.contactPhoneAlt && (
-                  <div className="flex items-start gap-3.5">
-                    <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center shrink-0 text-[#DFB758]">
-                      <Phone className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <span className="text-[10.5px] font-mono text-slate-400 block uppercase">
-                        Secondary / Direct Ghana Line
-                      </span>
-                      <a
-                        href={`tel:${String(siteSettings.contactPhoneAlt || '').replace(/\s+/g, '')}`}
-                        className="text-white hover:text-[#DFB758] font-medium transition-colors"
-                      >
-                        {siteSettings.contactPhoneAlt}
-                      </a>
-                    </div>
-                  </div>
-                )}
-
+                {/* Website */}
                 <div className="flex items-start gap-3.5">
                   <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center shrink-0 text-[#DFB758]">
                     <Globe2 className="w-4 h-4" />
                   </div>
                   <div>
                     <span className="text-[10.5px] font-mono text-slate-400 block uppercase">
-                      International Inquiries
+                      Website
                     </span>
-                    <span className="text-slate-300 text-xs leading-relaxed">
-                      We welcome cross-border partnerships and institutional opportunities across West Africa.
-                    </span>
+                    <a
+                      href={siteSettings.websiteUrl || "https://www.hintergroupghana.com"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-white hover:text-[#DFB758] font-medium transition-colors block"
+                    >
+                      www.hintergroupghana.com
+                    </a>
                   </div>
                 </div>
 

@@ -69,6 +69,17 @@ export function EmployeeQrToolComponent() {
           fullName: 'Mr. Rodney Rollins',
           position: 'Research & Strategic Analysis',
         }).commit();
+
+        // Auto-update siteSettings in Sanity if document has old demo address / phone
+        await client.patch('siteSettings').set({
+          officeAddress: '8 Teinor Street, Dzorwulu, Accra, GA-158-3464, Ghana',
+          corporatePostalAddress: 'P.O. Box GP2951, Accra Central, Accra, Ghana',
+          contactPhone: '+233 55 523 9544',
+          contactPhoneAlt: '+233 24 332 3339',
+          contactPhoneTertiary: '+233 24 426 5432',
+          contactEmail: 'info@hintergroupghana.com',
+          websiteUrl: 'https://www.hintergroupghana.com',
+        }).commit();
       } catch (patchErr) {
         // Safe ignore
       }

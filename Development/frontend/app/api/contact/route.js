@@ -203,7 +203,7 @@ export async function POST(req) {
                 This message was delivered by the official <strong>THE HINTER GROUP GHANA LTD</strong> web portal.
               </p>
               <p style="margin: 0; font-size: 10.5px; color: #94a3b8;">
-                &copy; ${new Date().getFullYear()} THE HINTER GROUP GHANA LTD &bull; 2nd Floor, The Octagon, Accra, Ghana
+                &copy; ${new Date().getFullYear()} THE HINTER GROUP GHANA LTD &bull; 8 Teinor Street, Dzorwulu, Accra, Ghana
               </p>
             </td>
           </tr>
