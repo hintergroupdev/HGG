@@ -347,20 +347,20 @@ export default function LeadershipClient({ initialMembers = [] }) {
                 {/* Left: Prominent Avatar / Portrait Box */}
                 <div className="lg:col-span-5 flex flex-col items-center text-center space-y-4">
                   {founder.portraitUrl ? (
-                    <div className="relative w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 xl:w-80 xl:h-80 rounded-2xl overflow-hidden border-2 border-[#DFB758]/50 shadow-xl bg-slate-100 ring-4 ring-[#DFB758]/10">
+                    <div className="relative w-40 h-40 sm:w-56 sm:h-56 lg:w-72 lg:h-72 xl:w-80 xl:h-80 rounded-2xl overflow-hidden border-2 border-[#DFB758]/50 shadow-xl bg-slate-100 ring-4 ring-[#DFB758]/10">
                       <Image
                         src={founder.portraitUrl}
                         alt={founder.name}
                         fill
                         priority
                         unoptimized
-                        sizes="(max-width: 640px) 224px, (max-width: 1024px) 256px, 320px"
+                        sizes="(max-width: 640px) 160px, (max-width: 1024px) 224px, 320px"
                         className="object-cover object-top"
                       />
                     </div>
                   ) : (
-                    <div className="w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 xl:w-80 xl:h-80 rounded-2xl bg-gradient-to-br from-[#0A2457] via-[#14588B] to-[#061739] border-2 border-[#DFB758]/40 flex flex-col items-center justify-center text-white shadow-xl p-6 ring-4 ring-[#DFB758]/10">
-                      <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-[#DFB758]/20 border border-[#DFB758] flex items-center justify-center mb-3 text-[#DFB758] font-heading font-extrabold text-3xl sm:text-4xl shadow-inner">
+                    <div className="w-40 h-40 sm:w-56 sm:h-56 lg:w-72 lg:h-72 xl:w-80 xl:h-80 rounded-2xl bg-gradient-to-br from-[#0A2457] via-[#14588B] to-[#061739] border-2 border-[#DFB758]/40 flex flex-col items-center justify-center text-white shadow-xl p-6 ring-4 ring-[#DFB758]/10">
+                      <div className="w-20 h-20 sm:w-28 sm:h-28 rounded-full bg-[#DFB758]/20 border border-[#DFB758] flex items-center justify-center mb-3 text-[#DFB758] font-heading font-extrabold text-2xl sm:text-4xl shadow-inner">
                         CNH
                       </div>
                       <span className="text-xs font-mono text-[#DFB758] uppercase tracking-widest font-bold">
@@ -510,19 +510,31 @@ export default function LeadershipClient({ initialMembers = [] }) {
                   className="bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-xs hover:shadow-lg hover:border-[#DFB758]/50 transition-all flex flex-col justify-between group"
                 >
                   {/* Prominent Large Top Image / Portrait Frame */}
-                  <div className="relative w-full h-56 sm:h-64 bg-gradient-to-br from-[#0A2457] via-[#061739] to-[#14588B] overflow-hidden flex items-center justify-center">
+                  <div className="relative w-full h-52 sm:h-60 lg:h-72 bg-gradient-to-br from-[#0A2457] via-[#061739] to-[#14588B] overflow-hidden flex items-center justify-center">
                     {member.portraitUrl ? (
-                      <Image
-                        src={member.portraitUrl}
-                        alt={member.name}
-                        fill
-                        unoptimized
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                        className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                      />
+                      <>
+                        {/* Soft ambient background fill */}
+                        <Image
+                          src={member.portraitUrl}
+                          alt=""
+                          aria-hidden="true"
+                          fill
+                          unoptimized
+                          className="object-cover object-center blur-md opacity-35 scale-110 pointer-events-none"
+                        />
+                        {/* Self-adjusting portrait: never cropped, always in full view */}
+                        <Image
+                          src={member.portraitUrl}
+                          alt={member.name}
+                          fill
+                          unoptimized
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                          className="object-contain object-center relative z-[1] group-hover:scale-105 transition-transform duration-500 drop-shadow-md"
+                        />
+                      </>
                     ) : (
                       <div className="flex flex-col items-center justify-center space-y-2 text-center p-4">
-                        <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-white/10 border border-[#DFB758]/40 backdrop-blur-xs flex flex-col items-center justify-center text-[#DFB758] font-heading font-extrabold text-2xl sm:text-3xl shadow-inner group-hover:scale-105 transition-transform duration-300">
+                        <div className="w-16 h-16 sm:w-24 sm:h-24 rounded-2xl bg-white/10 border border-[#DFB758]/40 backdrop-blur-xs flex flex-col items-center justify-center text-[#DFB758] font-heading font-extrabold text-2xl sm:text-3xl shadow-inner group-hover:scale-105 transition-transform duration-300">
                           {initials}
                         </div>
                         <span className="text-[10.5px] font-mono text-[#DFB758] font-bold tracking-widest uppercase px-2 line-clamp-2 text-center">

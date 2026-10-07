@@ -98,6 +98,30 @@ export async function getSiteSettings() {
 /* ─────────────────────────────────────────────────────────────
    2. LEADERSHIP & GOVERNANCE DATA FETCHER
 ───────────────────────────────────────────────────────────── */
+export const OFFICIAL_EXECUTIVE_PORTRAITS = {
+  hammond:
+    'https://cdn.sanity.io/images/0rqjd271/production/0b5a8159ea71f9ac8652db3603b759cabfc73c6d-1254x1254.png?fit=max&auto=format',
+  kotei:
+    'https://cdn.sanity.io/images/0rqjd271/production/a3bec92ca119a8c1a30461e2a60b9363e5336933-1254x1254.png?fit=max&auto=format',
+  essien:
+    'https://cdn.sanity.io/images/0rqjd271/production/b6b46923c571a74f267ed38d46a9e831a947b574-1254x1254.jpg?fit=max&auto=format',
+  lumor:
+    'https://cdn.sanity.io/images/0rqjd271/production/85836ada5a22db387ba7191fda480ee2057f7d0d-1254x1254.jpg?fit=max&auto=format',
+  rollins:
+    'https://cdn.sanity.io/images/0rqjd271/production/8ca300433f0b4011ffea411f453cebfee6e88747-1254x1254.jpg?fit=max&auto=format',
+};
+
+export function getOfficialPortrait(name, employeeId) {
+  const n = (name || '').toLowerCase();
+  const id = (employeeId || '').toUpperCase();
+  if (id === 'HGG-001' || n.includes('charles') || n.includes('hammond')) return OFFICIAL_EXECUTIVE_PORTRAITS.hammond;
+  if (id === 'HGG-002' || n.includes('kotei') || n.includes('daniel')) return OFFICIAL_EXECUTIVE_PORTRAITS.kotei;
+  if (id === 'HGG-003' || n.includes('essien') || n.includes('matthew')) return OFFICIAL_EXECUTIVE_PORTRAITS.essien;
+  if (id === 'HGG-004' || n.includes('lumor') || n.includes('harold')) return OFFICIAL_EXECUTIVE_PORTRAITS.lumor;
+  if (id === 'HGG-005' || n.includes('rollins') || n.includes('rodney')) return OFFICIAL_EXECUTIVE_PORTRAITS.rollins;
+  return null;
+}
+
 export const defaultLeadershipMembers = [
   {
     id: 'charles-n-hammond',
@@ -105,7 +129,7 @@ export const defaultLeadershipMembers = [
     title: 'Chairman & Founder',
     category: 'executive',
     order: 1,
-    portraitUrl: null,
+    portraitUrl: OFFICIAL_EXECUTIVE_PORTRAITS.hammond,
     shortBio:
       'Charles N. Hammond provides the strategic vision, corporate oversight, and institutional direction for THE HINTER GROUP GHANA LTD, guiding the firm’s development across strategic consulting, ventures, and business brokerage.',
     fullBiography:
@@ -119,31 +143,12 @@ export const defaultLeadershipMembers = [
     linkedinUrl: null,
   },
   {
-    id: 'matthew-essien',
-    name: 'Maj. Gen. Matthew Essien — GAF (Rtd.)',
-    title: 'Strategic Development & Business Coordination',
-    category: 'executive',
-    order: 2,
-    portraitUrl: null,
-    shortBio:
-      'Contributes to HGG’s strategic development, business coordination, opportunity assessment, and executive-level planning.',
-    fullBiography:
-      'Maj. Gen. Matthew Essien — GAF (Rtd.) contributes to HGG’s strategic development, business coordination, opportunity assessment, and executive-level planning. His involvement supports the company’s efforts to evaluate emerging opportunities, strengthen internal coordination, contribute to strategic discussions, and advance business-development initiatives consistent with HGG’s objectives.\n\nHis role within the Executive Leadership Team supports collaborative decision-making and the disciplined advancement of HGG’s business interests.',
-    principles: [
-      'Strategic Development & Business Coordination',
-      'Opportunity Assessment & Feasibility',
-      'Business Development Strategy',
-      'Cross-Functional Coordination',
-    ],
-    linkedinUrl: null,
-  },
-  {
     id: 'daniel-kotei',
     name: 'Lt. Commander Daniel Kotei — USN (Rtd.)',
     title: 'Strategic Coordination & Stakeholder Engagement',
     category: 'executive',
-    order: 3,
-    portraitUrl: null,
+    order: 2,
+    portraitUrl: OFFICIAL_EXECUTIVE_PORTRAITS.kotei,
     shortBio:
       'Contributes to HGG’s strategic coordination, stakeholder engagement, relationship development, and executive-level business discussions.',
     fullBiography:
@@ -157,12 +162,31 @@ export const defaultLeadershipMembers = [
     linkedinUrl: null,
   },
   {
+    id: 'matthew-essien',
+    name: 'Maj. Gen. Matthew Essien — GAF (Rtd.)',
+    title: 'Strategic Development & Business Coordination',
+    category: 'executive',
+    order: 3,
+    portraitUrl: OFFICIAL_EXECUTIVE_PORTRAITS.essien,
+    shortBio:
+      'Contributes to HGG’s strategic development, business coordination, opportunity assessment, and executive-level planning.',
+    fullBiography:
+      'Maj. Gen. Matthew Essien — GAF (Rtd.) contributes to HGG’s strategic development, business coordination, opportunity assessment, and executive-level planning. His involvement supports the company’s efforts to evaluate emerging opportunities, strengthen internal coordination, contribute to strategic discussions, and advance business-development initiatives consistent with HGG’s objectives.\n\nHis role within the Executive Leadership Team supports collaborative decision-making and the disciplined advancement of HGG’s business interests.',
+    principles: [
+      'Strategic Development & Business Coordination',
+      'Opportunity Assessment & Feasibility',
+      'Business Development Strategy',
+      'Cross-Functional Coordination',
+    ],
+    linkedinUrl: null,
+  },
+  {
     id: 'harold-lumor',
     name: 'Mr. Harold Lumor',
     title: 'Finance & Commercial Review',
     category: 'executive',
     order: 4,
-    portraitUrl: null,
+    portraitUrl: OFFICIAL_EXECUTIVE_PORTRAITS.lumor,
     shortBio:
       'Contributes financial and commercial perspective to HGG’s Executive Leadership Team, supporting financial oversight and sustainable growth.',
     fullBiography:
@@ -180,7 +204,7 @@ export const defaultLeadershipMembers = [
     title: 'Research & Strategic Analysis',
     category: 'executive',
     order: 5,
-    portraitUrl: null,
+    portraitUrl: OFFICIAL_EXECUTIVE_PORTRAITS.rollins,
     shortBio:
       'Contributes to HGG’s research, strategic analysis, market intelligence, and opportunity-development activities.',
     fullBiography:
@@ -199,10 +223,21 @@ export function normalizeLeadershipMember(m) {
 }
 
 export async function getLeadershipMembers() {
+  const applyOfficialPortraits = (list) => {
+    if (!Array.isArray(list)) return [];
+    return list.map((item) => {
+      const officialUrl = getOfficialPortrait(item.name || item.fullName, item.employeeId || item.id);
+      return {
+        ...item,
+        portraitUrl: officialUrl || item.portraitUrl || null,
+      };
+    });
+  };
+
   if (typeof window !== 'undefined') {
     const clientData = await fetchClientCms('leadership');
     if (clientData && clientData.length > 0) {
-      return clientData;
+      return applyOfficialPortraits(clientData);
     }
     return defaultLeadershipMembers;
   }
@@ -240,6 +275,12 @@ export async function getLeadershipMembers() {
       const rawTitle = m.title || m.position || fallback?.title || '';
       const cleanTitle = rawTitle.replace(/^Executive Leadership Team\s*—\s*/i, '').trim() || rawTitle;
 
+      // Authoritative official portrait resolution (guarantees correct, non-blank images)
+      const officialPortrait = getOfficialPortrait(normalizedName, m.employeeId);
+      const cmsPortraitUrl = m.portrait ? urlForImage(m.portrait)?.url() : null;
+      const validCmsPortrait =
+        cmsPortraitUrl && !cmsPortraitUrl.startsWith('data:') ? cmsPortraitUrl : null;
+
       return {
         id: m.employeeId || m.slug?.current || m._id,
         employeeId: m.employeeId,
@@ -248,7 +289,7 @@ export async function getLeadershipMembers() {
         position: cleanTitle,
         category: m.category || fallback?.category || 'executive',
         order: m.order ?? fallback?.order ?? 10,
-        portraitUrl: m.portrait ? urlForImage(m.portrait)?.url() : fallback?.portraitUrl || null,
+        portraitUrl: officialPortrait || validCmsPortrait || fallback?.portraitUrl || null,
         shortBio:
           m.shortBio ||
           fallback?.shortBio ||

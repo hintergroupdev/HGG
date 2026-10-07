@@ -47,6 +47,13 @@ export function EmployeeQrToolComponent() {
           isExecutive: true,
           leadershipOrder: 2,
           leadershipCategory: 'executive',
+          portrait: {
+            _type: 'image',
+            asset: {
+              _type: 'reference',
+              _ref: 'image-a3bec92ca119a8c1a30461e2a60b9363e5336933-1254x1254-png',
+            },
+          },
         }).commit();
         await client.patch('emp-HGG-003').set({
           fullName: 'Maj. Gen. Matthew Essien — GAF (Rtd.)',
@@ -54,20 +61,41 @@ export function EmployeeQrToolComponent() {
           isExecutive: true,
           leadershipOrder: 3,
           leadershipCategory: 'executive',
+          portrait: {
+            _type: 'image',
+            asset: {
+              _type: 'reference',
+              _ref: 'image-b6b46923c571a74f267ed38d46a9e831a947b574-1254x1254-jpg',
+            },
+          },
         }).commit();
-        await client.patch('emp-HGG-004').setIfMissing({
+        await client.patch('emp-HGG-004').set({
+          fullName: 'Mr. Harold Lumor',
+          position: 'Finance & Commercial Review',
           isExecutive: true,
           leadershipOrder: 4,
           leadershipCategory: 'executive',
-          fullName: 'Mr. Harold Lumor',
-          position: 'Finance & Commercial Review',
+          portrait: {
+            _type: 'image',
+            asset: {
+              _type: 'reference',
+              _ref: 'image-85836ada5a22db387ba7191fda480ee2057f7d0d-1254x1254-jpg',
+            },
+          },
         }).commit();
-        await client.patch('emp-HGG-005').setIfMissing({
+        await client.patch('emp-HGG-005').set({
+          fullName: 'Mr. Rodney Rollins',
+          position: 'Research & Strategic Analysis',
           isExecutive: true,
           leadershipOrder: 5,
           leadershipCategory: 'executive',
-          fullName: 'Mr. Rodney Rollins',
-          position: 'Research & Strategic Analysis',
+          portrait: {
+            _type: 'image',
+            asset: {
+              _type: 'reference',
+              _ref: 'image-8ca300433f0b4011ffea411f453cebfee6e88747-1254x1254-jpg',
+            },
+          },
         }).commit();
 
         // Auto-update siteSettings in Sanity if document has old demo address / phone

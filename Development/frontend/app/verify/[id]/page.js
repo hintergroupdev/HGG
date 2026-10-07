@@ -48,6 +48,8 @@ export default async function EmployeeVerifyPage({ params }) {
     portraitSrc = urlForImage(employee.portrait).width(600).height(600).url();
   } else if (employee?.portraitUrl) {
     portraitSrc = employee.portraitUrl;
+  } else if (DEFAULT_VERIFIED_EMPLOYEES[employeeId]?.portraitUrl) {
+    portraitSrc = DEFAULT_VERIFIED_EMPLOYEES[employeeId].portraitUrl;
   }
 
   const sc = isVerified ? 'sv' : isSuspended ? 'ss' : 'si';

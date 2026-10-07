@@ -16,7 +16,7 @@ export const defaultVerifiedEmployeesList = [
     leadershipCategory: 'executive',
     leadershipOrder: 1,
     issuedDate: '2026-09-01',
-    portraitUrl: '/images/CEO.PNG',
+    portraitUrl: 'https://cdn.sanity.io/images/0rqjd271/production/0b5a8159ea71f9ac8652db3603b759cabfc73c6d-1254x1254.png?fit=max&auto=format',
     shortBio:
       'Charles N. Hammond provides strategic leadership, corporate direction, and institutional oversight for THE HINTER GROUP GHANA LTD, guiding the firm’s development across consulting, ventures, and business brokerage.',
     fullBiography:
@@ -42,7 +42,7 @@ export const defaultVerifiedEmployeesList = [
     leadershipCategory: 'executive',
     leadershipOrder: 2,
     issuedDate: '2026-09-01',
-    portraitUrl: null,
+    portraitUrl: 'https://cdn.sanity.io/images/0rqjd271/production/a3bec92ca119a8c1a30461e2a60b9363e5336933-1254x1254.png?fit=max&auto=format',
     shortBio:
       'Contributes to HGG’s strategic coordination, stakeholder engagement, relationship development, and executive-level business discussions.',
     fullBiography:
@@ -67,7 +67,7 @@ export const defaultVerifiedEmployeesList = [
     leadershipCategory: 'executive',
     leadershipOrder: 3,
     issuedDate: '2026-09-01',
-    portraitUrl: null,
+    portraitUrl: 'https://cdn.sanity.io/images/0rqjd271/production/b6b46923c571a74f267ed38d46a9e831a947b574-1254x1254.jpg?fit=max&auto=format',
     shortBio:
       'Contributes to HGG’s strategic development, business coordination, opportunity assessment, and executive-level planning.',
     fullBiography:
@@ -92,7 +92,7 @@ export const defaultVerifiedEmployeesList = [
     leadershipCategory: 'executive',
     leadershipOrder: 4,
     issuedDate: '2026-09-01',
-    portraitUrl: null,
+    portraitUrl: 'https://cdn.sanity.io/images/0rqjd271/production/85836ada5a22db387ba7191fda480ee2057f7d0d-1254x1254.jpg?fit=max&auto=format',
     shortBio:
       'Contributes financial and commercial perspective to HGG’s Executive Leadership Team, supporting financial oversight and sustainable growth.',
     fullBiography:
@@ -117,7 +117,7 @@ export const defaultVerifiedEmployeesList = [
     leadershipCategory: 'executive',
     leadershipOrder: 5,
     issuedDate: '2026-09-01',
-    portraitUrl: null,
+    portraitUrl: 'https://cdn.sanity.io/images/0rqjd271/production/8ca300433f0b4011ffea411f453cebfee6e88747-1254x1254.jpg?fit=max&auto=format',
     shortBio:
       'Contributes to HGG’s research, strategic analysis, market intelligence, and opportunity-development activities.',
     fullBiography:
