@@ -39,7 +39,14 @@ export const leadershipMembersQuery = groq`
     "category": coalesce(leadershipCategory, category, "executive"),
     "order": coalesce(leadershipOrder, order, 10),
     slug,
-    portrait,
+    portrait {
+      ...,
+      asset-> {
+        _id,
+        url
+      }
+    },
+    "portraitUrl": portrait.asset->url,
     shortBio,
     fullBiography,
     principles,
@@ -195,7 +202,14 @@ export const employeeVerificationQuery = groq`
     department,
     status,
     issuedDate,
-    portrait,
+    portrait {
+      ...,
+      asset-> {
+        _id,
+        url
+      }
+    },
+    "portraitUrl": portrait.asset->url,
     isExecutive,
     "category": coalesce(leadershipCategory, "executive"),
     "order": coalesce(leadershipOrder, 10),

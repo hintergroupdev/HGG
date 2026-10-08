@@ -223,21 +223,10 @@ export function normalizeLeadershipMember(m) {
 }
 
 export async function getLeadershipMembers() {
-  const applyOfficialPortraits = (list) => {
-    if (!Array.isArray(list)) return [];
-    return list.map((item) => {
-      const officialUrl = getOfficialPortrait(item.name || item.fullName, item.employeeId || item.id);
-      return {
-        ...item,
-        portraitUrl: officialUrl || item.portraitUrl || null,
-      };
-    });
-  };
-
   if (typeof window !== 'undefined') {
     const clientData = await fetchClientCms('leadership');
     if (clientData && clientData.length > 0) {
-      return applyOfficialPortraits(clientData);
+      return clientData;
     }
     return defaultLeadershipMembers;
   }
@@ -275,11 +264,15 @@ export async function getLeadershipMembers() {
       const rawTitle = m.title || m.position || fallback?.title || '';
       const cleanTitle = rawTitle.replace(/^Executive Leadership Team\s*—\s*/i, '').trim() || rawTitle;
 
-      // Authoritative official portrait resolution (guarantees correct, non-blank images)
-      const officialPortrait = getOfficialPortrait(normalizedName, m.employeeId);
+      // Authoritative portrait resolution: Prioritize live Sanity CMS portrait
       const cmsPortraitUrl = m.portrait ? urlForImage(m.portrait)?.url() : null;
+      const directAssetUrl = m.portraitUrl || m.portrait?.asset?.url || null;
+      const liveCmsPortrait = cmsPortraitUrl || directAssetUrl || null;
       const validCmsPortrait =
-        cmsPortraitUrl && !cmsPortraitUrl.startsWith('data:') ? cmsPortraitUrl : null;
+        liveCmsPortrait && !liveCmsPortrait.startsWith('data:') ? liveCmsPortrait : null;
+
+      // Fallback only if no portrait exists in Sanity
+      const officialPortrait = getOfficialPortrait(normalizedName, m.employeeId);
 
       return {
         id: m.employeeId || m.slug?.current || m._id,
@@ -289,7 +282,7 @@ export async function getLeadershipMembers() {
         position: cleanTitle,
         category: m.category || fallback?.category || 'executive',
         order: m.order ?? fallback?.order ?? 10,
-        portraitUrl: officialPortrait || validCmsPortrait || fallback?.portraitUrl || null,
+        portraitUrl: validCmsPortrait || officialPortrait || fallback?.portraitUrl || null,
         shortBio:
           m.shortBio ||
           fallback?.shortBio ||
@@ -320,15 +313,16 @@ export async function getLeadershipMembers() {
       seen.set(key, item);
     } else {
       const existing = seen.get(key);
+      const chosenPortrait = item.portraitUrl || existing.portraitUrl || null;
       if (item.employeeId && !existing.employeeId) {
-        seen.set(key, { ...existing, ...item });
+        seen.set(key, { ...existing, ...item, portraitUrl: chosenPortrait });
       } else {
         seen.set(key, {
           ...item,
           ...existing,
           title: item.title || existing.title,
           position: item.position || existing.position,
-          portraitUrl: item.portraitUrl || existing.portraitUrl,
+          portraitUrl: existing.portraitUrl || item.portraitUrl || chosenPortrait,
           fullBiography: item.fullBiography || existing.fullBiography,
         });
       }
