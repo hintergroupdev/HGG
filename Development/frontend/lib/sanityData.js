@@ -271,18 +271,17 @@ export async function getLeadershipMembers() {
       const validCmsPortrait =
         liveCmsPortrait && !liveCmsPortrait.startsWith('data:') ? liveCmsPortrait : null;
 
-      // Fallback only if no portrait exists in Sanity
-      const officialPortrait = getOfficialPortrait(normalizedName, m.employeeId);
-
       return {
         id: m.employeeId || m.slug?.current || m._id,
+        _type: m._type,
         employeeId: m.employeeId,
         name: normalizedName,
         title: cleanTitle,
         position: cleanTitle,
         category: m.category || fallback?.category || 'executive',
         order: m.order ?? fallback?.order ?? 10,
-        portraitUrl: validCmsPortrait || officialPortrait || fallback?.portraitUrl || null,
+        portraitUrl: validCmsPortrait || null,
+        hasCmsPortrait: !!validCmsPortrait,
         shortBio:
           m.shortBio ||
           fallback?.shortBio ||
@@ -299,7 +298,8 @@ export async function getLeadershipMembers() {
       };
     });
 
-  // De-duplicate so each executive appears exactly once, preferring employeeVerification data
+  // De-duplicate so each executive appears exactly once.
+  // USER REQUIREMENT: Prioritize portrait and content from "Leadership & Governance" (leadershipMember in Sanity)
   const seen = new Map();
 
   for (const item of mapped) {
@@ -313,23 +313,64 @@ export async function getLeadershipMembers() {
       seen.set(key, item);
     } else {
       const existing = seen.get(key);
-      const chosenPortrait = item.portraitUrl || existing.portraitUrl || null;
-      if (item.employeeId && !existing.employeeId) {
-        seen.set(key, { ...existing, ...item, portraitUrl: chosenPortrait });
+
+      // Determine which document is from Leadership & Governance (_type == "leadershipMember")
+      const leadershipDoc = item._type === 'leadershipMember' ? item : existing;
+      const employeeDoc = item._type === 'employeeVerification' ? item : existing;
+
+      // 1. Image Priority:
+      // A: If "Leadership & Governance" has an image in Sanity, TAKE THAT IMAGE!
+      // B: Else if "Employee ID & Verification" has an image in Sanity, take that.
+      // C: Else fallback to default employee list.
+      let finalPortrait = null;
+      if (leadershipDoc?.hasCmsPortrait) {
+        finalPortrait = leadershipDoc.portraitUrl;
+      } else if (employeeDoc?.hasCmsPortrait) {
+        finalPortrait = employeeDoc.portraitUrl;
       } else {
-        seen.set(key, {
-          ...item,
-          ...existing,
-          title: item.title || existing.title,
-          position: item.position || existing.position,
-          portraitUrl: existing.portraitUrl || item.portraitUrl || chosenPortrait,
-          fullBiography: item.fullBiography || existing.fullBiography,
-        });
+        const fallback = defaultLeadershipMembers.find(
+          (def) => def.id === (item.employeeId || existing.employeeId) || def.name?.toLowerCase() === key
+        );
+        finalPortrait = fallback?.portraitUrl || null;
       }
+
+      // Preserve employeeId for verification portal badge link
+      const employeeId = item.employeeId || existing.employeeId || null;
+
+      // Merge: prefer leadership title, bio, and principles from Leadership & Governance
+      seen.set(key, {
+        ...existing,
+        ...item,
+        employeeId,
+        portraitUrl: finalPortrait,
+        title: leadershipDoc?.title || employeeDoc?.title || existing.title,
+        position: leadershipDoc?.position || employeeDoc?.position || existing.position,
+        shortBio: leadershipDoc?.shortBio || employeeDoc?.shortBio || existing.shortBio,
+        fullBiography: leadershipDoc?.fullBiography || employeeDoc?.fullBiography || existing.fullBiography,
+        principles:
+          leadershipDoc?.principles?.length > 0
+            ? leadershipDoc.principles
+            : employeeDoc?.principles || existing.principles,
+      });
     }
   }
 
-  return Array.from(seen.values()).sort((a, b) => (a.order ?? 10) - (b.order ?? 10));
+  const finalMembers = Array.from(seen.values()).map((member) => {
+    if (!member.portraitUrl) {
+      const fallback = defaultLeadershipMembers.find(
+        (def) =>
+          def.id === member.employeeId ||
+          def.name?.toLowerCase() === member.name?.toLowerCase()
+      );
+      return {
+        ...member,
+        portraitUrl: fallback?.portraitUrl || null,
+      };
+    }
+    return member;
+  });
+
+  return finalMembers.sort((a, b) => (a.order ?? 10) - (b.order ?? 10));
 }
 
 /* ─────────────────────────────────────────────────────────────
